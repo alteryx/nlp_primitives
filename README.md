@@ -2,11 +2,43 @@
 
 [![CircleCI](https://circleci.com/gh/FeatureLabs/nlp_primitives/tree/master.svg?style=shield)](https://circleci.com/gh/FeatureLabs/nlp_primitives/tree/master)
 [![codecov](https://codecov.io/gh/FeatureLabs/nlp_primitives/branch/master/graph/badge.svg)](https://codecov.io/gh/FeatureLabs/nlp_primitives)
-[![Documentation Status](https://readthedocs.org/projects/nlp_primitives/badge/?version=latest)](http://docs.compose.ml/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/nlp_primitives/badge/?version=latest)](http://docs.nlp_primitives/en/latest/?badge=latest)
 
 ### Install
 ```shell
-pip install nlp_primitives
+pip install 'featuretools[nlp_primitives]'
+```
+## Calculating Features
+In `nlp_primitives`, this is how to calculate a feature.
+```python
+from nlp_primitives.feature_extraction.feature_calculators import agg_autocorrelation
+
+data = list(range(10))
+param = [{'f_agg': 'mean', 'maxlag': 5}]
+agg_autocorrelation(data, param=param)
+```
+```
+[('f_agg_"mean"__maxlag_5', 0.1717171717171717)]
+```
+With nlp_primitives primtives in `featuretools`, this is how to calculate the same feature.
+```python
+from featuretools.nlp_primitives import AggAutocorrelation
+
+data = list(range(10))
+AggAutocorrelation(f_agg='mean', maxlag=5)(data)
+```
+```
+0.1717171717171717
+```
+## Combining Primitives
+In `featuretools`, this is how to combine nlp_primitives primitives with built-in or other installed primitives.
+```python
+import featuretools as ft
+from featuretools.nlp_primitives import AggAutocorrelation, Mean
+
+entityset = ft.demo.load_mock_customer(return_entityset=True)
+agg_primitives = [Mean, AggAutocorrelation(f_agg='mean', maxlag=5)]
+feature_matrix, features = ft.dfs(entityset=entityset, target_entity='sessions', agg_primitives=agg_primitives)
 ```
 
 ## Feature Labs

@@ -1,0 +1,4 @@
+featuretools>=0.5.1
+nltk>=3.4
+tensorflow<=1.14.0
+tensorflow_hub<=0.4.0
