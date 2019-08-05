@@ -1,26 +1,65 @@
 version: 2
-jobs:
-  "python-35":
-    working_directory: ~/nlp_primitives
-    docker:
-        - image: circleci/python:3.5
+
+commands:
+  package-install-test:
+    description: "install library from source distribution and run tests"
     steps:
       - checkout
+      - run : |
+          virtualenv venv
+          source venv/bin/activate
+          python setup.py sdist
+          LIBRARY_VERSION="featuretools_nlp_primitives-$(python setup.py --version)"
+          tar -zxvf "dist/${LIBRARY_VERSION}.tar.gz"
+          pip install -e "${LIBRARY_VERSION}/"
+          pip install -r "${LIBRARY_VERSION}/test-requirements.txt"
       - run: |
-          virtualenv venv_35 -q
-          source venv_35/bin/activate
-          make installdeps
+          source venv/bin/activate
+          cd "featuretools_nlp_primitives-$(python setup.py --version)/"
+          pytest
       - run: |
-          source venv_35/bin/activate
+          source venv/bin/activate
           make lint
       - run: |
-          source venv_35/bin/activate
+          source venv/bin/activate
           coverage erase
           make test
           codecov
+
+jobs:
+  "python-27":
+    working_directory: ~/featuretools_nlp_primitives
+    docker:
+      - image: circleci/python:2.7
+    steps:
+      - package-install-test
+
+  "python-35":
+    working_directory: ~/featuretools_nlp_primitives
+    docker:
+      - image: circleci/python:3.5
+    steps:
+      - package-install-test
+
+  "python-36":
+    working_directory: ~/featuretools_nlp_primitives
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - package-install-test
+
+  "python-37":
+    working_directory: ~/featuretools_nlp_primitives
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - package-install-test
 
 workflows:
   version: 2
   test_all_python_versions:
     jobs:
+      - "python-27"
       - "python-35"
+      - "python-36"
+      - "python-37"
