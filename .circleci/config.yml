@@ -4,7 +4,6 @@ version: 2.1
 jobs:
   "python-27commands:
   package-install-test:
-    description: "install library from source distribution and run tests"
     steps:
       - checkout
       - run : |
