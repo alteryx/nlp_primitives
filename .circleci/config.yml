@@ -1,9 +1,8 @@
 version: 2.1
 
-
-jobs:
-  "python-27commands:
+commands:
   package-install-test:
+    description: "install library from source distribution and run tests"
     steps:
       - checkout
       - run : |
@@ -26,7 +25,9 @@ jobs:
           coverage erase
           make test
           codecov
-":
+
+jobs:
+  "python-27":
     working_directory: ~/nlp_primitives
     docker:
       - image: circleci/python:2.7
