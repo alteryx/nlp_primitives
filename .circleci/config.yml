@@ -9,13 +9,13 @@ commands:
           virtualenv venv
           source venv/bin/activate
           python setup.py sdist
-          LIBRARY_VERSION="featuretools_nlp_primitives-$(python setup.py --version)"
+          LIBRARY_VERSION="nlp_primitives-$(python setup.py --version)"
           tar -zxvf "dist/${LIBRARY_VERSION}.tar.gz"
           pip install -e "${LIBRARY_VERSION}/"
           pip install -r "${LIBRARY_VERSION}/test-requirements.txt"
       - run: |
           source venv/bin/activate
-          cd "featuretools_nlp_primitives-$(python setup.py --version)/"
+          cd "nlp_primitives-$(python setup.py --version)/"
           pytest
       - run: |
           source venv/bin/activate
@@ -28,28 +28,28 @@ commands:
 
 jobs:
   "python-27":
-    working_directory: ~/featuretools_nlp_primitives
+    working_directory: ~/nlp_primitives
     docker:
       - image: circleci/python:2.7
     steps:
       - package-install-test
 
   "python-35":
-    working_directory: ~/featuretools_nlp_primitives
+    working_directory: ~/nlp_primitives
     docker:
       - image: circleci/python:3.5
     steps:
       - package-install-test
 
   "python-36":
-    working_directory: ~/featuretools_nlp_primitives
+    working_directory: ~/nlp_primitives
     docker:
       - image: circleci/python:3.6
     steps:
       - package-install-test
 
   "python-37":
-    working_directory: ~/featuretools_nlp_primitives
+    working_directory: ~/nlp_primitives
     docker:
       - image: circleci/python:3.7
     steps:
