@@ -18,5 +18,5 @@
     changelog
 
 ==============================
-What is NLP Primitives?
+What are NLP Primitives?
 ==============================

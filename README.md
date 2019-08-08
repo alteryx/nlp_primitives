@@ -11,10 +11,11 @@ pip install 'featuretools[nlp_primitives]'
 ## Calculating Features
 In `nlp_primitives`, this is how to calculate a feature.
 ```python
-from nlp_primitives.feature_extraction.feature_calculators import agg_autocorrelation
+from nlp_primitives import diversity_score
 
-data = list(range(10))
-param = [{'f_agg': 'mean', 'maxlag': 5}]
+data = ["hello there, this is a new featuretools library",
+        "this will add new natrual language primitives"]
+
 agg_autocorrelation(data, param=param)
 ```
 ```
