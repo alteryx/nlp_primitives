@@ -1,6 +1,6 @@
 # NLP Primitives
 
-[![CircleCI](https://circleci.com/gh/FeatureLabs/nlp_primitives.svg?style=shield&circle)](https://circleci.com/gh/FeatureLabs/nlp_primitives)
+[![CircleCI](https://circleci.com/gh/FeatureLabs/nlp_primitives.svg?style=svg&circle-token=d9f0b837238eed1f2b75be267f4963d4cb5a1284)](https://circleci.com/gh/FeatureLabs/nlp_primitives)
 [![codecov](https://codecov.io/gh/FeatureLabs/nlp_primitives/branch/master/graph/badge.svg)](https://codecov.io/gh/FeatureLabs/nlp_primitives)
 [![Documentation Status](https://readthedocs.org/projects/nlp_primitives/badge/?version=latest)](http://docs.nlp_primitives/en/latest/?badge=latest)
 
