@@ -10,5 +10,6 @@ setup(
     install_requires=open('requirements.txt').readlines(),
     tests_require=open('test-requirements.txt').readlines(),
     packages=find_packages(),
+    package_data={'data/': ['*.gz']},
     include_package_data=True,
 )
