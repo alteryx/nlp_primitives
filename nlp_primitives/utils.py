@@ -18,7 +18,7 @@ class PrimitiveT(object):
 
     @pytest.fixture(autouse=True, scope='session')
     def es(self):
-        es = make_ecommerce_entityset(save_files=False)
+        es = make_ecommerce_entityset()
         return es
 
     def test_name_and_desc(self):

@@ -44,7 +44,7 @@ class DiversityScore(TransformPrimitive):
         wn = nltk.WordNetLemmatizer()
         if not os.path.exists(nltk.data.path[0]):
             try:
-                tf = tempfile.mkdtemp()
+                tarf = tempfile.mkdtemp()
                 if is_python_2():
                     def unpacktar(filename, extract_dir):
                         tarobj = tarfile.open(filename)
@@ -52,12 +52,12 @@ class DiversityScore(TransformPrimitive):
                             tarobj.extractall(extract_dir)
                         finally:
                             tarobj.close()
-                    unpacktar(fp, tf)
+                    unpacktar(fp, tarf)
                 else:
-                    shutil.unpack_archive(fp, tf)
-                shutil.copytree(tf, dp)
+                    shutil.unpack_archive(fp, tarf)
+                shutil.copytree(tarf, dp)
             finally:
-                shutil.rmtree(tf)
+                shutil.rmtree(tarf)
 
         def clean_tokens(textstr):
             textstr = nltk.word_tokenize(textstr)
