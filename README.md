@@ -4,6 +4,8 @@
 [![codecov](https://codecov.io/gh/FeatureLabs/nlp_primitives/branch/master/graph/badge.svg)](https://codecov.io/gh/FeatureLabs/nlp_primitives)
 [![Documentation Status](https://readthedocs.org/projects/nlp_primitives/badge/?version=latest)](http://docs.nlp_primitives/en/latest/?badge=latest)
 
+nlp_primitives is a Python library with Natural Language Processing Primitives, intended for use with [Featuretools](https://github.com/Featuretools/featuretools). nlp_primitives allows you to make use of textual data in your machine learning pipeline in the same pipeline as the rest of your data.
+
 ### Install
 ```shell
 pip install 'featuretools[nlp_primitives]'
@@ -11,37 +13,63 @@ pip install 'featuretools[nlp_primitives]'
 ## Calculating Features
 In `nlp_primitives`, this is how to calculate a feature.
 ```python
-from nlp_primitives import diversity_score
+from nlp_primitives import PolarityScore
+import featuretools as ft
 
-data = ["hello there, this is a new featuretools library",
-        "this will add new natrual language primitives"]
+data_path = 'data'
+ft.config.set({
+    'primitive_data_folder': data_path
+})
 
-agg_autocorrelation(data, param=param)
+data = ["hello, this is cool new featuretools library",
+        "this will add new natural language primitives",
+        "we hope you like it!"]
+
+pol = PolarityScore()
+pol(data)
 ```
 ```
-[('f_agg_"mean"__maxlag_5', 0.1717171717171717)]
+0    0.365
+1    0.385
+2    1.000
+dtype: float64
 ```
 With nlp_primitives primtives in `featuretools`, this is how to calculate the same feature.
 ```python
-from featuretools.nlp_primitives import AggAutocorrelation
+from featuretools.nlp_primitives import PolarityScore
 
-data = list(range(10))
-AggAutocorrelation(f_agg='mean', maxlag=5)(data)
+data = ["hello, this is a new featuretools library",
+        "this will add new natural language primitives",
+        "we hope you like it!"]
+
+pol = PolarityScore()
+pol(data)
 ```
 ```
-0.1717171717171717
+0    0.365
+1    0.385
+2    1.000
+dtype: float64
 ```
 ## Combining Primitives
 In `featuretools`, this is how to combine nlp_primitives primitives with built-in or other installed primitives.
 ```python
 import featuretools as ft
-from featuretools.nlp_primitives import AggAutocorrelation, Mean
+from featuretools.nlp_primitives import TitleWordCount
+from featuretools.primitives import Mean
 
-entityset = ft.demo.load_mock_customer(return_entityset=True)
-agg_primitives = [Mean, AggAutocorrelation(f_agg='mean', maxlag=5)]
-feature_matrix, features = ft.dfs(entityset=entityset, target_entity='sessions', agg_primitives=agg_primitives)
+entityset = ft.demo.load_retail()
+feature_matrix, features = ft.dfs(entityset=entityset, target_entity='products', agg_primitives=[Mean], trans_primitives=[TitleWordCount])
 ```
-
+```
+           MEAN(order_products.quantity)  MEAN(order_products.unit_price)  MEAN(order_products.total)  TITLE_WORD_COUNT(description)
+product_id
+10002                        16.795918                           1.402500                   23.556276                           3.0
+10080                        13.857143                           0.679643                    8.989357                           3.0
+10120                         6.620690                           0.346500                    2.294069                           2.0
+10123C                        1.666667                           1.072500                    1.787500                           3.0
+10124A                          3.2000                             0.6930                      2.2176                           5.0
+```
 ## Feature Labs
 <a href="https://www.featurelabs.com/">
     <img src="http://www.featurelabs.com/wp-content/uploads/2017/12/logo.png" alt="Featuretools" />
