@@ -30,18 +30,13 @@ class UniversalSentenceEncoder(TransformPrimitive):
     return_type = Numeric
 
     def __init__(self):
-        self.handle = "https://tfhub.dev/google/universal-sentence-encoder/2"
+        # self.handle = "https://tfhub.dev/google/universal-sentence-encoder/2"
+        self.module_url = "https://tfhub.dev/google/universal-sentence-encoder/2"
+        self.embed = hub.Module(self.module_url)
         self.number_output_features = 512
         self.n = 512
 
-    def install(self):
-        with tf.Session():
-            tf.global_variables_initializer().run()
-            self.embed = hub.Module(self.handle)
-
     def get_function(self):
-        self.install()
-
         def universal_sentence_encoder(col):
             with tf.Session() as session:
                 session.run([tf.global_variables_initializer(),
