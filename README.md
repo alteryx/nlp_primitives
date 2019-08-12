@@ -64,11 +64,11 @@ feature_matrix, features = ft.dfs(entityset=entityset, target_entity='products',
 ```
            MEAN(order_products.quantity)  MEAN(order_products.unit_price)  MEAN(order_products.total)  TITLE_WORD_COUNT(description)
 product_id
-10002                        16.795918                           1.402500                   23.556276                           3.0
-10080                        13.857143                           0.679643                    8.989357                           3.0
-10120                         6.620690                           0.346500                    2.294069                           2.0
-10123C                        1.666667                           1.072500                    1.787500                           3.0
-10124A                          3.2000                             0.6930                      2.2176                           5.0
+10002                         16.795918                          1.402500                   23.556276                           3.0
+10080                         13.857143                          0.679643                    8.989357                           3.0
+10120                          6.620690                          0.346500                    2.294069                           2.0
+10123C                         1.666667                          1.072500                    1.787500                           3.0
+10124A                           3.2000                            0.6930                      2.2176                           5.0
 ```
 ## Feature Labs
 <a href="https://www.featurelabs.com/">
