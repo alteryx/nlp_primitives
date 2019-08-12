@@ -20,41 +20,41 @@ commands:
           pytest
 
 jobs:
-  "python-27":
-    working_directory: ~/nlp_prims
-    docker:
-      - image: circleci/python:2.7
-    steps:
-      - checkout
-      - run: virtualenv test_env && virtualenv dev_env
-      - install-packaged-nlp-primitives
-      - run: source dev_env/bin/activate && make installdeps
-      - run: source dev_env/bin/activate && make lint
-      - run-packaged-tests
+  # "python-27":
+  #   working_directory: ~/nlp_prims
+  #   docker:
+  #     - image: circleci/python:2.7
+  #   steps:
+  #     - checkout
+  #     - run: virtualenv test_env && virtualenv dev_env
+  #     - install-packaged-nlp-primitives
+  #     - run: source dev_env/bin/activate && make installdeps
+  #     - run: source dev_env/bin/activate && make lint
+  #     - run-packaged-tests
 
-  "python-35":
-    working_directory: ~/nlp_prims
-    docker:
-      - image: circleci/python:3.5
-    steps:
-      - checkout
-      - run: virtualenv test_env && virtualenv dev_env
-      - install-packaged-nlp-primitives
-      - run: source dev_env/bin/activate && make installdeps
-      - run: source dev_env/bin/activate && make lint
-      - run-packaged-tests
+  # "python-35":
+  #   working_directory: ~/nlp_prims
+  #   docker:
+  #     - image: circleci/python:3.5
+  #   steps:
+  #     - checkout
+  #     - run: virtualenv test_env && virtualenv dev_env
+  #     - install-packaged-nlp-primitives
+  #     - run: source dev_env/bin/activate && make installdeps
+  #     - run: source dev_env/bin/activate && make lint
+  #     - run-packaged-tests
 
-  "python-36":
-    working_directory: ~/nlp_prims
-    docker:
-      - image: circleci/python:3.6
-    steps:
-      - checkout
-      - run: virtualenv test_env && virtualenv dev_env
-      - install-packaged-nlp-primitives
-      - run: source dev_env/bin/activate && make installdeps
-      - run: source dev_env/bin/activate && make lint
-      - run-packaged-tests
+  # "python-36":
+  #   working_directory: ~/nlp_prims
+  #   docker:
+  #     - image: circleci/python:3.6
+  #   steps:
+  #     - checkout
+  #     - run: virtualenv test_env && virtualenv dev_env
+  #     - install-packaged-nlp-primitives
+  #     - run: source dev_env/bin/activate && make installdeps
+  #     - run: source dev_env/bin/activate && make lint
+  #     - run-packaged-tests
 
   "python-37":
     working_directory: ~/nlp_prims
@@ -73,7 +73,7 @@ workflows:
   version: 2
   test_all_python_versions:
     jobs:
-      - "python-27"
-      - "python-35"
-      - "python-36"
+      # - "python-27"
+      # - "python-35"
+      # - "python-36"
       - "python-37"
