@@ -4,13 +4,15 @@ commands:
   install-packaged-nlp-primitives:
     description: "install nlp primitives from source distribution"
     steps:
-      - run : |
-          source test_env/bin/activate
-          python setup.py sdist
-          LIBRARY_VERSION=$(python setup.py --version)
-          tar -zxvf "dist/nlp_primitives-${LIBRARY_VERSION}.tar.gz"
-          pip install -e "nlp_primitives-${LIBRARY_VERSION}/"
-          pip install -r "nlp_primitives-${LIBRARY_VERSION}/test-requirements.txt"
+      - run :
+          no_output_timeout: 20m
+          command: |
+              source test_env/bin/activate
+              python setup.py sdist
+              LIBRARY_VERSION=$(python setup.py --version)
+              tar -zxvf "dist/nlp_primitives-${LIBRARY_VERSION}.tar.gz"
+              pip install -e "nlp_primitives-${LIBRARY_VERSION}/"
+              pip install -r "nlp_primitives-${LIBRARY_VERSION}/test-requirements.txt"
   run-packaged-tests:
     description: "run unit tests on packaged testing files"
     steps:
