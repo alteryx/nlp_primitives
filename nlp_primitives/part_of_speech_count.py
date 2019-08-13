@@ -40,7 +40,7 @@ class PartOfSpeechCount(TransformPrimitive):
         self.n = 15
 
     def get_function(self):
-        fp = os.path.join('nlp_primitives', self.get_filepath(self.filename))
+        fp = self.get_filepath(self.filename)
         dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
         nltk.data.path = [os.path.normpath(os.path.join(fp, '../nltk-data/nltk-data'))]
         wn = nltk.WordNetLemmatizer()

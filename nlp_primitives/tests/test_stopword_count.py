@@ -5,7 +5,7 @@ import pandas as pd
 from ..stopword_count import StopwordCount
 from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
-data_path = 'data'
+data_path = 'nlp_primitives/data'
 ft.config.set({
     'primitive_data_folder': data_path
 })
