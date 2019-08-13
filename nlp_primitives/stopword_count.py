@@ -35,7 +35,7 @@ class StopwordCount(TransformPrimitive):
     filename = "nltk-data.tar.gz"
 
     def get_function(self):
-        fp = self.get_filepath(self.filename)
+        fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../data/nltk-data.tar.gz'))
         dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
         nltk.data.path = [os.path.normpath(os.path.join(fp, '../nltk-data/nltk-data'))]
         if not os.path.exists(nltk.data.path[0]):

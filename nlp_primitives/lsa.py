@@ -60,7 +60,7 @@ class LSA(TransformPrimitive):
         self.number_output_features = 2
         self.n = 2
 
-        fp = self.get_filepath(self.filename)
+        fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../data/nltk-data.tar.gz'))
         dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
         data_path = os.path.normpath(os.path.join(fp, '../nltk-data/nltk-data'))
         nltk.data.path.append(data_path)

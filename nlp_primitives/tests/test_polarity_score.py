@@ -1,14 +1,8 @@
-import featuretools as ft
 import numpy as np
 import pandas as pd
 
 from ..polarity_score import PolarityScore
 from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
-
-data_path = 'nlp_primitives/data'
-ft.config.set({
-    'primitive_data_folder': data_path
-})
 
 
 class TestPolarityScore(PrimitiveT):

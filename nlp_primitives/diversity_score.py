@@ -38,8 +38,7 @@ class DiversityScore(TransformPrimitive):
     filename = "nltk-data.tar.gz"
 
     def get_function(self):
-        fp = os.path.realpath(__file__)
-        fp = os.path.normpath(os.path.join(fp, '../data/nltk-data.tar.gz'))
+        fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../data/nltk-data.tar.gz'))
         dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
         nltk.data.path = [os.path.normpath(os.path.join(fp, '../nltk-data/nltk-data'))]
         wn = nltk.WordNetLemmatizer()

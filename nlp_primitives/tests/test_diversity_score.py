@@ -1,14 +1,8 @@
-# import featuretools as ft
 import numpy as np
 import pandas as pd
 
 from ..diversity_score import DiversityScore
 from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
-
-# data_path = 'nlp_primitives/data'
-# ft.config.set({
-#     'primitive_data_folder': data_path
-# })
 
 
 class TestDiversityScore(PrimitiveT):
