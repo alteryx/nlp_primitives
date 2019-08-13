@@ -10,6 +10,7 @@ setup(
     install_requires=open('requirements.txt').readlines(),
     tests_require=open('test-requirements.txt').readlines(),
     packages=find_packages(),
-    package_data={'data/': ['*.gz']},
+    package_data = {'nlp_primitives': ['data/nltk-data.tar.gz']},
     include_package_data=True,
+    zip_safe=False,
 )
