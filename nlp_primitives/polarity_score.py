@@ -39,7 +39,7 @@ class PolarityScore(TransformPrimitive):
         dtk = TreebankWordDetokenizer()
         wn = nltk.WordNetLemmatizer()
 
-        fp = self.get_filepath(self.filename)
+        fp = os.path.join('nlp_primitives', self.get_filepath(self.filename))
         dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
         nltk.data.path = [os.path.normpath(os.path.join(fp, '../nltk-data/nltk-data'))]
         if not os.path.exists(nltk.data.path[0]):
