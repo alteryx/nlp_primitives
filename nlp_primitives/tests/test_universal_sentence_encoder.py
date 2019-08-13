@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from ..universal_sentence_encoder import UniversalSentenceEncoder
-from ..utils import PrimitiveT, # find_applicable_primitives, valid_dfs
+from ..utils import PrimitiveT  # find_applicable_primitives, valid_dfs
 
 
 class TestUniversalSentenceEncoder(PrimitiveT):
