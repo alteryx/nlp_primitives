@@ -60,6 +60,8 @@ from featuretools.primitives import Mean
 
 entityset = ft.demo.load_retail()
 feature_matrix, features = ft.dfs(entityset=entityset, target_entity='products', agg_primitives=[Mean], trans_primitives=[TitleWordCount])
+
+feature_matrix.head(5)
 ```
 ```
            MEAN(order_products.quantity)  MEAN(order_products.unit_price)  MEAN(order_products.total)  TITLE_WORD_COUNT(description)

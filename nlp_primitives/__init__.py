@@ -4,6 +4,7 @@ from .lsa import LSA
 from .mean_characters_per_word import MeanCharactersPerWord
 from .part_of_speech_count import PartOfSpeechCount
 from .polarity_score import PolarityScore
+from .punctuation_count import PunctuationCount
 from .stopword_count import StopwordCount
 from .title_word_count import TitleWordCount
 from .universal_sentence_encoder import UniversalSentenceEncoder
