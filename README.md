@@ -11,29 +11,6 @@ nlp_primitives is a Python library with Natural Language Processing Primitives, 
 pip install 'featuretools[nlp_primitives]'
 ```
 ## Calculating Features
-In `nlp_primitives`, this is how to calculate a feature.
-```python
-from nlp_primitives import PolarityScore
-import featuretools as ft
-
-data_path = 'data'
-ft.config.set({
-    'primitive_data_folder': data_path
-})
-
-data = ["hello, this is cool new featuretools library",
-        "this will add new natural language primitives",
-        "we hope you like it!"]
-
-pol = PolarityScore()
-pol(data)
-```
-```
-0    0.365
-1    0.385
-2    1.000
-dtype: float64
-```
 With nlp_primitives primtives in `featuretools`, this is how to calculate the same feature.
 ```python
 from featuretools.nlp_primitives import PolarityScore
