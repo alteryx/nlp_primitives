@@ -1,14 +1,8 @@
 # -*- coding: utf-8 -*-
-import os
-import shutil
-import tarfile
-import tempfile
-
 import nltk
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.utils import is_python_2
 from featuretools.variable_types import Numeric, Text
 
 
@@ -32,37 +26,26 @@ class StopwordCount(TransformPrimitive):
     input_types = [Text]
     return_type = Numeric
     default_value = 0
-    filename = "nltk-data.tar.gz"
 
     def get_function(self):
-        fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../data/nltk-data.tar.gz'))
-        dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
-        nltk.data.path = [os.path.normpath(os.path.join(fp, '../nltk-data/nltk-data'))]
-        if not os.path.exists(nltk.data.path[0]):
-            try:
-                tf = tempfile.mkdtemp()
-                if is_python_2():
-                    def unpacktar(filename, extract_dir):
-                        tarobj = tarfile.open(filename)
-                        try:
-                            tarobj.extractall(extract_dir)
-                        finally:
-                            tarobj.close()
-                    unpacktar(fp, tf)
-                else:
-                    shutil.unpack_archive(fp, tf)
-                shutil.copytree(tf, dp)
-            finally:
-                shutil.rmtree(tf)
 
         def stopword_count(array):
             li = []
-            swords = set(nltk.corpus.stopwords.words('english'))
+            try:
+                swords = set(nltk.corpus.stopwords.words('english'))
+            except LookupError:
+                nltk.download('stopwords')
+                swords = set(nltk.corpus.stopwords.words('english'))
+            try:
+                tokenizer = nltk.tokenize.word_tokenize
+            except LookupError:
+                nltk.download('punkt')
+                tokenizer = nltk.tokenize.word_tokenize
             for el in array:
                 if pd.isnull(el):
                     li.append(np.nan)
                 else:
-                    li.append(sum(map(lambda x: x in swords, nltk.tokenize.word_tokenize(el))))
+                    li.append(sum(map(lambda x: x in swords, tokenizer(el))))
             return pd.Series(li)
 
         return stopword_count

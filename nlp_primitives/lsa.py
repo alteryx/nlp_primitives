@@ -1,20 +1,14 @@
-import os
-import re
-import shutil
-import string
-import tarfile
-import tempfile
-
 import nltk
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.utils import is_python_2
 from featuretools.variable_types import Numeric, Text
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import make_pipeline
+
+from .utilities import clean_tokens
 
 
 class LSA(TransformPrimitive):
@@ -53,52 +47,23 @@ class LSA(TransformPrimitive):
     input_types = [Text]
     return_type = Numeric
     default_value = 0
-    filename = "nltk-data.tar.gz"
 
     def __init__(self):
         # TODO: allow user to use own corpus
         self.number_output_features = 2
         self.n = 2
 
-        fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../data/nltk-data.tar.gz'))
-        dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
-        data_path = os.path.normpath(os.path.join(fp, '../nltk-data/nltk-data'))
-        nltk.data.path.append(data_path)
-
-        if not os.path.exists(data_path):
-            try:
-                tf = tempfile.mkdtemp()
-                if is_python_2():
-                    def unpacktar(filename, extract_dir):
-                        tarobj = tarfile.open(filename)
-                        try:
-                            tarobj.extractall(extract_dir)
-                        finally:
-                            tarobj.close()
-                    unpacktar(fp, tf)
-                else:
-                    shutil.unpack_archive(fp, tf)
-                shutil.copytree(tf, dp)
-            finally:
-                shutil.rmtree(tf)
-        sents_list = [" ".join(sent) for sent in nltk.corpus.brown.sents()]
-
-        self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD())
-        self.trainer.fit(sents_list)
+        try:
+            brown = nltk.corpus.brown.sents()
+        except LookupError:
+            nltk.download('brown')
+            brown = nltk.corpus.brown.sents()
+        finally:
+            self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD())
+            self.trainer.fit([" ".join(sent) for sent in brown])
 
     def get_function(self):
         dtk = TreebankWordDetokenizer()
-        wn = nltk.WordNetLemmatizer()
-
-        def clean_tokens(textstr):
-            textstr = nltk.word_tokenize(textstr)
-
-            processed = [ch.lower() for ch in textstr if ch not in
-                         set(string.punctuation).union(
-                         set(nltk.corpus.stopwords.words('english')))]
-            processed = ['0' if re.search('[0-9]+', ch) else ch for ch in processed]
-            processed = [wn.lemmatize(w) for w in processed]
-            return processed
 
         def lsa(array):
             array = pd.Series(array, index=pd.Series(array.index), name='array')
