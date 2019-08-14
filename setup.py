@@ -9,5 +9,5 @@ setup(
     url='http://www.featurelabs.com/',
     install_requires=open('requirements.txt').readlines(),
     tests_require=open('test-requirements.txt').readlines(),
-    packages=find_packages,
+    packages=find_packages(),
 )
