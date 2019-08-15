@@ -2,6 +2,10 @@
 Changelog
 =========
 
+**v0.2.2**
+    * Now comes with description for PyPI
+
+
 **v0.1.0**
     * Fixed reliance on external data files
 
