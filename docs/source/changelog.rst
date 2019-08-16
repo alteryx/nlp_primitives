@@ -2,6 +2,10 @@
 Changelog
 =========
 
+**v0.2.3**
+    * Small bug fixes
+
+
 **v0.2.2**
     * Now comes with description for PyPI
 
