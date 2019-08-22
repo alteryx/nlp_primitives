@@ -2,7 +2,9 @@
 
 [![CircleCI](https://circleci.com/gh/FeatureLabs/nlp_primitives.svg?style=svg&circle-token=d9f0b837238eed1f2b75be267f4963d4cb5a1284)](https://circleci.com/gh/FeatureLabs/nlp_primitives)
 
-nlp_primitives is a Python library with Natural Language Processing Primitives, intended for use with [Featuretools](https://github.com/Featuretools/featuretools). nlp_primitives allows you to make use of text data in your machine learning pipeline in the same pipeline as the rest of your data.
+nlp_primitives is a Python library with Natural Language Processing Primitives, intended for use with [Featuretools](https://github.com/Featuretools/featuretools).
+
+nlp_primitives allows you to make use of text data in your machine learning pipeline in the same pipeline as the rest of your data.
 
 ### Install
 ```shell
