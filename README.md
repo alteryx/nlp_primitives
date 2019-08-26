@@ -10,6 +10,13 @@ nlp_primitives allows you to make use of text data in your machine learning pipe
 ```shell
 pip install 'featuretools[nlp_primitives]'
 ```
+
+### Demos
+
+
+* [Blog Post](https://blog.featurelabs.com/natural-language-processing-featuretools/)
+* [Predict resturant review ratings](https://github.com/FeatureLabs/predict-restaurant-rating)
+
 ## Calculating Features
 With nlp_primitives primtives in `featuretools`, this is how to calculate the same feature.
 ```python
