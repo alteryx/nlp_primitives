@@ -1,81 +1,88 @@
 version: 2.1
 
-commands:
-  install-packaged-nlp-primitives:
-    description: "install nlp primitives from source distribution"
-    steps:
-      - run :
-          no_output_timeout: 20m
-          command: |
-              source test_env/bin/activate
-              python setup.py sdist
-              LIBRARY_VERSION=$(python setup.py --version)
-              tar -zxvf "dist/nlp_primitives-${LIBRARY_VERSION}.tar.gz"
-              pip install -e "nlp_primitives-${LIBRARY_VERSION}/"
-              pip install -r "nlp_primitives-${LIBRARY_VERSION}/test-requirements.txt"
-  run-packaged-tests:
-    description: "run unit tests on packaged testing files"
-    steps:
-      - run: |
-          source test_env/bin/activate
-          cd "nlp_primitives-$(python setup.py --version)/"
-          pytest
-
-jobs:
-  # "python-27":
-  #   working_directory: ~/nlp_prims
-  #   docker:
-  #     - image: circleci/python:2.7
-  #   steps:
-  #     - checkout
-  #     - run: virtualenv test_env && virtualenv dev_env
-  #     - install-packaged-nlp-primitives
-  #     - run: source dev_env/bin/activate && make installdeps
-  #     - run: source dev_env/bin/activate && make lint
-  #     - run-packaged-tests
-
-  # "python-35":
-  #   working_directory: ~/nlp_prims
-  #   docker:
-  #     - image: circleci/python:3.5
-  #   steps:
-  #     - checkout
-  #     - run: virtualenv test_env && virtualenv dev_env
-  #     - install-packaged-nlp-primitives
-  #     - run: source dev_env/bin/activate && make installdeps
-  #     - run: source dev_env/bin/activate && make lint
-  #     - run-packaged-tests
-
-  # "python-36":
-  #   working_directory: ~/nlp_prims
-  #   docker:
-  #     - image: circleci/python:3.6
-  #   steps:
-  #     - checkout
-  #     - run: virtualenv test_env && virtualenv dev_env
-  #     - install-packaged-nlp-primitives
-  #     - run: source dev_env/bin/activate && make installdeps
-  #     - run: source dev_env/bin/activate && make lint
-  #     - run-packaged-tests
-
-  "python-37":
-    working_directory: ~/nlp_prims
+executors:
+  python:
+    parameters:
+      image_tag:
+        type: string
+        default: "python:3.7"
     docker:
-      - image: circleci/python:3.7
+      - image: circleci/<< parameters.image_tag >>
+
+commands:
+  installation:
     steps:
       - checkout
-      - run: virtualenv test_env && virtualenv dev_env
-      - install-packaged-nlp-primitives
-      - run: source dev_env/bin/activate && make installdeps
-      - run: source dev_env/bin/activate && make lint
-      - run-packaged-tests
+      - run:
+          name: "Install Package in Virtual Environment"
+          command: |
+            virtualenv env -q
+            source env/bin/activate
+            pip install . -q
 
+jobs:
+  lint_tests:
+    working_directory: ~/nlp_primitives
+    parameters:
+      image_tag:
+        type: string
+        default: "python:3.7"
+    executor:
+      name: python
+      image_tag: << parameters.image_tag >>
+    steps:
+      - installation
+      - run:
+          name: "Install Test Requirements"
+          command: |
+            source env/bin/activate
+            pip install -r test-requirements.txt -q
+      - run:
+          name: "Run Lint Tests"
+          command: |
+            source env/bin/activate
+            make lint-tests
+
+
+  unit_tests:
+    working_directory: ~/nlp_primitives
+    parameters:
+      image_tag:
+        type: string
+        default: "python:3.7"
+    executor:
+      name: python
+      image_tag: << parameters.image_tag >>
+    steps:
+      - installation
+      - run:
+          name: "Install Test Requirements"
+          command: |
+            source env/bin/activate
+            pip install -r test-requirements.txt -q
+      - run:
+          name: "Run Unit Tests"
+          command: |
+            source env/bin/activate
+            make unit-tests
+
+  entry_point_test:
+    working_directory: ~/nlp_primitives
+    parameters:
+      image_tag:
+        type: string
+        default: "python:3.7"
+    executor:
+      name: python
+      image_tag: << parameters.image_tag >>
+    steps:
+      - installation
+      - run:
+          name: "Test Entry Point"
+          command: |
+            source env/bin/activate
+            python -c "from featuretools import nlp_primitives"
 
 workflows:
   version: 2
-  test_all_python_versions:
-    jobs:
-      # - "python-27"
-      # - "python-35"
-      # - "python-36"
-      - "python-37"
+  "Integration Tests":
