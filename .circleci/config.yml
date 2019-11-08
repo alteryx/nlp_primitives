@@ -36,13 +36,12 @@ jobs:
           name: "Install Test Requirements"
           command: |
             source env/bin/activate
-            pip install -r test-requirements.txt -q
+            pip install -r test-requirements.txt --progress-bar off
       - run:
           name: "Run Lint Tests"
           command: |
             source env/bin/activate
             make lint-tests
-
 
   unit_tests:
     working_directory: ~/nlp_primitives
@@ -59,7 +58,7 @@ jobs:
           name: "Install Test Requirements"
           command: |
             source env/bin/activate
-            pip install -r test-requirements.txt -q
+            pip install -r test-requirements.txt --progress-bar off
       - run:
           name: "Run Unit Tests"
           command: |
