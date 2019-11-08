@@ -80,7 +80,7 @@ jobs:
           name: "Test Entry Point"
           command: |
             source env/bin/activate
-            python -c "from featuretools import nlp_primitives"
+            make entry-point-test
 
 workflows:
   version: 2
