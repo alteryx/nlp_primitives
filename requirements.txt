@@ -7,3 +7,4 @@ tensorflow<=1.14.0
 tensorflow_hub<=0.4.0
 scikit-learn>=0.20.0,<0.21; python_version < '3'
 scikit-learn>=0.20.0; python_version >= '3'
+python-dateutil>=2.6.1,<2.8.1
