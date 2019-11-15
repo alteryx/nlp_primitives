@@ -2,6 +2,10 @@
 Changelog
 =========
 
+**v0.2.4**
+    * Entry Point Test
+    * PyPI Upload
+
 **v0.2.3**
     * Small bug fixes
 
