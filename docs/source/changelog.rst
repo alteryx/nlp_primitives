@@ -3,7 +3,7 @@ Changelog
 =========
 
 **v0.2.4**
-    * Entry Point Test
+    * Added Featuretools Entry Point
     * PyPI Upload
 
 **v0.2.3**
