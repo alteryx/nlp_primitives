@@ -2,6 +2,10 @@
 Changelog
 =========
 
+**v0.2.4**
+    * Added Featuretools Entry Point
+    * PyPI Upload
+
 **v0.2.3**
     * Small bug fixes
 
