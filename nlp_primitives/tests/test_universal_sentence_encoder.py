@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import pytest
 
 from ..universal_sentence_encoder import UniversalSentenceEncoder
 from ..utils import PrimitiveT
@@ -8,6 +9,7 @@ from ..utils import PrimitiveT
 class TestUniversalSentenceEncoder(PrimitiveT):
     primitive = UniversalSentenceEncoder
 
+    @pytest.mark.skip()
     def test_regular(self):
         primitive = self.primitive().get_function()
         sentences = pd.Series([
