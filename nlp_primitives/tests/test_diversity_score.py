@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..diversity_score import DiversityScore
-from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.diversity_score import DiversityScore
+from nlp_primitives.utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs
+)
 
 
 class TestDiversityScore(PrimitiveT):

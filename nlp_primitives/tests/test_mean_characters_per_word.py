@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..mean_characters_per_word import MeanCharactersPerWord
-from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.mean_characters_per_word import MeanCharactersPerWord
+from nlp_primitives.utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs
+)
 
 
 class TestMeanCharactersPerWord(PrimitiveT):

@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..title_word_count import TitleWordCount
-from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.title_word_count import TitleWordCount
+from nlp_primitives.utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs
+)
 
 
 class TestTitleWordCount(PrimitiveT):
