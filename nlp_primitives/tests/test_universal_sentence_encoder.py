@@ -38,10 +38,3 @@ class TestUniversalSentenceEncoder(PrimitiveT):
         np.testing.assert_allclose(correct2, answer2, rtol=1e-04)
         np.testing.assert_allclose(correct3, answer3, rtol=1e-04)
         np.testing.assert_allclose(correct4, answer4, rtol=1e-04)
-
-    # def test_with_featuretools(self, es):
-    #     transform, aggregation = find_applicable_primitives(self.primitive)
-    #     primitive_instance = self.primitive()
-    #     transform.append(primitive_instance)
-    #     valid_dfs(es, aggregation[1:2], transform[-10:], self.primitive.name.upper(), multi_output=True,
-    #               target_entity='customers', max_features=30, instance_ids=[0], max_depth=2)
