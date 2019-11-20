@@ -20,7 +20,7 @@ class StopwordCount(TransformPrimitive):
         >>> x = ['This is a test string.', 'This is second string', 'third string']
         >>> stopword_count = StopwordCount()
         >>> stopword_count(x).tolist()
-        [3.0, 2.0, 0.0]
+        [3, 2, 0]
     """
     name = "stopword_count"
     input_types = [Text]
