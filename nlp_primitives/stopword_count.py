@@ -45,7 +45,9 @@ class StopwordCount(TransformPrimitive):
                 if pd.isnull(el):
                     li.append(np.nan)
                 else:
-                    li.append(sum(map(lambda x: x in swords, tokenizer(el))))
+                    words = tokenizer(el)
+                    count = len([word for word in words if word.lower() in swords])
+                    li.append(count)
             return pd.Series(li)
 
         return stopword_count
