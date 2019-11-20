@@ -1,12 +1,8 @@
 import numpy as np
 import pandas as pd
 
-from nlp_primitives.lsa import LSA
-from nlp_primitives.utils import (
-    PrimitiveT,
-    find_applicable_primitives,
-    valid_dfs
-)
+from ..lsa import LSA
+from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
 
 class TestLSA(PrimitiveT):

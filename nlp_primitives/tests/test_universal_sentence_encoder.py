@@ -1,9 +1,8 @@
 import numpy as np
 import pandas as pd
 
-from nlp_primitives.universal_sentence_encoder import UniversalSentenceEncoder
-from nlp_primitives.utils import \
-    PrimitiveT  # find_applicable_primitives, valid_dfs
+from ..universal_sentence_encoder import UniversalSentenceEncoder
+from ..utils import PrimitiveT  # find_applicable_primitives, valid_dfs
 
 
 class TestUniversalSentenceEncoder(PrimitiveT):

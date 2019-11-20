@@ -1,12 +1,8 @@
 import numpy as np
 import pandas as pd
 
-from nlp_primitives.punctuation_count import PunctuationCount
-from nlp_primitives.utils import (
-    PrimitiveT,
-    find_applicable_primitives,
-    valid_dfs
-)
+from ..punctuation_count import PunctuationCount
+from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
 
 class TestPunctuationCount(PrimitiveT):

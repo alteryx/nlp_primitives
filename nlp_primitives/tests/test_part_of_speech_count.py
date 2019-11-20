@@ -1,12 +1,8 @@
 import numpy as np
 import pandas as pd
 
-from nlp_primitives.part_of_speech_count import PartOfSpeechCount
-from nlp_primitives.utils import (
-    PrimitiveT,
-    find_applicable_primitives,
-    valid_dfs
-)
+from ..part_of_speech_count import PartOfSpeechCount
+from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
 
 class TestPartOfSpeechCount(PrimitiveT):
