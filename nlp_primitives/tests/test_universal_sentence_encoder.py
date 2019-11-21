@@ -9,5 +9,7 @@ def test_regular(universal_sentence_encoder):
         "When will humans go to mars?",
         "Mitochondria is the powerhouse of the cell",
     ])
-    universal_sentence_encoder(sentences)
-    assert True
+    a = pd.DataFrame(universal_sentence_encoder(sentences))
+    a = a.mean().round(7).astype('str')
+    b = pd.Series(['-0.0007475', '0.0032088', '0.0018552', '0.0008256', '0.0028342'])
+    assert a.equals(b)
