@@ -3,6 +3,9 @@ Changelog
 =========
 
 **v0.2.4**
+    * Removed python-dateutil as a requirement
+    
+**v0.2.4**
     * Added Featuretools Entry Point
     * PyPI Upload
 
