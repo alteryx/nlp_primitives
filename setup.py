@@ -21,7 +21,7 @@ setup(
     long_description_content_type='text/markdown',
     entry_points={
         'featuretools_plugin': [
-            'nlp_primitives = nlp_primitives.__init__',
+            'nlp_primitives = nlp_primitives',
         ],
     },
 )

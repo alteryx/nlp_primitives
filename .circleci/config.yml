@@ -18,7 +18,8 @@ commands:
           command: |
             virtualenv env -q
             source env/bin/activate
-            pip install . --progress-bar off
+            pip config --site set global.progress_bar off
+            pip install .
 
 jobs:
   lint_tests:
