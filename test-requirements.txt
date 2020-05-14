@@ -1,7 +1,4 @@
-codecov>=2.0.15
-flake8>=3.7.0
-autopep8>=1.4.3
-isort>=4.3.4
-pytest>=4.4.1
-pytest-xdist>=1.26.1
-pytest-cov>=2.6.1
+flake8==3.7.0
+autopep8==1.4.3
+isort==4.3.4
+pytest==4.4.1
