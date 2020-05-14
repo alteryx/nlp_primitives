@@ -30,6 +30,7 @@ class UniversalSentenceEncoder(TransformPrimitive):
     return_type = Numeric
 
     def __init__(self):
+        tf.compat.v1.disable_eager_execution()
         self.module_url = "https://tfhub.dev/google/universal-sentence-encoder/2"
         self.embed = hub.Module(self.module_url)
         self.number_output_features = 512
