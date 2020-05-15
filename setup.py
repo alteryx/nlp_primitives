@@ -19,6 +19,7 @@ setup(
     packages=find_packages(),
     long_description=long_description,
     long_description_content_type='text/markdown',
+    python_requires='>=3.6',
     entry_points={
         'featuretools_plugin': [
             'nlp_primitives = nlp_primitives',

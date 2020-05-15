@@ -88,29 +88,29 @@ workflows:
   "Integration Tests":
     jobs:
       - lint_tests:
-          name: "Lint Tests - Python 3.5"
-          image_tag: "python:3.5"
-      - lint_tests:
           name: "Lint Tests - Python 3.6"
           image_tag: "python:3.6"
       - lint_tests:
           name: "Lint Tests - Python 3.7"
           image_tag: "python:3.7"
-      - unit_tests:
-          name: "Unit Tests - Python 3.5"
-          image_tag: "python:3.5"
+      - lint_tests:
+          name: "Lint Tests - Python 3.8"
+          image_tag: "python:3.8"
       - unit_tests:
           name: "Unit Tests - Python 3.6"
           image_tag: "python:3.6"
       - unit_tests:
           name: "Unit Tests - Python 3.7"
           image_tag: "python:3.7"
-      - entry_point_test:
-          name: "Entry Point Test - Python 3.5"
-          image_tag: "python:3.5"
+      - unit_tests:
+          name: "Unit Tests - Python 3.8"
+          image_tag: "python:3.8"
       - entry_point_test:
           name: "Entry Point Test - Python 3.6"
           image_tag: "python:3.6"
       - entry_point_test:
           name: "Entry Point Test - Python 3.7"
           image_tag: "python:3.7"
+      - entry_point_test:
+          name: "Entry Point Test - Python 3.8"
+          image_tag: "python:3.8"

@@ -3,6 +3,7 @@ Changelog
 =========
 
 **Future Release**
+    * Dropped Python 3.5 and added Python 3.8
     * Fixed case-insensitivity in the Stopword Count Primitive
     
 **v0.2.5**
