@@ -20,7 +20,7 @@ class StopwordCount(TransformPrimitive):
         >>> x = ['This is a test string.', 'This is second string', 'third string']
         >>> stopword_count = StopwordCount()
         >>> stopword_count(x).tolist()
-        [3.0, 2.0, 0.0]
+        [3, 2, 0]
     """
     name = "stopword_count"
     input_types = [Text]
@@ -45,7 +45,9 @@ class StopwordCount(TransformPrimitive):
                 if pd.isnull(el):
                     li.append(np.nan)
                 else:
-                    li.append(sum(map(lambda x: x in swords, tokenizer(el))))
+                    words = tokenizer(el)
+                    count = len([word for word in words if word.lower() in swords])
+                    li.append(count)
             return pd.Series(li)
 
         return stopword_count

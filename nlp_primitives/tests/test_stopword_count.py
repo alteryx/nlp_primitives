@@ -14,7 +14,7 @@ class TestStopwordCount(PrimitiveT):
                        'third string',
                        'This IS the fourth string.'])
         primitive_func = self.primitive().get_function()
-        answers = pd.Series([2, 1, 0, 1])
+        answers = pd.Series([3, 2, 0, 3])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
     def test_nan(self):
@@ -22,7 +22,7 @@ class TestStopwordCount(PrimitiveT):
                        '',
                        'This is a test file.'])
         primitive_func = self.primitive().get_function()
-        answers = pd.Series([np.nan, 0, 2])
+        answers = pd.Series([np.nan, 0, 3])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
     def test_with_featuretools(self, es):
