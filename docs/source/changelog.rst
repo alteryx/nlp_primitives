@@ -2,7 +2,7 @@
 Changelog
 =========
 
-**Future Release**
+**v0.3.0**
     * Fixed case-insensitivity in the Stopword Count Primitive
     
 **v0.2.5**
