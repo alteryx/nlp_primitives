@@ -2,9 +2,10 @@
 Changelog
 =========
 
-**Future Release**
-    * Dropped Python 3.5 and added Python 3.8
+**v0.3.0**
     * Fixed case-insensitivity in the Stopword Count Primitive
+    * Made compatible with Tensorflow 2
+    * Dropped Python 3.5 and added Python 3.8
     
 **v0.2.5**
     * Removed python-dateutil as a requirement
