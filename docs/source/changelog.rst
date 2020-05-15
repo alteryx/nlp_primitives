@@ -4,6 +4,7 @@ Changelog
 
 **v0.3.0**
     * Fixed case-insensitivity in the Stopword Count Primitive
+    * Made compatible with Tensorflow 2.2.0
     
 **v0.2.5**
     * Removed python-dateutil as a requirement
