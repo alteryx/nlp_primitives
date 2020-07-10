@@ -53,8 +53,10 @@ class PrimitiveT(object):
 
 
 def find_applicable_primitives(primitive):
-    from featuretools.primitives.utils import get_aggregation_primitives
-    from featuretools.primitives.utils import get_transform_primitives
+    from featuretools.primitives.utils import (
+        get_aggregation_primitives,
+        get_transform_primitives
+    )
     all_transform_primitives = list(get_transform_primitives().values())
     all_aggregation_primitives = list(get_aggregation_primitives().values())
     applicable_transforms = find_stackable_primitives(all_transform_primitives,
