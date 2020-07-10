@@ -1,6 +1,8 @@
 =========
 Changelog
 =========
+**v0.3.1**
+    * Fix installation error related to scipy version
 
 **v0.3.0**
     * Fixed case-insensitivity in the Stopword Count Primitive
