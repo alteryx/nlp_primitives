@@ -10,7 +10,7 @@ lint-fix:
 
 lint-tests:
 	flake8 nlp_primitives
-	isort --check-only --recursive nlp_primitives
+	isort --check-only nlp_primitives
 
 unit-tests:
 	pytest --cache-clear --show-capture=stderr -vv
