@@ -15,13 +15,9 @@ class TestLSA(PrimitiveT):
                        'Hello'])
         primitive_func = self.primitive().get_function()
 
-        answers = pd.Series(
-            [[0.06130623793383833, 0.01745556451033845, 0.0057337659660533094, 0.0002763538434776728],
-             [-0.04393122671005984, 0.04819242528049181, 0.01643423390395579, 0.0011141016579207792]])
-        results = primitive_func(x)
-        np.testing.assert_array_almost_equal(np.concatenate(([np.array(answers[0])], [np.array(answers[1])]), axis=0),
-                                             np.concatenate(([np.array(results[0])], [np.array(results[1])]), axis=0),
-                                             decimal=2)
+        answers = np.array([[0.7751553, 0.7751553, 0., 0.], [0., 0., 1., 0.]])
+        results = np.array(primitive_func(x).values.tolist())
+        np.testing.assert_array_almost_equal(answers, results)
 
     def test_nan(self):
         x = pd.Series([np.nan,
@@ -29,13 +25,11 @@ class TestLSA(PrimitiveT):
                        'This IS a STRING.'])
         primitive_func = self.primitive().get_function()
 
-        answers = pd.Series(
-            [[np.nan, 0, 0.074],
-             [np.nan, 0, -0.024]])
-        results = primitive_func(x)
-        np.testing.assert_array_almost_equal(np.concatenate(([np.array(answers[0])], [np.array(answers[1])]), axis=0),
-                                             np.concatenate(([np.array(results[0])], [np.array(results[1])]), axis=0),
-                                             decimal=2)
+        answers = np.array(
+            [[np.nan, 0, 1],
+             [np.nan, 0, 0]])
+        results = np.array(primitive_func(x).values.tolist())
+        np.testing.assert_array_almost_equal(answers, results)
 
     def test_with_featuretools(self, es):
         transform, aggregation = find_applicable_primitives(self.primitive)

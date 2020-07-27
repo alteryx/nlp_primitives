@@ -19,7 +19,7 @@ class LSA(TransformPrimitive):
         value decomposition to go from a sparse matrix to a compact matrix with two
         values for each string. These values represent that Latent Semantic Analysis
         of each string. These values will represent their context with respect to
-        (nltk's brown sentence corpus.)[https://www.nltk.org/book/ch02.html#brown-corpus]
+        the corpus of all strings in the given list.
 
         If a string is missing, return `NaN`.
 
@@ -29,18 +29,16 @@ class LSA(TransformPrimitive):
         >>> res = lsa(x).tolist()
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
-        [[0.0, 0.0, 0.01], [0.0, 0.0, 0.0]]
+        [[0.0, 0.0, 1.0], [0.0, 1.0, 0.0]]
 
-        Now, if we change the values of the input corpus, to something that better resembles
-        the given text, the same given input text will result in a different, more discerning,
-        output. Also, NaN values are handled, as well as strings without words.
+        NaN values are handled, as well as strings without words.
 
         >>> lsa = LSA()
-        >>> x = ["the earth is round", "", np.NaN, ".,/"]
+        >>> x = ["the earth is round", "", np.NaN, ".,/", "the sun is a star"]
         >>> res = lsa(x).tolist()
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
-        [[0.01, 0.0, nan, 0.0], [0.0, 0.0, nan, 0.0]]
+        [[1.0, 0.0, nan, 0.0, 0.0], [0.0, 0.0, nan, 0.0, 1.0]]
 
     """
     name = "lsa"
@@ -49,18 +47,10 @@ class LSA(TransformPrimitive):
     default_value = 0
 
     def __init__(self):
-        # TODO: allow user to use own corpus
         self.number_output_features = 2
         self.n = 2
 
-        try:
-            brown = nltk.corpus.brown.sents()
-        except LookupError:
-            nltk.download('brown')
-            brown = nltk.corpus.brown.sents()
-        finally:
-            self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD())
-            self.trainer.fit([" ".join(sent) for sent in brown])
+        self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD(random_state=42))
 
     def get_function(self):
         dtk = TreebankWordDetokenizer()
@@ -69,6 +59,13 @@ class LSA(TransformPrimitive):
             array = pd.Series(array, index=pd.Series(array.index), name='array')
             copy = array.dropna()
             copy = copy.apply(lambda x: dtk.detokenize(clean_tokens(x)))
+
+            fit_data = copy.tolist()
+            # TruncatedSVD cannot produce two features without two input values
+            if len(fit_data) == 1:
+                fit_data = fit_data * 2
+            self.trainer.fit(fit_data)
+
             li = self.trainer.transform(copy)
             lsa1 = pd.Series(li[:, 0], index=copy.index)
             lsa2 = pd.Series(li[:, 1], index=copy.index)
