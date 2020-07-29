@@ -46,11 +46,12 @@ class LSA(TransformPrimitive):
     return_type = Numeric
     default_value = 0
 
-    def __init__(self):
+    def __init__(self, random_state=42):
         self.number_output_features = 2
         self.n = 2
+        self.random_state = random_state
 
-        self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD(random_state=42))
+        self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD(random_state=random_state))
 
     def get_function(self):
         dtk = TreebankWordDetokenizer()
@@ -61,7 +62,7 @@ class LSA(TransformPrimitive):
             copy = copy.apply(lambda x: dtk.detokenize(clean_tokens(x)))
 
             fit_data = copy.tolist()
-            # TruncatedSVD cannot produce two features without two input values
+            # TruncatedSVD cannot produce two features without multiple input values
             if len(fit_data) == 1:
                 fit_data = fit_data * 2
             self.trainer.fit(fit_data)

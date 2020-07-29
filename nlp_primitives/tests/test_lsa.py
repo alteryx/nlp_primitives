@@ -1,3 +1,5 @@
+import pytest
+
 import numpy as np
 import pandas as pd
 
@@ -28,6 +30,20 @@ class TestLSA(PrimitiveT):
         answers = np.array(
             [[np.nan, 0, 1],
              [np.nan, 0, 0]])
+        results = np.array(primitive_func(x).values.tolist())
+        np.testing.assert_array_almost_equal(answers, results)
+
+    def test_one_string(self):
+        primitive_func = self.primitive().get_function()
+
+        x = pd.Series([np.nan])
+        with pytest.raises(ValueError, match='empty vocabulary'):
+            primitive_func(x)
+
+        x = pd.Series(['just one string in this example',])
+        answers = np.array(
+            [[1.],
+             [0.]])
         results = np.array(primitive_func(x).values.tolist())
         np.testing.assert_array_almost_equal(answers, results)
 
