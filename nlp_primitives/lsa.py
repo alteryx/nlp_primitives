@@ -6,7 +6,7 @@ from featuretools.variable_types import Numeric, Text
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.pipeline import make_pipeline
+from sklearn.pipeline import make_pipeline, Pipeline
 
 from .utilities import clean_tokens
 
@@ -19,7 +19,9 @@ class LSA(TransformPrimitive):
         value decomposition to go from a sparse matrix to a compact matrix with two
         values for each string. These values represent that Latent Semantic Analysis
         of each string. These values will represent their context with respect to
-        the corpus of all strings in the given list.
+        (nltk's brown sentence corpus.)[https://www.nltk.org/book/ch02.html#brown-corpus].
+        Instead of the brown sentence corpus, this primitive may also be passed a
+        different LSA pipeline, pre-trained on a different corpus. 
 
         If a string is missing, return `NaN`.
 
@@ -29,16 +31,18 @@ class LSA(TransformPrimitive):
         >>> res = lsa(x).tolist()
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
-        [[0.0, 0.0, 1.0], [0.0, 1.0, 0.0]]
+        [[0.0, 0.0, 0.01], [0.0, 0.0, 0.0]]
 
-        NaN values are handled, as well as strings without words.
+        Now, if we change the values of the input corpus, to something that better resembles
+        the given text, the same given input text will result in a different, more discerning,
+        output. Also, NaN values are handled, as well as strings without words.
 
         >>> lsa = LSA()
-        >>> x = ["the earth is round", "", np.NaN, ".,/", "the sun is a star"]
+        >>> x = ["the earth is round", "", np.NaN, ".,/"]
         >>> res = lsa(x).tolist()
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
-        [[1.0, 0.0, nan, 0.0, 0.0], [0.0, 0.0, nan, 0.0, 1.0]]
+        [[0.01, 0.0, nan, 0.0], [0.0, 0.0, nan, 0.0]]
 
     """
     name = "lsa"
@@ -46,12 +50,23 @@ class LSA(TransformPrimitive):
     return_type = Numeric
     default_value = 0
 
-    def __init__(self, random_state=42):
+    def __init__(self, trainer=None, random_state=42):
         self.number_output_features = 2
         self.n = 2
         self.random_state = random_state
 
-        self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD(random_state=random_state))
+        if trainer is None:        
+            try:
+                brown = nltk.corpus.brown.sents()
+            except LookupError:
+                nltk.download('brown')
+                brown = nltk.corpus.brown.sents()
+            finally:
+                self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD(random_state=random_state))
+                self.trainer.fit([" ".join(sent) for sent in brown])
+        else:
+            _validate_trainer(trainer)
+            self.trainer = trainer
 
     def get_function(self):
         dtk = TreebankWordDetokenizer()
@@ -60,12 +75,6 @@ class LSA(TransformPrimitive):
             array = pd.Series(array, index=pd.Series(array.index), name='array')
             copy = array.dropna()
             copy = copy.apply(lambda x: dtk.detokenize(clean_tokens(x)))
-
-            fit_data = copy.tolist()
-            # TruncatedSVD cannot produce two features without multiple input values
-            if len(fit_data) == 1:
-                fit_data = fit_data * 2
-            self.trainer.fit(fit_data)
 
             li = self.trainer.transform(copy)
             lsa1 = pd.Series(li[:, 0], index=copy.index)
@@ -78,3 +87,25 @@ class LSA(TransformPrimitive):
             return pd.Series(arr)
 
         return lsa
+
+
+def _validate_trainer(trainer):
+    if not isinstance(trainer, Pipeline):
+        raise ValueError('Given LSA pipeline is not a Pipeline object')
+    if len(trainer.steps) != 2:
+        raise ValueError('Given LSA pipeline contains an incorrect number of transformers')
+    if not isinstance(trainer.steps[0][1], TfidfVectorizer):
+        raise ValueError('Given LSA pipeline does not have a TfIdfVectorizer as its first transformer')
+    if not isinstance(trainer.steps[1][1], TruncatedSVD):
+        raise ValueError('Given LSA pipeline does not have a TruncatedSVD as its second transformer')
+    try:
+        trainer.steps[0][1].vocabulary_
+        trainer.steps[1][1].components_
+    except AttributeError:
+        raise ValueError('Given LSA pipeline should be pre-fitted')
+
+
+def make_trainer(corpus, random_state=42):
+    trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD(random_state=random_state))
+    trainer.fit(corpus)
+    return trainer
