@@ -1,7 +1,7 @@
 # flake8: noqa
 __version__ = '0.3.1'
 from .diversity_score import DiversityScore
-from .lsa import LSA
+from .lsa import LSA, make_trainer
 from .mean_characters_per_word import MeanCharactersPerWord
 from .part_of_speech_count import PartOfSpeechCount
 from .polarity_score import PolarityScore

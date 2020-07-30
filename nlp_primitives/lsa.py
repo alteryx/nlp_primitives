@@ -33,9 +33,9 @@ class LSA(TransformPrimitive):
         >>> res
         [[0.0, 0.0, 0.01], [0.0, 0.0, 0.0]]
 
-        Now, if we change the values of the input corpus, to something that better resembles
-        the given text, the same given input text will result in a different, more discerning,
-        output. Also, NaN values are handled, as well as strings without words.
+        Now, if we change the values of the input text to something that better resembles
+        the brown corpus, the result will be a different, more discerning output. 
+        Also, NaN values are handled, as well as strings without words.
 
         >>> lsa = LSA()
         >>> x = ["the earth is round", "", np.NaN, ".,/"]
@@ -43,6 +43,18 @@ class LSA(TransformPrimitive):
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
         [[0.01, 0.0, nan, 0.0], [0.0, 0.0, nan, 0.0]]
+
+        If we would rather use a custom corpus, we can use the `make_trainer` function first,
+        resulting in a different output for the same input text.
+
+        >>> corpus = ['she will help eat food for a long time', 'I like to walk', 'We go for long walks together']
+        >>> trainer = make_trainer(corpus)
+        >>> lsa = LSA(trainer=trainer)
+        >>> x = ["he helped her walk,", "me me me eat food", "the sentence doth long"]
+        >>> res = lsa(x).tolist()
+        >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
+        >>> res
+        [[0.0, 0.34, 0.4], [0.58, 0.0, 0.0]]
 
     """
     name = "lsa"
@@ -106,6 +118,15 @@ def _validate_trainer(trainer):
 
 
 def make_trainer(corpus, random_state=42):
+    """ Fits an LSA pipeline with the given corpus which can be used in an LSA primitive
+
+    Arguments:
+        corpus (list): A corpus to fit the pipeline with, as a one-dimensional list of strings.
+        random_state (int): The random state to seed the TruncatedSVD part of the pipeline with.
+
+    Returns:
+        A fitted LSA pipeline object
+    """
     trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD(random_state=random_state))
     trainer.fit(corpus)
     return trainer
