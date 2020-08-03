@@ -1,6 +1,5 @@
-import tensorflow as tf
-import tensorflow_hub as hub
 from featuretools.primitives import TransformPrimitive
+from featuretools.utils.gen_utils import import_or_raise
 from featuretools.variable_types import Numeric, Text
 
 
@@ -27,7 +26,10 @@ class UniversalSentenceEncoder(TransformPrimitive):
     return_type = Numeric
 
     def __init__(self):
-        tf.compat.v1.disable_eager_execution()
+        message = "In order to use the UniversalSentenceEncoder primitive install 'nlp_primitives[complete]'"
+        self.tf = import_or_raise("tensorflow", message)
+        hub = import_or_raise("tensorflow_hub", message)
+        self.tf.compat.v1.disable_eager_execution()
         self.module_url = "https://tfhub.dev/google/universal-sentence-encoder/2"
         self.embed = hub.Module(self.module_url)
         self.number_output_features = 512
@@ -35,9 +37,9 @@ class UniversalSentenceEncoder(TransformPrimitive):
 
     def get_function(self):
         def universal_sentence_encoder(col):
-            with tf.compat.v1.Session() as session:
-                session.run([tf.compat.v1.global_variables_initializer(),
-                             tf.compat.v1.tables_initializer()])
+            with self.tf.compat.v1.Session() as session:
+                session.run([self.tf.compat.v1.global_variables_initializer(),
+                             self.tf.compat.v1.tables_initializer()])
                 embeddings = session.run(self.embed(col.tolist()))
             return embeddings.transpose()
         return universal_sentence_encoder

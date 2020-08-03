@@ -1,6 +1,10 @@
 =========
 Changelog
 =========
+**Future Release**
+    * Remove tensorflow and tensorhub as core requirements but instead 
+      can be installed with ``pip install nlp_primitives[complete]"``
+
 **v0.3.1**
     * Fix installation error related to scipy version
 

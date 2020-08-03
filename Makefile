@@ -14,3 +14,9 @@ lint-tests:
 
 unit-tests:
 	pytest --cache-clear --show-capture=stderr -vv
+
+.PHONY: installdeps
+installdeps:
+	pip install --upgrade pip
+	pip install -e ".[complete]"
+	pip install -r test-requirements.txt
