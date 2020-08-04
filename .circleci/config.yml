@@ -8,6 +8,7 @@ executors:
         default: "python:3.7"
     docker:
       - image: circleci/<< parameters.image_tag >>
+    resource_class: xlarge
 
 commands:
   installation:
