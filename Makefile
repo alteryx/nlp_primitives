@@ -18,5 +18,4 @@ unit-tests:
 .PHONY: installdeps
 installdeps:
 	pip install --upgrade pip
-	pip install -e ".[complete]"
 	pip install -r test-requirements.txt

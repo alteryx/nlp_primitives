@@ -2,3 +2,5 @@ flake8>=3.7.0
 autopep8>=1.4.3
 isort>=5.0.5
 pytest>=4.4.1
+-r requirements.txt
+-r complete-requirements.txt
