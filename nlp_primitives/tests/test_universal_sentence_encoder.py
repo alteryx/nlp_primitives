@@ -59,7 +59,7 @@ def test_primitive_serialization(universal_sentence_encoder):
     assert a.equals(b)
 
 
-def test_feature_serialization(universal_sentence_encoder):
+def test_feature_serialization(universal_sentence_encoder, tmpdir):
     sentences = pd.Series([
         "",
         "I like to eat pizza",
@@ -78,8 +78,9 @@ def test_feature_serialization(universal_sentence_encoder):
                           target_entity="entity",
                           trans_primitives=[universal_sentence_encoder])
 
-    ft.save_features(features, "features.txt")
-    loaded_features = ft.load_features("features.txt")
+    filename = str(tmpdir.join("features.txt"))
+    ft.save_features(features, filename)
+    loaded_features = ft.load_features(filename)
     fm_serialized = ft.calculate_feature_matrix(loaded_features, entityset=es)
 
     pd.testing.assert_frame_equal(fm, fm_serialized)
