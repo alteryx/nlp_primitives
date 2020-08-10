@@ -7,8 +7,16 @@ nlp_primitives is a Python library with Natural Language Processing Primitives, 
 nlp_primitives allows you to make use of text data in your machine learning pipeline in the same pipeline as the rest of your data.
 
 ### Install
+There are two options for installing nlp_primitives. Both of the options will also install Featuretools, if it is not already installed.
+
+The first option is to install a version of nlp_primitives that does not include Tensorflow. With this option, primitives that depend on Tensorflow cannot be used. Currently, the only primitive that can not be used with this install option is ``UniversalSentenceEncoder``. To install nlp_primitives without Tensorflow run:
 ```shell
-pip install 'featuretools[nlp_primitives]'
+pip install nlp_primitives
+```
+
+The second option is to install the complete version of nlp_primitives, which will also install Tensorflow and allow use of all primitives. To install the complete version of nlp_primitives:
+```shell
+pip install "nlp_primitives[complete]"
 ```
 
 ### Demos

@@ -8,6 +8,7 @@ executors:
         default: "python:3.7"
     docker:
       - image: circleci/<< parameters.image_tag >>
+    resource_class: large
 
 commands:
   installation:
@@ -19,7 +20,7 @@ commands:
             virtualenv env -q
             source env/bin/activate
             pip config --site set global.progress_bar off
-            pip install .
+            pip install ".[complete]"
 
 jobs:
   lint_tests:
