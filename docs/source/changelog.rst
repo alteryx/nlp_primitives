@@ -1,9 +1,17 @@
 =========
 Changelog
 =========
-**Future Release**
-    * Remove tensorflow and tensorhub as core requirements but instead 
-      can be installed with ``pip install nlp_primitives[complete]"``
+**v1.0.0** Aug 12, 2020
+    * Changes
+        * Remove tensorflow and tensorhub as core requirements, but they 
+        can be installed with ``pip install nlp_primitives[complete]``. The 
+        ``UniversalSentenceEncoder`` primitive requires the ``nlp_primitives[complete]``
+        install but all other primitives work with the standard install. (:pr:`24`)
+    * Testing Changes
+        * Update CircleCI to perform complete install and use matrix jobs (:pr:`24`)
+
+    Thanks to the following people for contributing to this release:
+    :user:`thehomebrewnerd`
 
 **v0.3.1**
     * Fix installation error related to scipy version

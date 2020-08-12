@@ -1,5 +1,5 @@
 # flake8: noqa
-__version__ = '0.3.1'
+__version__ = '1.0.0'
 from .diversity_score import DiversityScore
 from .lsa import LSA
 from .mean_characters_per_word import MeanCharactersPerWord
