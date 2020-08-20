@@ -15,7 +15,7 @@ nlp_primitives without Tensorflow can be installed with pip:
 ```shell
 pip install nlp_primitives
 ```
-or from the conda-forge channel:
+or from the conda-forge channel on conda:
 ```shell
 conda install -c conda-forge nlp-primitives
 ```
@@ -26,7 +26,7 @@ To install the complete version of nlp_primitives with pip:
 ```shell
 pip install "nlp_primitives[complete]"
 ```
-or from the conda-forge channel:
+or from the conda-forge channel on conda:
 ```shell
 conda install -c conda-forge nlp-primitives-complete
 ```

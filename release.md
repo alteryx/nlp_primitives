@@ -129,5 +129,5 @@ After the release pull request has been merged into the master branch, it is tim
 
 ## Release on conda-forge
 1. A bot should automatically create a new PR in conda-forge/nlp_primitives-feedstock
-2. Update requirements changes in `recipe/meta.yaml` (bot should have handled version and source links on its own)
+2. Update requirements changes in `recipe/meta.yaml` (bot should have handled version and source links on its own). Non-maintainers will need a maintainer to merge their changes into the bot's pull request.
 3. After tests pass, a maintainer will merge the PR in
