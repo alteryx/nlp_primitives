@@ -1,6 +1,7 @@
 import sys
 
 import featuretools as ft
+import numpy as np
 import pandas as pd
 import pytest
 from featuretools.primitives.utils import (
@@ -20,9 +21,9 @@ def test_regular(universal_sentence_encoder):
         "Mitochondria is the powerhouse of the cell",
     ])
     a = pd.DataFrame(universal_sentence_encoder(sentences))
-    a = a.mean().round(7).astype('str')
-    b = pd.Series(['-0.0007475', '0.0032088', '0.0018552', '0.0008256', '0.0028342'])
-    assert a.equals(b)
+    a = a.mean().round(7).to_numpy()
+    b = pd.Series([-0.0007475, 0.0032088, 0.0018552, 0.0008256, 0.0028342])
+    np.testing.assert_array_almost_equal(a, b)
 
 
 @pytest.fixture()
@@ -54,9 +55,9 @@ def test_primitive_serialization(universal_sentence_encoder):
     deserialized_primitive = deserializer.deserialize_primitive(serialized_primitive)
 
     a = pd.DataFrame(deserialized_primitive(sentences))
-    a = a.mean().round(7).astype('str')
-    b = pd.Series(['-0.0007475', '0.0032088', '0.0018552', '0.0008256', '0.0028342'])
-    assert a.equals(b)
+    a = a.mean().round(7).to_numpy()
+    b = np.array([-0.0007475, 0.0032088, 0.0018552, 0.0008256, 0.0028342])
+    np.testing.assert_array_almost_equal(a, b)
 
 
 def test_feature_serialization(universal_sentence_encoder, tmpdir):
