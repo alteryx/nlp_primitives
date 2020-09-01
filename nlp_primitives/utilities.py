@@ -7,19 +7,18 @@ wn = nltk.WordNetLemmatizer()
 
 
 def clean_tokens(textstr):
-    try:
-        textstr = nltk.tokenize.word_tokenize(textstr)
-    except LookupError:
-        nltk.download('punkt')
-        textstr = nltk.tokenize.word_tokenize(textstr)
+    textstr = textstr.translate(str.maketrans('', '', string.punctuation))
+    textstr = [ch for ch in textstr.split(' ') if len(ch)>0]
 
     try:
         swords = set(nltk.corpus.stopwords.words('english'))
-        textstr = [ch.lower() for ch in textstr if ch not in tset(string.punctuation).union(swords)]
+        to_remove = set(string.punctuation).union(swords)
+        textstr = [ch.lower() for ch in textstr if ch not in to_remove]
     except LookupError:
         nltk.download('stopwords')
         swords = set(nltk.corpus.stopwords.words('english'))
-        textstr = [ch.lower() for ch in textstr if ch not in set(string.punctuation).union(swords)]
+        to_remove = set(string.punctuation).union(swords)
+        textstr = [ch.lower() for ch in textstr if ch not in to_remove]
 
     try:
         textstr = [wn.lemmatize(w) for w in textstr]
