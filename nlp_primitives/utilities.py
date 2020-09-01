@@ -8,7 +8,7 @@ wn = nltk.WordNetLemmatizer()
 
 def clean_tokens(textstr):
     textstr = textstr.translate(str.maketrans('', '', string.punctuation))
-    textstr = [ch for ch in textstr.split(' ') if len(ch)>0]
+    textstr = [ch for ch in textstr.split(' ') if len(ch) > 0]
 
     try:
         swords = set(nltk.corpus.stopwords.words('english'))
