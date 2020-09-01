@@ -4,7 +4,6 @@ import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from featuretools.variable_types import Numeric, Text
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from nltk.tokenize.treebank import TreebankWordDetokenizer
 
 from .utilities import clean_tokens
 
@@ -29,7 +28,6 @@ class PolarityScore(TransformPrimitive):
     default_value = 0
 
     def get_function(self):
-        dtk = TreebankWordDetokenizer()
 
         def polarity_score(x):
             try:
@@ -50,6 +48,6 @@ class PolarityScore(TransformPrimitive):
                     if len(el) < 1:
                         li.append(0.0)
                     else:
-                        li.append(vader_pol(dtk.detokenize(el)))
+                        li.append(vader_pol(str.join(' ', el)))
             return pd.Series(li)
         return polarity_score
