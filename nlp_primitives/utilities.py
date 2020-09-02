@@ -27,5 +27,5 @@ def clean_tokens(textstr):
         textstr = [wn.lemmatize(w) for w in textstr]
 
     finally:
-        textstr = ['0' if re.search('[0-9]+', ch) else ch for ch in textstr]
+        textstr = ['0' if any(map(str.isdigit, ch)) else ch for ch in textstr]
         return textstr
