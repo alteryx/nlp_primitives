@@ -1,4 +1,7 @@
+import os
 from os import path
+import shutil
+import tempfile
 
 from setuptools import find_packages, setup
 
@@ -18,7 +21,9 @@ setup(
     license='BSD 3-clause',
     url='http://www.featurelabs.com/',
     install_requires=open('requirements.txt').readlines(),
-    packages=find_packages(),
+    package_data = {'nlp_primitives': ['data/nltk-data.tar.gz']},
+    include_package_data=True,
+    zip_safe=False,
     long_description=long_description,
     long_description_content_type='text/markdown',
     python_requires='>=3.6',
@@ -29,3 +34,13 @@ setup(
         ],
     },
 )
+
+
+fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../data/nltk-data.tar.gz'))
+dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
+try:
+    tf = tempfile.mkdtemp()
+    shutil.unpack_archive(fp, tf)
+    shutil.copytree(tf, dp)
+finally:
+    shutil.rmtree(tf)

@@ -1,6 +1,10 @@
+import os
 import string
 
 import nltk
+
+fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../../data/'))
+nltk.data.path = [os.path.normpath(os.path.join(fp, 'nltk-data/nltk-data'))]
 
 wn = nltk.WordNetLemmatizer()
 

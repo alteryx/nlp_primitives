@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
+import os
+
 import nltk
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from featuretools.variable_types import Numeric, Text
+
+fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../../data/'))
+nltk.data.path = [os.path.normpath(os.path.join(fp, 'nltk-data/nltk-data'))]
 
 
 class StopwordCount(TransformPrimitive):

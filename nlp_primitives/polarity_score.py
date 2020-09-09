@@ -1,4 +1,3 @@
-import nltk
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive

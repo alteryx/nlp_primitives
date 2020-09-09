@@ -1,3 +1,5 @@
+import os
+
 import nltk
 import numpy as np
 import pandas as pd
@@ -9,6 +11,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import make_pipeline
 
 from .utilities import clean_tokens
+
+fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../../data/'))
+nltk.data.path = [os.path.normpath(os.path.join(fp, 'nltk-data/nltk-data'))]
 
 
 class LSA(TransformPrimitive):
