@@ -53,14 +53,9 @@ class LSA(TransformPrimitive):
         self.number_output_features = 2
         self.n = 2
 
-        try:
-            brown = nltk.corpus.brown.sents()
-        except LookupError:
-            nltk.download('brown')
-            brown = nltk.corpus.brown.sents()
-        finally:
-            self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD())
-            self.trainer.fit([" ".join(sent) for sent in brown])
+        brown = nltk.corpus.brown.sents()
+        self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD())
+        self.trainer.fit([" ".join(sent) for sent in brown])
 
     def get_function(self):
         dtk = TreebankWordDetokenizer()

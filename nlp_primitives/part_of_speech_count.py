@@ -38,21 +38,16 @@ class PartOfSpeechCount(TransformPrimitive):
                  'U', 'V', 'W']
 
         def part_of_speech_count(x):
-            try:
-                nltk.pos_tag(" ")
-            except LookupError:
-                nltk.download('punkt')
-                nltk.download('averaged_perceptron_tagger')
-            finally:
-                li = []
-                for el in x:
-                    if pd.isnull(el):
-                        li.append([np.nan] * 15)
-                    else:
-                        tags = nltk.pos_tag(clean_tokens(el))
-                        fd = nltk.FreqDist([b[0] for (a, b) in tags])
-                        li.append([float(fd[i]) for i in types])
-                li = (np.array(li).T).tolist()
-                return pd.Series(li)
+            nltk.pos_tag(" ")
+            li = []
+            for el in x:
+                if pd.isnull(el):
+                    li.append([np.nan] * 15)
+                else:
+                    tags = nltk.pos_tag(clean_tokens(el))
+                    fd = nltk.FreqDist([b[0] for (a, b) in tags])
+                    li.append([float(fd[i]) for i in types])
+            li = (np.array(li).T).tolist()
+            return pd.Series(li)
 
         return part_of_speech_count

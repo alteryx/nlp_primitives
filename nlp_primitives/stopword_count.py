@@ -31,16 +31,8 @@ class StopwordCount(TransformPrimitive):
 
         def stopword_count(array):
             li = []
-            try:
-                swords = set(nltk.corpus.stopwords.words('english'))
-            except LookupError:
-                nltk.download('stopwords')
-                swords = set(nltk.corpus.stopwords.words('english'))
-            try:
-                tokenizer = nltk.tokenize.word_tokenize
-            except LookupError:
-                nltk.download('punkt')
-                tokenizer = nltk.tokenize.word_tokenize
+            swords = set(nltk.corpus.stopwords.words('english'))
+            tokenizer = nltk.tokenize.word_tokenize
             for el in array:
                 if pd.isnull(el):
                     li.append(np.nan)

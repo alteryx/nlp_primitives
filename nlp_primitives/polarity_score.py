@@ -30,11 +30,7 @@ class PolarityScore(TransformPrimitive):
     def get_function(self):
 
         def polarity_score(x):
-            try:
-                vader = SentimentIntensityAnalyzer()
-            except LookupError:
-                nltk.download('vader_lexicon')
-                vader = SentimentIntensityAnalyzer()
+            vader = SentimentIntensityAnalyzer()
             li = []
 
             def vader_pol(sentence):
