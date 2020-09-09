@@ -41,6 +41,8 @@ dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
 try:
     tf = tempfile.mkdtemp()
     shutil.unpack_archive(fp, tf)
+    if os.path.exists(dp):
+        shutil.rmtree(dp)
     shutil.copytree(tf, dp)
 finally:
     shutil.rmtree(tf)
