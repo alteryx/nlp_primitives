@@ -44,5 +44,6 @@ try:
     if os.path.exists(dp):
         shutil.rmtree(dp)
     shutil.copytree(tf, dp)
+    print('Unloaded nltk data to', dp)
 finally:
     shutil.rmtree(tf)
