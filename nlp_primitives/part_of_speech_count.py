@@ -6,10 +6,8 @@ import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from featuretools.variable_types import Numeric, Text
 
+from .utils import unpack_data
 from .utilities import clean_tokens
-
-fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../../data/'))
-nltk.data.path = [os.path.normpath(os.path.join(fp, 'nltk-data/nltk-data'))]
 
 
 class PartOfSpeechCount(TransformPrimitive):
@@ -38,6 +36,7 @@ class PartOfSpeechCount(TransformPrimitive):
         self.n = 15
 
     def get_function(self):
+        unpack_data()
         types = ['C', 'D', 'E', 'F', 'I', 'J',
                  'L', 'M', 'N', 'P', 'R', 'T',
                  'U', 'V', 'W']
