@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
+import shutil
+import tempfile
 try:
     # python 3
     from inspect import signature

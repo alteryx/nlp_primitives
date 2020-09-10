@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import os
-
 import nltk
 import numpy as np
 import pandas as pd

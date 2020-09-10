@@ -1,7 +1,4 @@
-import os
 from os import path
-import shutil
-import tempfile
 
 from setuptools import find_packages, setup
 
