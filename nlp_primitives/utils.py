@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-import os
-import shutil
-import tempfile
 try:
     # python 3
     from inspect import signature
 except ImportError:
     # python 2
     from funcsigs import signature
+import os
+import shutil
+import tempfile
 
 import featuretools as ft
 import pytest
@@ -119,7 +119,7 @@ def valid_dfs(es, aggregations, transforms, feature_substrings,
 
 def unpack_data():
     if not os.path.exists(nltk.data.path[0]):
-        fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../data/nltk-data.tar.gz'))
+        fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../../data/nltk-data.tar.gz'))
         dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
         nltk.data.path = [os.path.normpath(os.path.join(fp, '../nltk-data/nltk-data'))]
         try:
