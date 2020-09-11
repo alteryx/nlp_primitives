@@ -10,11 +10,11 @@ import shutil
 import tempfile
 
 import featuretools as ft
+import nltk
 import pytest
 from featuretools import dfs, list_primitives
 from featuretools.primitives import Absolute
 from featuretools.tests.testing_utils import make_ecommerce_entityset
-import nltk
 
 
 class PrimitiveT(object):

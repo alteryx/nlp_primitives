@@ -1,11 +1,11 @@
-from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import Numeric, Text
 import nltk
 import numpy as np
 import pandas as pd
+from featuretools.primitives.base import TransformPrimitive
+from featuretools.variable_types import Numeric, Text
 
-from .utils import unpack_data
 from .utilities import clean_tokens
+from .utils import unpack_data
 
 
 class PartOfSpeechCount(TransformPrimitive):

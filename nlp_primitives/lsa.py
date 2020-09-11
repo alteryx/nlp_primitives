@@ -1,15 +1,15 @@
-from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import Numeric, Text
 import nltk
-from nltk.tokenize.treebank import TreebankWordDetokenizer
 import numpy as np
 import pandas as pd
+from featuretools.primitives.base import TransformPrimitive
+from featuretools.variable_types import Numeric, Text
+from nltk.tokenize.treebank import TreebankWordDetokenizer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import make_pipeline
 
-from .utils import unpack_data
 from .utilities import clean_tokens
+from .utils import unpack_data
 
 
 class LSA(TransformPrimitive):
