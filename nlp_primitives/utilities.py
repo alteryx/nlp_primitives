@@ -4,9 +4,10 @@ import nltk
 
 from .utils import unpack_data
 
+unpack_data()
+
 
 def clean_tokens(textstr):
-    unpack_data()
     wn = nltk.WordNetLemmatizer()
 
     textstr = textstr.translate(str.maketrans('', '', string.punctuation))
