@@ -18,6 +18,7 @@ setup(
     license='BSD 3-clause',
     url='http://www.featurelabs.com/',
     install_requires=open('requirements.txt').readlines(),
+    packages=find_packages(),
     package_data = {'nlp_primitives': ['data/nltk-data.tar.gz']},
     include_package_data=True,
     zip_safe=False,
