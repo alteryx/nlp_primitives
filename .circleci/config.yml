@@ -29,7 +29,7 @@ commands:
             python setup.py sdist
             NLP_PRIMITIVES_VERSION=$(python setup.py --version)
             tar -zxvf "dist/nlp_primitives-${NLP_PRIMITIVES_VERSION}.tar.gz"
-            mv "nlp_primitives-${NLP_PRIMITIVES_VERSION}" "nlp_primitives"
+            mv "nlp_primitives-${NLP_PRIMITIVES_VERSION}" unpacked_sdist
 
 jobs:
   lint_tests:
@@ -119,9 +119,9 @@ jobs:
           name: "Install Requirements"
           command: |
             source venv/bin/activate
-            python -m pip install -r requirements.txt
-            python -m pip install -r complete-requirements.txt
-            python -m pip install -r test-requirements.txt
+            python -m pip install -r unpacked_sdist/requirements.txt
+            python -m pip install -r unpacked_sdist/complete-requirements.txt
+            python -m pip install -r unpacked_sdist/test-requirements.txt
       - run:
           name: "Run Unit Tests"
           command: |
