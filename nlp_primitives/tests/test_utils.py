@@ -6,9 +6,8 @@ except ImportError:
     # python 2
     from funcsigs import signature
 
-import pytest
-
 import featuretools as ft
+import pytest
 from featuretools import dfs, list_primitives
 from featuretools.primitives import Absolute
 from featuretools.tests.testing_utils import make_ecommerce_entityset

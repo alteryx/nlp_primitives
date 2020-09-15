@@ -36,3 +36,5 @@ def unpack_data():
             print('Unloaded nltk data to', dp)
         finally:
             shutil.rmtree(tf)
+
+unpack_data()
