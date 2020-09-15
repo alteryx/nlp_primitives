@@ -27,9 +27,6 @@ commands:
           name: "Package nlp_primitives"
           command: |
             python setup.py sdist
-            NLP_PRIMITIVES_VERSION=$(python setup.py --version)
-            tar -zxvf "dist/nlp_primitives-${NLP_PRIMITIVES_VERSION}.tar.gz"
-            mv "nlp_primitives-${NLP_PRIMITIVES_VERSION}" unpacked_sdist
 
 jobs:
   lint_tests:
@@ -98,7 +95,7 @@ jobs:
     parameters:
       image_tag:
         type: string
-        default: "python:3.7"
+        default: "python:3.8"
     executor:
       name: python
       image_tag: << parameters.image_tag >>
@@ -108,20 +105,12 @@ jobs:
           at: ~/nlp_primitives
       - package_nlp_primitives
       - run : 
-          name: "Install From Package in Virtual Environment"
+          name: "Install Package in Virtual Environment"
           command: |
             virtualenv venv
             source venv/bin/activate
-            python -m pip config --site set global.progress_bar off
-            python -m pip install --upgrade pip
-            python -m pip install pytest
-      - run:
-          name: "Install Requirements"
-          command: |
-            source venv/bin/activate
-            python -m pip install -r unpacked_sdist/requirements.txt
-            python -m pip install -r unpacked_sdist/complete-requirements.txt
-            python -m pip install -r unpacked_sdist/test-requirements.txt
+            NLP_PRIMITIVES_VERSION=$(python setup.py --version)
+            pip install dist/nlp_primitives-${NLP_PRIMITIVES_VERSION}.tar.gz
       - run:
           name: "Run Unit Tests"
           command: |

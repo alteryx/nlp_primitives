@@ -8,8 +8,7 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import make_pipeline
 
-from .utilities import clean_tokens
-from .utils import unpack_data
+from .utilities import clean_tokens, unpack_data
 
 
 class LSA(TransformPrimitive):

@@ -4,8 +4,7 @@ import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from featuretools.variable_types import Numeric, Text
 
-from .utilities import clean_tokens
-from .utils import unpack_data
+from .utilities import clean_tokens, unpack_data
 
 
 class PartOfSpeechCount(TransformPrimitive):
