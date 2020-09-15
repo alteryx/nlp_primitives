@@ -111,6 +111,7 @@ jobs:
             source venv/bin/activate
             NLP_PRIMITIVES_VERSION=$(python setup.py --version)
             pip install dist/nlp_primitives-${NLP_PRIMITIVES_VERSION}.tar.gz
+            pip install -r test-requirements.txt
       - run:
           name: "Run Unit Tests"
           command: |

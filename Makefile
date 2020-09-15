@@ -1,8 +1,6 @@
 .PHONY : entry-point-test lint-fix lint-tests unit-tests
 
 entry-point-test:
-	FEATURETOOLS_LOG_LEVEL=debug
-	export FEATURETOOLS_LOG_LEVEL=debug
 	python -c "from featuretools import nlp_primitives"
 
 lint-fix:

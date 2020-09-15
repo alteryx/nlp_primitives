@@ -5,6 +5,7 @@ import tempfile
 
 import nltk
 
+
 def clean_tokens(textstr):
     wn = nltk.WordNetLemmatizer()
 
