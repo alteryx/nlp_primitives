@@ -5,13 +5,10 @@ try:
 except ImportError:
     # python 2
     from funcsigs import signature
-import os
-import shutil
-import tempfile
+
+import pytest
 
 import featuretools as ft
-import nltk
-import pytest
 from featuretools import dfs, list_primitives
 from featuretools.primitives import Absolute
 from featuretools.tests.testing_utils import make_ecommerce_entityset
@@ -115,19 +112,3 @@ def valid_dfs(es, aggregations, transforms, feature_substrings,
     if not multi_output:
         assert len(applicable_features) == df.shape[1]
     return
-
-
-def unpack_data():
-    if not os.path.exists(nltk.data.path[0]):
-        fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../../data/nltk-data.tar.gz'))
-        dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
-        nltk.data.path = [os.path.normpath(os.path.join(fp, '../nltk-data/nltk-data'))]
-        try:
-            tf = tempfile.mkdtemp()
-            shutil.unpack_archive(fp, tf)
-            if os.path.exists(dp):
-                shutil.rmtree(dp)
-            shutil.copytree(tf, dp)
-            print('Unloaded nltk data to', dp)
-        finally:
-            shutil.rmtree(tf)

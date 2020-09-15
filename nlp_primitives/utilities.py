@@ -1,11 +1,9 @@
+import os
+import shutil
 import string
+import tempfile
 
 import nltk
-
-from .utils import unpack_data
-
-unpack_data()
-
 
 def clean_tokens(textstr):
     wn = nltk.WordNetLemmatizer()
@@ -21,3 +19,19 @@ def clean_tokens(textstr):
 
     textstr = ['0' if any(map(str.isdigit, ch)) else ch for ch in textstr]
     return textstr
+
+
+def unpack_data():
+    if not os.path.exists(nltk.data.path[0]):
+        fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../../data/nltk-data.tar.gz'))
+        dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
+        nltk.data.path = [os.path.normpath(os.path.join(fp, '../nltk-data/nltk-data'))]
+        try:
+            tf = tempfile.mkdtemp()
+            shutil.unpack_archive(fp, tf)
+            if os.path.exists(dp):
+                shutil.rmtree(dp)
+            shutil.copytree(tf, dp)
+            print('Unloaded nltk data to', dp)
+        finally:
+            shutil.rmtree(tf)
