@@ -116,6 +116,12 @@ jobs:
             python -m pip install --upgrade pip
             python -m pip install pytest
       - run:
+          name: "Install Requirements"
+          command: |
+            python -m pip install -r unpacked_sdist/requirements.txt
+            python -m pip install -r unpacked_sdist/complete-requirements.txt
+            python -m pip install -r unpacked_sdist/test-requirements.txt
+      - run:
           name: "Run Unit Tests"
           command: |
             source venv/bin/activate
