@@ -21,6 +21,15 @@ commands:
             source env/bin/activate
             pip config --site set global.progress_bar off
             pip install ".[complete]"
+  package_nlp_primitives:
+    steps:
+      - run:
+          name: "Package nlp_primitives"
+          command: |
+            python setup.py sdist
+            NLP_PRIMITIVES_VERSION=$(python setup.py --version)
+            tar -zxvf "dist/nlp_primitives-${NLP_PRIMITIVES_VERSION}.tar.gz"
+            mv "nlp_primitives-${NLP_PRIMITIVES_VERSION}" unpacked_sdist
 
 jobs:
   lint_tests:
@@ -84,6 +93,33 @@ jobs:
             source env/bin/activate
             make entry-point-test
 
+  package_test:
+    working_directory: ~/nlp_primitives
+    parameters:
+      image_tag:
+        type: string
+        default: "python:3.7"
+    executor:
+      name: python
+      image_tag: << parameters.image_tag >>
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/nlp_primitives
+      - package_nlp_primitives
+      - run : 
+          name: "Install From Package in Virtual Environment"
+          command: |
+            virtualenv venv
+            source venv/bin/activate
+            python -m pip config --site set global.progress_bar off
+            python -m pip install --upgrade pip
+      - run:
+          name: "Run Unit Tests"
+          command: |
+            source env/bin/activate
+            make unit-tests
+
 workflows:
   version: 2
   "Integration Tests":
@@ -114,4 +150,15 @@ workflows:
           image_tag: "python:3.7"
       - entry_point_test:
           name: "Entry Point Test - Python 3.8"
+          image_tag: "python:3.8"
+  "Package Tests":
+    jobs:
+      - package_test:
+          name: "Package Test - Python 3.6"
+          image_tag: "python:3.6"
+      - package_test:
+          name: "Package Test - Python 3.7"
+          image_tag: "python:3.7"
+      - package_test:
+          name: "Package Test - Python 3.8"
           image_tag: "python:3.8"
