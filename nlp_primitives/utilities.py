@@ -1,7 +1,7 @@
-from pathlib import Path
 import shutil
 import string
 import tempfile
+from pathlib import Path
 
 import nltk
 
@@ -24,8 +24,8 @@ def clean_tokens(textstr):
 
 def unpack_data():
     if not Path(nltk.data.path[0]).exists():
-        fp = Path(__file__) / '../../data/nltk-data.tar.gz'
-        dp = fp / '../nltk-data'
+        fp = (Path(__file__) / '../../data/nltk-data.tar.gz').resolve()
+        dp = (fp / '../nltk-data').resolve()
         nltk.data.path.append(dp / 'nltk-data')
         try:
             tf = tempfile.mkdtemp()
