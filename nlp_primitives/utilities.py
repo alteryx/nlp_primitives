@@ -24,7 +24,7 @@ def clean_tokens(textstr):
 
 def unpack_data():
     if not os.path.exists(nltk.data.path[0]):
-        fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../../data/nltk-data.tar.gz'))
+        fp = os.path.normpath(os.path.join(os.path.realpath(__file__), '../data/nltk-data.tar.gz'))
         dp = os.path.normpath(os.path.join(fp, '../nltk-data'))
         nltk.data.path.append(os.path.normpath(os.path.join(fp, '../nltk-data/nltk-data')))
         try:
