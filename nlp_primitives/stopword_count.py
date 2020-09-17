@@ -5,8 +5,6 @@ import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from featuretools.variable_types import Numeric, Text
 
-from .utilities import unpack_data
-
 
 class StopwordCount(TransformPrimitive):
     """Determines number of stopwords in a string.
@@ -30,7 +28,6 @@ class StopwordCount(TransformPrimitive):
     default_value = 0
 
     def get_function(self):
-        unpack_data()
 
         def stopword_count(array):
             li = []

@@ -8,7 +8,7 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import make_pipeline
 
-from .utilities import clean_tokens, unpack_data
+from .utilities import clean_tokens
 
 
 class LSA(TransformPrimitive):
@@ -58,7 +58,6 @@ class LSA(TransformPrimitive):
         self.trainer.fit([" ".join(sent) for sent in brown])
 
     def get_function(self):
-        unpack_data()
         dtk = TreebankWordDetokenizer()
 
         def lsa(array):
