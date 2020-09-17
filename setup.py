@@ -19,8 +19,6 @@ setup(
     url='http://www.featurelabs.com/',
     install_requires=open('requirements.txt').readlines(),
     packages=find_packages(),
-    package_data = {'nlp_primitives': ['data/nltk-data']},
-    include_package_data=True,
     zip_safe=False,
     long_description=long_description,
     long_description_content_type='text/markdown',
