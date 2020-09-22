@@ -8,8 +8,9 @@ from featuretools.variable_types import Numeric, Text
 
 from .utilities import clean_tokens
 
-nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
-nltk.data.path.append(nltk_data_path)
+nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/nltk-data/')
+if nltk_data_path not in nltk.data.path:
+    nltk.data.path.append(nltk_data_path)
 
 
 class PartOfSpeechCount(TransformPrimitive):

@@ -3,7 +3,7 @@ import string
 
 import nltk
 
-nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
+nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/nltk-data/')
 if nltk_data_path not in nltk.data.path:
     nltk.data.path.append(nltk_data_path)
 

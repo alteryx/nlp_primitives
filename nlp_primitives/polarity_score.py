@@ -9,9 +9,10 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 from .utilities import clean_tokens
 
-nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
+nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/nltk-data/')
 if nltk_data_path not in nltk.data.path:
     nltk.data.path.append(nltk_data_path)
+
 
 class PolarityScore(TransformPrimitive):
     """Calculates the polarity of a text on a scale from -1 (negative) to 1 (positive)
