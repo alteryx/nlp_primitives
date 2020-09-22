@@ -1,6 +1,11 @@
+import pkg_resources
 import string
 
 import nltk
+
+nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
+if nltk_data_path not in nltk.data.path:
+    nltk.data.path.append(nltk_data_path)
 
 
 def clean_tokens(textstr):

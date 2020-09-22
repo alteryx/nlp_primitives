@@ -1,3 +1,5 @@
+import pkg_resources
+
 import nltk
 import numpy as np
 import pandas as pd
@@ -9,6 +11,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import make_pipeline
 
 from .utilities import clean_tokens
+
+nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
+if nltk_data_path not in nltk.data.path:
+    nltk.data.path.append(nltk_data_path)
 
 
 class LSA(TransformPrimitive):

@@ -1,11 +1,17 @@
+import pkg_resources
+
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from featuretools.variable_types import Numeric, Text
+import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 from .utilities import clean_tokens
 
+nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
+if nltk_data_path not in nltk.data.path:
+    nltk.data.path.append(nltk_data_path)
 
 class PolarityScore(TransformPrimitive):
     """Calculates the polarity of a text on a scale from -1 (negative) to 1 (positive)

@@ -1,3 +1,5 @@
+import pkg_resources
+
 import nltk
 import numpy as np
 import pandas as pd
@@ -5,6 +7,9 @@ from featuretools.primitives.base import TransformPrimitive
 from featuretools.variable_types import Numeric, Text
 
 from .utilities import clean_tokens
+
+nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
+nltk.data.path.append(nltk_data_path)
 
 
 class PartOfSpeechCount(TransformPrimitive):
