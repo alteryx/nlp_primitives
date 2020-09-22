@@ -1,5 +1,6 @@
 # flake8: noqa
 __version__ = '1.0.0'
+import os
 from os import path
 import pkg_resources
 import shutil
@@ -27,3 +28,4 @@ try:
     shutil.copytree(tf, dp)
 finally:
     shutil.rmtree(tf)
+    print(os.listdir(dp))
