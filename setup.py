@@ -1,6 +1,10 @@
 from os import path
 
 from setuptools import find_packages, setup
+from setuptools.command.install import install
+
+import pkg_resources
+import tarfile
 
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md')) as f:
@@ -9,6 +13,17 @@ with open(path.join(this_directory, 'README.md')) as f:
 extras_require = {
     'complete': open('complete-requirements.txt').readlines()
 }
+
+class PostInstallCommand(install):
+    """Post-installation for installation mode."""
+    def run(self):
+        install.run(self)
+        nltk_data_tarball_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data.tar.gz')
+        print(f'Extracting nltk data files...')
+        tar = tarfile.open(nltk_data_tarball_path, "r:gz")
+        tar.extractall()
+        tar.close()
+        print(f'Extraction of nltk data files complete')
 
 setup(
     name='nlp_primitives',
@@ -19,6 +34,7 @@ setup(
     url='http://www.featurelabs.com/',
     install_requires=open('requirements.txt').readlines(),
     packages=find_packages(),
+    include_package_data=True,
     zip_safe=False,
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -29,4 +45,7 @@ setup(
             'nlp_primitives = nlp_primitives',
         ],
     },
+    cmdclass={
+        'install': PostInstallCommand
+    }
 )

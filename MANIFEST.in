@@ -1,5 +1,6 @@
 include *.txt
 include LICENSE
 include README.md
+include data/nltk-data.tar.gz
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]

@@ -10,3 +10,8 @@ from .stopword_count import StopwordCount
 from .title_word_count import TitleWordCount
 from .universal_sentence_encoder import UniversalSentenceEncoder
 from .upper_case_count import UpperCaseCount
+
+import pkg_resources
+nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
+import nltk.data
+nltk.data.path.append(nltk_data_path)
