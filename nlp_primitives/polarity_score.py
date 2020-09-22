@@ -1,17 +1,12 @@
-import pkg_resources
-
+import nltk
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from featuretools.variable_types import Numeric, Text
-import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from nltk.tokenize.treebank import TreebankWordDetokenizer
 
 from .utilities import clean_tokens
-
-nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/nltk-data/')
-if nltk_data_path not in nltk.data.path:
-    nltk.data.path.append(nltk_data_path)
 
 
 class PolarityScore(TransformPrimitive):
@@ -34,9 +29,14 @@ class PolarityScore(TransformPrimitive):
     default_value = 0
 
     def get_function(self):
+        dtk = TreebankWordDetokenizer()
 
         def polarity_score(x):
-            vader = SentimentIntensityAnalyzer()
+            try:
+                vader = SentimentIntensityAnalyzer()
+            except LookupError:
+                nltk.download('vader_lexicon')
+                vader = SentimentIntensityAnalyzer()
             li = []
 
             def vader_pol(sentence):
@@ -50,6 +50,6 @@ class PolarityScore(TransformPrimitive):
                     if len(el) < 1:
                         li.append(0.0)
                     else:
-                        li.append(vader_pol(str.join(' ', el)))
+                        li.append(vader_pol(dtk.detokenize(el)))
             return pd.Series(li)
         return polarity_score

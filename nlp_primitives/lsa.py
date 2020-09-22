@@ -1,5 +1,3 @@
-import pkg_resources
-
 import nltk
 import numpy as np
 import pandas as pd
@@ -11,10 +9,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import make_pipeline
 
 from .utilities import clean_tokens
-
-nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/nltk-data/')
-if nltk_data_path not in nltk.data.path:
-    nltk.data.path.append(nltk_data_path)
 
 
 class LSA(TransformPrimitive):
@@ -59,9 +53,14 @@ class LSA(TransformPrimitive):
         self.number_output_features = 2
         self.n = 2
 
-        brown = nltk.corpus.brown.sents()
-        self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD())
-        self.trainer.fit([" ".join(sent) for sent in brown])
+        try:
+            brown = nltk.corpus.brown.sents()
+        except LookupError:
+            nltk.download('brown')
+            brown = nltk.corpus.brown.sents()
+        finally:
+            self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD())
+            self.trainer.fit([" ".join(sent) for sent in brown])
 
     def get_function(self):
         dtk = TreebankWordDetokenizer()

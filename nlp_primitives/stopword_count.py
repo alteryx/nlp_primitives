@@ -1,15 +1,9 @@
 # -*- coding: utf-8 -*-
-import pkg_resources
-
 import nltk
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from featuretools.variable_types import Numeric, Text
-
-nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/nltk-data/')
-if nltk_data_path not in nltk.data.path:
-    nltk.data.path.append(nltk_data_path)
 
 
 class StopwordCount(TransformPrimitive):
@@ -37,8 +31,16 @@ class StopwordCount(TransformPrimitive):
 
         def stopword_count(array):
             li = []
-            swords = set(nltk.corpus.stopwords.words('english'))
-            tokenizer = nltk.tokenize.word_tokenize
+            try:
+                swords = set(nltk.corpus.stopwords.words('english'))
+            except LookupError:
+                nltk.download('stopwords')
+                swords = set(nltk.corpus.stopwords.words('english'))
+            try:
+                tokenizer = nltk.tokenize.word_tokenize
+            except LookupError:
+                nltk.download('punkt')
+                tokenizer = nltk.tokenize.word_tokenize
             for el in array:
                 if pd.isnull(el):
                     li.append(np.nan)
