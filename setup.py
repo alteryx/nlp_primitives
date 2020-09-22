@@ -1,4 +1,7 @@
 from os import path
+import pkg_resources
+import shutil
+import tempfile
 
 from setuptools import find_packages, setup
 
@@ -30,3 +33,14 @@ setup(
         ],
     },
 )
+
+fp = pkg_resources.resource_filename('nlp_primitives', 'nltk-data.tar.gz')
+dp = path.normpath(path.join(fp, '../nltk-data'))
+try:
+    tf = tempfile.mkdtemp()
+    shutil.unpack_archive(fp, tf)
+    if path.exists(dp):
+        shutil.rmtree(dp)
+    shutil.copytree(tf, dp)
+finally:
+    shutil.rmtree(tf)
