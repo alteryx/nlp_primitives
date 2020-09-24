@@ -1,6 +1,6 @@
 import pytest
 
-from .universal_sentence_encoder import UniversalSentenceEncoder
+from nlp_primitives.universal_sentence_encoder import UniversalSentenceEncoder
 
 
 @pytest.fixture(scope="session")
