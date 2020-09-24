@@ -119,6 +119,12 @@ jobs:
             NLP_PRIMITIVES_VERSION=$(python setup.py --version)
             pip install dist/nlp_primitives-${NLP_PRIMITIVES_VERSION}.tar.gz
       - run:
+          name: "Remove Repo Contents To Avoid Importing Source From Repo"
+          command: |
+            mv nlp_primitives/tests tests.bak
+            rm -rf nlp_primitives/*
+            mv tests.bak nlp_primitives/tests
+      - run:
           name: "Run Unit Tests"
           command: |
             source env/bin/activate
