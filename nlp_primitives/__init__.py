@@ -1,5 +1,9 @@
 # flake8: noqa
+import nltk.data
+
 __version__ = '1.0.0'
+import pkg_resources
+
 from .diversity_score import DiversityScore
 from .lsa import LSA
 from .mean_characters_per_word import MeanCharactersPerWord
@@ -11,7 +15,5 @@ from .title_word_count import TitleWordCount
 from .universal_sentence_encoder import UniversalSentenceEncoder
 from .upper_case_count import UpperCaseCount
 
-import pkg_resources
 nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
-import nltk.data
 nltk.data.path.append(nltk_data_path)
