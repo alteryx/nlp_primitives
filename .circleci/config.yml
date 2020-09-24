@@ -120,7 +120,7 @@ jobs:
 
 workflows:
   version: 2
-  "Unit Tests":
+  "Integration Tests":
     jobs:
       - lint_tests:
           name: "Lint Tests - Python 3.6"
