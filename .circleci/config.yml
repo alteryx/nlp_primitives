@@ -102,6 +102,7 @@ jobs:
           command: |
             virtualenv env -q
             source env/bin/activate
+            pip install -r requirements.txt
             pip install -r complete-requirements.txt
       - install_test_requirements
       - run :
