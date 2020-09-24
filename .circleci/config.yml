@@ -5,7 +5,7 @@ executors:
     parameters:
       image_tag:
         type: string
-        default: "python:3.7"
+        default: "python:3.8"
     docker:
       - image: circleci/<< parameters.image_tag >>
     resource_class: large
@@ -21,12 +21,13 @@ commands:
             source env/bin/activate
             pip config --site set global.progress_bar off
             pip install ".[complete]"
-  package_nlp_primitives:
+  install_test_requirements:
     steps:
       - run:
-          name: "Package nlp_primitives"
+          name: "Install Test Requirements"
           command: |
-            python setup.py sdist
+            source env/bin/activate
+            pip install -r test-requirements.txt
 
 jobs:
   lint_tests:
@@ -34,17 +35,13 @@ jobs:
     parameters:
       image_tag:
         type: string
-        default: "python:3.7"
+        default: "python:3.8"
     executor:
       name: python
       image_tag: << parameters.image_tag >>
     steps:
       - installation
-      - run:
-          name: "Install Test Requirements"
-          command: |
-            source env/bin/activate
-            pip install -r test-requirements.txt
+      - install_test_requirements
       - run:
           name: "Run Lint Tests"
           command: |
@@ -56,17 +53,13 @@ jobs:
     parameters:
       image_tag:
         type: string
-        default: "python:3.7"
+        default: "python:3.8"
     executor:
       name: python
       image_tag: << parameters.image_tag >>
     steps:
       - installation
-      - run:
-          name: "Install Test Requirements"
-          command: |
-            source env/bin/activate
-            pip install -r test-requirements.txt
+      - install_test_requirements
       - run:
           name: "Run Unit Tests"
           command: |
@@ -78,7 +71,7 @@ jobs:
     parameters:
       image_tag:
         type: string
-        default: "python:3.7"
+        default: "python:3.8"
     executor:
       name: python
       image_tag: << parameters.image_tag >>
@@ -103,24 +96,31 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/nlp_primitives
-      - package_nlp_primitives
-      - run : 
-          name: "Install Package in Virtual Environment"
+      - install_test_requirements
+      - run :
+          name: "Create Source Distribution"
           command: |
-            virtualenv venv
-            source venv/bin/activate
+            virtualenv env -q
+            source env/bin/activate
+            python setup.py sdist
+      - run :
+          name: "Install Source Distribution in Virtual Environment"
+          command: |
+            virtualenv env -q
+            source env/bin/activate
             NLP_PRIMITIVES_VERSION=$(python setup.py --version)
             pip install dist/nlp_primitives-${NLP_PRIMITIVES_VERSION}.tar.gz
-            pip install -r test-requirements.txt
       - run:
           name: "Run Unit Tests"
           command: |
-            source venv/bin/activate
+            source env/bin/activate
+            python -c "import nlp_primitives; print(nlp_primitives.__version__)"
+            python -c "import sys; print(sys.path)"
             make unit-tests
 
 workflows:
   version: 2
-  "Integration Tests":
+  "Unit Tests":
     jobs:
       - lint_tests:
           name: "Lint Tests - Python 3.6"
@@ -140,6 +140,8 @@ workflows:
       - unit_tests:
           name: "Unit Tests - Python 3.8"
           image_tag: "python:3.8"
+  "Packaging Tests":
+    jobs:
       - entry_point_test:
           name: "Entry Point Test - Python 3.6"
           image_tag: "python:3.6"
@@ -149,14 +151,12 @@ workflows:
       - entry_point_test:
           name: "Entry Point Test - Python 3.8"
           image_tag: "python:3.8"
-  "Package Tests":
-    jobs:
       - package_test:
-          name: "Package Test - Python 3.6"
+          name: "Packaging Test - Python 3.6"
           image_tag: "python:3.6"
       - package_test:
-          name: "Package Test - Python 3.7"
+          name: "Packaging Test - Python 3.7"
           image_tag: "python:3.7"
       - package_test:
-          name: "Package Test - Python 3.8"
+          name: "Packaging Test - Python 3.8"
           image_tag: "python:3.8"
