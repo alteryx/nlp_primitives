@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from ..upper_case_count import UpperCaseCount
-from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
 
 class TestUpperCaseCount(PrimitiveT):

@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from ..punctuation_count import PunctuationCount
-from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
 
 class TestPunctuationCount(PrimitiveT):
