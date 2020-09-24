@@ -97,6 +97,12 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/nlp_primitives
+      - run :
+          name: "Install Requirements"
+          command: |
+            virtualenv env -q
+            source env/bin/activate
+            pip install -r complete-requirements.txt
       - install_test_requirements
       - run :
           name: "Create Source Distribution"
