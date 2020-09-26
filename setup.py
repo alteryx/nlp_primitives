@@ -15,8 +15,12 @@ extras_require = {
     'complete': open('complete-requirements.txt').readlines()
 }
 
-class PreSDistCommand(sdist):
-    """Post-installation for installation mode."""
+class PreSDistNLTKDataUnpackCommand(sdist):
+    """Before creating source distribution, untar nltk data files, so they'll be included via the manifest file.
+
+    Note the usage of `pkg_resources.resource_filename` for pathing assumes you're building the source distribution with your cwd
+    in the repo.
+    """
     def run(self):
         nltk_data_tarball_path = pkg_resources.resource_filename('nlp_primitives', str(pathlib.Path('data','nltk-data.tar.gz')))
         nltk_data_extract_path = pkg_resources.resource_filename('nlp_primitives', str(pathlib.Path('data')))
@@ -49,6 +53,6 @@ setup(
         ],
     },
     cmdclass={
-        'sdist': PreSDistCommand
+        'sdist': PreSDistNLTKDataUnpackCommand
     }
 )
