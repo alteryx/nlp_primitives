@@ -122,7 +122,8 @@ jobs:
           name: "Run Unit Tests"
           command: |
             source env/bin/activate
-            cd ../
+            # change directory so that the repo code can't be imported, and we use the sdist installation instead
+            cd nlp_primitives
             python -c "import nlp_primitives; print(nlp_primitives.__version__)"
             python -c "import sys; print(sys.path)"
             make -C ../ unit-tests
