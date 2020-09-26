@@ -12,6 +12,7 @@ clean:
 	rm -rf ./build
 	rm -rf ./dist
 	rm -rf ./nlp_primitives.egg-info
+	rm -rf ./nlp_primitives/data/nltk-data
 
 .PHONY: lint-fix
 lint-fix:
