@@ -12,7 +12,7 @@ class UniversalSentenceEncoder(TransformPrimitive):
 
     Examples:
         >>> sentences = ["I like to eat pizza", "The roller coaster was built in 1885.", ""]
-        >>> output = universal_sentence_encoder(sentences)
+        >>> output = UniversalSentenceEncoder(sentences)
         >>> len(output)
         512
         >>> len(output[0])
