@@ -1,9 +1,9 @@
 =========
 Changelog
 =========
-**v1.0.0** Aug 12, 2020
+**Future Release** TBD
     * Changes
-        * Upgrade to Featuretools 0.20.0 and replace Text variable type with NaturalLanguage
+        * Upgrade to Featuretools 0.20.0 and replace Text variable type with NaturalLanguage (:pr:`34`)
     * Testing Changes
 
     Thanks to the following people for contributing to this release:
