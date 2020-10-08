@@ -2,7 +2,7 @@ import nltk
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import Numeric, Text
+from featuretools.variable_types import Numeric, NaturalLanguage
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 from .utilities import clean_tokens
@@ -23,7 +23,7 @@ class PolarityScore(TransformPrimitive):
         [0.677, -0.649, 0.0, 0.0]
     """
     name = "polarity_score"
-    input_types = [Text]
+    input_types = [NaturalLanguage]
     return_type = Numeric
     default_value = 0
 

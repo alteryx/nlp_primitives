@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import Numeric, Text
+from featuretools.variable_types import Numeric, NaturalLanguage
 
 
 class UpperCaseCount(TransformPrimitive):
@@ -21,7 +21,7 @@ class UpperCaseCount(TransformPrimitive):
         [3.0, 1.0, 0.0]
     """
     name = "upper_case_count"
-    input_types = [Text]
+    input_types = [NaturalLanguage]
     return_type = Numeric
     default_value = 0
 

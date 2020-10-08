@@ -3,7 +3,7 @@
 import re
 
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import Numeric, Text
+from featuretools.variable_types import Numeric, NaturalLanguage
 
 
 class MeanCharactersPerWord(TransformPrimitive):
@@ -23,7 +23,7 @@ class MeanCharactersPerWord(TransformPrimitive):
         [3.0, 4.0, 5.0]
     """
     name = "mean_characters_per_word"
-    input_types = [Text]
+    input_types = [NaturalLanguage]
     return_type = Numeric
     default_value = 0
 
