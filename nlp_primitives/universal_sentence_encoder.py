@@ -1,6 +1,6 @@
 from featuretools.primitives import TransformPrimitive
 from featuretools.utils.gen_utils import import_or_raise
-from featuretools.variable_types import Numeric, NaturalLanguage
+from featuretools.variable_types import NaturalLanguage, Numeric
 
 
 class UniversalSentenceEncoder(TransformPrimitive):

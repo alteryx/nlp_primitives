@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import Numeric, NaturalLanguage
+from featuretools.variable_types import NaturalLanguage, Numeric
 
 
 class TitleWordCount(TransformPrimitive):

@@ -2,7 +2,7 @@ import nltk
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import Numeric, NaturalLanguage
+from featuretools.variable_types import NaturalLanguage, Numeric
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer

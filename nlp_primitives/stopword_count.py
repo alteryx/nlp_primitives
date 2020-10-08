@@ -3,7 +3,7 @@ import nltk
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import Numeric, NaturalLanguage
+from featuretools.variable_types import NaturalLanguage, Numeric
 
 
 class StopwordCount(TransformPrimitive):
