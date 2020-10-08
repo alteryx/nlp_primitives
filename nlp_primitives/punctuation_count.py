@@ -5,7 +5,7 @@ import string
 
 import numpy as np
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import Numeric, Text
+from featuretools.variable_types import NaturalLanguage, Numeric
 
 
 class PunctuationCount(TransformPrimitive):
@@ -26,7 +26,7 @@ class PunctuationCount(TransformPrimitive):
         [1.0, 0.0, 3.0]
     """
     name = "punctuation_count"
-    input_types = [Text]
+    input_types = [NaturalLanguage]
     return_type = Numeric
     default_value = 0
 

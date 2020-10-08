@@ -74,7 +74,7 @@ def test_feature_serialization(universal_sentence_encoder, tmpdir):
     es.entity_from_dataframe(dataframe=df,
                              entity_id="entity",
                              index="id",
-                             variable_types={"sentences": ft.variable_types.Text})
+                             variable_types={"sentences": ft.variable_types.NaturalLanguage})
     fm, features = ft.dfs(entityset=es,
                           target_entity="entity",
                           trans_primitives=[universal_sentence_encoder])

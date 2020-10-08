@@ -2,7 +2,7 @@ import nltk
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import Numeric, Text
+from featuretools.variable_types import NaturalLanguage, Numeric
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -12,7 +12,7 @@ from .utilities import clean_tokens
 
 
 class LSA(TransformPrimitive):
-    """Calculates the Latent Semantic Analysis Values of Text Input
+    """Calculates the Latent Semantic Analysis Values of NaturalLanguage Input
 
     Description:
         Given a list of strings, transforms those strings using tf-idf and single
@@ -44,7 +44,7 @@ class LSA(TransformPrimitive):
 
     """
     name = "lsa"
-    input_types = [Text]
+    input_types = [NaturalLanguage]
     return_type = Numeric
     default_value = 0
 

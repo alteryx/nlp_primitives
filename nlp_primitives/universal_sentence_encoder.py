@@ -1,6 +1,6 @@
 from featuretools.primitives import TransformPrimitive
 from featuretools.utils.gen_utils import import_or_raise
-from featuretools.variable_types import Numeric, Text
+from featuretools.variable_types import NaturalLanguage, Numeric
 
 
 class UniversalSentenceEncoder(TransformPrimitive):
@@ -22,7 +22,7 @@ class UniversalSentenceEncoder(TransformPrimitive):
         [0.0178, 0.0616, -0.0089]
     """
     name = "universal_sentence_encoder"
-    input_types = [Text]
+    input_types = [NaturalLanguage]
     return_type = Numeric
 
     def __init__(self):
