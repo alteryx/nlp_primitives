@@ -20,7 +20,7 @@ commands:
             virtualenv env -q
             source env/bin/activate
             pip config --site set global.progress_bar off
-            pip install ".[complete]"
+            make installdeps-complete
   install_test_requirements:
     steps:
       - run:
@@ -104,7 +104,7 @@ jobs:
             source env/bin/activate
             pip install -r requirements.txt
             pip install -r complete-requirements.txt
-      - install_test_requirements
+            pip install -r test-requirements.txt
       - run :
           name: "Create Source Distribution"
           command: |
