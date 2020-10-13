@@ -35,20 +35,17 @@ install-nltk-data:
 	tar xvzf nlp_primitives/data/nltk-data.tar.gz -C nlp_primitives/data/
 
 .PHONY: installdeps
-installdeps:
-	install-nltk-data
+installdeps: install-nltk-data
 	pip install --upgrade pip
 	pip install -e .
 
 .PHONY: installdeps-complete
-installdeps-complete:
-	install-nltk-data
+installdeps-complete: install-nltk-data
 	pip install --upgrade pip
 	pip install -e ".[complete]"
 
 .PHONY: installdeps-test
-installdeps-test:
-	install-nltk-data
+installdeps-test: install-nltk-data
 	pip install --upgrade pip
 	pip install -e ".[complete]"
 	pip install -r test-requirements.txt
