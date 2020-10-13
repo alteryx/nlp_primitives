@@ -22,11 +22,11 @@ class PreSDistNLTKDataUnpackCommand(sdist):
     in the repo.
     """
     def run(self):
-        nltk_data_tarball_path = pkg_resources.resource_filename('nlp_primitives', str(pathlib.Path('data','nltk-data.tar.gz')))
+        nltk_data_tarball_path = pkg_resources.resource_filename('nlp_primitives', str(pathlib.Path('data','nltk-data.tar')))
         nltk_data_extract_path = pkg_resources.resource_filename('nlp_primitives', str(pathlib.Path('data')))
         print(f'Extracting nltk data files from {nltk_data_tarball_path} to {nltk_data_extract_path}')
         print(pkg_resources.resource_listdir('nlp_primitives', str(pathlib.Path('data'))))
-        with tarfile.open(nltk_data_tarball_path, "r:gz") as tar:
+        with tarfile.open(nltk_data_tarball_path, "r") as tar:
             tar.extractall(path=nltk_data_extract_path)
             tar.close()
             print(f'Extraction of nltk data files complete')

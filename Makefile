@@ -32,7 +32,7 @@ unit-tests:
 install-nltk-data:
 	rm -rf nlp_primitives/data/nltk-data
 	mkdir -p nlp_primitives/data/nltk-data
-	tar xvzf nlp_primitives/data/nltk-data.tar.gz -C nlp_primitives/data/
+	tar xvf nlp_primitives/data/nltk-data.tar -C nlp_primitives/data/
 
 .PHONY: installdeps
 installdeps: install-nltk-data
