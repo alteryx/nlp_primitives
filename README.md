@@ -76,6 +76,15 @@ product_id
 10123C                         1.666667                          1.072500                    1.787500                           3.0
 10124A                           3.2000                            0.6930                      2.2176                           5.0
 ```
+
+## Development
+To install from source, clone this repo and run
+```bash
+make installdeps-test
+```
+
+This will install all pip dependencies, as well as unpack the text data corpuses needed by the `nltk` library.
+
 ## Feature Labs
 <a href="https://www.featurelabs.com/">
     <img src="http://www.featurelabs.com/wp-content/uploads/2017/12/logo.png" alt="Featuretools" />
