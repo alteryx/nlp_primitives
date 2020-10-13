@@ -16,4 +16,4 @@ from .universal_sentence_encoder import UniversalSentenceEncoder
 from .upper_case_count import UpperCaseCount
 
 nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
-nltk.data.path.append(nltk_data_path)
+nltk.data.path.insert(0, nltk_data_path)
