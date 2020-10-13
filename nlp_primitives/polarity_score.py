@@ -32,11 +32,7 @@ class PolarityScore(TransformPrimitive):
         dtk = TreebankWordDetokenizer()
 
         def polarity_score(x):
-            try:
-                vader = SentimentIntensityAnalyzer()
-            except LookupError:
-                nltk.download('vader_lexicon')
-                vader = SentimentIntensityAnalyzer()
+            vader = SentimentIntensityAnalyzer()
             li = []
 
             def vader_pol(sentence):
