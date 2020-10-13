@@ -12,7 +12,6 @@ clean:
 	rm -rf ./build
 	rm -rf ./dist
 	rm -rf ./nlp_primitives.egg-info
-	rm -rf ./nlp_primitives/data/nltk-data
 
 .PHONY: lint-fix
 lint-fix:
@@ -29,8 +28,27 @@ lint-tests:
 unit-tests:
 	pytest --cache-clear --show-capture=stderr -vv
 
+.PHONY: install-nltk-data
+install-nltk-data:
+	rm -rf nlp_primitives/data/nltk-data
+	mkdir -p nlp_primitives/data/nltk-data
+	tar xvzf nlp_primitives/data/nltk-data.tar.gz -C nlp_primitives/data/
+
 .PHONY: installdeps
 installdeps:
+	install-nltk-data
 	pip install --upgrade pip
 	pip install -e .
+
+.PHONY: installdeps-complete
+installdeps-complete:
+	install-nltk-data
+	pip install --upgrade pip
+	pip install -e ".[complete]"
+
+.PHONY: installdeps-test
+installdeps-test:
+	install-nltk-data
+	pip install --upgrade pip
+	pip install -e ".[complete]"
 	pip install -r test-requirements.txt
