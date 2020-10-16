@@ -28,7 +28,6 @@ class PreSDistNLTKDataUnpackCommand(sdist):
         print(pkg_resources.resource_listdir('nlp_primitives', str(pathlib.Path('data'))))
         with tarfile.open(nltk_data_tarball_path, "r") as tar:
             tar.extractall(path=nltk_data_extract_path)
-            tar.close()
             print(f'Extraction of nltk data files complete')
             sdist.run(self)
 
