@@ -97,11 +97,13 @@ jobs:
       - attach_workspace:
           at: ~/nlp_primitives
       - run :
-          name: "Install Dev Requirements"
+          name: "Install Requirements"
           command: |
             virtualenv env -q
             source env/bin/activate
-            pip install -r dev-requirements.txt
+            pip install -r requirements.txt
+            pip install -r complete-requirements.txt
+            pip install -r test-requirements.txt
       - run :
           name: "Create Source Distribution"
           command: |
@@ -113,12 +115,6 @@ jobs:
             source env/bin/activate
             NLP_PRIMITIVES_VERSION=$(python setup.py --version)
             pip install dist/nlp_primitives-${NLP_PRIMITIVES_VERSION}.tar.gz
-      - run :
-          name: "Install Test Requirements"
-          command: |
-            virtualenv env -q
-            source env/bin/activate
-            pip install -r test-requirements.txt
       - run:
           name: "Run Unit Tests"
           command: |
