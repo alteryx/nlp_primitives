@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from ..stopword_count import StopwordCount
-from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
 
 class TestStopwordCount(PrimitiveT):

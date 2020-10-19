@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from ..lsa import LSA
-from ..utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
 
 class TestLSA(PrimitiveT):
