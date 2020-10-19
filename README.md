@@ -85,6 +85,8 @@ make installdeps-test
 
 This will install all pip dependencies, as well as unpack the text data corpuses needed by the `nltk` library.
 
+In order to support network-free installation, `nlp_primitives` packages text data used by `nltk` in a tarball, which is then included in the sdist or wheel used to install the package. If you wish to modify the text data included in the tarball, please [use `git-lfs` (large file storage)](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/installing-git-large-file-storage), which is where the file is kept. Developers on Mac must run `brew install git-lfs` or `port install git-lfs`; developers on other platforms should follow GitHub's instructions.
+
 ## Feature Labs
 <a href="https://www.featurelabs.com/">
     <img src="http://www.featurelabs.com/wp-content/uploads/2017/12/logo.png" alt="Featuretools" />
