@@ -30,8 +30,8 @@ class TestLSA(PrimitiveT):
         primitive_func = self.primitive().get_function()
 
         answers = pd.Series(
-            [[np.nan, 0, 0.074],
-             [np.nan, 0, -0.024]])
+            [[np.nan, 0, 0.06],
+             [np.nan, 0, 0.06]])
         results = primitive_func(x)
         np.testing.assert_array_almost_equal(np.concatenate(([np.array(answers[0])], [np.array(answers[1])]), axis=0),
                                              np.concatenate(([np.array(results[0])], [np.array(results[1])]), axis=0),
