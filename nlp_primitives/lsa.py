@@ -29,7 +29,7 @@ class LSA(TransformPrimitive):
         >>> res = lsa(x).tolist()
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
-        [[0.0, 0.0, 0.01], [0.0, 0.0, 0.0]]
+        [[0.01, 0.01, 0.01], [0.0, 0.0, 0.01]]
 
         Now, if we change the values of the input corpus, to something that better resembles
         the given text, the same given input text will result in a different, more discerning,
@@ -40,7 +40,7 @@ class LSA(TransformPrimitive):
         >>> res = lsa(x).tolist()
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
-        [[0.01, 0.0, nan, 0.0], [0.0, 0.0, nan, 0.0]]
+        [[0.02, 0.0, nan, 0.0], [0.02, 0.0, nan, 0.0]]
 
     """
     name = "lsa"
