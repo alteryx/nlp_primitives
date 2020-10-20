@@ -19,7 +19,7 @@ class LSA(TransformPrimitive):
         value decomposition to go from a sparse matrix to a compact matrix with two
         values for each string. These values represent that Latent Semantic Analysis
         of each string. These values will represent their context with respect to
-        (nltk's brown sentence corpus.)[https://www.nltk.org/book/ch02.html#brown-corpus]
+        (nltk's gutenberg corpus.)[https://www.nltk.org/book/ch02.html#gutenberg-corpus]
 
         If a string is missing, return `NaN`.
 
@@ -29,7 +29,7 @@ class LSA(TransformPrimitive):
         >>> res = lsa(x).tolist()
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
-        [[0.0, 0.0, 0.01], [0.0, 0.0, 0.0]]
+        [[0.01, 0.01, 0.01], [0.0, 0.0, 0.01]]
 
         Now, if we change the values of the input corpus, to something that better resembles
         the given text, the same given input text will result in a different, more discerning,
@@ -40,7 +40,7 @@ class LSA(TransformPrimitive):
         >>> res = lsa(x).tolist()
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
-        [[0.01, 0.0, nan, 0.0], [0.0, 0.0, nan, 0.0]]
+        [[0.02, 0.0, nan, 0.0], [0.02, 0.0, nan, 0.0]]
 
     """
     name = "lsa"
@@ -53,9 +53,9 @@ class LSA(TransformPrimitive):
         self.number_output_features = 2
         self.n = 2
 
-        brown = nltk.corpus.brown.sents()
+        gutenberg = nltk.corpus.gutenberg.sents()
         self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD())
-        self.trainer.fit([" ".join(sent) for sent in brown])
+        self.trainer.fit([" ".join(sent) for sent in gutenberg])
 
     def get_function(self):
         dtk = TreebankWordDetokenizer()
