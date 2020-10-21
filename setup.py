@@ -1,7 +1,7 @@
 from os import path
 
 from setuptools import find_packages, setup
-from setuptools.command.sdist import sdist
+from setuptools.command.install import install
 
 import pathlib
 import pkg_resources
@@ -15,8 +15,8 @@ extras_require = {
     'complete': open('complete-requirements.txt').readlines()
 }
 
-class PreSDistNLTKDataUnpackCommand(sdist):
-    """Before creating source distribution, untar nltk data files, so they'll be included via the manifest file.
+class PreInstallNLTKDataUnpackCommand(install):
+    """During installation, untar nltk data files, so they'll be included via the manifest file.
 
     Note the usage of `pkg_resources.resource_filename` for pathing assumes you're building the source distribution with your cwd
     in the repo.
@@ -29,7 +29,7 @@ class PreSDistNLTKDataUnpackCommand(sdist):
         with tarfile.open(nltk_data_tarball_path, "r") as tar:
             tar.extractall(path=nltk_data_extract_path)
             print(f'Extraction of nltk data files complete')
-            sdist.run(self)
+            install.run(self)
 
 setup(
     name='nlp_primitives',
@@ -52,6 +52,6 @@ setup(
         ],
     },
     cmdclass={
-        'sdist': PreSDistNLTKDataUnpackCommand
+        'install': PreInstallNLTKDataUnpackCommand
     }
 )
