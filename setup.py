@@ -15,22 +15,6 @@ extras_require = {
     'complete': open('complete-requirements.txt').readlines()
 }
 
-class PreInstallNLTKDataUnpackCommand(install):
-    """During installation, untar nltk data files, so they'll be included via the manifest file.
-
-    Note the usage of `pkg_resources.resource_filename` for pathing assumes you're building the source distribution with your cwd
-    in the repo.
-    """
-    def run(self):
-        nltk_data_tarball_path = pkg_resources.resource_filename('nlp_primitives', str(pathlib.Path('data','nltk-data.tar')))
-        nltk_data_extract_path = pkg_resources.resource_filename('nlp_primitives', str(pathlib.Path('data')))
-        print(f'Extracting nltk data files from {nltk_data_tarball_path} to {nltk_data_extract_path}')
-        print(pkg_resources.resource_listdir('nlp_primitives', str(pathlib.Path('data'))))
-        with tarfile.open(nltk_data_tarball_path, "r") as tar:
-            tar.extractall(path=nltk_data_extract_path)
-            print(f'Extraction of nltk data files complete')
-            install.run(self)
-
 setup(
     name='nlp_primitives',
     version='1.0.0',
@@ -51,7 +35,4 @@ setup(
             'nlp_primitives = nlp_primitives',
         ],
     },
-    cmdclass={
-        'install': PreInstallNLTKDataUnpackCommand
-    }
 )
