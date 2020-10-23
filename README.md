@@ -83,7 +83,7 @@ To install from source, clone this repo and run
 make installdeps-test
 ```
 
-This will install all pip dependencies, as well as unpack the text data corpuses needed by the `nltk` library.
+This will install all pip dependencies.
 
 ## Feature Labs
 <a href="https://www.featurelabs.com/">

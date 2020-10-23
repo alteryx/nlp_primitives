@@ -28,24 +28,18 @@ lint-tests:
 unit-tests:
 	pytest --cache-clear --show-capture=stderr -vv
 
-.PHONY: install-nltk-data
-install-nltk-data:
-	rm -rf nlp_primitives/data/nltk-data
-	mkdir -p nlp_primitives/data/nltk-data
-	tar xvf nlp_primitives/data/nltk-data.tar -C nlp_primitives/data/
-
 .PHONY: installdeps
-installdeps: install-nltk-data
+installdeps:
 	pip install --upgrade pip
 	pip install -e .
 
 .PHONY: installdeps-complete
-installdeps-complete: install-nltk-data
+installdeps-complete:
 	pip install --upgrade pip
 	pip install -e ".[complete]"
 
 .PHONY: installdeps-test
-installdeps-test: install-nltk-data
+installdeps-test:
 	pip install --upgrade pip
 	pip install -e ".[complete]"
 	pip install -r test-requirements.txt
