@@ -23,7 +23,7 @@ Changelog
         * Move some test utils into `test/` :pr:`31`
 
     Thanks to the following people for contributing to this release:
-    :user:`dsherry`, :user:`eccabay`, :user:`gsheni`, :user`rwedge`
+    :user:`dsherry`, :user:`eccabay`, :user:`gsheni`, :user:`rwedge`
 
 **v1.0.0** Aug 12, 2020
     * Changes
