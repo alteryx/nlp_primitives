@@ -16,7 +16,7 @@ extras_require = {
 
 setup(
     name='nlp_primitives',
-    version='1.0.0',
+    version='1.1.0',
     author='Feature Labs, Inc.',
     author_email='support@featurelabs.com',
     license='BSD 3-clause',
