@@ -1,14 +1,16 @@
 =========
 Changelog
 =========
-.. **Future Release** TBD
+**Future Release** TBD
     * Enhancements
     * Fixes
     * Changes
     * Documentation Changes
+        * Update UniversalSentenceEncoder docstring example (:pr:`42`)
     * Testing Changes
 
-.. Thanks to the following people for contributing to this release:
+    Thanks to the following people for contributing to this release:
+    :user:`rwedge`
 
 **v1.1.0** Oct 26, 2020
     * Changes
@@ -21,7 +23,7 @@ Changelog
         * Move some test utils into `test/` :pr:`31`
 
     Thanks to the following people for contributing to this release:
-    :user:`dsherry`, :user:`eccabay`, :user:`gsheni`, :user`rwedge`
+    :user:`dsherry`, :user:`eccabay`, :user:`gsheni`, :user:`rwedge`
 
 **v1.0.0** Aug 12, 2020
     * Changes
