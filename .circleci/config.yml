@@ -8,6 +8,9 @@ executors:
         default: "python:3.8"
     docker:
       - image: circleci/python:<< parameters.image_tag >>
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     resource_class: large
 
 commands:
@@ -134,11 +137,13 @@ workflows:
             parameters:
               image_tag: ["3.6", "3.7", "3.8"]
           name: << matrix.image_tag >> lint tests
+          context: dockerhub
       - unit_tests:
           matrix:
             parameters:
               image_tag: ["3.6", "3.7", "3.8"]
           name: << matrix.image_tag >> unit tests
+          context: dockerhub
   "Packaging Tests":
     jobs:
       - entry_point_test:
@@ -146,8 +151,10 @@ workflows:
             parameters:
               image_tag: ["3.6", "3.7", "3.8"]
           name: << matrix.image_tag >> entry point test
+          context: dockerhub
       - package_test:
           matrix:
             parameters:
               image_tag: ["3.6", "3.7", "3.8"]
           name: << matrix.image_tag >> package tests
+          context: dockerhub
