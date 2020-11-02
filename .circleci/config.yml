@@ -7,7 +7,10 @@ executors:
         type: string
         default: "python:3.8"
     docker:
-      - image: circleci/<< parameters.image_tag >>
+      - image: circleci/python:<< parameters.image_tag >>
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     resource_class: large
 
 commands:
@@ -130,40 +133,28 @@ workflows:
   "Integration Tests":
     jobs:
       - lint_tests:
-          name: "Lint Tests - Python 3.6"
-          image_tag: "python:3.6"
-      - lint_tests:
-          name: "Lint Tests - Python 3.7"
-          image_tag: "python:3.7"
-      - lint_tests:
-          name: "Lint Tests - Python 3.8"
-          image_tag: "python:3.8"
+          matrix:
+            parameters:
+              image_tag: ["3.6", "3.7", "3.8"]
+          name: << matrix.image_tag >> lint tests
+          context: dockerhub
       - unit_tests:
-          name: "Unit Tests - Python 3.6"
-          image_tag: "python:3.6"
-      - unit_tests:
-          name: "Unit Tests - Python 3.7"
-          image_tag: "python:3.7"
-      - unit_tests:
-          name: "Unit Tests - Python 3.8"
-          image_tag: "python:3.8"
+          matrix:
+            parameters:
+              image_tag: ["3.6", "3.7", "3.8"]
+          name: << matrix.image_tag >> unit tests
+          context: dockerhub
   "Packaging Tests":
     jobs:
       - entry_point_test:
-          name: "Entry Point Test - Python 3.6"
-          image_tag: "python:3.6"
-      - entry_point_test:
-          name: "Entry Point Test - Python 3.7"
-          image_tag: "python:3.7"
-      - entry_point_test:
-          name: "Entry Point Test - Python 3.8"
-          image_tag: "python:3.8"
+          matrix:
+            parameters:
+              image_tag: ["3.6", "3.7", "3.8"]
+          name: << matrix.image_tag >> entry point test
+          context: dockerhub
       - package_test:
-          name: "Packaging Test - Python 3.6"
-          image_tag: "python:3.6"
-      - package_test:
-          name: "Packaging Test - Python 3.7"
-          image_tag: "python:3.7"
-      - package_test:
-          name: "Packaging Test - Python 3.8"
-          image_tag: "python:3.8"
+          matrix:
+            parameters:
+              image_tag: ["3.6", "3.7", "3.8"]
+          name: << matrix.image_tag >> package tests
+          context: dockerhub
