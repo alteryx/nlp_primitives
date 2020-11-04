@@ -101,7 +101,7 @@ Fields to update in `recipe/meta.yaml` of feedstock repo:
 ## Create nlp_primitives release on Github
 
 #### Create release branch
-1. Branch off of master and name the branch the release version number (e.g. v0.4.0)
+1. Branch off of main and name the branch the release version number (e.g. v0.4.0)
 
 #### Bump version number
 2. Bump verison number in `setup.py`, and `nlp_primitives/__init__.py`.
@@ -119,8 +119,8 @@ Fields to update in `recipe/meta.yaml` of feedstock repo:
 A release PR should have the version number as the title and the changelog updates as the PR body text. The contributors line is not necessary. The special sphinx docs syntax (:pr:`547`) needs to be changed to github link syntax (#547).
 
 ## Create GitHub Release
-After the release pull request has been merged into the master branch, it is time draft the github release.
-* The target should be the master branch
+After the release pull request has been merged into the main branch, it is time draft the github release.
+* The target should be the main branch
 * The tag should be the version number with a v prefix (e.g. v0.4.0)
 * Release title is the same as the tag
 * Release description should be the full changelog updates for the release, including the line thanking contributors. Contributors should also have their links changed from the docs syntax (:user:`rwedge`) to github syntax (@rwedge)
