@@ -1,0 +1,67 @@
+on:
+  - push
+  - workflow_dispatch
+
+name: Tests
+jobs:
+  entry_point_test:
+    name: Entry Point Test - Python ${{ matrix.python_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: ["3.6", "3.7", "3.8"]
+    steps:
+      - name: Set up python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install requirements
+        run: |
+          pip config --site set global.progress_bar off
+          make installdeps-complete
+      - name: Test entry point
+        run: make entry-point-test
+
+  lint_tests:
+    name: Lint Tests - Python ${{ matrix.python_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: ["3.6", "3.7", "3.8"]
+    steps:
+      - name: Set up python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install requirements
+        run: |
+          pip config --site set global.progress_bar off
+          make installdeps-complete
+          pip install -r test-requirements.txt
+      - name: Run lint tests
+        run: make lint-tests
+
+  unit_tests:
+    name: Unit Tests - Python ${{ matrix.python_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: ["3.6", "3.7", "3.8"]
+    steps:
+      - name: Set up python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install requirements
+        run: |
+          pip config --site set global.progress_bar off
+          make installdeps-complete
+          pip install -r test-requirements.txt
+      - name: Run unit tests (no code coverage)
+        run: make unit-tests
