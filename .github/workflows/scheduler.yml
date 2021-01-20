@@ -1,0 +1,25 @@
+on:
+  schedule:
+    # At 05:00 PM UTC
+    - cron:  '0 17 * * *'
+
+name: Scheduler
+jobs:
+  dispatch_tests:
+    name: Dispatch Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for recent commit to Featuretools.
+        uses: featurelabs/gh-action-circleci@v2
+        id: is_recent_commit
+        with:
+          task: is_recent_commit
+          repository: alteryx/featuretools
+          recent: hours=25
+      - if: ${{ steps.is_recent_commit.outputs.value == 'True' }}
+        name: Create dispatch event using REST API
+        run: |
+          curl -X POST https://api.github.com/repos/${{ github.repository }}/actions/workflows/tests.yml/dispatches \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: token ${{ secrets.REPO_SCOPED_TOKEN }}" \
+          -d '{"ref": "main"}'
