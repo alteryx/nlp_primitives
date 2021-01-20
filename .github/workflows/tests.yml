@@ -1,0 +1,112 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+  workflow_dispatch:
+
+name: Tests
+jobs:
+  entry_point_test:
+    name: Entry Point Test - Python ${{ matrix.python_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: ["3.6", "3.7", "3.8"]
+    steps:
+      - name: Set up python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Install requirements
+        run: |
+          pip config --site set global.progress_bar off
+          make installdeps-complete
+      - name: Test entry point
+        run: make entry-point-test
+
+  lint_tests:
+    name: Lint Tests - Python ${{ matrix.python_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: ["3.6", "3.7", "3.8"]
+    steps:
+      - name: Set up python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Install requirements
+        run: |
+          pip config --site set global.progress_bar off
+          make installdeps-complete
+          pip install -r test-requirements.txt
+      - name: Run lint tests
+        run: make lint-tests
+
+  unit_tests:
+    name: Unit Tests - Python ${{ matrix.python_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: ["3.6", "3.7", "3.8"]
+    steps:
+      - name: Set up python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Install requirements
+        run: |
+          pip config --site set global.progress_bar off
+          make installdeps-complete
+          pip install -r test-requirements.txt
+      - name: Run unit tests (no code coverage)
+        run: make unit-tests
+
+  package_test:
+    name: Package Test - Python ${{ matrix.python_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: ["3.6", "3.7", "3.8"]
+    steps:
+      - name: Set up python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Install requirements
+        run: |
+          pip config --site set global.progress_bar off
+          pip install -r requirements.txt
+          pip install -r complete-requirements.txt
+          pip install -r test-requirements.txt
+      - name: Create source distribution
+        run: make package_nlp_primitives
+      - name: Install source distribution
+        run: |
+          NLP_PRIMITIVES_VERSION=$(python setup.py --version)
+          pip install dist/nlp_primitives-${NLP_PRIMITIVES_VERSION}.tar.gz
+      - name: Run unit tests
+        run: |
+          cd nlp_primitives
+          python -c "import nlp_primitives; print(nlp_primitives.__version__)"
+          python -c "import sys; print(sys.path)"
+          make -f ../Makefile unit-tests
