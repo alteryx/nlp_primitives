@@ -9,65 +9,17 @@ jobs:
     name: Dispatch Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Set up python 3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-      - name: Install requirements
-        run: python -m pip install python-dateutil requests
-      - name: Check for recent commit to Featuretools
+      - name: Check for recent commit to Featuretools.
+        uses: featurelabs/gh-action-circleci@v2
         id: is_recent_commit
-        shell: python
-        run: |
-          from datetime import datetime, timedelta
-          from dateutil.parser import parse
-          from requests import get
-
-          class Colors:
-              END = '\033[0m'
-              GREEN = '\033[92m'
-              RED = '\033[91m'
-              YELLOW = '\033[93m'
-
-          def get_latest_commit(repository, branch='main'):
-              url = f"https://api.github.com/repos/{repository}/commits"
-              response = get(url, params={"sha": branch})
-              info = "%s (%s)" % (response.reason, response.status_code)
-              assert response.status_code == 200, info
-              json = response.json()
-              commit = json[0]["commit"]
-              return commit
-
-          def is_recent_commit(commit, recent):
-              recent = eval('timedelta(%s)' % recent)
-              date = parse(commit['author']['date'])
-              date = date.replace(tzinfo=None)
-              elapsed = datetime.utcnow() - date
-              recent = elapsed <= recent
-
-              # Print status of the latest commit.
-              info = '\nThe latest commit {0} occurred {1} ago.\n'
-              message = commit.get('message', '')
-              message = message.splitlines()[:1]
-              message = message.pop() if message else ''
-              message = Colors.YELLOW + message + Colors.END
-
-              relative = str(elapsed).split('.')[0]
-              relative = relative.replace(',', '')
-              color = Colors.GREEN if recent else Colors.RED
-              relative = color + relative + Colors.END
-              print(info.format(message, relative))
-              return recent
-
-          commit = get_latest_commit('alteryx/featuretools')
-          recent = is_recent_commit(commit, recent='hours=25')
-          print("::set-output name=value::%s" % recent)
-
+        with:
+          task: is_recent_commit
+          repository: featurelabs/featuretools
+          recent: minutes=65
       - if: ${{ steps.is_recent_commit.outputs.value == 'True' }}
         name: Create dispatch event using REST API
         run: |
-          curl -X POST \
-          https://api.github.com/repos/${{ github.repository }}/actions/workflows/tests.yml/dispatches \
+          curl -X POST https://api.github.com/repos/${{ github.repository }}/actions/workflows/tests.yml/dispatches \
           -H "Accept: application/vnd.github.v3+json" \
           -H "Authorization: token ${{ secrets.REPO_SCOPED_TOKEN }}" \
           -d '{"ref": "main"}'
