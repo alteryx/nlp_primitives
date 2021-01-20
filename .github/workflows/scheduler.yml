@@ -14,7 +14,7 @@ jobs:
         id: is_recent_commit
         with:
           task: is_recent_commit
-          repository: featurelabs/featuretools
+          repository: alteryx/featuretools
           recent: hours=25
       - if: ${{ steps.is_recent_commit.outputs.value == 'True' }}
         name: Create dispatch event using REST API
