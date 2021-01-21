@@ -28,7 +28,7 @@ jobs:
           make installdeps-complete
       - if: ${{ matrix.featuretools_version == 'Main' }}
         name: Install latest version of Featuretools from main branch
-        run: pip install git+https://github.com/FeatureLabs/featuretools.git@main#egg=featuretools --upgrade
+        run: pip install git+https://github.com/alteryx/featuretools.git@main#egg=featuretools --upgrade
       - name: Test entry point
         run: make entry-point-test
 
@@ -80,7 +80,7 @@ jobs:
           pip install -r test-requirements.txt
       - if: ${{ matrix.featuretools_version == 'Main' }}
         name: Install latest version of Featuretools from main branch
-        run: pip install git+https://github.com/FeatureLabs/featuretools.git@main#egg=featuretools --upgrade
+        run: pip install git+https://github.com/alteryx/featuretools.git@main#egg=featuretools --upgrade
       - name: Run unit tests
         run: make unit-tests
 
