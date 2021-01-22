@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Check if latest test run was a success
         run: |
-          runs="https://api.github.com/repos/${{ github.repo }}/actions/runs"
+          runs="https://api.github.com/repos/${{ github.repository }}/actions/runs"
           match='[.workflow_runs[]|select(.name=="Tests")][0].conclusion'
           conclusion=$(curl $runs | jq $match)
           echo $conclusion
