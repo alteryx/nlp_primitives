@@ -11,9 +11,9 @@ jobs:
     steps:
       - name: Check if latest test run was a success
         run: |
-          runs="https://api.github.com/repos/${{ github.repository }}/actions/runs"
-          match='[.workflow_runs[]|select(.name=="Tests")][0].conclusion'
-          conclusion=$(curl $runs | jq $match)
+          runs=$(curl https://api.github.com/repos/${{ github.repository }}/actions/runs)
+          match='[.workflow_runs[]|select(.name=="Tests" and .status=="completed")][0].conclusion'
+          conclusion=$(echo $runs | jq "$match")
           echo $conclusion
       # - name: Check for recent commit to Featuretools.
       #   uses: featurelabs/gh-action-circleci@v2
