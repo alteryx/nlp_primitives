@@ -1,7 +1,7 @@
-on: push
-  # schedule:
-  #   # At 05:00 PM UTC
-  #   - cron:  '0 17 * * *'
+on:
+  schedule:
+    # At 05:00 PM UTC
+    - cron: "0 17 * * *"
 
 name: Scheduler
 jobs:
@@ -16,16 +16,16 @@ jobs:
           match='[.workflow_runs[]|select(.name=="Tests" and .status=="completed")][0].conclusion'
           conclusion=$(echo $runs | jq -r "$match")
           echo ::set-output name=conclusion::$conclusion
-      - if: ${{ steps.latest_tests.outputs.conclusion == 'success' }}
-        name: Check for recent commit to Featuretools.
+      - name: Check for recent commit to Featuretools
+        if: ${{ steps.latest_tests.outputs.conclusion == 'success' }}
         uses: featurelabs/gh-action-circleci@v2
         id: is_recent_commit
         with:
           task: is_recent_commit
           repository: alteryx/featuretools
           recent: hours=25
-      - if: ${{ steps.latest_tests.outputs.conclusion == 'success' && steps.is_recent_commit.outputs.value == 'True' }}
-        name: Create dispatch event using REST API
+      - name: Create dispatch event using REST API
+        if: ${{ steps.latest_tests.outputs.conclusion == 'success' && steps.is_recent_commit.outputs.value == 'True' }}
         run: |
           curl -X POST https://api.github.com/repos/${{ github.repository }}/actions/workflows/tests.yml/dispatches \
           -H "Accept: application/vnd.github.v3+json" \
