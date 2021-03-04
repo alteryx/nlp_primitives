@@ -2,7 +2,6 @@
 
 ![Tests](https://github.com/alteryx/nlp_primitives/workflows/Tests/badge.svg)
 
-
 nlp_primitives is a Python library with Natural Language Processing Primitives, intended for use with [Featuretools](https://github.com/Featuretools/featuretools).
 
 nlp_primitives allows you to make use of text data in your machine learning pipeline in the same pipeline as the rest of your data.
