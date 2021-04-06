@@ -1,6 +1,6 @@
 # NLP Primitives
 
-[![CircleCI](https://circleci.com/gh/FeatureLabs/nlp_primitives.svg?style=svg&circle-token=d9f0b837238eed1f2b75be267f4963d4cb5a1284)](https://circleci.com/gh/FeatureLabs/nlp_primitives)
+![Tests](https://github.com/alteryx/nlp_primitives/workflows/Tests/badge.svg)
 
 nlp_primitives is a Python library with Natural Language Processing Primitives, intended for use with [Featuretools](https://github.com/Featuretools/featuretools).
 
