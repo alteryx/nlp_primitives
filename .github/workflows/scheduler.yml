@@ -5,29 +5,34 @@ on:
 
 name: Scheduler
 jobs:
-  dispatch_tests:
-    name: Dispatch Tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get latest test run conclusion
-        id: latest_tests
-        run: |
-          runs=$(curl https://api.github.com/repos/${{ github.repository }}/actions/runs)
-          match='[.workflow_runs[]|select(.name=="Tests" and .status=="completed")][0].conclusion'
-          conclusion=$(echo $runs | jq -r "$match")
-          echo ::set-output name=conclusion::$conclusion
-      - name: Check for recent commit to Featuretools
-        if: ${{ steps.latest_tests.outputs.conclusion == 'success' }}
-        uses: featurelabs/gh-action-circleci@v2
-        id: is_recent_commit
-        with:
-          task: is_recent_commit
-          repository: alteryx/featuretools
-          recent: hours=25
-      - name: Create dispatch event using REST API
-        if: ${{ steps.latest_tests.outputs.conclusion == 'success' && steps.is_recent_commit.outputs.value == 'True' }}
-        run: |
-          curl -X POST https://api.github.com/repos/${{ github.repository }}/actions/workflows/tests.yml/dispatches \
-          -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: token ${{ secrets.REPO_SCOPED_TOKEN }}" \
-          -d '{"ref": "main"}'
+  schedule_tests:
+      name: Schedule Tests
+      runs-on: ubuntu-latest
+      steps:
+        - name: Get workflow status from latest run
+          uses: alteryx/gh-action-ci@v3
+          id: is_workflow_success
+          with:
+            task: is_workflow_success
+            repository: ${{ github.repository }}
+            branch: main
+            workflow: Tests
+
+        - name: Check for recent commit to Featuretools
+          if: ${{ steps.is_workflow_success.outputs.value == 'True' }}
+          uses: alteryx/gh-action-ci@v3
+          id: is_recent_commit
+          with:
+            task: is_recent_commit
+            repository: alteryx/featuretools
+            recent: hours=25
+
+        - name: Run tests
+          if: ${{ steps.is_recent_commit.outputs.value == 'True' }}
+          uses: alteryx/gh-action-ci@v3
+          with:
+            task: run_workflow
+            repository: ${{ github.repository }}
+            branch: main
+            workflow: tests.yml
+            token: ${{ secrets.REPO_SCOPED_TOKEN }}
