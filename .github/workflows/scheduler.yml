@@ -1,0 +1,38 @@
+on:
+  schedule:
+    # At 05:00 PM UTC
+    - cron: "0 17 * * *"
+
+name: Scheduler
+jobs:
+  schedule_tests:
+      name: Schedule Tests
+      runs-on: ubuntu-latest
+      steps:
+        - name: Get workflow status from latest run
+          uses: alteryx/gh-action-ci@v3
+          id: is_workflow_success
+          with:
+            task: is_workflow_success
+            repository: ${{ github.repository }}
+            branch: main
+            workflow: Tests
+
+        - name: Check for recent commit to Featuretools
+          if: ${{ steps.is_workflow_success.outputs.value == 'True' }}
+          uses: alteryx/gh-action-ci@v3
+          id: is_recent_commit
+          with:
+            task: is_recent_commit
+            repository: alteryx/featuretools
+            recent: hours=25
+
+        - name: Run tests
+          if: ${{ steps.is_recent_commit.outputs.value == 'True' }}
+          uses: alteryx/gh-action-ci@v3
+          with:
+            task: run_workflow
+            repository: ${{ github.repository }}
+            branch: main
+            workflow: tests.yml
+            token: ${{ secrets.REPO_SCOPED_TOKEN }}
