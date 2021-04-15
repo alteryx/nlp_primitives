@@ -35,4 +35,4 @@ jobs:
             repository: ${{ github.repository }}
             branch: main
             workflow: tests.yml
-            token: ${{ secrets.REPO_SCOPED_TOKEN }}
+            token: ${{ secrets.GITHUB_TOKEN }}
