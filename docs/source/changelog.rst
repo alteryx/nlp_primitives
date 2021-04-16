@@ -8,10 +8,9 @@ Changelog
     * Documentation Changes
         * Update UniversalSentenceEncoder docstring example (:pr:`42`)
     * Testing Changes
-        * Change from GitHub PAT to auto generated GitHub Token for dependency checker (:pr:`53`)
-        
+
     Thanks to the following people for contributing to this release:
-    :user:`gsheni`, :user:`rwedge`
+    :user:`rwedge`
 
 **v1.1.0** Oct 26, 2020
     * Changes
