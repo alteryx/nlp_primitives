@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python_version: ["3.6", "3.7", "3.8"]
+        python_version: ["3.7", "3.8"]
         featuretools_version: ["Release", "Main"]
     steps:
       - name: Set up python ${{ matrix.python_version }}
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python_version: ["3.6", "3.7", "3.8"]
+        python_version: ["3.7", "3.8"]
     steps:
       - name: Set up python ${{ matrix.python_version }}
         uses: actions/setup-python@v2
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python_version: ["3.6", "3.7", "3.8"]
+        python_version: ["3.7", "3.8"]
         featuretools_version: ["Release", "Main"]
     steps:
       - name: Set up python ${{ matrix.python_version }}
@@ -89,7 +89,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python_version: ["3.6", "3.7", "3.8"]
+        python_version: ["3.7", "3.8"]
     steps:
       - name: Set up python ${{ matrix.python_version }}
         uses: actions/setup-python@v2
