@@ -2,11 +2,12 @@ import nltk
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import NaturalLanguage, Numeric
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import make_pipeline
+from woodwork.column_schema import ColumnSchema
+from woodwork.logical_types import NaturalLanguage
 
 from .utilities import clean_tokens
 
@@ -44,8 +45,8 @@ class LSA(TransformPrimitive):
 
     """
     name = "lsa"
-    input_types = [NaturalLanguage]
-    return_type = Numeric
+    input_types = [ColumnSchema(logical_type=NaturalLanguage)]
+    return_type = ColumnSchema(semantic_tags={'numeric'})
     default_value = 0
 
     def __init__(self):

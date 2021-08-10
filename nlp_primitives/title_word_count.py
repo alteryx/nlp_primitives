@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import NaturalLanguage, Numeric
+from woodwork.column_schema import ColumnSchema
+from woodwork.logical_types import NaturalLanguage
 
 
 class TitleWordCount(TransformPrimitive):
@@ -22,8 +23,8 @@ class TitleWordCount(TransformPrimitive):
         [2.0, 0.0, 1.0]
     """
     name = "title_word_count"
-    input_types = [NaturalLanguage]
-    return_type = Numeric
+    input_types = [ColumnSchema(logical_type=NaturalLanguage)]
+    return_type = ColumnSchema(semantic_tags={'numeric'})
     default_value = 0
 
     def get_function(self):

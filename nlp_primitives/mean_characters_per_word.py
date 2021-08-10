@@ -3,7 +3,8 @@
 import re
 
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import NaturalLanguage, Numeric
+from woodwork.column_schema import ColumnSchema
+from woodwork.logical_types import NaturalLanguage
 
 
 class MeanCharactersPerWord(TransformPrimitive):
@@ -23,8 +24,8 @@ class MeanCharactersPerWord(TransformPrimitive):
         [3.0, 4.0, 5.0]
     """
     name = "mean_characters_per_word"
-    input_types = [NaturalLanguage]
-    return_type = Numeric
+    input_types = [ColumnSchema(logical_type=NaturalLanguage)]
+    return_type = ColumnSchema(semantic_tags={'numeric'})
     default_value = 0
 
     def get_function(self):

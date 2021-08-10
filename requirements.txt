@@ -1,5 +1,6 @@
-numpy>=1.13.3
-pandas>=0.23.0
-featuretools>=0.20.0
+numpy>=1.17.5
+pandas>=1.3.0
+# featuretools>=1.0.0
+featuretools @ git+https://github.com/alteryx/featuretools.git@woodwork-integration
 nltk>=3.4.5
 scikit-learn>=0.20.0

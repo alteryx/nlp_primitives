@@ -9,6 +9,7 @@ class TestDiversityScore(PrimitiveT):
     primitive = DiversityScore
 
     def test_primitive_func_1(self):
+        breakpoint()
         array = pd.Series(['This is a diverse string.',
                            'Not diverse not diverse not',
                            'this is a semi diverse diverse example',
@@ -20,6 +21,7 @@ class TestDiversityScore(PrimitiveT):
                                        check_names=False)
 
     def test_nan(self):
+        breakpoint()
         x = pd.Series([np.nan, '', 'This! ^is,, : o,, #punctuation.'])
         primitive_func = self.primitive().get_function()
 
@@ -27,6 +29,7 @@ class TestDiversityScore(PrimitiveT):
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
     def test_with_featuretools(self, es):
+        breakpoint()
         transform, aggregation = find_applicable_primitives(self.primitive)
         primitive_instance = self.primitive()
 

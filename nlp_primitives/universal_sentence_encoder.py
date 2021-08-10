@@ -1,6 +1,7 @@
 from featuretools.primitives import TransformPrimitive
 from featuretools.utils.gen_utils import import_or_raise
-from featuretools.variable_types import NaturalLanguage, Numeric
+from woodwork.column_schema import ColumnSchema
+from woodwork.logical_types import NaturalLanguage
 
 
 class UniversalSentenceEncoder(TransformPrimitive):
@@ -23,8 +24,8 @@ class UniversalSentenceEncoder(TransformPrimitive):
         [0.0178, 0.0616, -0.0089]
     """
     name = "universal_sentence_encoder"
-    input_types = [NaturalLanguage]
-    return_type = Numeric
+    input_types = [ColumnSchema(logical_type=NaturalLanguage)]
+    return_type = ColumnSchema(semantic_tags={'numeric'})
 
     def __init__(self):
         message = "In order to use the UniversalSentenceEncoder primitive install 'nlp_primitives[complete]'"
