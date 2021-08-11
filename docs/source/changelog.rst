@@ -5,12 +5,13 @@ Changelog
     * Enhancements
     * Fixes
     * Changes
+        * Update primitives for compatibility with Featuretools 1.0.0 (:pr:`61`)
     * Documentation Changes
         * Update UniversalSentenceEncoder docstring example (:pr:`42`)
     * Testing Changes
 
     Thanks to the following people for contributing to this release:
-    :user:`rwedge`
+    :user:`rwedge`, :user:`thehomebrewnerd`
 
 **v1.1.0** Oct 26, 2020
     * Changes
