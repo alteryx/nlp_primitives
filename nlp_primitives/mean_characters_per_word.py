@@ -2,8 +2,6 @@
 
 import re
 
-import numpy as np
-import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import NaturalLanguage
@@ -41,7 +39,7 @@ class MeanCharactersPerWord(TransformPrimitive):
             df = x.str.split(expand=True)
             df = df.reset_index()
             df = df.melt(id_vars='index', var_name='word_index', value_name='word')
-            df['n_characters'] = df['word'].str.len().replace({pd.NA: np.nan})
-            results = df.groupby(by=['index']).mean()['n_characters']
+            df['n_characters'] = df['word'].str.len()
+            results = df.groupby(by=['index']).mean(numeric_only=False)['n_characters']
             return results
         return mean_characters_per_word
