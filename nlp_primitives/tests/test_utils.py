@@ -89,7 +89,6 @@ def valid_dfs(es, aggregations, transforms, feature_substrings,
                    trans_primitives=transforms,
                    max_features=max_features,
                    max_depth=max_depth, features_only=True)
-
     applicable_features = []
     for feat in features:
         for x in feature_substrings:
