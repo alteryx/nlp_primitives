@@ -9,12 +9,11 @@ except ImportError:
 import featuretools as ft
 import pytest
 from featuretools import dfs, list_primitives
-from featuretools.primitives import Absolute
 from featuretools.tests.testing_utils import make_ecommerce_entityset
 
 
 class PrimitiveT:
-    primitive = Absolute
+    primitive = None
 
     @pytest.fixture(autouse=True, scope='session')
     def es(self):
