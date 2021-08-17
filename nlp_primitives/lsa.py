@@ -7,7 +7,7 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import make_pipeline
 from woodwork.column_schema import ColumnSchema
-from woodwork.logical_types import NaturalLanguage
+from woodwork.logical_types import Double, NaturalLanguage
 
 from .utilities import clean_tokens
 
@@ -46,7 +46,7 @@ class LSA(TransformPrimitive):
     """
     name = "lsa"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
     default_value = 0
 
     def __init__(self):
