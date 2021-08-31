@@ -5,6 +5,7 @@ __version__ = '1.1.0'
 import pkg_resources
 
 from .diversity_score import DiversityScore
+from .elmo import Elmo
 from .lsa import LSA
 from .mean_characters_per_word import MeanCharactersPerWord
 from .part_of_speech_count import PartOfSpeechCount
