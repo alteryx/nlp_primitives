@@ -6,11 +6,26 @@ Changelog
     * Fixes
     * Changes
     * Documentation Changes
-        * Update UniversalSentenceEncoder docstring example (:pr:`42`)
     * Testing Changes
 
     Thanks to the following people for contributing to this release:
-    :user:`rwedge`
+    ...
+
+**v1.2.0** Sept 3, 2021
+    * Enhancements
+        * Add Elmo primitive (:pr:`64`)
+    * Changes
+        * Drop python 3.6 support (:pr:`57`)
+    * Documentation Changes
+        * Update UniversalSentenceEncoder docstring example (:pr:`42`)
+
+    Thanks to the following people for contributing to this release:
+    :user:`davesque`, :user:`gsheni`, :user:`jeff-hernandez`, :user:`rwedge`
+
+Breaking Changes
+++++++++++++++++
+* Drop python 3.6 support (:pr:`57`)
+
 
 **v1.1.0** Oct 26, 2020
     * Changes
