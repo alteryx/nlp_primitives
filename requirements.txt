@@ -1,5 +1,5 @@
 numpy>=1.17.5
 pandas>=1.3.0
-featuretools==1.0.0.dev0  # Update after Featuretools 1.0.0 is released
+featuretools==1.0.0.rc1  # Update after Featuretools 1.0.0 is released
 nltk>=3.4.5
 scikit-learn>=0.20.0
