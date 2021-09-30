@@ -9,6 +9,7 @@ jobs:
     name: Entry Point Test - Python ${{ matrix.python_version }} - Featuretools ${{ matrix.featuretools_version }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python_version: ["3.7", "3.8"]
         featuretools_version: ["Release", "Main"]
@@ -36,6 +37,7 @@ jobs:
     name: Lint Tests - Python ${{ matrix.python_version }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python_version: ["3.7", "3.8"]
     steps:
@@ -60,6 +62,7 @@ jobs:
     name: Unit Tests - Python ${{ matrix.python_version }} - Featuretools ${{ matrix.featuretools_version }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python_version: ["3.7", "3.8"]
         featuretools_version: ["Release", "Main"]
@@ -88,6 +91,7 @@ jobs:
     name: Package Test - Python ${{ matrix.python_version }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python_version: ["3.7", "3.8"]
     steps:
