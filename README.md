@@ -63,7 +63,7 @@ from featuretools.nlp_primitives import TitleWordCount
 from featuretools.primitives import Mean
 
 entityset = ft.demo.load_retail()
-feature_matrix, features = ft.dfs(entityset=entityset, target_entity='products', agg_primitives=[Mean], trans_primitives=[TitleWordCount])
+feature_matrix, features = ft.dfs(entityset=entityset, target_dataframe_name='products', agg_primitives=[Mean], trans_primitives=[TitleWordCount])
 
 feature_matrix.head(5)
 ```

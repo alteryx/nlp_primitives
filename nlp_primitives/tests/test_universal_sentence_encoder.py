@@ -8,6 +8,7 @@ from featuretools.primitives.utils import (
     PrimitivesDeserializer,
     serialize_primitive
 )
+from woodwork.logical_types import NaturalLanguage
 
 from nlp_primitives import UniversalSentenceEncoder
 
@@ -71,12 +72,12 @@ def test_feature_serialization(universal_sentence_encoder, tmpdir):
 
     es = ft.EntitySet("es")
     df = pd.DataFrame({"id": [0, 1, 2, 3, 4], "sentences": sentences})
-    es.entity_from_dataframe(dataframe=df,
-                             entity_id="entity",
-                             index="id",
-                             variable_types={"sentences": ft.variable_types.NaturalLanguage})
+    es.add_dataframe(dataframe=df,
+                     dataframe_name="dataframe",
+                     index="id",
+                     logical_types={"sentences": NaturalLanguage})
     fm, features = ft.dfs(entityset=es,
-                          target_entity="entity",
+                          target_dataframe_name="dataframe",
                           trans_primitives=[universal_sentence_encoder])
 
     filename = str(tmpdir.join("features.txt"))

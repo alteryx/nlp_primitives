@@ -1,7 +1,8 @@
 import numpy as np
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
-from featuretools.variable_types import NaturalLanguage, Numeric
+from woodwork.column_schema import ColumnSchema
+from woodwork.logical_types import Double, NaturalLanguage
 
 from .utilities import clean_tokens
 
@@ -25,8 +26,8 @@ class DiversityScore(TransformPrimitive):
         [0.3333333333333333, 1.0, 0.5, 1.0]
     """
     name = "diversity_score"
-    input_types = [NaturalLanguage]
-    return_type = Numeric
+    input_types = [ColumnSchema(logical_type=NaturalLanguage)]
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
     default_value = 0
 
     def get_function(self):

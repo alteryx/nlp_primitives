@@ -9,12 +9,11 @@ except ImportError:
 import featuretools as ft
 import pytest
 from featuretools import dfs, list_primitives
-from featuretools.primitives import Absolute
 from featuretools.tests.testing_utils import make_ecommerce_entityset
 
 
-class PrimitiveT(object):
-    primitive = Absolute
+class PrimitiveT:
+    primitive = None
 
     @pytest.fixture(autouse=True, scope='session')
     def es(self):
@@ -79,17 +78,16 @@ def convert(name):
 
 
 def valid_dfs(es, aggregations, transforms, feature_substrings,
-              target_entity='log', multi_output=False, max_depth=3,
+              target_dataframe_name='log', multi_output=False, max_depth=3,
               max_features=-1, instance_ids=[0, 1, 2, 3]):
     if not isinstance(feature_substrings, list):
         feature_substrings = [feature_substrings]
 
-    features = dfs(entityset=es, target_entity=target_entity,
+    features = dfs(entityset=es, target_dataframe_name=target_dataframe_name,
                    agg_primitives=aggregations,
                    trans_primitives=transforms,
                    max_features=max_features,
                    max_depth=max_depth, features_only=True)
-
     applicable_features = []
     for feat in features:
         for x in feature_substrings:

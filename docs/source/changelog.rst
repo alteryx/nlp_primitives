@@ -5,12 +5,13 @@ Changelog
     * Enhancements
     * Fixes
     * Changes
+        * Update primitives for compatibility with Featuretools 1.0.0 (:pr:`61`)
     * Documentation Changes
     * Testing Changes
         * Individual CI jobs will not cancel if other jobs fail (:pr:`67`)
 
     Thanks to the following people for contributing to this release:
-    :user:`rwedge`
+    :user:`rwedge`, :user:`thehomebrewnerd`
 
 **v1.2.0** Sept 3, 2021
     * Enhancements
@@ -26,7 +27,6 @@ Changelog
 Breaking Changes
 ++++++++++++++++
 * Drop python 3.6 support (:pr:`57`)
-
 
 **v1.1.0** Oct 26, 2020
     * Changes
