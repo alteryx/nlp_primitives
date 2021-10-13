@@ -1,6 +1,16 @@
 =========
 Changelog
 =========
+.. **Future Release**
+    * Enhancements
+    * Fixes
+    * Changes
+    * Documentation Changes
+    * Testing Changes
+
+.. Thanks to the following people for contributing to this release:
+
+
 **v2.0.0** Oct 13, 2021
     * Changes
         * Update primitives for compatibility with Featuretools 1.0.0 (:pr:`61`)
