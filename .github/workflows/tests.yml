@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python_version: ["3.7", "3.8"]
+        python_version: ["3.7", "3.8", "3.9"]
         featuretools_version: ["Release", "Main"]
     steps:
       - name: Set up python ${{ matrix.python_version }}
@@ -39,7 +39,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python_version: ["3.7", "3.8"]
+        python_version: ["3.7", "3.8", "3.9"]
     steps:
       - name: Set up python ${{ matrix.python_version }}
         uses: actions/setup-python@v2
@@ -64,7 +64,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python_version: ["3.7", "3.8"]
+        python_version: ["3.7", "3.8", "3.9"]
         featuretools_version: ["Release", "Main"]
     steps:
       - name: Set up python ${{ matrix.python_version }}
@@ -93,7 +93,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python_version: ["3.7", "3.8"]
+        python_version: ["3.7", "3.8", "3.9"]
     steps:
       - name: Set up python ${{ matrix.python_version }}
         uses: actions/setup-python@v2
