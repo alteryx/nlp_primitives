@@ -14,11 +14,13 @@ Changelog
 **v2.0.0** Oct 13, 2021
     * Changes
         * Update primitives for compatibility with Featuretools 1.0.0 (:pr:`61`)
+        * Update setup.py with new and correct information (:pr:`72)
     * Testing Changes
         * Individual CI jobs will not cancel if other jobs fail (:pr:`67`)
+        * Add python 3.9 CI for unit tests and entrypoint tests (:pr:`72)
 
     Thanks to the following people for contributing to this release:
-    :user:`rwedge`, :user:`thehomebrewnerd`
+     :user:`gsheni`, :user:`rwedge`, :user:`thehomebrewnerd`
 
 **v1.2.0** Sept 3, 2021
     * Enhancements
