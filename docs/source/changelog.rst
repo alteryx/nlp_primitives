@@ -20,7 +20,7 @@ Changelog
         * Individual CI jobs will not cancel if other jobs fail (:pr:`67`)
 
     Thanks to the following people for contributing to this release:
-     :user:`rwedge`, :user:`thehomebrewnerd`
+    :user:`rwedge`, :user:`thehomebrewnerd`
 
 **v1.2.0** Sept 3, 2021
     * Enhancements
