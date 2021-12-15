@@ -8,7 +8,7 @@ from numpy import nan
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import Double, NaturalLanguage
 
-from nlp_primitives.typing import Tokens
+from nlp_primitives.types import Tokens
 from nlp_primitives.utilities import get_non_empty_tokens
 
 
