@@ -16,7 +16,7 @@ class TotalWordLength(TransformPrimitive):
         If a string is empty or `NaN`, return `NaN`.
 
     Args:
-        delimiters_regex (str): Delimiters as a regex strign to use for splitting strings into words.
+        delimiters_regex (str): Delimiters as a regex string for splitting text into words.
             The default delimiters include "- [].,!?;\\n]".
 
     Examples:
