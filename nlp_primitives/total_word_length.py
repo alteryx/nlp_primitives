@@ -1,21 +1,9 @@
 # -*- coding: utf-8 -*-
 
 
-from typing import Iterable
-
 from featuretools.primitives.base import TransformPrimitive
-from numpy import nan
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import Double, NaturalLanguage
-
-from nlp_primitives.types import Tokens
-from nlp_primitives.utilities import get_non_empty_tokens
-
-
-def total_length(tokens: Tokens) -> float:
-    if not isinstance(tokens, Iterable):
-        return nan
-    return float(sum(len(x) for x in tokens))
 
 
 class TotalWordLength(TransformPrimitive):
@@ -27,22 +15,27 @@ class TotalWordLength(TransformPrimitive):
         a series of any characters not separated by a delimiter.
         If a string is empty or `NaN`, return `NaN`.
 
+    Args:
+        delimiters_regex (str): Delimiters as a regex strign to use for splitting strings into words.
+            The default delimiters include "- [].,!?;\\n]".
+
     Examples:
-        >>> x = ['This is a test file', 'This is second line', 'third line $1,000']
+        >>> x = ['This is a test file', 'This is second line', 'third line $1,000', None]
         >>> total_word_length = TotalWordLength()
         >>> total_word_length(x).tolist()
-        [15.0, 16.0, 15.0]
+        [15.0, 16.0, 14.0, nan]
     """
     name = "total_word_length"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
     return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+
     default_value = 0
 
-    def __init__(self, delimiters_regex=None):
+    def __init__(self, delimiters_regex=r"[- \[\].,!\?;\n]"):
         self.delimiters_regex = delimiters_regex
 
     def get_function(self):
         def total_word_length(x):
-            x = get_non_empty_tokens(x, regex=self.delimiters_regex)
-            return x.apply(total_length)
+            x = x.str.len() - x.fillna(str()).str.findall(self.delimiters_regex).apply(len)
+            return x
         return total_word_length
