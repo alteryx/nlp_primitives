@@ -36,6 +36,7 @@ class TotalWordLength(TransformPrimitive):
 
     def get_function(self):
         def total_word_length(x):
-            x = x.str.len() - x.fillna(str()).str.findall(self.delimiters_regex).apply(len)
-            return x
+            delimiters = x.fillna(str()).str.findall(self.delimiters_regex)
+            counts = x.str.len() - delimiters.apply(len)
+            return counts
         return total_word_length
