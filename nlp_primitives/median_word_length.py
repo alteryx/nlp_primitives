@@ -18,13 +18,13 @@ class MedianWordLength(TransformPrimitive):
 
     Args:
         delimiters_regex (str): Delimiters as a regex string for splitting text into words.
-            The default delimiters include "- [].,!?;\\n]".
+            The default delimiters include "- [].,!?;\\n".
 
     Examples:
         >>> x = ['This is a test file', 'This is second line', 'third line $1,000', None]
         >>> median_word_length = MedianWordLength()
         >>> median_word_length(x).tolist()
-        [15.0, 16.0, 14.0, nan]
+        [4.0, 4.0, 3.5, nan]
     """
     name = "median_word_length"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
@@ -36,7 +36,11 @@ class MedianWordLength(TransformPrimitive):
         self.delimiters_regex = delimiters_regex
 
     def get_function(self):
+        def get_median(words):
+            if isinstance(words, list):
+                return median([len(word) for word in words])
+
         def median_word_length(x):
-            delimiters = x.str.count(self.delimiters_regex)
-            return x.str.len() - delimiters
+            words = x.str.split(self.delimiters_regex)
+            return words.apply(get_median)
         return median_word_length
