@@ -46,9 +46,14 @@ installdeps-test:
 .PHONY: checkdeps
 checkdeps:
 	$(eval allow_list='featuretools|nltk')
-	pip freeze | grep -v "nlp_primitives.git" | grep -E $(allow_list) > $(OUTPUT_PATH)
+	pip freeze | grep -v "nlp_primitives.git" | grep -E $(allow_list) > $(OUTPUT_FILEPATH)
 
-.PHONY: nlp_primitives
+.PHONY: checkdepscomplete
+checkdepscomplete:
+	$(eval allow_list='featuretools|nltk|tensorflow|tensorflow_hub')
+	pip freeze | grep -v "nlp_primitives.git" | grep -E $(allow_list) > $(OUTPUT_FILEPATH)
+
+.PHONY: package_nlp_primitives
 package_nlp_primitives:
 	python setup.py sdist
 	$(eval PACKAGE=$(shell python setup.py --version))
