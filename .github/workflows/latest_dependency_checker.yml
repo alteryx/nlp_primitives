@@ -24,7 +24,7 @@ jobs:
         python -m pip install -r test-requirements.txt
         make checkdeps OUTPUT_FILEPATH=nlp_primitives/tests/requirement_files/latest_core_dependencies.txt
         cat nlp_primitives/tests/requirement_files/latest_core_dependencies.txt
-    - name: Update latest core dependencies
+    - name: Update latest complete dependencies
       run: |
         python -m virtualenv venv_complete
         source venv_complete/bin/activate
