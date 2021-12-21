@@ -1,7 +1,18 @@
 =========
 Changelog
 =========
+.. Future Release
+  ==============
+    * Enhancements
+    * Fixes
+    * Changes
+    * Documentation Changes
+        * Remove testing on conda forge in release.md (:pr:`84`)
+    * Testing Changes
 
+    Thanks to the following people for contributing to this release:
+    :user:`gsheni`
+    
 **v2.1.0** Dec 21, 2021
     * Enhancements
         * Add primitive for total word length ``TotalWordLength`` (:pr:`79`)
