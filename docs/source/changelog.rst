@@ -1,14 +1,13 @@
 =========
 Changelog
 =========
-**Future Release**
+
+**v2.1.0** Dec 21, 2021
     * Enhancements
         * Add primitive for total word length ``TotalWordLength`` (:pr:`79`)
         * Add primitive for median word length ``MedianWordLength`` (:pr:`80`)
-    * Fixes
     * Changes
         * Update setup.py with new and correct information (:pr:`72`)
-    * Documentation Changes
     * Testing Changes
         * Add python 3.9 CI for unit tests and entrypoint tests (:pr:`72`)
 
