@@ -2,7 +2,20 @@
 Changelog
 =========
 
-**v2.1.0** Dec 21, 2021
+Future Release
+==============
+    * Enhancements
+    * Fixes
+    * Changes
+    * Documentation Changes
+        * Remove testing on conda forge in release.md (:pr:`84`)
+    * Testing Changes
+
+    Thanks to the following people for contributing to this release:
+    :user:`gsheni`
+    
+v2.1.0 Dec 21, 2021
+===================
     * Enhancements
         * Add primitive for total word length ``TotalWordLength`` (:pr:`79`)
         * Add primitive for median word length ``MedianWordLength`` (:pr:`80`)
@@ -14,7 +27,8 @@ Changelog
     Thanks to the following people for contributing to this release:
     :user:`gsheni`, :user:`jeff-hernandez`
 
-**v2.0.0** Oct 13, 2021
+v2.0.0 Oct 13, 2021
+===================
     * Changes
         * Update primitives for compatibility with Featuretools 1.0.0 (:pr:`61`)
     * Testing Changes
@@ -23,7 +37,8 @@ Changelog
     Thanks to the following people for contributing to this release:
     :user:`rwedge`, :user:`thehomebrewnerd`
 
-**v1.2.0** Sept 3, 2021
+v1.2.0 Sept 3, 2021
+===================
     * Enhancements
         * Add Elmo primitive (:pr:`64`)
     * Changes
@@ -38,7 +53,8 @@ Breaking Changes
 ++++++++++++++++
 * Drop python 3.6 support (:pr:`57`)
 
-**v1.1.0** Oct 26, 2020
+v1.1.0 Oct 26, 2020
+===================
     * Changes
         * Upgrade to Featuretools 0.20.0 and replace Text variable type with NaturalLanguage (:pr:`34`)
         * Include corpus download with package instead of downloading at first run. (:pr:`31`)
@@ -51,7 +67,8 @@ Breaking Changes
     Thanks to the following people for contributing to this release:
     :user:`dsherry`, :user:`eccabay`, :user:`gsheni`, :user:`rwedge`
 
-**v1.0.0** Aug 12, 2020
+v1.0.0 Aug 12, 2020
+===================
     * Changes
         * Remove tensorflow and tensorhub as core requirements, but they
         can be installed with ``pip install nlp_primitives[complete]``. The
@@ -63,29 +80,37 @@ Breaking Changes
     Thanks to the following people for contributing to this release:
     :user:`thehomebrewnerd`
 
-**v0.3.1**
+v0.3.1
+======
     * Fix installation error related to scipy version
 
-**v0.3.0**
+v0.3.0
+======
     * Fixed case-insensitivity in the Stopword Count Primitive
     * Made compatible with Tensorflow 2
     * Dropped Python 3.5 and added Python 3.8
 
-**v0.2.5**
+v0.2.5
+======
     * Removed python-dateutil as a requirement
 
-**v0.2.4**
+v0.2.4
+======
     * Added Featuretools Entry Point
     * PyPI Upload
 
-**v0.2.3**
+v0.2.3
+======
     * Small bug fixes
 
-**v0.2.2**
+v0.2.2
+======
     * Now comes with description for PyPI
 
-**v0.1.0**
+v0.1.0
+======
     * Fixed reliance on external data files
 
-**v0.0.0**
+v0.0.0
+======
     * Initial Release
