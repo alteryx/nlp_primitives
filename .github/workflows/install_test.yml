@@ -1,0 +1,44 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - main
+
+name: Install Test
+jobs:
+  install_test:
+    name: Install Test - Python ${{ matrix.python_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python_version: ["3.7", "3.8", "3.9"]
+    steps:
+      - name: Set up python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Install requirements
+        run: |
+          pip config --site set global.progress_bar off
+          pip install -r requirements.txt
+          pip install -r complete-requirements.txt
+          pip install -r test-requirements.txt
+      - name: Create source distribution
+        run: make package_nlp_primitives
+      - name: Install source distribution
+        run: |
+          NLP_PRIMITIVES_VERSION=$(python setup.py --version)
+          pip install dist/nlp_primitives-${NLP_PRIMITIVES_VERSION}.tar.gz
+      - name: Run unit tests
+        run: |
+          cd nlp_primitives
+          python -c "import nlp_primitives; print(nlp_primitives.__version__)"
+          python -c "import sys; print(sys.path)"
+          make -f ../Makefile unit-tests

@@ -1,5 +1,4 @@
-.PHONY : entry-point-test lint-fix lint-tests unit-tests
-
+.PHONY : entry-point-test
 entry-point-test:
 	python -c "from featuretools import nlp_primitives"
 
@@ -46,8 +45,8 @@ installdeps-test:
 
 .PHONY: checkdeps
 checkdeps:
-	$(eval allow_list='nltk|tensorflow|tensorflow_hub')
-	pip freeze | grep -v "alteryx/featuretools.git" | grep -E $(allow_list) > $(OUTPUT_PATH)
+	$(eval allow_list='featuretools|nltk')
+	pip freeze | grep -v "nlp_primitives.git" | grep -E $(allow_list) > $(OUTPUT_PATH)
 
 .PHONY: nlp_primitives
 package_nlp_primitives:

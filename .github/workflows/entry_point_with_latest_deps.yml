@@ -1,0 +1,36 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - main
+
+name: Entry Point Tests - Latest Dependencies
+jobs:
+  entry_point_test:
+    name: Entry Point Test - Python ${{ matrix.python_version }} - Featuretools ${{ matrix.featuretools_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python_version: ["3.7", "3.8", "3.9"]
+        featuretools_version: ["Release", "Main"]
+    steps:
+      - name: Set up python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Install requirements
+        run: |
+          pip config --site set global.progress_bar off
+          make installdeps-complete
+      - if: ${{ matrix.featuretools_version == 'Main' }}
+        name: Install latest version of Featuretools from main branch
+        run: pip install git+https://github.com/alteryx/featuretools.git@main#egg=featuretools --force-reinstall
+      - name: Test entry point
+        run: make entry-point-test
