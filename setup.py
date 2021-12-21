@@ -16,7 +16,7 @@ extras_require = {
 
 setup(
     name='nlp_primitives',
-    version='2.1.0.dev',
+    version='2.1.0.dev0',
     author='Alteryx, Inc.',
     author_email='support@featurelabs.com',
     classifiers=[
