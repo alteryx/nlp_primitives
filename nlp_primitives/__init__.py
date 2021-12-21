@@ -1,7 +1,7 @@
 # flake8: noqa
 import nltk.data
 
-__version__ = '2.0.0'
+__version__ = '2.1.0'
 import pkg_resources
 
 from .diversity_score import DiversityScore
