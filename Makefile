@@ -44,6 +44,11 @@ installdeps-test:
 	pip install -e ".[complete]"
 	pip install -r test-requirements.txt
 
+.PHONY: checkdeps
+checkdeps:
+	$(eval allow_list='nltk|tensorflow|tensorflow_hub')
+	pip freeze | grep -v "alteryx/featuretools.git" | grep -E $(allow_list) > $(OUTPUT_PATH)
+
 .PHONY: nlp_primitives
 package_nlp_primitives:
 	python setup.py sdist
