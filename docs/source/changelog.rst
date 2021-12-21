@@ -1,8 +1,9 @@
 =========
 Changelog
 =========
-.. Future Release
-  ==============
+
+Future Release
+==============
     * Enhancements
     * Fixes
     * Changes
