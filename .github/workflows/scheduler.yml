@@ -34,5 +34,5 @@ jobs:
             task: run_workflow
             repository: ${{ github.repository }}
             branch: main
-            workflow: tests.yml
+            workflow: unit_tests_with_latest_deps.yml
             token: ${{ secrets.REPO_SCOPED_TOKEN }}
