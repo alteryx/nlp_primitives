@@ -10,7 +10,7 @@ Future Release
     * Documentation Changes
         * Remove testing on conda forge in release.md (:pr:`84`)
     * Testing Changes
-        * Update scheduler workflow to use correct name and file (:pr:`86`, :pr:`84`)
+        * Update scheduler workflow to use correct name and file (:pr:`87`, :pr:`86`)
 
     Thanks to the following people for contributing to this release:
     :user:`gsheni`
