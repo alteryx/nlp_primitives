@@ -34,7 +34,7 @@ class WhitespaceCount(StringCount):
         >>> x = ['', 'hi im ethan', 'multiple    spaces']
         >>> upper_case_count = WhitespaceCount()
         >>> upper_case_count(x).tolist()
-        [0.0, 2.0, 4.0]
+        [0, 2, 4]
     """
 
     name = "whitespace_count"
