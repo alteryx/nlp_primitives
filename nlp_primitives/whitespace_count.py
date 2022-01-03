@@ -3,26 +3,10 @@ from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
-
-class StringCount(TransformPrimitive):
-    """pd.Series.str.count"""
-
-    name = "string_count"
-    input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={'numeric'})
-
-    def __init__(self, regex=None):
-        self.regex = regex
-
-    def get_function(self):
-        def get_str_count(column):
-            assert self.regex is not None, "regex needs to be defined"
-            return column.str.count(self.regex)
-
-        return get_str_count
+from .count_string import CountString
 
 
-class WhitespaceCount(StringCount):
+class WhitespaceCount(CountString):
     """Calculates number of whitespaces in a string.
 
     Description:
@@ -40,4 +24,4 @@ class WhitespaceCount(StringCount):
     default_value = 0
 
     def __init__(self):
-        super().__init__(" ")
+        super().__init__(string=" ")
