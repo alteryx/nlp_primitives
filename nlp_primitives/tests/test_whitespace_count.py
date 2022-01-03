@@ -22,7 +22,6 @@ class TestWhitespaceCount(PrimitiveT):
         x = pd.Series([np.nan,
                        '',
                        'This IS a STRING.'])
-        primitive_func = self.primitive().get_function()
         answers = [np.nan, 0, 3]
         self.compare(self.primitive(), x, answers)
 
