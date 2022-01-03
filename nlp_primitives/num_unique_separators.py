@@ -15,8 +15,8 @@ class NumUniqueSeparators(TransformPrimitive):
         is null determined by pd.isnull return pd.NA.
 
     Examples:
-        >>> x = ['This is a test file', 'third, line!', 'notinlist@#$%^%&']
-        >>> num_unique_separators = NumUniqueSeparators(" .,!?;\n")
+        >>> x = ['First. Line.', 'This. is the second, line!', 'notinlist@#$%^%&']
+        >>> num_unique_separators = NumUniqueSeparators(".,!")
         >>> num_unique_separators(x).tolist()
         [1, 3, 0]
     """
