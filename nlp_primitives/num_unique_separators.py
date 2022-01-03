@@ -25,9 +25,9 @@ class NumUniqueSeparators(TransformPrimitive):
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
     return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={'numeric'})
 
-    def __init__(self, separator=NL_separators):
-        if separator is not None:
-            self.separators = set(separator)
+    def __init__(self, separators=NL_separators):
+        if separators is not None:
+            self.separators = set(separators)
 
     def get_function(self):
         def count_unique_separator(s):
