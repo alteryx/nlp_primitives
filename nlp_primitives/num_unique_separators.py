@@ -3,7 +3,7 @@ from featuretools.primitives import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
-NL_separators = " .,!?;\n"
+natural_language_separators = " .,!?;\n"
 
 
 class NumUniqueSeparators(TransformPrimitive):
@@ -15,17 +15,17 @@ class NumUniqueSeparators(TransformPrimitive):
         is null determined by pd.isnull return pd.NA.
 
     Examples:
-        >>> x = ['This is a test file', np.nan, 'third, line!', 'notinlist@#$%^%&']
-        >>> num_unique_separators = NumUniqueSeparators()
+        >>> x = ['This is a test file', 'third, line!', 'notinlist@#$%^%&']
+        >>> num_unique_separators = NumUniqueSeparators(" .,!?;\n")
         >>> num_unique_separators(x).tolist()
-        [1, pd.NA, 3, 0]
+        [1, 3, 0]
     """
 
     name = "num_unique_separators"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
     return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={'numeric'})
 
-    def __init__(self, separators=NL_separators):
+    def __init__(self, separators=natural_language_separators):
         if separators is not None:
             self.separators = set(separators)
 
