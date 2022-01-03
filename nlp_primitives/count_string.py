@@ -27,26 +27,26 @@ class CountString(TransformPrimitive):
         ...               "He was there.",
         ...               "The girl went to the store."]).tolist()
         [1, 1, 2]
-        Match case of string
+        >>> # Match case of string
         >>> count_string_ignore_case = CountString(string="the", ignore_case=False)
         >>> count_string_ignore_case(["The problem was difficult.",
         ...                           "He was there.",
         ...                           "The girl went to the store."]).tolist()
         [0, 1, 1]
-        Ignore non-alphanumeric characters in the search
+        >>> # Ignore non-alphanumeric characters in the search
         >>> count_string_ignore_non_alphanumeric = CountString(string="the",
         ...                                                    ignore_non_alphanumeric=True)
         >>> count_string_ignore_non_alphanumeric(["Th*/e problem was difficult.",
         ...                                       "He was there.",
         ...                                       "The girl went to the store."]).tolist()
         [1, 1, 2]
-        Specify the string as a regex
+        >>> # Specify the string as a regex
         >>> count_string_is_regex = CountString(string="t.e", is_regex=True)
         >>> count_string_is_regex(["The problem was difficult.",
         ...                        "He was there.",
         ...                        "The girl went to the store."]).tolist()
         [1, 1, 2]
-        Match whole words only
+        >>> # Match whole words only
         >>> count_string_match_whole_words_only = CountString(string="the",
         ...                                                   match_whole_words_only=True)
         >>> count_string_match_whole_words_only(["The problem was difficult.",
