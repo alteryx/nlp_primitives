@@ -20,7 +20,7 @@ jobs:
         if: >-
           ${{
             steps.find_prs.outputs.dep_pull_request_url != '' &&
-            contains( steps.find_prs.outputs.dep_pull_request_url, 'https://github.com/alteryx/woodwork/pull/')
+            contains( steps.find_prs.outputs.dep_pull_request_url, 'https://github.com/${{ github.repository }}/pull/')
           }}
         run: |
           echo ${{ steps.find_prs.outputs.dep_pull_request_url }}
