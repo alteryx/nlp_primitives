@@ -16,7 +16,7 @@ class NumberOfCommonWords(TransformPrimitive):
         If a string is missing, return `NaN`.
 
     Examples:
-        >>> x = ['Hey! This is some natural language', 'bacon, cheesburger, AND, fries', 'I! Am. A\n duck?']
+        >>> x = ['Hey! This is some natural language', 'bacon, cheesburger, AND, fries', 'I! Am. A; duck?']
         >>> number_of_common_words = NumberOfCommonWords(word_set={'and', 'some', 'am', 'a', 'the', 'is', 'i'})
         >>> number_of_common_words(x).tolist()
         [2, 1, 3]
