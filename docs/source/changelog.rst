@@ -7,6 +7,7 @@ Future Release
     * Enhancements
     * Fixes
     * Changes
+        * Enable auto-merge for minimum and latest dependency merge requests (:pr:`91`)
     * Documentation Changes
         * Remove testing on conda forge in release.md (:pr:`84`)
     * Testing Changes
