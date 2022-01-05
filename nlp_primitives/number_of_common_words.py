@@ -12,8 +12,14 @@ class NumberOfCommonWords(TransformPrimitive):
     """Determines the number of common words in a string.
     Description:
         Given list of strings, determine the number of words that appear in a supplied wordbank.
-        The list of strings is case insensitive. The word banks should be all lower case strings.
-        If a string is missing, return `NaN`.
+        The wordbank defaults to nlp_primitives.constants.common_words_1000. The list of strings
+        is case insensitive. The word banks should be all lower case strings. If a string is
+        missing, return `NaN`.
+
+    Args:
+        word_set (set, optional): The set of words to look for in the string
+        delimiters_regex (str, optional): The regular expression used to determine
+            what separates words.
 
     Examples:
         >>> x = ['Hey! This is some natural language', 'bacon, cheesburger, AND, fries', 'I! Am. A; duck?']
@@ -42,12 +48,6 @@ class NumberOfCommonWords(TransformPrimitive):
             return num_common_words
 
         def num_common_words(x):
-            assert (
-                self.delimiters_regex is not None
-            ), "delimiters_regex needs to be defined"
-            assert (
-                self.word_set is not None
-            ), "word_set needs to be defined"
             words = x.str.split(self.delimiters_regex)
             return words.apply(get_num_in_word_bank)
         return num_common_words
