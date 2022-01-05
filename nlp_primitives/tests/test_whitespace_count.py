@@ -20,9 +20,11 @@ class TestWhitespaceCount(PrimitiveT):
 
     def test_nan(self):
         x = pd.Series([np.nan,
+                       None,
+                       pd.NA,
                        '',
                        'This IS a STRING.'])
-        answers = [np.nan, 0, 3]
+        answers = [np.nan, np.nan, np.nan, 0, 3]
         self.compare(self.primitive(), x, answers)
 
     def test_with_featuretools(self, es):

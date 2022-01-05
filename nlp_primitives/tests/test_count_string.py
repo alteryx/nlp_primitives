@@ -154,10 +154,12 @@ class TestCountString(PrimitiveT):
                                    is_regex=False,
                                    match_whole_words_only=False)
         test_cases = pd.Series([np.nan,
+                                None,
+                                pd.NA,
                                 "The fox jumped over the cat",
                                 "The there then"
                                 ])
-        answers = [np.nan, 2, 3]
+        answers = [np.nan, np.nan, np.nan, 2, 3]
         self.compare(primitive, test_cases, answers)
 
     def test_with_featuretools(self, es):
