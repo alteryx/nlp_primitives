@@ -5,7 +5,7 @@ Changelog
 Future Release
 ==============
     * Enhancements
-        * Add CountString and WhitespaceCount primitives
+        * Add CountString and WhitespaceCount primitives (:pr:`89`)
     * Fixes
     * Changes
     * Documentation Changes
