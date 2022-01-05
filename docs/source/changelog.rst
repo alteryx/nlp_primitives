@@ -5,6 +5,7 @@ Changelog
 Future Release
 ==============
     * Enhancements
+        * Add CountString and WhitespaceCount primitives
     * Fixes
     * Changes
     * Documentation Changes
@@ -13,7 +14,7 @@ Future Release
         * Update scheduler workflow to use correct name and file (:pr:`87`, :pr:`86`)
 
     Thanks to the following people for contributing to this release:
-    :user:`gsheni`
+    :user:`gsheni`, :user:`tuethan1999`
     
 v2.1.0 Dec 21, 2021
 ===================
