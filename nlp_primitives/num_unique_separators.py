@@ -13,7 +13,7 @@ class NumUniqueSeparators(TransformPrimitive):
         Given list of strings and a string of separators, determine
         the number of unique separators in each string. If a string
         is null determined by pd.isnull return pd.NA.
-    
+
     Args:
         separators (str, optional): A string of characters to count.
 
@@ -31,7 +31,6 @@ class NumUniqueSeparators(TransformPrimitive):
     def __init__(self, separators=NATURAL_LANGUAGE_SEPARATORS):
         assert separators is not None, "separators needs to be defined"
         self.separators = set(separators)
-
 
     def get_function(self):
         def count_unique_separator(s):
