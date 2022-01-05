@@ -7,7 +7,7 @@ from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
 class TestNumberOfCommonWords(PrimitiveT):
     primitive = NumberOfCommonWords
-    test_word_bank = {'the', 'of', 'to', 'and', 'a', 'in', 'is', 'it', 'you', 'that'}
+    test_word_bank = {'and', 'a', 'is'}
 
     def test_delimiter_override(self):
         x = pd.Series(['This is a test file.',
@@ -37,10 +37,10 @@ class TestNumberOfCommonWords(PrimitiveT):
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
     def test_case_insensitive(self):
-        x = pd.Series(['The', 'oF', 'to', 'AND'])
+        x = pd.Series(['Is', 'a', 'AND'])
 
         actual = self.primitive(self.test_word_bank).get_function()(x)
-        expected = pd.Series([1, 1, 1, 1])
+        expected = pd.Series([1, 1, 1])
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
     def test_with_featuretools(self, es):
