@@ -3,7 +3,7 @@ from featuretools.primitives import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
-natural_language_separators = " .,!?;\n"
+NATURAL_LANGUAGE_SEPARATORS = " .,!?;\n"
 
 
 class NumUniqueSeparators(TransformPrimitive):
@@ -13,6 +13,9 @@ class NumUniqueSeparators(TransformPrimitive):
         Given list of strings and a string of separators, determine
         the number of unique separators in each string. If a string
         is null determined by pd.isnull return pd.NA.
+    
+    Args:
+        separators (str, optional): A string of characters to count.
 
     Examples:
         >>> x = ['First. Line.', 'This. is the second, line!', 'notinlist@#$%^%&']
@@ -25,9 +28,10 @@ class NumUniqueSeparators(TransformPrimitive):
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
     return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={'numeric'})
 
-    def __init__(self, separators=natural_language_separators):
-        if separators is not None:
-            self.separators = set(separators)
+    def __init__(self, separators=NATURAL_LANGUAGE_SEPARATORS):
+        assert separators is not None, "separators needs to be defined"
+        self.separators = set(separators)
+
 
     def get_function(self):
         def count_unique_separator(s):
@@ -36,11 +40,6 @@ class NumUniqueSeparators(TransformPrimitive):
             return len(self.separators.intersection(set(s)))
 
         def get_separator_count(column):
-            assert self.separators is not None, "separators needs to be defined"
             return column.apply(count_unique_separator)
 
         return get_separator_count
-
-    def generate_names(self, base_feature_names):
-        name = self.generate_name(base_feature_names)
-        return f"{name}[{self.separators}]"
