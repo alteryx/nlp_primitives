@@ -13,7 +13,7 @@ Future Release
     * Testing Changes
         * Update scheduler workflow to use correct name and file (:pr:`87`, :pr:`86`)
         * Add workflow to auto-merge dependency PRs (:pr:`93`)
-        
+
     Thanks to the following people for contributing to this release:
     :user:`gsheni` :user:`tuethan1999`
     
