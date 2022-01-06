@@ -1,8 +1,8 @@
+import numpy as np
 from featuretools.primitives.base import TransformPrimitive
 from sklearn.feature_extraction.text import CountVectorizer
-from woodwork.logical_types import IntegerNullable, NaturalLanguage
-import numpy as np
 from woodwork.column_schema import ColumnSchema
+from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
 
 class TokenCount(TransformPrimitive):
