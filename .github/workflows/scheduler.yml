@@ -17,6 +17,7 @@ jobs:
           repository: alteryx/nlp_primitives
           branch: main
           workflow: Unit Tests - Latest Dependencies
+          token: ${{ secrets.REPO_SCOPED_TOKEN }}
 
       - name: Check for recent commit to Featuretools
         if: ${{ steps.is_workflow_success.outputs.value == 'True' }}
@@ -26,6 +27,7 @@ jobs:
           task: is_recent_commit
           repository: alteryx/featuretools
           recent: hours=25
+          token: ${{ secrets.REPO_SCOPED_TOKEN }}
 
       - name: Run tests
         if: ${{ steps.is_recent_commit.outputs.value == 'True' }}
