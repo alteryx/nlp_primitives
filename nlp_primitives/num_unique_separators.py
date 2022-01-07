@@ -10,12 +10,13 @@ class NumUniqueSeparators(TransformPrimitive):
     """Calculates the number of unique separators.
 
     Description:
-        Given list of strings and a string of separators, determine
+        Given a string and an iterable of separators, determine
         the number of unique separators in each string. If a string
         is null determined by pd.isnull return pd.NA.
 
     Args:
-        separators (str, optional): A string of characters to count.
+        separators (str, optional): an iterable of characters to count.
+            " .,!?;\n" is used by default.
 
     Examples:
         >>> x = ['First. Line.', 'This. is the second, line!', 'notinlist@#$%^%&']
