@@ -11,13 +11,14 @@ from .constants import common_words_1000
 class NumberOfCommonWords(TransformPrimitive):
     """Determines the number of common words in a string.
     Description:
-        Given list of strings, determine the number of words that appear in a supplied wordbank.
-        The wordbank defaults to nlp_primitives.constants.common_words_1000. The list of strings
-        is case insensitive. The word banks should be all lower case strings. If a string is
+        Given string, determine the number of words that appear in a supplied word set.
+        The word set defaults to nlp_primitives.constants.common_words_1000. The string
+        is case insensitive. The word bank should consist of only lower case strings. If a string is
         missing, return `NaN`.
 
     Args:
-        word_set (set, optional): The set of words to look for in the string
+        word_set (set, optional): The set of words to look for in the string. These
+            words should all be lower case strings.
         delimiters_regex (str, optional): The regular expression used to determine
             what separates words.
 
