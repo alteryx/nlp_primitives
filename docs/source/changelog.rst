@@ -6,6 +6,7 @@ Future Release
 ==============
     * Enhancements
         * Add TokenCount primitive (:pr: `94`)
+        * Add CountString and WhitespaceCount primitives (:pr:`89`)
     * Fixes
     * Changes
     * Documentation Changes
@@ -15,7 +16,7 @@ Future Release
         * Add workflow to auto-merge dependency PRs (:pr:`93`)
 
     Thanks to the following people for contributing to this release:
-    :user:`gsheni` :user:`tuethan1999`
+    :user:`gsheni`, :user:`tuethan1999`
     
 v2.1.0 Dec 21, 2021
 ===================
