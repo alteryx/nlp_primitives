@@ -5,6 +5,7 @@ Changelog
 Future Release
 ==============
     * Enhancements
+        * Add NumberOfCommonWords primitive (:pr:`92`)
         * Add CountString and WhitespaceCount primitives (:pr:`89`)
     * Fixes
     * Changes
