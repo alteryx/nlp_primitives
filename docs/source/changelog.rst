@@ -6,6 +6,7 @@ Future Release
 ==============
     * Enhancements
         * Add NumberOfUniqueSeparators primitive (:pr:`90`)
+        * Add NumberOfCommonWords primitive (:pr:`92`)
         * Add CountString and WhitespaceCount primitives (:pr:`89`)
     * Fixes
     * Changes
