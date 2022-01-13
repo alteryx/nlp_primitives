@@ -11,7 +11,6 @@ from woodwork.logical_types import Double, NaturalLanguage
 
 from .utilities import clean_tokens
 
-
 class LSA(TransformPrimitive):
     """Calculates the Latent Semantic Analysis Values of NaturalLanguage Input
 
