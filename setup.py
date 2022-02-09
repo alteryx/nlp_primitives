@@ -49,5 +49,8 @@ setup(
         'featuretools_plugin': [
             'nlp_primitives = nlp_primitives',
         ],
+        'featuretools_primitives': [
+            'nlp_primitives = nlp_primitives',
+        ],
     },
 )
