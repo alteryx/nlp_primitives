@@ -31,11 +31,11 @@ class PrimitiveT:
         assert any(s in first_word for s in valid_verbs)
         assert self.primitive.input_types is not None
 
-    def test_not_duplicate_of_default(self):
+    def test_name_in_primitive_list(self):
         class_name = self.primitive.__name__
         df = list_primitives()
         primitive_names = df['name'].apply(convert).tolist()
-        assert class_name not in primitive_names
+        assert class_name in primitive_names
 
     def test_arg_init(self):
         try:
