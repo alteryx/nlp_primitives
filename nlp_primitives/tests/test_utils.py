@@ -10,7 +10,7 @@ import featuretools as ft
 import pytest
 from featuretools import dfs, list_primitives
 from featuretools.tests.testing_utils import make_ecommerce_entityset
-
+ft.primitives._load_primitives()
 
 class PrimitiveT:
     primitive = None
