@@ -2,6 +2,7 @@
 entry-point-test:
 	python -c "from featuretools import nlp_primitives"
 	python -c "from featuretools.primitives import Elmo"
+	python -c "from nlp_primitives import Elmo"
 
 .PHONY: clean
 clean:
