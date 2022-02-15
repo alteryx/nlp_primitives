@@ -73,10 +73,6 @@ def find_stackable_primitives(all_primitives, primitive):
     return applicable_primitives
 
 
-def convert(name):
-    return''.join(x.capitalize() or '_' for x in name.split('_'))
-
-
 def valid_dfs(es, aggregations, transforms, feature_substrings,
               target_dataframe_name='log', multi_output=False, max_depth=3,
               max_features=-1, instance_ids=[0, 1, 2, 3]):
