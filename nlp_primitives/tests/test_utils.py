@@ -12,6 +12,7 @@ from featuretools import dfs, list_primitives
 from featuretools.tests.testing_utils import make_ecommerce_entityset
 
 ft.primitives._load_primitives()
+PRIMITIVES = list_primitives()
 
 
 class PrimitiveT:
@@ -34,10 +35,7 @@ class PrimitiveT:
         assert self.primitive.input_types is not None
 
     def test_name_in_primitive_list(self):
-        class_name = self.primitive.__name__
-        df = list_primitives()
-        primitive_names = df['name'].apply(convert).tolist()
-        assert class_name in primitive_names
+        assert PRIMITIVES.name.eq(self.primitive.name).any()
 
     def test_arg_init(self):
         try:
