@@ -11,6 +11,9 @@ import pytest
 from featuretools import dfs, list_primitives
 from featuretools.tests.testing_utils import make_ecommerce_entityset
 
+ft.primitives._load_primitives()
+PRIMITIVES = list_primitives()
+
 
 class PrimitiveT:
     primitive = None
@@ -31,11 +34,8 @@ class PrimitiveT:
         assert any(s in first_word for s in valid_verbs)
         assert self.primitive.input_types is not None
 
-    def test_not_duplicate_of_default(self):
-        class_name = self.primitive.__name__
-        df = list_primitives()
-        primitive_names = df['name'].apply(convert).tolist()
-        assert class_name not in primitive_names
+    def test_name_in_primitive_list(self):
+        assert PRIMITIVES.name.eq(self.primitive.name).any()
 
     def test_arg_init(self):
         try:
@@ -71,10 +71,6 @@ def find_stackable_primitives(all_primitives, primitive):
         if x.input_types == [primitive.return_type]:
             applicable_primitives.append(x)
     return applicable_primitives
-
-
-def convert(name):
-    return''.join(x.capitalize() or '_' for x in name.split('_'))
 
 
 def valid_dfs(es, aggregations, transforms, feature_substrings,
