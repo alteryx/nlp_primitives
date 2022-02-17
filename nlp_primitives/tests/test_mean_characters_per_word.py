@@ -48,7 +48,7 @@ class TestMeanCharactersPerWord(PrimitiveT):
     def test_nans(self, na_value):
         x = pd.Series([na_value,
                        '',
-                       'third line'], dtype="string")
+                       'third line'])
         primitive_func = self.primitive().get_function()
         answers = pd.Series([np.nan, 0, 4.5])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
@@ -62,7 +62,7 @@ class TestMeanCharactersPerWord(PrimitiveT):
         ],
     )
     def test_all_nans(self, na_value):
-        x = pd.Series([na_value, na_value, na_value], dtype="string")
+        x = pd.Series([na_value, na_value, na_value])
         primitive_func = self.primitive().get_function()
         answers = pd.Series([np.nan, np.nan, np.nan])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
