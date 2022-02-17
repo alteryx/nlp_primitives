@@ -18,7 +18,7 @@ v2.2.0 Feb 17, 2022
         * Add NumberOfUniqueSeparators primitive (:pr:`90`)
         * Add NumberOfCommonWords primitive (:pr:`92`)
         * Add CountString and WhitespaceCount primitives (:pr:`89`)
-        * Add entry point for featuretools primitives (:pr: `98`)
+        * Add entry point for featuretools primitives (:pr:`98`)
     * Fixes
         * Fixes error with MeanCharactersPerWord primitive with series of Nones (:pr:`101`)
     * Documentation Changes
