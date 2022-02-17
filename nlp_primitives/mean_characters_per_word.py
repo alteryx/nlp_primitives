@@ -2,26 +2,27 @@
 
 import re
 
+import numpy as np
+import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import Double, NaturalLanguage
-import numpy as np
-import pandas as pd
-
 
 PUNCTUATION = re.escape('!,.:;?')
 END_OF_SENTENCE_PUNCT_RE = re.compile(rf'[{PUNCTUATION}]+$|[{PUNCTUATION}]+ |[{PUNCTUATION}]+\n')
 
+
 def _mean_characters_per_word(value):
     if pd.isna(value):
         return np.nan
-    
+
     # replace end-of-sentence punctuation with space
     value = END_OF_SENTENCE_PUNCT_RE.sub(' ', value)
     words = value.split()
     character_count = [len(x) for x in words]
 
     return np.mean(character_count) if len(character_count) else 0
+
 
 class MeanCharactersPerWord(TransformPrimitive):
     """Determines the mean number of characters per word.
@@ -48,5 +49,5 @@ class MeanCharactersPerWord(TransformPrimitive):
         def mean_characters_per_word(series):
             series = series.reset_index(drop=True)
             return series.apply(_mean_characters_per_word)
-                
+
         return mean_characters_per_word
