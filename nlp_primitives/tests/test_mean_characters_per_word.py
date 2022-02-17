@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import pytest
 
 from ..mean_characters_per_word import MeanCharactersPerWord
 from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
@@ -37,17 +38,24 @@ class TestMeanCharactersPerWord(PrimitiveT):
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
     def test_nans(self):
-        x = pd.Series([np.nan,
+        x = pd.Series([pd.NA,
                        '',
-                       'third line'])
+                       'third line'], dtype="string")
         primitive_func = self.primitive().get_function()
         answers = pd.Series([np.nan, 0, 4.5])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
-    def test_all_nans(self):
-        x = pd.Series([np.nan,
-                       np.nan,
-                       np.nan, ])
+
+    @pytest.mark.parametrize(
+        "na_value",
+        [
+           None,
+           np.nan,
+           pd.NA
+        ],
+    )
+    def test_all_nans(self, na_value):
+        x = pd.Series([na_value, na_value, na_value], dtype="string")
         primitive_func = self.primitive().get_function()
         answers = pd.Series([np.nan, np.nan, np.nan])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
