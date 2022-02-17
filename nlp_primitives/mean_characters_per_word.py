@@ -2,9 +2,26 @@
 
 import re
 
+import numpy as np
+import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import Double, NaturalLanguage
+
+PUNCTUATION = re.escape('!,.:;?')
+END_OF_SENTENCE_PUNCT_RE = re.compile(rf'[{PUNCTUATION}]+$|[{PUNCTUATION}]+ |[{PUNCTUATION}]+\n')
+
+
+def _mean_characters_per_word(value):
+    if pd.isna(value):
+        return np.nan
+
+    # replace end-of-sentence punctuation with space
+    value = END_OF_SENTENCE_PUNCT_RE.sub(' ', value)
+    words = value.split()
+    character_count = [len(x) for x in words]
+
+    return np.mean(character_count) if len(character_count) else 0
 
 
 class MeanCharactersPerWord(TransformPrimitive):
@@ -29,17 +46,7 @@ class MeanCharactersPerWord(TransformPrimitive):
     default_value = 0
 
     def get_function(self):
-        def mean_characters_per_word(x):
-            x = x.reset_index(drop=True).fillna('')
-            # replace end-of-sentence punctuation with space
-            p = re.escape('!,.:;?')
-            end_of_sentence_punct = re.compile('[%s]+$|[%s]+ |[%s]+\n' % (p, p, p))
-            x = x.str.replace(end_of_sentence_punct, ' ')
-            # build DF of split words, and calculate avg length
-            df = x.str.split(expand=True)
-            df = df.reset_index()
-            df = df.melt(id_vars='index', var_name='word_index', value_name='word')
-            df['n_characters'] = df['word'].str.len()
-            results = df.groupby(by=['index']).mean(numeric_only=False)['n_characters']
-            return results
+        def mean_characters_per_word(series):
+            return series.apply(_mean_characters_per_word)
+
         return mean_characters_per_word
