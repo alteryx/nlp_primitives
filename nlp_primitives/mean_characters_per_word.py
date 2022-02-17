@@ -47,7 +47,6 @@ class MeanCharactersPerWord(TransformPrimitive):
 
     def get_function(self):
         def mean_characters_per_word(series):
-            series = series.reset_index(drop=True)
             return series.apply(_mean_characters_per_word)
 
         return mean_characters_per_word
