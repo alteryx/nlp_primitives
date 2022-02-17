@@ -40,9 +40,9 @@ class TestMeanCharactersPerWord(PrimitiveT):
     @pytest.mark.parametrize(
         "na_value",
         [
-           None,
-           np.nan,
-           pd.NA
+            None,
+            np.nan,
+            pd.NA
         ],
     )
     def test_nans(self, na_value):
@@ -53,13 +53,12 @@ class TestMeanCharactersPerWord(PrimitiveT):
         answers = pd.Series([np.nan, 0, 4.5])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
-
     @pytest.mark.parametrize(
         "na_value",
         [
-           None,
-           np.nan,
-           pd.NA
+            None,
+            np.nan,
+            pd.NA
         ],
     )
     def test_all_nans(self, na_value):
@@ -67,7 +66,6 @@ class TestMeanCharactersPerWord(PrimitiveT):
         primitive_func = self.primitive().get_function()
         answers = pd.Series([np.nan, np.nan, np.nan])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
-
 
     def test_with_featuretools(self, es):
         transform, aggregation = find_applicable_primitives(self.primitive)
