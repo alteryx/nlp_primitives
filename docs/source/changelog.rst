@@ -28,7 +28,7 @@ v2.2.0 Feb 17, 2022
         * Add workflow to auto-merge dependency PRs (:pr:`93`)
         
     Thanks to the following people for contributing to this release:
-    :user:`dvreed77`, :user:`gsheni`, :user:`tuethan1999`
+    :user:`dvreed77`, :user:`gsheni`, :user:`jeff-hernandez`, :user:`tuethan1999`
     
 v2.1.0 Dec 21, 2021
 ===================
