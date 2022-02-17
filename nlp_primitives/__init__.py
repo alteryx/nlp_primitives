@@ -1,7 +1,7 @@
 # flake8: noqa
 import nltk.data
 
-__version__ = '2.1.0'
+__version__ = '2.2.0'
 import pkg_resources
 
 from .count_string import CountString

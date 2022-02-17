@@ -2,15 +2,24 @@
 Changelog
 =========
 
-Future Release
-==============
+.. Future Release
+      ==============
+        * Enhancements
+        * Fixes
+        * Changes
+        * Documentation Changes
+        * Testing Changes
+
+    .. Thanks to the following people for contributing to this release:
+
+v2.2.0 Feb 17, 2022
+===================
     * Enhancements
         * Add NumberOfUniqueSeparators primitive (:pr:`90`)
         * Add NumberOfCommonWords primitive (:pr:`92`)
         * Add CountString and WhitespaceCount primitives (:pr:`89`)
     * Fixes
-        * Fixes error with Mean Characters Per Word with Series of Nones (:pr:`101`)
-    * Changes
+        * Fixes error with MeanCharactersPerWord primitive with series of Nones (:pr:`101`)
     * Documentation Changes
         * Remove testing on conda forge in release.md (:pr:`84`)
     * Testing Changes
@@ -18,7 +27,7 @@ Future Release
         * Add workflow to auto-merge dependency PRs (:pr:`93`)
         
     Thanks to the following people for contributing to this release:
-    :user:`gsheni`, :user:`tuethan1999`, :user:`dvreed77`
+    :user:`dvreed77`, :user:`gsheni`, :user:`tuethan1999`
     
 v2.1.0 Dec 21, 2021
 ===================
