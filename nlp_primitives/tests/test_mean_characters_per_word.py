@@ -37,8 +37,16 @@ class TestMeanCharactersPerWord(PrimitiveT):
         answers = pd.Series([3.0, 4.8, 3.5])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
-    def test_nans(self):
-        x = pd.Series([pd.NA,
+    @pytest.mark.parametrize(
+        "na_value",
+        [
+           None,
+           np.nan,
+           pd.NA
+        ],
+    )
+    def test_nans(self, na_value):
+        x = pd.Series([na_value,
                        '',
                        'third line'], dtype="string")
         primitive_func = self.primitive().get_function()
@@ -60,21 +68,6 @@ class TestMeanCharactersPerWord(PrimitiveT):
         answers = pd.Series([np.nan, np.nan, np.nan])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
-    def test_none(self):
-        x = pd.Series([None,
-                       "",
-                       'third line'])
-        primitive_func = self.primitive().get_function()
-        answers = pd.Series([np.nan, 0, 4.5])
-        pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
-
-    def test_all_none(self):
-        x = pd.Series([None,
-                       None,
-                       None])
-        primitive_func = self.primitive().get_function()
-        answers = pd.Series([np.nan, np.nan, np.nan])
-        pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
     def test_with_featuretools(self, es):
         transform, aggregation = find_applicable_primitives(self.primitive)
