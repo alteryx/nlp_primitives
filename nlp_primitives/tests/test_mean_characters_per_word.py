@@ -41,7 +41,23 @@ class TestMeanCharactersPerWord(PrimitiveT):
                        '',
                        'third line'])
         primitive_func = self.primitive().get_function()
-        answers = pd.Series([np.nan, np.nan, 4.5])
+        answers = pd.Series([np.nan, 0, 4.5])
+        pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
+
+    def test_none(self):
+        x = pd.Series([None,
+                       "",
+                       'third line'])
+        primitive_func = self.primitive().get_function()
+        answers = pd.Series([np.nan, 0, 4.5])
+        pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
+
+    def test_all_none(self):
+        x = pd.Series([None,
+                       None,
+                       None])
+        primitive_func = self.primitive().get_function()
+        answers = pd.Series([np.nan, np.nan, np.nan])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
     def test_with_featuretools(self, es):
