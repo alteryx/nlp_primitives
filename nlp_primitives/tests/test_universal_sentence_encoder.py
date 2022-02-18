@@ -10,7 +10,7 @@ from featuretools.primitives.utils import (
 )
 from woodwork.logical_types import NaturalLanguage
 
-from nlp_primitives import UniversalSentenceEncoder
+from ..tensorflow.universal_sentence_encoder import UniversalSentenceEncoder
 
 
 def test_regular(universal_sentence_encoder):
