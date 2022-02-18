@@ -17,15 +17,15 @@ from .part_of_speech_count import PartOfSpeechCount
 from .polarity_score import PolarityScore
 from .punctuation_count import PunctuationCount
 from .stopword_count import StopwordCount
-from .tensorflow.elmo import Elmo
-from .tensorflow.universal_sentence_encoder import UniversalSentenceEncoder
 from .title_word_count import TitleWordCount
 from .total_word_length import TotalWordLength
 from .upper_case_count import UpperCaseCount
 from .whitespace_count import WhitespaceCount
 
 if find_spec("tensorflow") and find_spec("tensorflow_hub"):
-  from .universal_sentence_encoder import UniversalSentenceEncoder
+    from .tensorflow.elmo import Elmo
+    from .tensorflow.universal_sentence_encoder import UniversalSentenceEncoder
+
 
 nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
 nltk.data.path.insert(0, nltk_data_path)
