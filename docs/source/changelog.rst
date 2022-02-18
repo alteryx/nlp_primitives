@@ -9,7 +9,7 @@ Future Release
     * Changes
     * Documentation Changes
     * Testing Changes
-        * Skip Tensorflow dependent tests (:pr:`107`)
+        * Skip Tensorflow dependent tests if --notensorflow flag is passed to pytest(:pr:`107`)
 
     Thanks to the following people for contributing to this release:
     :user:`dvreed77`
