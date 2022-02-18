@@ -1,5 +1,3 @@
-import sys
-
 import pytest
 
 from nlp_primitives.tensorflow.universal_sentence_encoder import (
