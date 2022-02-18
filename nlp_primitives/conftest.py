@@ -7,10 +7,8 @@ from nlp_primitives.tensorflow.universal_sentence_encoder import (
 
 @pytest.fixture(scope="session")
 def universal_sentence_encoder(pytestconfig):
-    if not pytestconfig.getoption("--notensorflow"):
-        return UniversalSentenceEncoder()
-    else:
-        return None
+    return UniversalSentenceEncoder()
+    
 
 
 def pytest_addoption(parser):
