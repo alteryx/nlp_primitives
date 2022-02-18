@@ -2,15 +2,17 @@
 Changelog
 =========
 
-.. Future Release
-      ==============
-        * Enhancements
-        * Fixes
-        * Changes
-        * Documentation Changes
-        * Testing Changes
+Future Release
+==============
+    * Enhancements
+    * Fixes
+    * Changes
+    * Documentation Changes
+    * Testing Changes
+        * Skip Tensorflow dependent tests
 
-    .. Thanks to the following people for contributing to this release:
+    Thanks to the following people for contributing to this release:
+    :user:`dvreed77`
 
 v2.2.0 Feb 17, 2022
 ===================
