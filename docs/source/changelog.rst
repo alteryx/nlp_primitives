@@ -9,7 +9,7 @@ Future Release
     * Changes
     * Documentation Changes
     * Testing Changes
-        * Skip Tensorflow dependent tests
+        * Skip Tensorflow dependent tests (:pr:`107`)
 
     Thanks to the following people for contributing to this release:
     :user:`dvreed77`
