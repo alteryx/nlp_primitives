@@ -13,7 +13,6 @@ from woodwork.logical_types import NaturalLanguage
 from nlp_primitives import UniversalSentenceEncoder
 
 
-@pytest.mark.skipif('tensorflow' not in sys.modules, reason="requires the Tensorflow library")
 def test_regular(universal_sentence_encoder):
     sentences = pd.Series([
         "",
@@ -31,13 +30,11 @@ def test_regular(universal_sentence_encoder):
 @pytest.fixture()
 def mock_remove_tensorflow():
     # Simulate tensorflow being missing
-    if 'tensorflow' in sys.modules:
-        tf_mod = sys.modules['tensorflow']
-        sys.modules['tensorflow'] = None
-        yield
-        sys.modules['tensorflow'] = tf_mod
-    else:
-        yield
+    tf_mod = sys.modules['tensorflow']
+    sys.modules['tensorflow'] = None
+    yield
+    sys.modules['tensorflow'] = tf_mod
+    
 
 
 def test_without_tensorflow(universal_sentence_encoder, mock_remove_tensorflow):
@@ -47,7 +44,6 @@ def test_without_tensorflow(universal_sentence_encoder, mock_remove_tensorflow):
     assert error.value.args[0] == err_message
 
 
-@pytest.mark.skipif('tensorflow' not in sys.modules, reason="requires the Tensorflow library")
 def test_primitive_serialization(universal_sentence_encoder):
     sentences = pd.Series([
         "",
@@ -66,7 +62,6 @@ def test_primitive_serialization(universal_sentence_encoder):
     np.testing.assert_array_almost_equal(a, b)
 
 
-@pytest.mark.skipif('tensorflow' not in sys.modules, reason="requires the Tensorflow library")
 def test_feature_serialization(universal_sentence_encoder, tmpdir):
     sentences = pd.Series([
         "",
