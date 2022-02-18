@@ -5,10 +5,10 @@ on:
     branches:
       - main
 
-name: Test optional primitive availability
+name: Optional Primitive Test
 jobs:
   optional_primitive_test:
-    name: Optional Primitive Test - Python ${{ matrix.python_version }} - Featuretools ${{ matrix.featuretools_version }}
+    name: Python ${{ matrix.python_version }} - Featuretools ${{ matrix.featuretools_version }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
