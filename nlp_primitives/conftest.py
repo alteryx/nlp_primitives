@@ -26,10 +26,12 @@ def pytest_addoption(parser):
         help="If true, tests will assume tensorflow is not installed",
     )
 
+
 def pytest_configure(config):
     config.addinivalue_line(
         "markers", "notensorflow: mark test to be skipped if tensorflow is not installed"
     )
+
 
 def pytest_collection_modifyitems(config, items):
     if config.getoption("--notensorflow"):
