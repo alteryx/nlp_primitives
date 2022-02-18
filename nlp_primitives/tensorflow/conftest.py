@@ -1,7 +1,5 @@
 import pytest
 
-from .universal_sentence_encoder import Un
-
 
 @pytest.fixture(autouse=True)
 def add_primitives(doctest_namespace, universal_sentence_encoder):
