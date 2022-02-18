@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from ..elmo import Elmo
+from ..tensorflow.elmo import Elmo
 from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
 

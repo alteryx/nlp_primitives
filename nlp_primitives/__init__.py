@@ -6,7 +6,6 @@ import pkg_resources
 
 from .count_string import CountString
 from .diversity_score import DiversityScore
-from .elmo import Elmo
 from .lsa import LSA
 from .mean_characters_per_word import MeanCharactersPerWord
 from .median_word_length import MedianWordLength
@@ -16,9 +15,10 @@ from .part_of_speech_count import PartOfSpeechCount
 from .polarity_score import PolarityScore
 from .punctuation_count import PunctuationCount
 from .stopword_count import StopwordCount
+from .tensorflow.elmo import Elmo
+from .tensorflow.universal_sentence_encoder import UniversalSentenceEncoder
 from .title_word_count import TitleWordCount
 from .total_word_length import TotalWordLength
-from .universal_sentence_encoder import UniversalSentenceEncoder
 from .upper_case_count import UpperCaseCount
 from .whitespace_count import WhitespaceCount
 
