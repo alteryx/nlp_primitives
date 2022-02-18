@@ -3,6 +3,7 @@ import nltk.data
 
 __version__ = '2.2.0'
 import pkg_resources
+import importlib
 
 from .count_string import CountString
 from .diversity_score import DiversityScore
@@ -21,6 +22,9 @@ from .title_word_count import TitleWordCount
 from .total_word_length import TotalWordLength
 from .upper_case_count import UpperCaseCount
 from .whitespace_count import WhitespaceCount
+
+if importlib.util.find_spec("tensorflow"):
+  from .universal_sentence_encoder import UniversalSentenceEncoder
 
 nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
 nltk.data.path.insert(0, nltk_data_path)
