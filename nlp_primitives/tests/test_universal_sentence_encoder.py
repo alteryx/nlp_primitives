@@ -29,7 +29,7 @@ def test_regular(universal_sentence_encoder):
 
 
 def test_name_in_primitive_list(universal_sentence_encoder):
-        assert PRIMITIVES.name.eq(universal_sentence_encoder.name).any()
+    assert PRIMITIVES.name.eq(universal_sentence_encoder.name).any()
 
 
 @pytest.fixture()
