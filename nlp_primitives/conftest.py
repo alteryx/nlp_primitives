@@ -1,5 +1,6 @@
-import pytest
 import sys
+
+import pytest
 
 from nlp_primitives.universal_sentence_encoder import UniversalSentenceEncoder
 
@@ -9,12 +10,13 @@ def universal_sentence_encoder():
     if 'tensorflow' in sys.modules:
         return UniversalSentenceEncoder()
 
+
 @pytest.fixture(autouse=True)
 def add_primitives(doctest_namespace, universal_sentence_encoder):
     doctest_namespace['universal_sentence_encoder'] = universal_sentence_encoder
-    
 
-def pytest_ignore_collect(path): 
+
+def pytest_ignore_collect(path):
     skip_files = [
         "universal_sentence_encoder.py",
         "elmo.py"
@@ -22,5 +24,5 @@ def pytest_ignore_collect(path):
 
     if 'tensorflow' not in sys.modules:
         return any([x in str(path) for x in skip_files])
-   
+
     return False

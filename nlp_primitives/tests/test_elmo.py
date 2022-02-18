@@ -1,10 +1,12 @@
+import sys
+
 import numpy as np
 import pandas as pd
 import pytest
-import sys
 
 from ..elmo import Elmo
 from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+
 
 @pytest.mark.skipif('tensorflow' not in sys.modules, reason="requires the Tensorflow library")
 class TestElmo(PrimitiveT):
