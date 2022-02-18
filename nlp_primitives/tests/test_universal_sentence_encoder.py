@@ -34,7 +34,6 @@ def mock_remove_tensorflow():
     sys.modules['tensorflow'] = None
     yield
     sys.modules['tensorflow'] = tf_mod
-    
 
 
 def test_without_tensorflow(universal_sentence_encoder, mock_remove_tensorflow):
