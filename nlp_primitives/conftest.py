@@ -8,7 +8,6 @@ from nlp_primitives.tensorflow.universal_sentence_encoder import (
 @pytest.fixture(scope="session")
 def universal_sentence_encoder(pytestconfig):
     return UniversalSentenceEncoder()
-    
 
 
 def pytest_addoption(parser):
