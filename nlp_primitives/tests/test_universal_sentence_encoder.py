@@ -11,6 +11,7 @@ from featuretools.primitives.utils import (
 from woodwork.logical_types import NaturalLanguage
 
 from ..tensorflow.universal_sentence_encoder import UniversalSentenceEncoder
+from .test_utils import PRIMITIVES
 
 
 def test_regular(universal_sentence_encoder):
@@ -25,6 +26,10 @@ def test_regular(universal_sentence_encoder):
     a = a.mean().round(7).to_numpy()
     b = pd.Series([-0.0007475, 0.0032088, 0.0018552, 0.0008256, 0.0028342])
     np.testing.assert_array_almost_equal(a, b)
+
+
+def test_name_in_primitive_list(universal_sentence_encoder):
+    assert PRIMITIVES.name.eq(universal_sentence_encoder.name).any()
 
 
 @pytest.fixture()
