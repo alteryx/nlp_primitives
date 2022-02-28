@@ -2,17 +2,25 @@
 Changelog
 =========
 
-Future Release
-==============
+.. Future Release
+  ==============
     * Enhancements
     * Fixes
     * Changes
     * Documentation Changes
     * Testing Changes
-        * Skip Tensorflow dependent tests if --notensorflow flag is passed to pytest(:pr:`107`)
+
+.. Thanks to the following people for contributing to this release:
+
+v2.3.0 Feb 28, 2022
+===================
+    * Changes
+        * Tensorflow dependent primitives only imported at top level if tensorflow is installed (:pr:`105`)
+    * Testing Changes
+        * Skip Tensorflow dependent tests if --notensorflow flag is passed to pytest (:pr:`107`)
 
     Thanks to the following people for contributing to this release:
-    :user:`dvreed77`
+    :user:`dvreed77`, :user:`rwedge`
 
 v2.2.0 Feb 17, 2022
 ===================
