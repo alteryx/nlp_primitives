@@ -1,7 +1,7 @@
 # flake8: noqa
 import nltk.data
 
-__version__ = '2.2.0'
+__version__ = '2.3.0'
 from importlib.util import find_spec
 
 import pkg_resources
