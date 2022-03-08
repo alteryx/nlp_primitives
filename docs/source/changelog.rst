@@ -8,6 +8,7 @@ Future Release
         * Added Release Notes CI Check (:pr:`110`)
     * Fixes
     * Changes
+        * Added CI check to ensure entrypoint works with Featuretools (:pr:`111`)
     * Documentation Changes
     * Testing Changes
 
