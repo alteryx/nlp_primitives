@@ -14,7 +14,7 @@ env:
 
 jobs:
   featuretools:
-    name: Run unit tests on latest change to Featuretools
+    name: Test recent change to Featuretools
     runs-on: ubuntu-latest
     steps:
       - name: Show latest workflow runs in this repository
