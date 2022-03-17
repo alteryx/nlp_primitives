@@ -27,7 +27,7 @@ jobs:
         id: is_workflow_success
         run: |
           # set output as true if latest workflow conclusion is a success else false
-          conclusion=$(gh run list --branch main --workflow $workflow -q '.[0] | .conclusion' --json conclusion)
+          conclusion=$(gh run list --branch main --workflow $WORKFLOW -q '.[0] | .conclusion' --json conclusion)
           if [ $conclusion = 'success' ]; then echo ::set-output name=value::true;
           else echo ::set-output name=value::false; fi
 
