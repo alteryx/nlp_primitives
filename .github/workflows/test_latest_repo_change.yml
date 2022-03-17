@@ -47,6 +47,6 @@ jobs:
           if (($elapsed > $RECENT )); then echo ::set-output name=value::false;
           else echo ::set-output name=value::true; fi
 
-      - name: Run workflow
+      - name: Run workflow for unit tests
         if: ${{ steps.is_recent_commit.outputs.value == 'true' }}
-        run: gh run list --workflow $WORKFLOW
+        run: gh workflow run $WORKFLOW
