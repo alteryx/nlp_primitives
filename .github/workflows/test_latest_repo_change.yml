@@ -17,7 +17,10 @@ jobs:
     name: Test recent change to Featuretools
     runs-on: ubuntu-latest
     steps:
-      - name: Show latest workflow runs in this repository
+      - name: Checkout current repository
+        uses: actions/checkout@v2
+
+      - name: Show latest workflow runs
         run: gh run list --workflow $WORKFLOW --branch main
 
       - name: Check conclusion of latest workflow run
