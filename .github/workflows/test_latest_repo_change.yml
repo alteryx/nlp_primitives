@@ -5,7 +5,6 @@ on:
     # 05:00 PM UTC / 01:00 PM EST
     - cron: "0 17 * * *"
   workflow_dispatch:
-  push:
 
 env:
   RECENT: 90000 # seconds
