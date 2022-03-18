@@ -1,0 +1,63 @@
+name: Test latest changes to other repos
+
+on:
+  schedule:
+    # 05:00 PM UTC / 01:00 PM EST
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+
+env:
+  RECENT: 90000 # seconds
+  WORKFLOW: unit_tests_with_latest_deps.yml
+  GH_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
+
+jobs:
+  featuretools:
+    name: Test latest change to Featuretools
+    if: github.repository_owner == 'alteryx'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v2
+
+      - name: Check conclusion of latest workflow run
+        id: is_workflow_success
+        run: |
+          # set output as true if latest workflow conclusion is a success else false
+          conclusion=$(gh run list --branch main --workflow $WORKFLOW -q '.[0] | .conclusion' --json conclusion)
+          if [ $conclusion = 'success' ]; then echo ::set-output name=value::true;
+          else echo ::set-output name=value::false; fi
+
+          # print the latest workflow runs
+          gh run list --workflow $WORKFLOW --branch main --limit 3 \
+          --json conclusion --json name --json updatedAt \
+          --template '{{tablerow "RESULT" "WORKFLOW" "UPDATED"}}
+          {{range. }}{{tablerow .conclusion .name (timeago .updatedAt)}}{{end}}'
+
+      - name: Check for recent commit to Featuretools
+        if: steps.is_workflow_success.outputs.value == 'true'
+        id: is_recent_commit
+        run: |
+          # clone featuretools containing the latest commit only
+          git clone --depth 1 https://github.com/alteryx/featuretools.git
+          cd featuretools
+
+          # extract latest unix time from commit log
+          commit_time=$(git log --format=format:"%ct")
+
+          # get current unix time
+          current_time=$(date +%s)
+
+          # get seconds elapsed since latest commit
+          elapsed=$(($current_time-$commit_time))
+
+          # set output as false if not a recent commit else true
+          if (($elapsed > $RECENT )); then echo ::set-output name=value::false;
+          else echo ::set-output name=value::true; fi
+
+          # print the latest commit to featuretools
+          git log --pretty=format:"The latest commit to featuretools (%h) occured %cr."
+
+      - name: Run workflow for unit tests
+        if: steps.is_recent_commit.outputs.value == 'true'
+        run: gh workflow run $WORKFLOW
