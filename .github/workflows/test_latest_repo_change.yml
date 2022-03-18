@@ -60,6 +60,6 @@ jobs:
 
       - name: Run workflow for unit tests
         if: ${{ steps.is_recent_commit.outputs.value == 'true' }}
-        run: |
-          echo $(pwd)
-          gh workflow run $WORKFLOW
+        run: gh workflow run $WORKFLOW
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
