@@ -9,7 +9,7 @@ on:
 
 env:
   RECENT: 900000 # seconds
-  GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  GH_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
   WORKFLOW: unit_tests_with_latest_deps.yml
 
 jobs:
@@ -61,5 +61,3 @@ jobs:
       - name: Run workflow for unit tests
         if: ${{ steps.is_recent_commit.outputs.value == 'true' }}
         run: gh workflow run $WORKFLOW
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
