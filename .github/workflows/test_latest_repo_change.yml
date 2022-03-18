@@ -1,4 +1,4 @@
-name: Test recent changes to other repos
+name: Test latest changes to other repos
 
 on:
   schedule:
