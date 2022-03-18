@@ -8,9 +8,9 @@ on:
   push:
 
 env:
-  RECENT: 900000 # seconds
-  GH_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
+  RECENT: 90000 # seconds
   WORKFLOW: unit_tests_with_latest_deps.yml
+  GH_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
 
 jobs:
   featuretools:
@@ -31,8 +31,8 @@ jobs:
           # print the latest workflow runs
           gh run list --workflow $WORKFLOW --branch main --limit 3 \
           --json conclusion --json name --json updatedAt \
-          --template '{{tablerow "RESULT" "WORKFLOW" "UPDATED"}}{{range. }}
-          {{tablerow .conclusion .name (timeago .updatedAt)}}{{end}}'
+          --template '{{tablerow "RESULT" "WORKFLOW" "UPDATED"}}
+          {{range. }}{{tablerow .conclusion .name (timeago .updatedAt)}}{{end}}'
 
       - name: Check for recent commit to Featuretools
         if: ${{ steps.is_workflow_success.outputs.value == 'true' }}
@@ -48,7 +48,7 @@ jobs:
           # get current unix time
           current_time=$(date +%s)
 
-          # get unix time elapsed since latest commit
+          # get seconds elapsed since latest commit
           elapsed=$(($current_time-$commit_time))
 
           # set output as false if not a recent commit else true
