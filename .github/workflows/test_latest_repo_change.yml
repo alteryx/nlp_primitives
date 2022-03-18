@@ -8,7 +8,7 @@ on:
   push:
 
 env:
-  RECENT: 90000 # seconds
+  RECENT: 900000 # seconds
   WORKFLOW: unit_tests_with_latest_deps.yml
   GH_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
 
