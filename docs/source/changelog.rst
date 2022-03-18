@@ -7,13 +7,14 @@ Future Release
     * Enhancements
         * Added Release Notes CI Check (:pr:`110`)
     * Fixes
+        * Fixed scheduler workflow to test latest changes in featuretools (:pr:`112`)
     * Changes
         * Added CI check to ensure entrypoint works with Featuretools (:pr:`111`)
     * Documentation Changes
     * Testing Changes
 
     Thanks to the following people for contributing to this release:
-    :user:`dvreed77`
+    :user:`dvreed77`, :user:`jeff-hernandez`
 
 v2.3.0 Feb 28, 2022
 ===================
