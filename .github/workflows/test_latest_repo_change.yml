@@ -5,6 +5,7 @@ on:
     # 05:00 PM UTC / 01:00 PM EST
     - cron: "0 17 * * *"
   workflow_dispatch:
+  push:
 
 env:
   RECENT: 90000 # seconds
@@ -13,7 +14,8 @@ env:
 
 jobs:
   featuretools:
-    name: Test recent change to Featuretools
+    name: Test latest change to Featuretools
+    if: github.repository_owner == 'alteryx'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current repository
@@ -34,7 +36,7 @@ jobs:
           {{range. }}{{tablerow .conclusion .name (timeago .updatedAt)}}{{end}}'
 
       - name: Check for recent commit to Featuretools
-        if: ${{ steps.is_workflow_success.outputs.value == 'true' }}
+        if: steps.is_workflow_success.outputs.value == 'true'
         id: is_recent_commit
         run: |
           # clone featuretools containing the latest commit only
@@ -58,5 +60,5 @@ jobs:
           git log --pretty=format:"The latest commit to featuretools (%h) occured %cr."
 
       - name: Run workflow for unit tests
-        if: ${{ steps.is_recent_commit.outputs.value == 'true' }}
+        if: steps.is_recent_commit.outputs.value == 'true'
         run: gh workflow run $WORKFLOW
