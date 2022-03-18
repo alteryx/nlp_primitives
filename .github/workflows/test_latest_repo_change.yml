@@ -30,9 +30,9 @@ jobs:
 
           # print the latest workflow runs
           gh run list --workflow $WORKFLOW --branch main --limit 3 \
-          --json conclusion --json name --json updatedAt --json url \
-          --template '{{tablerow "RESULT" "WORKFLOW" "UPDATED" "URL"}}{{range. }}
-          {{tablerow .conclusion .name (timeago .updatedAt) .url}}{{end}}'
+          --json conclusion --json name --json updatedAt \
+          --template '{{tablerow "RESULT" "WORKFLOW" "UPDATED"}}{{range. }}
+          {{tablerow .conclusion .name (timeago .updatedAt)}}{{end}}'
 
       - name: Check for recent commit to Featuretools
         if: ${{ steps.is_workflow_success.outputs.value == 'true' }}
@@ -56,7 +56,7 @@ jobs:
           else echo ::set-output name=value::true; fi
 
           # print the latest commit to featuretools
-          git log --pretty=format:"The latest commit to featuretools (%t) occured %cr"
+          git log --pretty=format:"The latest commit to featuretools (%h) occured %cr."
 
       - name: Run workflow for unit tests
         if: ${{ steps.is_recent_commit.outputs.value == 'true' }}
