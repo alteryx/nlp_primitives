@@ -7,7 +7,7 @@ Future Release
     * Enhancements
         * Added Release Notes CI Check (:pr:`110`)
     * Fixes
-        * Fixed scheduler workflow to test latest changes in featuretools (:pr:`112`)
+        * Fixed workflow that tests latest changes to featuretools (:pr:`112`)
     * Changes
         * Added CI check to ensure entrypoint works with Featuretools (:pr:`111`)
     * Documentation Changes
