@@ -11,10 +11,23 @@ There are two options for installing nlp_primitives. Both of the options will al
 
 The first option is to install a version of nlp_primitives that does not include Tensorflow. With this option, primitives that depend on Tensorflow cannot be used. Currently, the only primitive that can not be used with this install option is ``UniversalSentenceEncoder``.
 
+### M1 Macs
+In order to install nlp-primitives on an M1 Mac, you will need to run the following (before you install nlp-primitives):
+```shell
+export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
+export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
+brew install hdf5
+export CPATH="/opt/homebrew/include/"
+export HDF5_DIR=/opt/homebrew/
+```
+
+#### PyPi
 nlp_primitives without Tensorflow can be installed with pip:
 ```shell
 pip install nlp_primitives
 ```
+
+#### Conda-forge
 or from the conda-forge channel on conda:
 ```shell
 conda install -c conda-forge nlp-primitives
