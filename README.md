@@ -24,7 +24,7 @@ export HDF5_DIR=/opt/homebrew/
 #### PyPi
 nlp_primitives without Tensorflow can be installed with pip:
 ```shell
-pip install nlp_primitives
+python -m pip install nlp_primitives
 ```
 
 #### Conda-forge
@@ -37,7 +37,7 @@ The second option is to install the complete version of nlp_primitives, which wi
 
 To install the complete version of nlp_primitives with pip:
 ```shell
-pip install "nlp_primitives[complete]"
+python -m pip install "nlp_primitives[complete]"
 ```
 or from the conda-forge channel on conda:
 ```shell
