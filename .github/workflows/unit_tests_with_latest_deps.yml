@@ -17,9 +17,6 @@ jobs:
         os: [ubuntu-latest, macos-latest]
         python_version: ["3.7", "3.8", "3.9"]
         featuretools_version: ["Release", "Main"]
-        exclude:
-          - python_version: "3.10"
-            os: macos-latest
     steps:
       - name: Set up python ${{ matrix.python_version }}
         uses: actions/setup-python@v2
