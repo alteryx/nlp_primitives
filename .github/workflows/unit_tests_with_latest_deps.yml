@@ -9,7 +9,7 @@ on:
 name: Unit Tests - Latest Dependencies
 jobs:
   unit_tests:
-    name: Unit Tests - ${{ matrix.os }} - Python ${{ matrix.python_version }} - Featuretools ${{ matrix.featuretools_version }}
+    name: Unit Tests - ${{ matrix.os }} - PY ${{ matrix.python_version }} - FT ${{ matrix.featuretools_version }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
