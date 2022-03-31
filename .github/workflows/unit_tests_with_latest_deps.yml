@@ -9,11 +9,12 @@ on:
 name: Unit Tests - Latest Dependencies
 jobs:
   unit_tests:
-    name: Unit Tests - Python ${{ matrix.python_version }} - Featuretools ${{ matrix.featuretools_version }}
-    runs-on: ubuntu-latest
+    name: Unit Tests - ${{ matrix.os }} - ${{ matrix.python_version }} - ${{ matrix.featuretools_version }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest, macos-latest]
         python_version: ["3.7", "3.8", "3.9"]
         featuretools_version: ["Release", "Main"]
     steps:
