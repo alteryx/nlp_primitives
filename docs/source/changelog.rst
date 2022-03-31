@@ -2,20 +2,27 @@
 Changelog
 =========
 
-Future Release
-==============
+.. Future Release
+  ==============
     * Enhancements
-        * Added Release Notes CI Check (:pr:`110`)
     * Fixes
     * Changes
-        * Added CI check to ensure entrypoint works with Featuretools (:pr:`111`)
-        * Added pip dependencies for M1 Macs (:pr:`117`)
     * Documentation Changes
     * Testing Changes
+
+.. Thanks to the following people for contributing to this release:
+
+v2.4.0 Mar 31, 2022
+===================
+    * Changes
+        * Added pip dependencies for M1 Macs (:pr:`117`)
+    * Testing Changes
+        * Added Release Notes CI Check (:pr:`110`)
+        * Added CI check to ensure entrypoint works with Featuretools (:pr:`111`)
         * Fixed workflow that tests latest changes to featuretools (:pr:`112`)
 
     Thanks to the following people for contributing to this release:
-    :user:`dvreed77`, :user:`gsheni`, :user:`jeff-hernandez`
+    :user:`dvreed77`, :user:`gsheni`, :user:`jeff-hernandez`, :user:`thehomebrewnerd`
 
 v2.3.0 Feb 28, 2022
 ===================
