@@ -75,4 +75,3 @@ class TestLSA(PrimitiveT):
         df2 = calculate_feature_matrix([new_feat], entityset=es)
 
         assert df1.equals(df2)
-        assert False
