@@ -43,6 +43,14 @@ class TestLSA(PrimitiveT):
                                              np.concatenate(([np.array(results[0])], [np.array(results[1])]), axis=0),
                                              decimal=2)
 
+    def test_seed(self):
+        prim = self.primitive(random_seed=1)
+        # trigger trainer creation via get_function
+        primitive_func = prim.get_function()
+        # trainer.steps returns list of tuples representing pipeline steps
+        # tuple has form ("component_name", component_object)
+        assert prim.trainer.steps[1][1].random_state == 1
+
     def test_with_featuretools(self, es):
         transform, aggregation = find_applicable_primitives(self.primitive)
         primitive_instance = self.primitive()
