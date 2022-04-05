@@ -49,16 +49,22 @@ class LSA(TransformPrimitive):
     return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
     default_value = 0
 
-    def __init__(self):
+    def __init__(self, random_seed=0):
         # TODO: allow user to use own corpus
         self.number_output_features = 2
         self.n = 2
+        self.trainer = None
+        self.random_seed = random_seed
 
+    def _create_trainer(self):
         gutenberg = nltk.corpus.gutenberg.sents()
-        self.trainer = make_pipeline(TfidfVectorizer(), TruncatedSVD())
+        svd = TruncatedSVD(random_state=self.random_seed)
+        self.trainer = make_pipeline(TfidfVectorizer(), svd)
         self.trainer.fit([" ".join(sent) for sent in gutenberg])
 
     def get_function(self):
+        if self.trainer is None:
+            self._create_trainer()
         dtk = TreebankWordDetokenizer()
 
         def lsa(array):
