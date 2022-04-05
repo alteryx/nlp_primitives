@@ -46,7 +46,7 @@ class TestLSA(PrimitiveT):
     def test_seed(self):
         prim = self.primitive(random_seed=1)
         # trigger trainer creation via get_function
-        primitive_func = prim.get_function()
+        _ = prim.get_function()
         # trainer.steps returns list of tuples representing pipeline steps
         # tuple has form ("component_name", component_object)
         assert prim.trainer.steps[1][1].random_state == 1
