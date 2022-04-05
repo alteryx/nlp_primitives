@@ -1,5 +1,11 @@
 import numpy as np
 import pandas as pd
+from featuretools import (
+    calculate_feature_matrix,
+    dfs,
+    load_features,
+    save_features
+)
 
 from ..lsa import LSA
 from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
@@ -42,3 +48,31 @@ class TestLSA(PrimitiveT):
         primitive_instance = self.primitive()
         transform.append(primitive_instance)
         valid_dfs(es, aggregation, transform, self.primitive.name.upper(), multi_output=True)
+
+    def test_serialize(self, es):
+        features = dfs(entityset=es,
+                       target_dataframe_name="log",
+                       trans_primitives=[self.primitive],
+                       max_features=-1,
+                       max_depth=3,
+                       features_only=True)
+
+        feat_to_serialize = None
+        for feature in features:
+            if feature.primitive.__class__ == self.primitive:
+                feat_to_serialize = feature
+                break
+            for base_feature in feature.get_dependencies(deep=True):
+                if base_feature.primitive.__class__ == self.primitive:
+                    feat_to_serialize = base_feature
+                    break
+        assert feat_to_serialize is not None
+
+        df1 = calculate_feature_matrix([feat_to_serialize], entityset=es)
+
+        new_feat = load_features(save_features([feat_to_serialize]))[0]
+
+        df2 = calculate_feature_matrix([new_feat], entityset=es)
+
+        assert df1.equals(df2)
+        assert False
