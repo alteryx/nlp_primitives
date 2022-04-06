@@ -75,15 +75,20 @@ class PrimitiveT:
                     break
         assert feat_to_serialize is not None
 
+        # Skip calculating feature matrix for long running primitives
+        skip_primitives = ["elmo"]
+
+        if self.primitive.name not in skip_primitives:
+            df1 = calculate_feature_matrix([feat_to_serialize], entityset=es)
+
         new_feat = load_features(save_features([feat_to_serialize]))[0]
         assert isinstance(new_feat, ft.FeatureBase)
 
-        # Skip calculating feature matrix for long running primitives
-        skip_primitives = ["elmo"]
         if self.primitive.name not in skip_primitives:
-            df1 = calculate_feature_matrix([feat_to_serialize], entityset=es)
             df2 = calculate_feature_matrix([new_feat], entityset=es)
             assert df1.equals(df2)
+        
+        
 
 
 def find_applicable_primitives(primitive):
