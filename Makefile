@@ -21,13 +21,13 @@ lint-fix:
 	autopep8 --in-place --recursive --max-line-length=100 --select=${select} nlp_primitives
 	isort --recursive nlp_primitives
 
-.PHONY: lint-tests
-lint-tests:
+.PHONY: lint
+lint:
 	flake8 nlp_primitives
 	isort --check-only nlp_primitives
 
-.PHONY: unit-tests
-unit-tests:
+.PHONY: test
+test:
 	pytest --cache-clear --show-capture=stderr -vv
 
 .PHONY: installdeps
@@ -56,8 +56,16 @@ checkdepscomplete:
 	$(eval allow_list='featuretools|nltk|tensorflow|tensorflow_hub')
 	pip freeze | grep -v "nlp_primitives.git" | grep -E $(allow_list) > $(OUTPUT_FILEPATH)
 
+.PHONY: upgradepip
+upgradepip:
+	python -m pip install --upgrade pip
+
+.PHONY: upgradebuild
+upgradebuild:
+	python -m pip install --upgrade build
+
 .PHONY: package_nlp_primitives
-package_nlp_primitives:
+package_nlp_primitives: upgradepip upgradebuild
 	python setup.py sdist
 	$(eval PACKAGE=$(shell python setup.py --version))
 	tar -zxvf "dist/nlp_primitives-${PACKAGE}.tar.gz"

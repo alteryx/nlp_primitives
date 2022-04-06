@@ -30,4 +30,4 @@ jobs:
           make installdeps-complete
           pip install -r test-requirements.txt
       - name: Run lint tests
-        run: make lint-tests
+        run: make lint
