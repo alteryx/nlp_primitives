@@ -10,9 +10,10 @@ Future Release
         * Speed up LSA primitive initialization (:pr:`118`)
     * Documentation Changes
     * Testing Changes
+        * Fix install test and update Makefile (:pr:`123`)
 
     Thanks to the following people for contributing to this release:
-    :user:`rwedge`
+    :user:`rwedge`, :user:`thehomebrewnerd`
 
 v2.4.0 Mar 31, 2022
 ===================
