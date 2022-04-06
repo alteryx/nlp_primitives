@@ -36,4 +36,4 @@ jobs:
         name: Install latest version of Featuretools from main branch
         run: pip install git+https://github.com/alteryx/featuretools.git@main#egg=featuretools --force-reinstall
       - name: Run unit tests
-        run: make unit-tests
+        run: make test
