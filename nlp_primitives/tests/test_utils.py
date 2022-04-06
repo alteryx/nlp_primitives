@@ -87,8 +87,6 @@ class PrimitiveT:
         if self.primitive.name not in skip_primitives:
             df2 = calculate_feature_matrix([new_feat], entityset=es)
             assert df1.equals(df2)
-        
-        
 
 
 def find_applicable_primitives(primitive):
