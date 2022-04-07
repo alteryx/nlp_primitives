@@ -6,6 +6,7 @@ Future Release
 ==============
     * Enhancements
     * Fixes
+        * Fix ``NumUniqueSeparators`` to allow for serialization and deserialization (:pr:`122`)
     * Changes
         * Speed up LSA primitive initialization (:pr:`118`)
     * Documentation Changes
