@@ -2,14 +2,22 @@
 Changelog
 =========
 
-Future Release
-==============
+.. Future Release
+  ==============
     * Enhancements
+    * Fixes
+    * Changes
+    * Documentation Changes
+    * Testing Changes
+
+.. Thanks to the following people for contributing to this release:
+
+v2.5.0 Apr 7, 2022
+==================
     * Fixes
         * Fix ``NumUniqueSeparators`` to allow for serialization and deserialization (:pr:`122`)
     * Changes
         * Speed up LSA primitive initialization (:pr:`118`)
-    * Documentation Changes
     * Testing Changes
         * Fix install test and update Makefile (:pr:`123`)
 
