@@ -27,7 +27,6 @@ jobs:
       - name: Install requirements
         run: |
           pip config --site set global.progress_bar off
-          make installdeps-complete
-          pip install -r test-requirements.txt
+          make installdeps-test
       - name: Run lint tests
         run: make lint

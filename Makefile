@@ -43,8 +43,7 @@ installdeps-complete:
 .PHONY: installdeps-test
 installdeps-test:
 	pip install --upgrade pip
-	pip install -e ".[complete]"
-	pip install -r test-requirements.txt
+	pip install -e ".[test]"
 
 .PHONY: checkdeps
 checkdeps:
