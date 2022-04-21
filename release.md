@@ -6,7 +6,7 @@
 1. Branch off of main and name the branch the release version number (e.g. v0.4.0)
 
 #### Bump version number
-2. Bump verison number in `setup.py`, and `nlp_primitives/__init__.py`.
+2. Bump verison number in `nlp_primitives/version.py` and `nlp_primitives/tests/test_version.py`.
 
 #### Update changelog
 1. Replace "Future Release" in `docs/source/changelog.rst` with the current date
