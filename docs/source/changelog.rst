@@ -2,15 +2,17 @@
 Changelog
 =========
 
-.. Future Release
-  ==============
+Future Release
+==============
     * Enhancements
     * Fixes
     * Changes
+        * Transition to use pyproject.toml and setup.cfg (moving away from setup.py) (:pr:`127`)
     * Documentation Changes
     * Testing Changes
 
-.. Thanks to the following people for contributing to this release:
+    Thanks to the following people for contributing to this release:
+    :user:`rwedge`
 
 v2.5.0 Apr 7, 2022
 ==================
