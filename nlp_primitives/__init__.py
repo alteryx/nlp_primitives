@@ -1,7 +1,8 @@
 # flake8: noqa
+from .version import __version__
+
 import nltk.data
 
-from .version import __version__
 from importlib.util import find_spec
 
 import pkg_resources
