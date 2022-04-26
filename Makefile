@@ -14,6 +14,7 @@ clean:
 	rm -rf ./build
 	rm -rf ./dist
 	rm -rf ./nlp_primitives.egg-info
+	rm -rf ./unpacked_sdist
 
 .PHONY: lint-fix
 lint-fix:
@@ -43,8 +44,7 @@ installdeps-complete:
 .PHONY: installdeps-test
 installdeps-test:
 	pip install --upgrade pip
-	pip install -e ".[complete]"
-	pip install -r test-requirements.txt
+	pip install -e ".[test]"
 
 .PHONY: checkdeps
 checkdeps:
@@ -66,7 +66,7 @@ upgradebuild:
 
 .PHONY: package_nlp_primitives
 package_nlp_primitives: upgradepip upgradebuild
-	python setup.py sdist
-	$(eval PACKAGE=$(shell python setup.py --version))
+	python -m build
+	$(eval PACKAGE=$(shell python -c "from pep517.meta import load; metadata = load('.'); print(metadata.version)"))
 	tar -zxvf "dist/nlp_primitives-${PACKAGE}.tar.gz"
 	mv "nlp_primitives-${PACKAGE}" unpacked_sdist

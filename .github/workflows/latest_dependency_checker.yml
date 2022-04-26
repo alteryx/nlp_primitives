@@ -20,18 +20,13 @@ jobs:
       run: |
         python -m virtualenv venv_core
         source venv_core/bin/activate
-        python -m pip install --upgrade pip
-        python -m pip install -r requirements.txt
-        python -m pip install -r test-requirements.txt
+        make installdeps
         make checkdeps OUTPUT_FILEPATH=nlp_primitives/tests/requirement_files/latest_core_dependencies.txt
         cat nlp_primitives/tests/requirement_files/latest_core_dependencies.txt
     - name: Update latest complete dependencies
       run: |
         python -m virtualenv venv_complete
         source venv_complete/bin/activate
-        python -m pip install --upgrade pip
-        python -m pip install -r requirements.txt
-        python -m pip install -r complete-requirements.txt
-        python -m pip install -r test-requirements.txt
+        make installdeps-test
         make checkdepscomplete OUTPUT_FILEPATH=nlp_primitives/tests/requirement_files/latest_complete_dependencies.txt
         cat nlp_primitives/tests/requirement_files/latest_complete_dependencies.txt

@@ -1,9 +1,9 @@
 # flake8: noqa
-import nltk.data
+from .version import __version__  # isort:skip
 
-__version__ = '2.5.0'
 from importlib.util import find_spec
 
+import nltk.data
 import pkg_resources
 
 from .count_string import CountString

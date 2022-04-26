@@ -30,8 +30,7 @@ jobs:
       - name: Install requirements
         run: |
           pip config --site set global.progress_bar off
-          make installdeps-complete
-          pip install -r test-requirements.txt
+          make installdeps-test
       - if: ${{ matrix.featuretools_version == 'Main' }}
         name: Install latest version of Featuretools from main branch
         run: pip install git+https://github.com/alteryx/featuretools.git@main#egg=featuretools --force-reinstall

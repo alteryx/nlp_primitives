@@ -1,4 +1,0 @@
-tensorflow>=1.14.0; sys_platform!="darwin" or platform_machine!='arm64'
-tensorflow-metal>=0.4.0; sys_platform=="darwin" and platform_machine=='arm64'
-tensorflow-macos>=2.8.0; sys_platform=="darwin" and platform_machine=='arm64'
-tensorflow_hub>=0.4.0
