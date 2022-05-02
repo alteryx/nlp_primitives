@@ -32,7 +32,6 @@ jobs:
         run: make package_nlp_primitives
       - name: Install nlp_primtivies from sdist
         run: |
-          NLP_PRIMITIVES_VERSION=$(shell grep '__version__\s=' featuretools/version.py | grep -o '[^ ]*$$'))
           python -m pip install unpacked_sdist/
       - name: Test by importing
         run: |
