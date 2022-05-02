@@ -21,14 +21,15 @@ jobs:
       run: |
         python -m virtualenv venv_core
         source venv_core/bin/activate
-        make installdeps
+        python -m pip install ".[test]"
         make checkdeps OUTPUT_FILEPATH=nlp_primitives/tests/requirement_files/latest_core_dependencies.txt
         cat nlp_primitives/tests/requirement_files/latest_core_dependencies.txt
     - name: Update latest complete dependencies
       run: |
         python -m virtualenv venv_complete
         source venv_complete/bin/activate
-        make installdeps-test
+        python -m pip install ".[test]"
+        python -m pip install ".[complete]"
         make checkdepscomplete OUTPUT_FILEPATH=nlp_primitives/tests/requirement_files/latest_complete_dependencies.txt
         cat nlp_primitives/tests/requirement_files/latest_complete_dependencies.txt
     - name: Create pull request
