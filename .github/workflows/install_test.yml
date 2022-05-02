@@ -35,7 +35,6 @@ jobs:
           python -m pip install unpacked_sdist/
       - name: Test by importing
         run: |
-          cd nlp_primitives
           python -c "import nlp_primitives; print(nlp_primitives.__version__)"
           python -c "import sys; print(sys.path)"
       - name: Check package conflicts
