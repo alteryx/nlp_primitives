@@ -31,6 +31,10 @@ lint-fix:
 test:
 	pytest --cache-clear --show-capture=stderr -vv
 
+.PHONY: testcoverage
+testcoverage:
+	pytest featuretools/ --cov=featuretools
+
 .PHONY: installdeps
 installdeps:
 	pip install --upgrade pip
