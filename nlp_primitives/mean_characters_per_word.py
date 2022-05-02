@@ -8,8 +8,10 @@ from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import Double, NaturalLanguage
 
-PUNCTUATION = re.escape('!,.:;?')
-END_OF_SENTENCE_PUNCT_RE = re.compile(rf'[{PUNCTUATION}]+$|[{PUNCTUATION}]+ |[{PUNCTUATION}]+\n')
+PUNCTUATION = re.escape("!,.:;?")
+END_OF_SENTENCE_PUNCT_RE = re.compile(
+    rf"[{PUNCTUATION}]+$|[{PUNCTUATION}]+ |[{PUNCTUATION}]+\n"
+)
 
 
 def _mean_characters_per_word(value):
@@ -17,7 +19,7 @@ def _mean_characters_per_word(value):
         return np.nan
 
     # replace end-of-sentence punctuation with space
-    value = END_OF_SENTENCE_PUNCT_RE.sub(' ', value)
+    value = END_OF_SENTENCE_PUNCT_RE.sub(" ", value)
     words = value.split()
     character_count = [len(x) for x in words]
 
@@ -40,9 +42,10 @@ class MeanCharactersPerWord(TransformPrimitive):
         >>> mean_characters_per_word(x).tolist()
         [3.0, 4.0, 5.0]
     """
+
     name = "mean_characters_per_word"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
     def get_function(self):

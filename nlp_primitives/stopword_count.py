@@ -23,16 +23,16 @@ class StopwordCount(TransformPrimitive):
         >>> stopword_count(x).tolist()
         [3, 2, 0]
     """
+
     name = "stopword_count"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
     default_value = 0
 
     def get_function(self):
-
         def stopword_count(array):
             li = []
-            swords = set(nltk.corpus.stopwords.words('english'))
+            swords = set(nltk.corpus.stopwords.words("english"))
             tokenizer = nltk.tokenize.word_tokenize
             for el in array:
                 if pd.isnull(el):

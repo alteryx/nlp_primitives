@@ -27,7 +27,7 @@ class NumUniqueSeparators(TransformPrimitive):
 
     name = "num_unique_separators"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
 
     def __init__(self, separators=NATURAL_LANGUAGE_SEPARATORS):
         assert separators is not None, "separators needs to be defined"

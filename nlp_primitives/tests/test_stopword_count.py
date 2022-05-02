@@ -9,18 +9,20 @@ class TestStopwordCount(PrimitiveT):
     primitive = StopwordCount
 
     def test_strings(self):
-        x = pd.Series(['This is a test string.',
-                       'This is second string',
-                       'third string',
-                       'This IS the fourth string.'])
+        x = pd.Series(
+            [
+                "This is a test string.",
+                "This is second string",
+                "third string",
+                "This IS the fourth string.",
+            ]
+        )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([3, 2, 0, 3])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
     def test_nan(self):
-        x = pd.Series([np.nan,
-                       '',
-                       'This is a test file.'])
+        x = pd.Series([np.nan, "", "This is a test file."])
         primitive_func = self.primitive().get_function()
         answers = pd.Series([np.nan, 0, 3])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)

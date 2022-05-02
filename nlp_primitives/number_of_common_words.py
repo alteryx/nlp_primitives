@@ -34,13 +34,16 @@ class NumberOfCommonWords(TransformPrimitive):
         >>> number_of_common_words(x).tolist()
         [2]
     """
+
     name = "number_of_common_words"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
 
     default_value = 0
 
-    def __init__(self, word_set=set(common_words_1000), delimiters_regex=r"[- \[\].,!\?;\n]"):
+    def __init__(
+        self, word_set=set(common_words_1000), delimiters_regex=r"[- \[\].,!\?;\n]"
+    ):
         self.delimiters_regex = delimiters_regex
         self.word_set = word_set
 
@@ -57,4 +60,5 @@ class NumberOfCommonWords(TransformPrimitive):
         def num_common_words(x):
             words = x.str.split(self.delimiters_regex)
             return words.apply(get_num_in_word_bank)
+
         return num_common_words

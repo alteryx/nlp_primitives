@@ -44,9 +44,10 @@ class LSA(TransformPrimitive):
         [[0.02, 0.0, nan, 0.0], [0.02, 0.0, nan, 0.0]]
 
     """
+
     name = "lsa"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
     def __init__(self, random_seed=0):
@@ -68,17 +69,17 @@ class LSA(TransformPrimitive):
         dtk = TreebankWordDetokenizer()
 
         def lsa(array):
-            array = pd.Series(array, index=pd.Series(array.index), name='array')
+            array = pd.Series(array, index=pd.Series(array.index), name="array")
             copy = array.dropna()
             copy = copy.apply(lambda x: dtk.detokenize(clean_tokens(x)))
             li = self.trainer.transform(copy)
             lsa1 = pd.Series(li[:, 0], index=copy.index)
             lsa2 = pd.Series(li[:, 1], index=copy.index)
             array = pd.DataFrame(array)
-            array['l1'] = lsa1
-            array['l2'] = lsa2
+            array["l1"] = lsa1
+            array["l2"] = lsa2
 
-            arr = ((np.array(array[['l1', 'l2']])).T).tolist()
+            arr = ((np.array(array[["l1", "l2"]])).T).tolist()
             return pd.Series(arr)
 
         return lsa

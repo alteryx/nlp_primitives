@@ -25,6 +25,7 @@ class Elmo(TransformPrimitive):
         >>> [round(x, 4) for x in values]
         [-0.3457, -0.4546, 0.2538]
     """
+
     name = "elmo"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
     return_type = ColumnSchema(logical_type=Double, semantic_tags="numeric")
@@ -49,8 +50,13 @@ class Elmo(TransformPrimitive):
             import tensorflow as tf
 
             with tf.compat.v1.Session() as session:
-                session.run([tf.compat.v1.global_variables_initializer(),
-                             tf.compat.v1.tables_initializer()])
+                session.run(
+                    [
+                        tf.compat.v1.global_variables_initializer(),
+                        tf.compat.v1.tables_initializer(),
+                    ]
+                )
                 embeddings = session.run(self.embed(col.tolist()))
             return embeddings.transpose()
+
         return elmo

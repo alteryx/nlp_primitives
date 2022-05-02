@@ -24,9 +24,10 @@ class PartOfSpeechCount(TransformPrimitive):
         >>> part_of_speech_count(x).tolist()
         [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [1.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [1.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [1.0, 0.0], [0.0, 0.0]]
     """
+
     name = "part_of_speech_count"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
     def __init__(self):
@@ -34,9 +35,23 @@ class PartOfSpeechCount(TransformPrimitive):
         self.n = 15
 
     def get_function(self):
-        types = ['C', 'D', 'E', 'F', 'I', 'J',
-                 'L', 'M', 'N', 'P', 'R', 'T',
-                 'U', 'V', 'W']
+        types = [
+            "C",
+            "D",
+            "E",
+            "F",
+            "I",
+            "J",
+            "L",
+            "M",
+            "N",
+            "P",
+            "R",
+            "T",
+            "U",
+            "V",
+            "W",
+        ]
 
         def part_of_speech_count(x):
             li = []

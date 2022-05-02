@@ -10,13 +10,15 @@ class TestElmo(PrimitiveT):
 
     def test_regular(self):
         primitive = self.primitive().get_function()
-        words = pd.Series([
-            "",
-            "I like to eat pizza",
-            "The roller coaster was built in 1885.",
-            "When will humans go to mars?",
-            "Mitochondria is the powerhouse of the cell",
-        ])
+        words = pd.Series(
+            [
+                "",
+                "I like to eat pizza",
+                "The roller coaster was built in 1885.",
+                "When will humans go to mars?",
+                "Mitochondria is the powerhouse of the cell",
+            ]
+        )
         new_results = primitive(words)
         assert round(sum(new_results[:, 0]), 3) == 8.744
         assert round(sum(new_results[:, 1]), 3) == 2.774
@@ -43,5 +45,12 @@ class TestElmo(PrimitiveT):
         transform, aggregation = find_applicable_primitives(self.primitive)
         primitive_instance = self.primitive()
         transform.append(primitive_instance)
-        valid_dfs(es, aggregation, transform, self.primitive.name.upper(),
-                  multi_output=True, max_features=100, instance_ids=[0])
+        valid_dfs(
+            es,
+            aggregation,
+            transform,
+            self.primitive.name.upper(),
+            multi_output=True,
+            max_features=100,
+            instance_ids=[0],
+        )

@@ -1,7 +1,7 @@
 import pytest
 
 from nlp_primitives.tensorflow.universal_sentence_encoder import (
-    UniversalSentenceEncoder
+    UniversalSentenceEncoder,
 )
 
 
@@ -20,10 +20,7 @@ def pytest_addoption(parser):
 
 
 def pytest_ignore_collect(path, config):
-    skip_files = [
-        "universal_sentence_encoder.py",
-        "elmo.py"
-    ]
+    skip_files = ["universal_sentence_encoder.py", "elmo.py"]
 
     if config.getoption("--notensorflow"):
         return any([x in str(path) for x in skip_files])

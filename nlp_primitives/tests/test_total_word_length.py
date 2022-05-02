@@ -9,27 +9,28 @@ class TestTotalWordLength(PrimitiveT):
     primitive = TotalWordLength
 
     def test_delimiter_override(self):
-        x = pd.Series(['This is a test file.',
-                       'This,is,second,line?',
-                       'and;subsequent;lines...'])
+        x = pd.Series(
+            ["This is a test file.", "This,is,second,line?", "and;subsequent;lines..."]
+        )
 
         expected = pd.Series([16, 17, 21])
-        actual = self.primitive('[ ,;]').get_function()(x)
+        actual = self.primitive("[ ,;]").get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
     def test_multiline(self):
-        x = pd.Series(['This is a test file.',
-                       'This is second line\nthird line $1000;\nand subsequent lines'])
+        x = pd.Series(
+            [
+                "This is a test file.",
+                "This is second line\nthird line $1000;\nand subsequent lines",
+            ]
+        )
 
         expected = pd.Series([15, 48])
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
     def test_null(self):
-        x = pd.Series([np.nan,
-                       pd.NA,
-                       None,
-                       'This is a test file.'])
+        x = pd.Series([np.nan, pd.NA, None, "This is a test file."])
 
         expected = pd.Series([np.nan, np.nan, np.nan, 15.0])
         actual = self.primitive().get_function()(x).astype(float)
