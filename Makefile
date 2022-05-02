@@ -39,6 +39,10 @@ testcoverage:
 installdeps: upgradepip
 	pip install -e ".[dev]"
 
+.PHONY: installdeps-complete
+installdeps-complete: upgradepip
+	pip install -e ".[complete]"
+
 .PHONY: checkdeps
 checkdeps:
 	$(eval allow_list='featuretools|nltk')
