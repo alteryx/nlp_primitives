@@ -29,11 +29,11 @@ lint-fix:
 
 .PHONY: test
 test:
-	pytest --cache-clear --show-capture=stderr -vv
+	pytest nlp_primitives/ --cache-clear --show-capture=stderr -vv
 
 .PHONY: testcoverage
 testcoverage:
-	pytest featuretools/ --cov=featuretools
+	pytest nlp_primitives/ --cov=nlp_primitives
 
 .PHONY: installdeps
 installdeps: upgradepip
