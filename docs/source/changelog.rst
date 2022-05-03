@@ -7,7 +7,7 @@ Future Release
     * Enhancements
     * Fixes
     * Changes
-        * Transition to use pyproject.toml and setup.cfg (moving away from setup.py) (:pr:`127`)
+        * Transition to use pyproject.toml and setup.cfg (moving away from setup.py) (:pr:`127`, :pr:`132`)
     * Documentation Changes
     * Testing Changes
         * Fix latest dependency checker to create PR (:pr:`129`)
