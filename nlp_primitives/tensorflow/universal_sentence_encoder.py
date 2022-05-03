@@ -23,9 +23,10 @@ class UniversalSentenceEncoder(TransformPrimitive):
         >>> [round(x, 4) for x in values]
         [0.0178, 0.0616, -0.0089]
     """
+
     name = "universal_sentence_encoder"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
 
     def __init__(self):
         message = "In order to use the UniversalSentenceEncoder primitive install 'nlp_primitives[complete]'"
@@ -40,8 +41,13 @@ class UniversalSentenceEncoder(TransformPrimitive):
     def get_function(self):
         def universal_sentence_encoder(col):
             with self.tf.compat.v1.Session() as session:
-                session.run([self.tf.compat.v1.global_variables_initializer(),
-                             self.tf.compat.v1.tables_initializer()])
+                session.run(
+                    [
+                        self.tf.compat.v1.global_variables_initializer(),
+                        self.tf.compat.v1.tables_initializer(),
+                    ]
+                )
                 embeddings = session.run(self.embed(col.tolist()))
             return embeddings.transpose()
+
         return universal_sentence_encoder

@@ -22,13 +22,14 @@ class TitleWordCount(TransformPrimitive):
         >>> title_word_count(x).tolist()
         [2.0, 0.0, 1.0]
     """
+
     name = "title_word_count"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
     def get_function(self):
-        pattern = r'([A-Z][^\s]*)'
+        pattern = r"([A-Z][^\s]*)"
 
         def title_word_count(x):
             x = x.reset_index(drop=True)
@@ -36,4 +37,5 @@ class TitleWordCount(TransformPrimitive):
             counts = counts.reindex_like(x).fillna(0)
             counts[x.isnull()] = np.nan
             return counts.astype(float)
+
         return title_word_count

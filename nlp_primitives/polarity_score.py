@@ -23,9 +23,10 @@ class PolarityScore(TransformPrimitive):
         >>> polarity_score(x).tolist()
         [0.677, -0.649, 0.0, 0.0]
     """
+
     name = "polarity_score"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
     def get_function(self):
@@ -36,8 +37,11 @@ class PolarityScore(TransformPrimitive):
             li = []
 
             def vader_pol(sentence):
-                return (vader.polarity_scores(sentence)['pos'] -
-                        vader.polarity_scores(sentence)['neg'])
+                return (
+                    vader.polarity_scores(sentence)["pos"]
+                    - vader.polarity_scores(sentence)["neg"]
+                )
+
             for el in x:
                 if pd.isnull(el):
                     li.append(np.nan)
@@ -48,4 +52,5 @@ class PolarityScore(TransformPrimitive):
                     else:
                         li.append(vader_pol(dtk.detokenize(el)))
             return pd.Series(li)
+
         return polarity_score

@@ -16,35 +16,36 @@ clean:
 	rm -rf ./nlp_primitives.egg-info
 	rm -rf ./unpacked_sdist
 
-.PHONY: lint-fix
-lint-fix:
-	select="E225,E303,E302,E203,E128,E231,E251,E271,E127,E126,E301,W291,W293,E226,E306,E221"
-	autopep8 --in-place --recursive --max-line-length=100 --select=${select} nlp_primitives
-	isort --recursive nlp_primitives
-
 .PHONY: lint
 lint:
-	flake8 nlp_primitives
 	isort --check-only nlp_primitives
+	black nlp_primitives -t py310 --check
+	flake8 nlp_primitives
+
+.PHONY: lint-fix
+lint-fix:
+	black -t py310 nlp_primitives
+	isort nlp_primitives
 
 .PHONY: test
 test:
-	pytest --cache-clear --show-capture=stderr -vv
+	pytest nlp_primitives/ --cache-clear --show-capture=stderr -vv
+
+.PHONY: testcoverage
+testcoverage:
+	pytest nlp_primitives/ --cov=nlp_primitives
 
 .PHONY: installdeps
-installdeps:
-	pip install --upgrade pip
-	pip install -e .
-
-.PHONY: installdeps-complete
-installdeps-complete:
-	pip install --upgrade pip
-	pip install -e ".[complete]"
+installdeps: upgradepip
+	pip install -e ".[dev]"
 
 .PHONY: installdeps-test
-installdeps-test:
-	pip install --upgrade pip
+installdeps-test: upgradepip
 	pip install -e ".[test]"
+
+.PHONY: installdeps-complete
+installdeps-complete: upgradepip
+	pip install -e ".[complete]"
 
 .PHONY: checkdeps
 checkdeps:

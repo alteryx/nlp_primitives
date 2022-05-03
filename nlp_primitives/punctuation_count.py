@@ -26,13 +26,14 @@ class PunctuationCount(TransformPrimitive):
         >>> punctuation_count(x).tolist()
         [1.0, 0.0, 3.0]
     """
+
     name = "punctuation_count"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
     def get_function(self):
-        pattern = "(%s)" % '|'.join([re.escape(x) for x in string.punctuation])
+        pattern = "(%s)" % "|".join([re.escape(x) for x in string.punctuation])
 
         def punctuation_count(x):
             x = x.reset_index(drop=True)
@@ -40,4 +41,5 @@ class PunctuationCount(TransformPrimitive):
             counts = counts.reindex_like(x).fillna(0)
             counts[x.isnull()] = np.nan
             return counts.astype(float)
+
         return punctuation_count

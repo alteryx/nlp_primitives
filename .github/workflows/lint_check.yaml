@@ -27,6 +27,6 @@ jobs:
       - name: Install requirements
         run: |
           pip config --site set global.progress_bar off
-          make installdeps-test
+          python -m pip install ".[dev]"
       - name: Run lint tests
         run: make lint

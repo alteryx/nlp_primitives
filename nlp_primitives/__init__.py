@@ -27,5 +27,5 @@ if find_spec("tensorflow") and find_spec("tensorflow_hub"):
     from .tensorflow.universal_sentence_encoder import UniversalSentenceEncoder
 
 
-nltk_data_path = pkg_resources.resource_filename('nlp_primitives', 'data/nltk-data/')
+nltk_data_path = pkg_resources.resource_filename("nlp_primitives", "data/nltk-data/")
 nltk.data.path.insert(0, nltk_data_path)

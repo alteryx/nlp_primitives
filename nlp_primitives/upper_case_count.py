@@ -21,13 +21,14 @@ class UpperCaseCount(TransformPrimitive):
         >>> upper_case_count(x).tolist()
         [3.0, 1.0, 0.0]
     """
+
     name = "upper_case_count"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
     def get_function(self):
-        pattern = r'([A-Z])'
+        pattern = r"([A-Z])"
 
         def upper_case_count(x):
             x = x.reset_index(drop=True)
@@ -35,4 +36,5 @@ class UpperCaseCount(TransformPrimitive):
             counts = counts.reindex_like(x).fillna(0)
             counts[x.isnull()] = np.nan
             return counts.astype(float)
+
         return upper_case_count

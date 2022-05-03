@@ -14,16 +14,14 @@ class TestWhitespaceCount(PrimitiveT):
         return np.testing.assert_array_equal(answers, primitive_answers)
 
     def test_strings(self):
-        x = pd.Series(['', 'hi im ethan!', 'consecutive.    spaces.', ' spaces-on-ends '])
+        x = pd.Series(
+            ["", "hi im ethan!", "consecutive.    spaces.", " spaces-on-ends "]
+        )
         answers = [0, 2, 4, 2]
         self.compare(self.primitive(), x, answers)
 
     def test_nan(self):
-        x = pd.Series([np.nan,
-                       None,
-                       pd.NA,
-                       '',
-                       'This IS a STRING.'])
+        x = pd.Series([np.nan, None, pd.NA, "", "This IS a STRING."])
         answers = [np.nan, np.nan, np.nan, 0, 3]
         self.compare(self.primitive(), x, answers)
 

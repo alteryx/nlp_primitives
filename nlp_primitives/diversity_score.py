@@ -25,13 +25,13 @@ class DiversityScore(TransformPrimitive):
         >>> diversity_score(["hi hi hi", "hello its me", "hey what hey what", "a dog ate a basket"]).tolist()
         [0.3333333333333333, 1.0, 0.5, 1.0]
     """
+
     name = "diversity_score"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
     def get_function(self):
-
         def diversity_score(x):
             li = []
             for el in x:
@@ -44,4 +44,5 @@ class DiversityScore(TransformPrimitive):
                     else:
                         li.append(float(len(set(el))) / float(len(el)))
             return pd.Series(li)
+
         return diversity_score

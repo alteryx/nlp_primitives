@@ -26,9 +26,10 @@ class MedianWordLength(TransformPrimitive):
         >>> median_word_length(x).tolist()
         [4.0, 4.0, 3.5, nan]
     """
+
     name = "median_word_length"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
 
     default_value = 0
 
@@ -43,4 +44,5 @@ class MedianWordLength(TransformPrimitive):
         def median_word_length(x):
             words = x.str.split(self.delimiters_regex)
             return words.apply(get_median)
+
         return median_word_length

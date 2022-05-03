@@ -54,12 +54,19 @@ class CountString(TransformPrimitive):
         ...                                      "The girl went to the store."]).tolist()
         [1, 0, 2]
     """
+
     name = "count_string"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Integer, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Integer, semantic_tags={"numeric"})
 
-    def __init__(self, string='the', ignore_case=True, ignore_non_alphanumeric=False,
-                 is_regex=False, match_whole_words_only=False):
+    def __init__(
+        self,
+        string="the",
+        ignore_case=True,
+        ignore_non_alphanumeric=False,
+        is_regex=False,
+        match_whole_words_only=False,
+    ):
         self.string = string
         self.ignore_case = ignore_case
         self.ignore_non_alphanumeric = ignore_non_alphanumeric
@@ -83,7 +90,7 @@ class CountString(TransformPrimitive):
 
     def process_text(self, text):
         if self.ignore_non_alphanumeric:
-            text = re.sub('[^0-9a-zA-Z ]+', '', text)
+            text = re.sub("[^0-9a-zA-Z ]+", "", text)
         if self.ignore_case:
             text = text.lower()
         return text
@@ -94,4 +101,5 @@ class CountString(TransformPrimitive):
                 return np.nan
             words = self.process_text(words)
             return len(re.findall(self.pattern, words))
+
         return np.vectorize(count_string)

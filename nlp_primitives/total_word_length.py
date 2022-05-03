@@ -25,9 +25,10 @@ class TotalWordLength(TransformPrimitive):
         >>> total_word_length(x).tolist()
         [15.0, 16.0, 14.0, nan]
     """
+
     name = "total_word_length"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={'numeric'})
+    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
 
     default_value = 0
 
@@ -38,4 +39,5 @@ class TotalWordLength(TransformPrimitive):
         def total_word_length(x):
             delimiters = x.str.count(self.delimiters_regex)
             return x.str.len() - delimiters
+
         return total_word_length
