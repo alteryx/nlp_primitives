@@ -39,6 +39,10 @@ testcoverage:
 installdeps: upgradepip
 	pip install -e ".[dev]"
 
+.PHONY: installdeps-test
+installdeps-test: upgradepip
+	pip install -e ".[test]"
+
 .PHONY: installdeps-complete
 installdeps-complete: upgradepip
 	pip install -e ".[complete]"
