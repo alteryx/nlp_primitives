@@ -21,7 +21,6 @@ jobs:
       run: |
         python -m virtualenv venv_complete
         source venv_complete/bin/activate
-        python -m pip install ".[test]"
         python -m pip install ".[complete]"
         make checkdepscomplete OUTPUT_FILEPATH=nlp_primitives/tests/requirement_files/latest_complete_dependencies.txt
         cat nlp_primitives/tests/requirement_files/latest_complete_dependencies.txt
