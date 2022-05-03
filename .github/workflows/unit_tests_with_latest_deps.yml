@@ -30,6 +30,7 @@ jobs:
       - name: Install requirements
         run: |
           pip config --site set global.progress_bar off
+          make installdeps-complete
           make installdeps-test
       - if: ${{ matrix.featuretools_version == 'Main' }}
         name: Install latest version of Featuretools from main branch
