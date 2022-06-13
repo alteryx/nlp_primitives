@@ -19,8 +19,10 @@ class LSA(TransformPrimitive):
         Given a list of strings, transforms those strings using tf-idf and single
         value decomposition to go from a sparse matrix to a compact matrix with two
         values for each string. These values represent that Latent Semantic Analysis
-        of each string. These values will represent their context with respect to
-        (nltk's gutenberg corpus.)[https://www.nltk.org/book/ch02.html#gutenberg-corpus]
+        of each string. By default these values will represent their context with respect to
+        (nltk's gutenberg corpus.)[https://www.nltk.org/book/ch02.html#gutenberg-corpus].
+        Users can optionally pass in a custom corpus when initializing the primitive
+        by specifying the corpus values in a list with the corpus parameter.
 
         If a string is missing, return `NaN`.
 
@@ -32,8 +34,8 @@ class LSA(TransformPrimitive):
         >>> res
         [[0.01, 0.01, 0.01], [0.0, 0.0, 0.01]]
 
-        Now, if we change the values of the input corpus, to something that better resembles
-        the given text, the same given input text will result in a different, more discerning,
+        Now, if we change the values of the input text, to something that better resembles
+        the given corpus, the same given input text will result in a different, more discerning,
         output. Also, NaN values are handled, as well as strings without words.
 
         >>> lsa = LSA()
@@ -43,6 +45,14 @@ class LSA(TransformPrimitive):
         >>> res
         [[0.02, 0.0, nan, 0.0], [0.02, 0.0, nan, 0.0]]
 
+        Users can optionally also pass in a custom corpus
+
+        >>> lsa = LSA(corpus=["helped walk", "eat food", "this is short"])
+        >>> x = ["he helped her walk,", "me me me eat food", "the sentence doth long"]
+        >>> res = lsa(x).tolist()
+        >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
+        >>> res
+        [[1.0, 0.0, 0.0], [0.0, 0.89, 0.0]]
     """
 
     name = "lsa"
@@ -50,18 +60,20 @@ class LSA(TransformPrimitive):
     return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
-    def __init__(self, random_seed=0):
-        # TODO: allow user to use own corpus
+    def __init__(self, random_seed=0, corpus=None):
         self.number_output_features = 2
         self.n = 2
         self.trainer = None
         self.random_seed = random_seed
+        self.corpus = corpus
 
     def _create_trainer(self):
-        gutenberg = nltk.corpus.gutenberg.sents()
+        if self.corpus is None:
+            gutenberg = nltk.corpus.gutenberg.sents()
+            self.corpus = [" ".join(sent) for sent in gutenberg]
         svd = TruncatedSVD(random_state=self.random_seed)
         self.trainer = make_pipeline(TfidfVectorizer(), svd)
-        self.trainer.fit([" ".join(sent) for sent in gutenberg])
+        self.trainer.fit(self.corpus)
 
     def get_function(self):
         if self.trainer is None:

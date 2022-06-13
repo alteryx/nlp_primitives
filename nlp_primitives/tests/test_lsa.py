@@ -42,6 +42,40 @@ class TestLSA(PrimitiveT):
             decimal=2,
         )
 
+    def test_strings_custom_corpus(self):
+        x = pd.Series(
+            [
+                "The dogs ate food.",
+                "She ate a pineapple",
+                "Consume Electrolytes, he told me.",
+                "Hello",
+            ]
+        )
+        lsa = LSA(corpus=x.values.flatten())
+
+        answers = pd.Series(
+            [
+                [
+                    0.7017403154348782,
+                    0.7751552709499244,
+                    4.5982700301438227e-17,
+                    7.06746245384817e-16,
+                ],
+                [
+                    1.517770913909829e-17,
+                    1.3198880275908043e-16,
+                    0.632455532033676,
+                    -6.053318890311534e-17,
+                ],
+            ]
+        )
+        results = lsa(x)
+        np.testing.assert_array_almost_equal(
+            np.concatenate(([np.array(answers[0])], [np.array(answers[1])]), axis=0),
+            np.concatenate(([np.array(results[0])], [np.array(results[1])]), axis=0),
+            decimal=2,
+        )
+
     def test_nan(self):
         x = pd.Series([np.nan, "#;.<", "This IS a STRING."])
         primitive_func = self.primitive().get_function()
