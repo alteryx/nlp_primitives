@@ -52,7 +52,7 @@ class LSA(TransformPrimitive):
         >>> res = lsa(x).tolist()
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
-        [[1.0, 0.0, 0.0], [0.0, 0.89, 0.0]]
+        [[0.0, 0.89, 0.0], [1.0, 0.0, 0.0]]
     """
 
     name = "lsa"

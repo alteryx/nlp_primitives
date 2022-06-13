@@ -74,7 +74,7 @@ class TestLSA(PrimitiveT):
         np.testing.assert_array_almost_equal(
             np.concatenate(([np.array(answers[0])], [np.array(answers[1])]), axis=0),
             np.concatenate(([np.array(results[0])], [np.array(results[1])]), axis=0),
-            decimal=4,
+            decimal=2,
         )
 
     def test_nan(self):
