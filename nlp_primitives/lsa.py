@@ -70,10 +70,12 @@ class LSA(TransformPrimitive):
     def _create_trainer(self):
         if self.corpus is None:
             gutenberg = nltk.corpus.gutenberg.sents()
-            self.corpus = [" ".join(sent) for sent in gutenberg]
+            corpus = [" ".join(sent) for sent in gutenberg]
+        else:
+            corpus = self.corpus
         svd = TruncatedSVD(random_state=self.random_seed)
         self.trainer = make_pipeline(TfidfVectorizer(), svd)
-        self.trainer.fit(self.corpus)
+        self.trainer.fit(corpus)
 
     def get_function(self):
         if self.trainer is None:
