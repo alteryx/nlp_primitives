@@ -5,6 +5,7 @@ Changelog
 Future Release
 ==============
     * Enhancements
+        * Allow users to optionally pass in a custom corpus to use with the LSA primitive (:pr:`148`)
     * Fixes
     * Changes
         * Transition to use pyproject.toml and setup.cfg (moving away from setup.py) (:pr:`127`, :pr:`132`)
@@ -13,7 +14,7 @@ Future Release
         * Fix latest dependency checker to create PR (:pr:`129`)
 
     Thanks to the following people for contributing to this release:
-    :user:`gsheni`, :user:`rwedge`
+    :user:`gsheni`, :user:`rwedge`, :user:`thehomebrewnerd`
 
 v2.5.0 Apr 7, 2022
 ==================
