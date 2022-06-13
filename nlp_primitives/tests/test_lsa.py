@@ -51,15 +51,15 @@ class TestLSA(PrimitiveT):
                 "Hello",
             ]
         )
-        lsa = LSA(corpus=x.values.flatten())
+        primitive_func = self.primitive(corpus=x.values.flatten()).get_function()
 
         answers = pd.Series(
             [
                 [
                     0.7017403154348782,
                     0.7751552709499244,
-                    0.0,
-                    0.0,
+                    0.00,
+                    0.00,
                 ],
                 [
                     0.0,
@@ -69,11 +69,12 @@ class TestLSA(PrimitiveT):
                 ],
             ]
         )
-        results = lsa(x)
+        results = primitive_func(x)
+
         np.testing.assert_array_almost_equal(
             np.concatenate(([np.array(answers[0])], [np.array(answers[1])]), axis=0),
             np.concatenate(([np.array(results[0])], [np.array(results[1])]), axis=0),
-            decimal=2,
+            decimal=4,
         )
 
     def test_nan(self):
