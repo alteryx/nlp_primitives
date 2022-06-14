@@ -44,15 +44,6 @@ class LSA(TransformPrimitive):
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
         [[0.02, 0.0, nan, 0.0], [0.02, 0.0, nan, 0.0]]
-
-        Users can optionally also pass in a custom corpus
-
-        >>> lsa = LSA(corpus=["helped walk", "eat food", "this is short"])
-        >>> x = ["he helped her walk,", "me me me eat food", "the sentence doth long"]
-        >>> res = lsa(x).tolist()
-        >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
-        >>> res
-        [[0.91, 0.33, 0.0], [0.36, 0.33, 0.0]]
     """
 
     name = "lsa"
@@ -73,7 +64,7 @@ class LSA(TransformPrimitive):
             corpus = [" ".join(sent) for sent in gutenberg]
         else:
             corpus = self.corpus
-        svd = TruncatedSVD(random_state=self.random_seed, algorithm="arpack")
+        svd = TruncatedSVD(random_state=self.random_seed, algorithm="randomized")
 
         self.trainer = make_pipeline(TfidfVectorizer(), svd)
         self.trainer.fit(corpus)
