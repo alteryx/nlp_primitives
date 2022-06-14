@@ -56,21 +56,20 @@ class TestLSA(PrimitiveT):
         answers = pd.Series(
             [
                 [
-                    0.7017403154348782,
-                    0.7751552709499244,
+                    0.702,
+                    0.775,
                     0.00,
                     0.00,
                 ],
                 [
                     0.0,
                     0.0,
-                    0.632455532033676,
-                    0.0,
+                    -0.253,
+                    0.916,
                 ],
             ]
         )
         results = primitive_func(x)
-
         np.testing.assert_array_almost_equal(
             np.concatenate(([np.array(answers[0])], [np.array(answers[1])]), axis=0),
             np.concatenate(([np.array(results[0])], [np.array(results[1])]), axis=0),

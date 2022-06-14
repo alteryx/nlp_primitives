@@ -73,7 +73,8 @@ class LSA(TransformPrimitive):
             corpus = [" ".join(sent) for sent in gutenberg]
         else:
             corpus = self.corpus
-        svd = TruncatedSVD(random_state=self.random_seed)
+        svd = TruncatedSVD(random_state=self.random_seed, algorithm="arpack")
+
         self.trainer = make_pipeline(TfidfVectorizer(), svd)
         self.trainer.fit(corpus)
 
