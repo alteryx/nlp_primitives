@@ -44,6 +44,19 @@ class LSA(TransformPrimitive):
         >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
         >>> res
         [[0.02, 0.0, nan, 0.0], [0.02, 0.0, nan, 0.0]]
+
+        Users can optionally also pass in a custom corpus
+
+        >>> custom_corpus = ["dogs ate food", "she ate pineapple", "hello"]
+        >>> lsa = LSA(corpus=custom_corpus)
+        >>> x = ["The dogs ate food.",
+        ...      "She ate a pineapple",
+        ...      "Consume Electrolytes, he told me.",
+        ...      "Hello",]
+        >>> res = lsa(x).tolist()
+        >>> for i in range(len(res)): res[i] = [abs(round(x, 2)) for x in res[i]]
+        >>> res
+        [[0.68, 0.78, 0.0, 0.0], [0.0, 0.0, 0.0, 1.0]]
     """
 
     name = "lsa"

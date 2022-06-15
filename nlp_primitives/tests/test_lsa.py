@@ -51,7 +51,8 @@ class TestLSA(PrimitiveT):
                 "Hello",
             ]
         )
-        primitive_func = self.primitive(corpus=x.values.flatten()).get_function()
+        corpus = x.values.flatten().tolist()
+        primitive_func = self.primitive(corpus=corpus).get_function()
 
         answers = pd.Series(
             [
