@@ -7,7 +7,7 @@ NATURAL_LANGUAGE_SEPARATORS = [" ", ".", ",", "!", "?", ";", "\n"]
 
 
 class NumUniqueSeparators(TransformPrimitive):
-    """Calculates the number of unique separators.
+    r"""Calculates the number of unique separators.
 
     Description:
         Given a string and a list of separators, determine
@@ -16,7 +16,7 @@ class NumUniqueSeparators(TransformPrimitive):
 
     Args:
         separators (list, optional): a list of separator characters to count.
-            `[`" ", ".", ",", "!", "?", ";", "\n"]` is used by default.
+            ``[" ", ".", ",", "!", "?", ";", "\n"]`` is used by default.
 
     Examples:
         >>> x = ["First. Line.", "This. is the second, line!", "notinlist@#$%^%&"]

@@ -8,6 +8,7 @@ from woodwork.logical_types import Integer, NaturalLanguage
 
 class CountString(TransformPrimitive):
     """Determines how many times a given string shows up in a text field.
+
     Args:
         string (str): The string to determine the count of. Defaults to
             the word "the".
