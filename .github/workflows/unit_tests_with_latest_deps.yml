@@ -41,7 +41,7 @@ jobs:
         run: |
           make installdeps-complete
           make installdeps-test
-      - if: ${{ matrix.python_version != 3.7 && matrix.featuretools_version != 'main' }}
+      - if: ${{ matrix.python_version != 3.7 || matrix.featuretools_version != 'main' }}
         name: Run unit tests with no code coverage
         run: |
           make test
