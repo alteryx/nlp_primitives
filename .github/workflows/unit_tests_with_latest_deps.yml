@@ -37,7 +37,7 @@ jobs:
           make installdeps-test
           pip install git+https://github.com/alteryx/featuretools.git@main#egg=featuretools --force-reinstall
       - if: ${{ matrix.featuretools_version == 'Release' }}
-        name: Install latest version of Featuretools from main branch
+        name: Install latest version of Featuretools from PyPI
         run: |
           make installdeps-complete
           make installdeps-test
