@@ -10,6 +10,7 @@ from .constants import common_words_1000
 
 class NumberOfCommonWords(TransformPrimitive):
     """Determines the number of common words in a string.
+
     Description:
         Given string, determine the number of words that appear in a supplied word set.
         The word set defaults to nlp_primitives.constants.common_words_1000. The string
