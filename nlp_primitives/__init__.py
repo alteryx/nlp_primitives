@@ -23,8 +23,7 @@ from .upper_case_count import UpperCaseCount
 from .whitespace_count import WhitespaceCount
 
 if find_spec("tensorflow") and find_spec("tensorflow_hub"):
-    from .tensorflow.elmo import Elmo
-    from .tensorflow.universal_sentence_encoder import UniversalSentenceEncoder
+    from .tensorflow import Elmo, UniversalSentenceEncoder
 
 
 nltk_data_path = pkg_resources.resource_filename("nlp_primitives", "data/nltk-data/")
