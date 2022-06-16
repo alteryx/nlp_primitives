@@ -34,9 +34,9 @@ jobs:
                   "this will add new natural language primitives",
                   "we hope you like it!"]
           pol = PolarityScore()
-          
+          pol(data)
           from featuretools.nlp_primitives import LSA
-          lsa = LSA()
           x = ["he helped her walk,", "me me me eat food", "the sentence doth long"]
-          res = lsa(x)
+          lsa = LSA()
+          lsa(x)
         shell: python
