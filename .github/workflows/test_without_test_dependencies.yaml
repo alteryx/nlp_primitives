@@ -1,0 +1,42 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - main
+
+name: Test nlp_primitives without Test Dependencies
+jobs:
+  use_nlp_primitives_without_test_dependencies:
+    name: Test nlp_primitives without Test Dependencies
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Set up python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Build nlp_primitives and install
+        run: |
+          make package_nlp_primitives
+          python -m pip install unpacked_sdist/
+      - name: Run simple nlp_primitives usage
+        run: |
+          import nlp_primitives
+          from featuretools.nlp_primitives import PolarityScore
+          data = ["hello, this is a new featuretools library",
+                  "this will add new natural language primitives",
+                  "we hope you like it!"]
+          pol = PolarityScore()
+          pol(data)
+          from featuretools.nlp_primitives import LSA
+          x = ["he helped her walk,", "me me me eat food", "the sentence doth long"]
+          lsa = LSA()
+          lsa(x)
+        shell: python
