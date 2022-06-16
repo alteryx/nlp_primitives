@@ -1,6 +1,7 @@
 import nltk
 import numpy as np
 import pandas as pd
+import pytest
 
 from ..lsa import LSA
 from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
@@ -103,3 +104,8 @@ class TestLSA(PrimitiveT):
         valid_dfs(
             es, aggregation, transform, self.primitive.name.upper(), multi_output=True
         )
+
+    def test_bad_algorithm_input_value(self):
+        err_message = "TruncatedSVD algorithm must be either 'randomized' or 'arpack'"
+        with pytest.raises(ValueError, match=err_message):
+            LSA(algorithm="bad_algo")

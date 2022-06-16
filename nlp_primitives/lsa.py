@@ -77,6 +77,10 @@ class LSA(TransformPrimitive):
         self.random_seed = random_seed
         self.corpus = corpus
         self.algorithm = algorithm or "randomized"
+        if self.algorithm not in ["randomized", "arpack"]:
+            raise ValueError(
+                "TruncatedSVD algorithm must be either 'randomized' or 'arpack'"
+            )
 
     def _create_trainer(self):
         if self.corpus is None:
