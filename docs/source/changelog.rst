@@ -7,6 +7,7 @@ Future Release
     * Enhancements
     * Fixes
         * Fix bug in ``CountString`` with null values (:pr:`154`)
+        * Fix a bug with nltk data was not packaged with repo (:pr:`157`)
     * Changes
     * Documentation Changes
         * Update release branch naming convention in documentation (:pr:`155`)
