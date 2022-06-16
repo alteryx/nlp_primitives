@@ -20,7 +20,7 @@ class LSA(TransformPrimitive):
         value decomposition to go from a sparse matrix to a compact matrix with two
         values for each string. These values represent that Latent Semantic Analysis
         of each string. By default these values will represent their context with respect to
-        (nltk's gutenberg corpus.)[https://www.nltk.org/book/ch02.html#gutenberg-corpus].
+        `nltk's gutenberg corpus. <https://www.nltk.org/book/ch02.html#gutenberg-corpus>`_
         Users can optionally pass in a custom corpus when initializing the primitive
         by specifying the corpus values in a list with the corpus parameter.
 
