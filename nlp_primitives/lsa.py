@@ -27,7 +27,7 @@ class LSA(TransformPrimitive):
         If a string is missing, return `NaN`.
 
         Note: If a small custom corpus is used, the output of the primitive may vary
-        depending on the computer architecture being used (linux, macos, windows). This
+        depending on the computer architecture being used (Linux, MacOS, Windows). This
         is especially true when using the default "randomized" algorithm for the
         TruncatedSVD component.
 
