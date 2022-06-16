@@ -199,12 +199,29 @@ class TestCountString(PrimitiveT):
 
     def test_with_featuretools(self, es):
         transform, aggregation = find_applicable_primitives(self.primitive)
-        primitive_instantiate = self.primitive(
+        primitive_instance = self.primitive(
             "the",
             ignore_case=True,
             ignore_non_alphanumeric=False,
             is_regex=False,
             match_whole_words_only=False,
         )
-        transform.append(primitive_instantiate)
+        transform.append(primitive_instance)
+        valid_dfs(es, aggregation, transform, self.primitive.name.upper())
+
+    def test_with_featuretools_nan(self, es):
+        comments = es["log"]["comments"]
+        comments[1] = pd.NA
+        comments[2] = np.nan
+        comments[3] = None
+        es["log"].ww["comments"] = comments
+        transform, aggregation = find_applicable_primitives(self.primitive)
+        primitive_instance = self.primitive(
+            "the",
+            ignore_case=True,
+            ignore_non_alphanumeric=False,
+            is_regex=False,
+            match_whole_words_only=False,
+        )
+        transform.append(primitive_instance)
         valid_dfs(es, aggregation, transform, self.primitive.name.upper())

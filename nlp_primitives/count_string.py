@@ -3,7 +3,7 @@ import re
 import numpy as np
 from featuretools.primitives import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
-from woodwork.logical_types import Integer, NaturalLanguage
+from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
 
 class CountString(TransformPrimitive):
@@ -27,38 +27,38 @@ class CountString(TransformPrimitive):
         >>> count_string(["The problem was difficult.",
         ...               "He was there.",
         ...               "The girl went to the store."]).tolist()
-        [1, 1, 2]
+        [1.0, 1.0, 2.0]
         >>> # Match case of string
         >>> count_string_ignore_case = CountString(string="the", ignore_case=False)
         >>> count_string_ignore_case(["The problem was difficult.",
         ...                           "He was there.",
         ...                           "The girl went to the store."]).tolist()
-        [0, 1, 1]
+        [0.0, 1.0, 1.0]
         >>> # Ignore non-alphanumeric characters in the search
         >>> count_string_ignore_non_alphanumeric = CountString(string="the",
         ...                                                    ignore_non_alphanumeric=True)
         >>> count_string_ignore_non_alphanumeric(["Th*/e problem was difficult.",
         ...                                       "He was there.",
         ...                                       "The girl went to the store."]).tolist()
-        [1, 1, 2]
+        [1.0, 1.0, 2.0]
         >>> # Specify the string as a regex
         >>> count_string_is_regex = CountString(string="t.e", is_regex=True)
         >>> count_string_is_regex(["The problem was difficult.",
         ...                        "He was there.",
         ...                        "The girl went to the store."]).tolist()
-        [1, 1, 2]
+        [1.0, 1.0, 2.0]
         >>> # Match whole words only
         >>> count_string_match_whole_words_only = CountString(string="the",
         ...                                                   match_whole_words_only=True)
         >>> count_string_match_whole_words_only(["The problem was difficult.",
         ...                                      "He was there.",
         ...                                      "The girl went to the store."]).tolist()
-        [1, 0, 2]
+        [1.0, 0.0, 2.0]
     """
 
     name = "count_string"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Integer, semantic_tags={"numeric"})
+    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
 
     def __init__(
         self,
@@ -103,4 +103,4 @@ class CountString(TransformPrimitive):
             words = self.process_text(words)
             return len(re.findall(self.pattern, words))
 
-        return np.vectorize(count_string)
+        return np.vectorize(count_string, otypes=[float])
