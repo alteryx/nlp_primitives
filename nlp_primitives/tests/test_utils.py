@@ -161,7 +161,7 @@ def valid_dfs(
     df = ft.calculate_feature_matrix(
         entityset=es, features=applicable_features, instance_ids=instance_ids
     )
-
+    
     ft.encode_features(df, applicable_features)
 
     # TODO: check the multi_output shape by checking

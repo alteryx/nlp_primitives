@@ -3,7 +3,7 @@ import re
 import numpy as np
 from featuretools.primitives import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
-from woodwork.logical_types import Integer, NaturalLanguage
+from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
 
 class CountString(TransformPrimitive):
@@ -58,7 +58,7 @@ class CountString(TransformPrimitive):
 
     name = "count_string"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Integer, semantic_tags={"numeric"})
+    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
 
     def __init__(
         self,
@@ -103,4 +103,4 @@ class CountString(TransformPrimitive):
             words = self.process_text(words)
             return len(re.findall(self.pattern, words))
 
-        return np.vectorize(count_string)
+        return np.vectorize(count_string, otypes=[float])
