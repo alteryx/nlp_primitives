@@ -31,6 +31,14 @@ class LSA(TransformPrimitive):
         is especially true when using the default "randomized" algorithm for the
         TruncatedSVD component.
 
+    Args:
+        random_seed (int, optional): The random seed value to use for the call to TruncatedSVD.
+            Will default to 0 if not specified.
+        custom_corpus (list[str], optional): A list of strings to use as a custom corpus. Will
+            default to the NLTK Gutenberg corpus if not specified.
+        algorithm (str, optional): The algorithm to use for the call to TruncatedSVD. Should be either
+            "randomized" or "arpack". Will default to "randomized" if not specified.
+
     Examples:
         >>> lsa = LSA()
         >>> x = ["he helped her walk,", "me me me eat food", "the sentence doth long"]
