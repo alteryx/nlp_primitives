@@ -2,15 +2,17 @@
 Changelog
 =========
 
-.. Future Release
-  ==============
+Future Release
+==============
     * Enhancements
     * Fixes
     * Changes
     * Documentation Changes
+        * Update release branch naming convention in documentation (:pr:`155`)
     * Testing Changes
 
-.. Thanks to the following people for contributing to this release:
+    Thanks to the following people for contributing to this release:
+    :user:`rwedge`
 
 v2.6.0 Jun 16, 2022
 ===================

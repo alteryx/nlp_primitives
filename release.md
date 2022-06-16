@@ -3,7 +3,7 @@
 ## Create nlp_primitives release on Github
 
 #### Create release branch
-1. Branch off of main and name the branch the release version number (e.g. v0.4.0)
+1. Branch off of main. For the branch name, please use "release_vX.Y.Z" as the naming scheme (e.g. "release_v0.13.3"). Doing so will bypass our release notes checkin test which requires all other PRs to add a release note entry.
 
 #### Bump version number
 2. Bump verison number in `nlp_primitives/version.py` and `nlp_primitives/tests/test_version.py`.
