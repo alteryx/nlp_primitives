@@ -12,6 +12,7 @@ Future Release
     * Documentation Changes
     * Testing Changes
         * Fix latest dependency checker to create PR (:pr:`129`)
+        * Fixed unit tests workflow test choice logic (:pr:`151`)
 
     Thanks to the following people for contributing to this release:
     :user:`gsheni`, :user:`rwedge`
