@@ -2,14 +2,23 @@
 Changelog
 =========
 
-Future Release
-==============
+.. Future Release
+  ==============
+    * Enhancements
+    * Fixes
+    * Changes
+    * Documentation Changes
+    * Testing Changes
+
+.. Thanks to the following people for contributing to this release:
+
+v2.7.0 Jun 16, 2022
+===================
     * Enhancements
         * Allow users to optionally pass in a custom corpus to use with the LSA primitive (:pr:`148`)
     * Fixes
         * Fix bug in ``CountString`` with null values (:pr:`154`)
         * Fix a bug with nltk data was not included in package (:pr:`157`)
-    * Changes
     * Documentation Changes
         * Update release branch naming convention in documentation (:pr:`155`)
     * Testing Changes
