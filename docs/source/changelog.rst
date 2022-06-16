@@ -7,13 +7,15 @@ Future Release
     * Enhancements
     * Fixes
         * Fix bug in ``CountString`` with null values (:pr:`154`)
+        * Fix a bug with nltk data was not included in package (:pr:`157`)
     * Changes
     * Documentation Changes
         * Update release branch naming convention in documentation (:pr:`155`)
     * Testing Changes
+        * Add workflow to test nlp_primitives without test dependencies (:pr:`157`)
 
     Thanks to the following people for contributing to this release:
-    :user:`rwedge`, :user:`thehomebrewnerd`
+    :user:`gsheni`, :user:`rwedge`, :user:`thehomebrewnerd`
 
 v2.6.0 Jun 16, 2022
 ===================
