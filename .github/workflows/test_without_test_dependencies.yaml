@@ -7,7 +7,7 @@ on:
 
 name: Test nlp_primitives without Test Dependencies
 jobs:
-  use_woodwork_without_test_dependencies:
+  use_nlp_primitives_without_test_dependencies:
     name: Test nlp_primitives without Test Dependencies
     runs-on: ubuntu-latest
     strategy:
