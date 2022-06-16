@@ -2,15 +2,16 @@
 Changelog
 =========
 
-.. Future Release
-  ==============
+Future Release
+==============
     * Enhancements
     * Fixes
     * Changes
     * Documentation Changes
     * Testing Changes
+        * Trigger release notes check in test
 
-.. Thanks to the following people for contributing to this release:
+    Thanks to the following people for contributing to this release:
 
 v2.6.0 Jun 16, 2022
 ===================
