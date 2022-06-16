@@ -11,9 +11,10 @@ Future Release
     * Documentation Changes
         * Update release branch naming convention in documentation (:pr:`155`)
     * Testing Changes
+        * Add workflow to test nlp_primitives without test dependencies (:pr:`157`)
 
     Thanks to the following people for contributing to this release:
-    :user:`rwedge`, :user:`thehomebrewnerd`
+    :user:`gsheni`, :user:`rwedge`, :user:`thehomebrewnerd`
 
 v2.6.0 Jun 16, 2022
 ===================
