@@ -5,6 +5,7 @@ Changelog
 Future Release
 ==============
     * Enhancements
+        * Allow users to optionally pass in a custom corpus to use with the LSA primitive (:pr:`148`)
     * Fixes
         * Fix bug in ``CountString`` with null values (:pr:`154`)
         * Fix a bug with nltk data was not included in package (:pr:`157`)
@@ -27,7 +28,7 @@ v2.6.0 Jun 16, 2022
         * Fixed unit tests workflow test choice logic (:pr:`151`)
 
     Thanks to the following people for contributing to this release:
-    :user:`gsheni`, :user:`rwedge`
+    :user:`gsheni`, :user:`rwedge`, :user:`thehomebrewnerd`
 
 v2.5.0 Apr 7, 2022
 ==================

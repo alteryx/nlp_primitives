@@ -1,5 +1,7 @@
+import nltk
 import numpy as np
 import pandas as pd
+import pytest
 
 from ..lsa import LSA
 from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
@@ -42,6 +44,39 @@ class TestLSA(PrimitiveT):
             decimal=2,
         )
 
+    def test_strings_custom_corpus(self):
+        x = pd.Series(
+            [
+                "The dogs ate food.",
+                "She ate a pineapple",
+                "Consume Electrolytes, he told me.",
+                "Hello",
+            ]
+        )
+        # Create a new corpus using only the first 10000 elements from Gutenberg
+        gutenberg = nltk.corpus.gutenberg.sents()
+        corpus = [" ".join(sent) for sent in gutenberg]
+        corpus = corpus[:10000]
+        primitive_func = self.primitive(corpus=corpus).get_function()
+
+        answers = pd.Series(
+            [
+                [0.03858566832087156, 0.04979961879358504, 0.013042488281432613, 0.0],
+                [
+                    -0.0010495388842080527,
+                    -0.0011128696986250912,
+                    0.001556757056617563,
+                    0.0,
+                ],
+            ]
+        )
+        results = primitive_func(x)
+        np.testing.assert_array_almost_equal(
+            np.concatenate(([np.array(answers[0])], [np.array(answers[1])]), axis=0),
+            np.concatenate(([np.array(results[0])], [np.array(results[1])]), axis=0),
+            decimal=2,
+        )
+
     def test_nan(self):
         x = pd.Series([np.nan, "#;.<", "This IS a STRING."])
         primitive_func = self.primitive().get_function()
@@ -69,3 +104,8 @@ class TestLSA(PrimitiveT):
         valid_dfs(
             es, aggregation, transform, self.primitive.name.upper(), multi_output=True
         )
+
+    def test_bad_algorithm_input_value(self):
+        err_message = "TruncatedSVD algorithm must be either 'randomized' or 'arpack'"
+        with pytest.raises(ValueError, match=err_message):
+            LSA(algorithm="bad_algo")
