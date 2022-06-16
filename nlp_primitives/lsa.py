@@ -26,6 +26,11 @@ class LSA(TransformPrimitive):
 
         If a string is missing, return `NaN`.
 
+        Note: If a small custom corpus is used, the output of the primitive may vary
+        depending on the computer architecture being used (linux, macos, windows). This
+        is especially true when using the default "randomized" algorithm for the
+        TruncatedSVD component.
+
     Examples:
         >>> lsa = LSA()
         >>> x = ["he helped her walk,", "me me me eat food", "the sentence doth long"]
@@ -45,10 +50,11 @@ class LSA(TransformPrimitive):
         >>> res
         [[0.02, 0.0, nan, 0.0], [0.02, 0.0, nan, 0.0]]
 
-        Users can optionally also pass in a custom corpus
+        Users can optionally also pass in a custom corpus and specify the algorithm to use
+        for the TruncatedSVD component used by the primitive.
 
         >>> custom_corpus = ["dogs ate food", "she ate pineapple", "hello"]
-        >>> lsa = LSA(corpus=custom_corpus)
+        >>> lsa = LSA(corpus=custom_corpus, algorithm="arpack")
         >>> x = ["The dogs ate food.",
         ...      "She ate a pineapple",
         ...      "Consume Electrolytes, he told me.",
@@ -64,12 +70,13 @@ class LSA(TransformPrimitive):
     return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
-    def __init__(self, random_seed=0, corpus=None):
+    def __init__(self, random_seed=0, corpus=None, algorithm=None):
         self.number_output_features = 2
         self.n = 2
         self.trainer = None
         self.random_seed = random_seed
         self.corpus = corpus
+        self.algorithm = algorithm or "randomized"
 
     def _create_trainer(self):
         if self.corpus is None:
@@ -77,7 +84,7 @@ class LSA(TransformPrimitive):
             corpus = [" ".join(sent) for sent in gutenberg]
         else:
             corpus = self.corpus
-        svd = TruncatedSVD(random_state=self.random_seed, algorithm="arpack")
+        svd = TruncatedSVD(random_state=self.random_seed, algorithm=self.algorithm)
 
         self.trainer = make_pipeline(TfidfVectorizer(), svd)
         self.trainer.fit(corpus)

@@ -1,3 +1,4 @@
+import nltk
 import numpy as np
 import pandas as pd
 
@@ -51,23 +52,24 @@ class TestLSA(PrimitiveT):
                 "Hello",
             ]
         )
-        corpus = x.values.flatten().tolist()
+        # Create a new corpus using only the first 10000 elements from Gutenberg
+        gutenberg = nltk.corpus.gutenberg.sents()
+        corpus = [" ".join(sent) for sent in gutenberg]
+        corpus = corpus[:10000]
         primitive_func = self.primitive(corpus=corpus).get_function()
 
         answers = pd.Series(
             [
                 [
-                    0.702,
-                    0.775,
-                    0.00,
-                    0.00,
-                ],
+                    0.03858566832087156,
+                    0.04979961879358504,
+                    0.013042488281432613,
+                    0.0],
                 [
-                    0.0,
-                    0.0,
-                    -0.253,
-                    0.916,
-                ],
+                    -0.0010495388842080527,
+                    -0.0011128696986250912,
+                    0.001556757056617563,
+                    0.0],
             ]
         )
         results = primitive_func(x)
