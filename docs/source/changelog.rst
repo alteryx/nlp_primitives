@@ -7,13 +7,14 @@ Future Release
     * Enhancements
         * Allow users to optionally pass in a custom corpus to use with the LSA primitive (:pr:`148`)
     * Fixes
+        * Fix bug in ``CountString`` with null values (:pr:`154`)
     * Changes
     * Documentation Changes
         * Update release branch naming convention in documentation (:pr:`155`)
     * Testing Changes
 
     Thanks to the following people for contributing to this release:
-    :user:`rwedge`
+    :user:`rwedge`, :user:`thehomebrewnerd`
 
 v2.6.0 Jun 16, 2022
 ===================
