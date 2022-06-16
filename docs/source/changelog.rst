@@ -2,16 +2,24 @@
 Changelog
 =========
 
-Future Release
-==============
+.. Future Release
+  ==============
     * Enhancements
     * Fixes
     * Changes
-        * Transition to use pyproject.toml and setup.cfg (moving away from setup.py) (:pr:`127`, :pr:`132`)
-        * ``Elmo`` and ``UniversalSentenceEncoder`` added to the ``nlp_primitives.tensorflow`` module namespace (:pr:`150`)
     * Documentation Changes
     * Testing Changes
+
+.. Thanks to the following people for contributing to this release:
+
+v2.6.0 Jun 16, 2022
+===================
+    * Changes
+        * Transition to use pyproject.toml and setup.cfg (moving away from setup.py) (:pr:`127`, :pr:`132`)
+        * ``Elmo`` and ``UniversalSentenceEncoder`` added to the ``nlp_primitives.tensorflow`` module namespace (:pr:`150`)
+    * Testing Changes
         * Fix latest dependency checker to create PR (:pr:`129`)
+        * Fixed unit tests workflow test choice logic (:pr:`151`)
 
     Thanks to the following people for contributing to this release:
     :user:`gsheni`, :user:`rwedge`
