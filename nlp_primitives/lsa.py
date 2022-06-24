@@ -78,13 +78,13 @@ class LSA(TransformPrimitive):
     return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
-    def __init__(self, random_seed=0, corpus=None, algorithm=None):
+    def __init__(self, random_seed=0, corpus=None, algorithm="randomized"):
         self.number_output_features = 2
         self.n = 2
         self.trainer = None
         self.random_seed = random_seed
         self.corpus = corpus
-        self.algorithm = algorithm or "randomized"
+        self.algorithm = algorithm
         if self.algorithm not in ["randomized", "arpack"]:
             raise ValueError(
                 "TruncatedSVD algorithm must be either 'randomized' or 'arpack'"
@@ -121,3 +121,21 @@ class LSA(TransformPrimitive):
             return pd.Series(arr)
 
         return lsa
+
+    def get_args_string(self):
+        # Override base class method to prevent full custom corpus from being
+        # displayed in primitive arguments
+        strings = []
+        for name, value in self.get_arguments():
+            # format arg to string
+            if name == "corpus":
+                value = "user_defined"
+            string = "{}={}".format(name, str(value))
+            strings.append(string)
+
+        if len(strings) == 0:
+            return ""
+
+        string = ", ".join(strings)
+        string = ", " + string
+        return string

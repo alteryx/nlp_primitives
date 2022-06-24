@@ -109,3 +109,17 @@ class TestLSA(PrimitiveT):
         err_message = "TruncatedSVD algorithm must be either 'randomized' or 'arpack'"
         with pytest.raises(ValueError, match=err_message):
             LSA(algorithm="bad_algo")
+
+    def test_args_strings(self):
+        # With default values args string should be empty
+        args_string = self.primitive().get_args_string()
+        assert args_string == ""
+
+        # Should include arpack
+        args_string = self.primitive(algorithm="arpack").get_args_string()
+        assert args_string == ", algorithm=arpack"
+
+        # Should display "user_defined" instead of full custom corpus
+        custom_corpus = ["I", "am", "a", "custom", "corpus"]
+        args_string = self.primitive(corpus=custom_corpus).get_args_string()
+        assert args_string == ", corpus=user_defined"
