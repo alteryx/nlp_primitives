@@ -123,3 +123,9 @@ class TestLSA(PrimitiveT):
         custom_corpus = ["I", "am", "a", "custom", "corpus"]
         args_string = self.primitive(corpus=custom_corpus).get_args_string()
         assert args_string == ", corpus=user_defined"
+
+        # Test all args
+        args_string = self.primitive(
+            random_seed=100, corpus=custom_corpus, algorithm="arpack"
+        ).get_args_string()
+        assert args_string == ", random_seed=100, corpus=user_defined, algorithm=arpack"
