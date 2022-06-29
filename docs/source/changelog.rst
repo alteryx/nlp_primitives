@@ -2,14 +2,20 @@
 Changelog
 =========
 
-Future Release
-==============
+.. Future Release
+  ==============
     * Enhancements
     * Fixes
-        * Clean up naming of LSA features to prevent full custom corpus from being displayed (:pr:`161`)
     * Changes
     * Documentation Changes
     * Testing Changes
+
+.. Thanks to the following people for contributing to this release:
+
+v2.7.1 Jun 29, 2022
+===================
+    * Fixes
+        * Clean up naming of LSA features to prevent full custom corpus from being displayed (:pr:`161`)
 
     Thanks to the following people for contributing to this release:
     :user:`thehomebrewnerd`
