@@ -1,6 +1,23 @@
 # NLP Primitives
 
-![Tests](https://github.com/alteryx/nlp_primitives/workflows/Tests/badge.svg)
+<p align="center">
+    <a href="https://github.com/alteryx/nlp_primitives/actions?query=branch%3Amain+workflow%3ATests" target="_blank">
+        <img src="https://github.com/alteryx/nlp_primitives/workflows/Tests/badge.svg?branch=main" alt="Tests" />
+    </a>
+    <a href="https://badge.fury.io/py/nlp_primitives" target="_blank">
+        <img src="https://badge.fury.io/py/nlp_primitives.svg?maxAge=2592000" alt="PyPI Version" />
+    </a>
+    <a href="https://anaconda.org/conda-forge/nlp_primitives" target="_blank">
+        <img src="https://anaconda.org/conda-forge/nlp-primitives/badges/version.svg" alt="Anaconda Version" />
+    </a>
+    <a href="https://stackoverflow.com/questions/tagged/featuretools" target="_blank">
+        <img src="http://img.shields.io/badge/questions-on_stackoverflow-blue.svg" alt="StackOverflow" />
+    </a> 
+    <a href="https://pepy.tech/project/nlp_primitives" target="_blank">
+        <img src="https://pepy.tech/badge/nlp_primitives/month" alt="PyPI Downloads" />
+    </a>
+</p>
+<hr>
 
 nlp_primitives is a Python library with Natural Language Processing Primitives, intended for use with [Featuretools](https://github.com/Featuretools/featuretools).
 
@@ -17,7 +34,7 @@ nlp_primitives without Tensorflow can be installed with pip:
 python -m pip install nlp_primitives
 ```
 
-#### Conda-forge
+#### conda-forge
 or from the conda-forge channel on conda:
 ```shell
 conda install -c conda-forge nlp-primitives
@@ -36,12 +53,12 @@ conda install -c conda-forge nlp-primitives-complete
 
 ### Demos
 
-
 * [Blog Post](https://blog.featurelabs.com/natural-language-processing-featuretools/)
 * [Predict resturant review ratings](https://github.com/FeatureLabs/predict-restaurant-rating)
 
 ## Calculating Features
 With nlp_primitives primtives in `featuretools`, this is how to calculate the same feature.
+
 ```python
 from featuretools.nlp_primitives import PolarityScore
 
@@ -88,9 +105,12 @@ make installdeps-test
 
 This will install all pip dependencies.
 
-## Feature Labs
-<a href="https://www.featurelabs.com/">
-    <img src="http://www.featurelabs.com/wp-content/uploads/2017/12/logo.png" alt="Featuretools" />
-</a>
+## Built at Alteryx
 
-NLP Primitives is an open source project created by [Feature Labs](https://www.featurelabs.com/). To see the other open source projects we're working on visit Feature Labs [Open Source](https://www.featurelabs.com/open). If building impactful data science pipelines is important to you or your business, please [get in touch](https://www.featurelabs.com/contact/).
+**NLP Primitives** is an open source project maintained by [Alteryx](https://www.alteryx.com). To see the other open source projects we’re working on visit [Alteryx Open Source](https://www.alteryx.com/open-source). If building impactful data science pipelines is important to you or your business, please get in touch.
+
+<p align="center">
+  <a href="https://www.alteryx.com/open-source">
+    <img src="https://alteryx-oss-web-images.s3.amazonaws.com/OpenSource_Logo-01.png" alt="Alteryx Open Source" width="800"/>
+  </a>
+</p>
