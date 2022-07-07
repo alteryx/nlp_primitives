@@ -9,6 +9,7 @@ Future Release
         * Update README.md with Alteryx info (:pr:`167`)
     * Changes
         * Add Woodwork as core dependency (:pr:`170`)
+        * Add support for Python 3.10 (:pr:`175`)
     * Documentation Changes
     * Testing Changes
 
