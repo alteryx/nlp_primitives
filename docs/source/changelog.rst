@@ -9,6 +9,7 @@ Future Release
         * Update README.md with Alteryx info (:pr:`167`)
         * Add CI tests with minimum dependencies (:pr:`174`)
     * Changes
+        * Add support for Python 3.10 (:pr:`175`)
     * Documentation Changes
     * Testing Changes
 
