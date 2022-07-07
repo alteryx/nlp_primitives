@@ -10,6 +10,7 @@ Future Release
     * Changes
         * Add Woodwork as core dependency (:pr:`170`)
         * Add support for Python 3.10 (:pr:`175`)
+        * Drop support for Python 3.7 (:pr:`176`)
     * Documentation Changes
     * Testing Changes
 
