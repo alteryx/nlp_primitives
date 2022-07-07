@@ -7,6 +7,7 @@ Future Release
     * Enhancements
     * Fixes
         * Update README.md with Alteryx info (:pr:`167`)
+        * Add CI tests with minimum dependencies (:pr:`174`)
     * Changes
     * Documentation Changes
     * Testing Changes
