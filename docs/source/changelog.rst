@@ -8,13 +8,14 @@ Future Release
     * Fixes
         * Update README.md with Alteryx info (:pr:`167`)
     * Changes
+        * Add Woodwork as core dependency (:pr:`170`)
         * Add support for Python 3.10 (:pr:`175`)
         * Drop support for Python 3.7 (:pr:`176`)
     * Documentation Changes
     * Testing Changes
 
     Thanks to the following people for contributing to this release:
-    :user:`gsheni`
+    :user:`gsheni`, :user:`sbadithe`
 
 v2.7.1 Jun 29, 2022
 ===================
