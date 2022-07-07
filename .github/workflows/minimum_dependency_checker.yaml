@@ -1,0 +1,40 @@
+name: Minimum Dependency Checker
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'setup.cfg'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Run min dep generator - test reqs
+        id: min_dep_gen_test
+        uses: alteryx/minimum-dependency-generator@v3.2
+        with:
+          paths: 'setup.cfg'
+          options: 'install_requires'
+          extras_require: 'test'
+          output_filepath: featuretools/tests/requirement_files/minimum_test_requirements.txt
+      - name: Run min dep generator - core reqs
+        id: min_dep_gen_core
+        uses: alteryx/minimum-dependency-generator@v3.2
+        with:
+          paths: 'setup.cfg'
+          options: 'install_requires'
+          output_filepath: featuretools/tests/requirement_files/minimum_core_requirements.txt
+      - name: Run min dep generator - complete reqs
+        id: min_dep_gen_complete
+        uses: alteryx/minimum-dependency-generator@v3.2
+        with:
+          paths: 'setup.cfg'
+          options: 'install_requires'
+          extras_require: 'complete'
+          output_filepath: featuretools/tests/requirement_files/minimum_complete_requirements.txt
