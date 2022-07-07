@@ -9,6 +9,7 @@ Future Release
         * Update README.md with Alteryx info (:pr:`167`)
     * Changes
         * Add support for Python 3.10 (:pr:`175`)
+        * Drop support for Python 3.7 (:pr:`176`)
     * Documentation Changes
     * Testing Changes
 
