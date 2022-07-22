@@ -12,7 +12,7 @@ class NumberOfHashtags(TransformPrimitive):
         Given list of strings, determine the number of hashtags
         in each string. A hashtag is defined as any word starting
         with a '#' sign followed by a sequence of alphanumeric characters
-        or underscores. 
+        or underscores.
 
         If a string is missing, return `NaN`.
 
