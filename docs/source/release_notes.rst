@@ -1,9 +1,9 @@
-=========
-Changelog
-=========
+.. _release_notes:
+
+Release Notes
+-------------
 
 Future Release
-==============
     * Enhancements
     * Fixes
         * Update README.md with Alteryx info (:pr:`167`)
@@ -11,6 +11,7 @@ Future Release
         * Add Woodwork as core dependency (:pr:`170`)
         * Add support for Python 3.10 (:pr:`175`)
         * Drop support for Python 3.7 (:pr:`176`)
+        * Add pre-commit hooks for linting (:pr:`182`)
     * Documentation Changes
     * Testing Changes
 

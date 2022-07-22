@@ -9,7 +9,7 @@
 2. Bump verison number in `nlp_primitives/version.py` and `nlp_primitives/tests/test_version.py`.
 
 #### Update changelog
-1. Replace "Future Release" in `docs/source/changelog.rst` with the current date
+1. Replace "Future Release" in `docs/source/release_notes.rst` with the current date
     ```
     **v0.4.0** Aug 11, 2020
     ```
