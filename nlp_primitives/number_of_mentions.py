@@ -17,10 +17,10 @@ class NumberOfMentions(CountString):
         If a string is missing, return `NaN`.
 
     Examples:
-        >>> x = ['#regular#expression', 'this is a string', '###__regular#1and_0#expression']
-        >>> number_of_mentions = NumberOfmentions()
+         >>> x = ['@portland@oregon', 'this is a string', '@@@__user1@1and_0#expression']
+        >>> number_of_mentions = NumberOfMentions()
         >>> number_of_mentions(x).tolist()
-        [2.0, 0.0, 3.0]
+        [2.0, 0.0, 2.0]
     """
 
     name = "number_of_mentions"
