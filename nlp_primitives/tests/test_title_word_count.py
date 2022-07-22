@@ -19,14 +19,14 @@ class TestTitleWordCount(PrimitiveT):
         )
         primitive_func = self.primitive().get_function()
         answers = [2.0, 0.0, 1.0, 2.0]
-        np.testing.assert_array_equal(answers, primitive_func(x)) 
-    
+        np.testing.assert_array_equal(answers, primitive_func(x))
+
     def test_nan(self):
         x = pd.Series([np.nan, "", "My favorite movie is Jaws."])
         primitive_func = self.primitive().get_function()
         answers = [np.nan, 0.0, 2.0]
-        np.testing.assert_array_equal(answers, primitive_func(x)) 
-    
+        np.testing.assert_array_equal(answers, primitive_func(x))
+
     def test_with_featuretools(self, es):
         transform, aggregation = find_applicable_primitives(self.primitive)
         primitive_instance = self.primitive()

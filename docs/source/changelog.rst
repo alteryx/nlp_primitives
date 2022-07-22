@@ -5,6 +5,7 @@ Changelog
 Future Release
 ==============
     * Enhancements
+        * Change `TitleWordCount`, `PunctuationCount` to use `CountString` (:pr:`183`)
     * Fixes
         * Update README.md with Alteryx info (:pr:`167`)
     * Changes
