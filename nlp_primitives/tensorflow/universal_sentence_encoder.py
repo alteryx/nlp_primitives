@@ -45,7 +45,7 @@ class UniversalSentenceEncoder(TransformPrimitive):
                     [
                         self.tf.compat.v1.global_variables_initializer(),
                         self.tf.compat.v1.tables_initializer(),
-                    ]
+                    ],
                 )
                 embeddings = session.run(self.embed(col.tolist()))
             return embeddings.transpose()

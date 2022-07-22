@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..punctuation_count import PunctuationCount
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.punctuation_count import PunctuationCount
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestPunctuationCount(PrimitiveT):
@@ -16,7 +20,7 @@ class TestPunctuationCount(PrimitiveT):
                 "third/line $1,000;",
                 "and--subsequen't lines...",
                 "*and, more..",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([1.0, 2.0, 4.0, 6.0, 4.0])
@@ -27,7 +31,7 @@ class TestPunctuationCount(PrimitiveT):
             [
                 "This is a test file.",
                 "This is second line\nthird line $1000;\nand subsequent lines",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([1.0, 2.0])

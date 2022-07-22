@@ -10,7 +10,7 @@ from woodwork.logical_types import Double, NaturalLanguage
 
 PUNCTUATION = re.escape("!,.:;?")
 END_OF_SENTENCE_PUNCT_RE = re.compile(
-    rf"[{PUNCTUATION}]+$|[{PUNCTUATION}]+ |[{PUNCTUATION}]+\n"
+    rf"[{PUNCTUATION}]+$|[{PUNCTUATION}]+ |[{PUNCTUATION}]+\n",
 )
 
 

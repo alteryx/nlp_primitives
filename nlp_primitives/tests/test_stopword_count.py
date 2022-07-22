@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..stopword_count import StopwordCount
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.stopword_count import StopwordCount
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestStopwordCount(PrimitiveT):
@@ -15,7 +19,7 @@ class TestStopwordCount(PrimitiveT):
                 "This is second string",
                 "third string",
                 "This IS the fourth string.",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([3, 2, 0, 3])

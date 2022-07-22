@@ -2,8 +2,12 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from ..mean_characters_per_word import MeanCharactersPerWord
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.mean_characters_per_word import MeanCharactersPerWord
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestMeanCharactersPerWord(PrimitiveT):
@@ -17,7 +21,7 @@ class TestMeanCharactersPerWord(PrimitiveT):
                 "third line $1,000",
                 "and subsequent lines",
                 "and more",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([3.0, 4.0, 5.0, 6.0, 3.5])
@@ -31,7 +35,7 @@ class TestMeanCharactersPerWord(PrimitiveT):
                 "third/line $1,000;",
                 "and--subsequen't lines...",
                 "*and, more..",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([3.0, 4.0, 8.0, 10.5, 4.0])
@@ -43,7 +47,7 @@ class TestMeanCharactersPerWord(PrimitiveT):
                 "This is a test file",
                 "This is second line\nthird line $1000;\nand subsequent lines",
                 "and more",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([3.0, 4.8, 3.5])

@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..median_word_length import MedianWordLength
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.median_word_length import MedianWordLength
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestMedianWordLength(PrimitiveT):
@@ -10,7 +14,7 @@ class TestMedianWordLength(PrimitiveT):
 
     def test_delimiter_override(self):
         x = pd.Series(
-            ["This is a test file.", "This,is,second,line?", "and;subsequent;lines..."]
+            ["This is a test file.", "This,is,second,line?", "and;subsequent;lines..."],
         )
 
         expected = pd.Series([4.0, 4.5, 8.0])
@@ -22,7 +26,7 @@ class TestMedianWordLength(PrimitiveT):
             [
                 "This is a test file.",
                 "This is second line\nthird line $1000;\nand subsequent lines",
-            ]
+            ],
         )
 
         expected = pd.Series([4.0, 4.5])

@@ -5,7 +5,7 @@ from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
-from .constants import common_words_1000
+from nlp_primitives.constants import common_words_1000
 
 
 class NumberOfCommonWords(TransformPrimitive):
@@ -43,7 +43,9 @@ class NumberOfCommonWords(TransformPrimitive):
     default_value = 0
 
     def __init__(
-        self, word_set=set(common_words_1000), delimiters_regex=r"[- \[\].,!\?;\n]"
+        self,
+        word_set=set(common_words_1000),
+        delimiters_regex=r"[- \[\].,!\?;\n]",
     ):
         self.delimiters_regex = delimiters_regex
         self.word_set = word_set

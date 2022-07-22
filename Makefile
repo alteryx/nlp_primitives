@@ -11,6 +11,7 @@ clean:
 	find . -name '*.pyc' -delete
 	find . -name __pycache__ -delete
 	find . -name '*~' -delete
+	find . -name '.coverage.*' -delete
 	rm -rf ./build
 	rm -rf ./dist
 	rm -rf ./nlp_primitives.egg-info
@@ -24,7 +25,7 @@ lint:
 
 .PHONY: lint-fix
 lint-fix:
-	black -t py310 nlp_primitives
+	black nlp_primitives -t py310
 	isort nlp_primitives
 
 .PHONY: test
@@ -38,6 +39,7 @@ testcoverage:
 .PHONY: installdeps
 installdeps: upgradepip
 	pip install -e ".[dev]"
+	pre-commit install
 
 .PHONY: installdeps-test
 installdeps-test: upgradepip

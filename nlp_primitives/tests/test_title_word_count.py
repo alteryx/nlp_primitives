@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..title_word_count import TitleWordCount
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
+from nlp_primitives.title_word_count import TitleWordCount
 
 
 class TestTitleWordCount(PrimitiveT):
@@ -15,7 +19,7 @@ class TestTitleWordCount(PrimitiveT):
                 "this is a string",
                 "AAA",
                 "I bought a Yo-Yo",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([2.0, 0.0, 1.0, 2.0])

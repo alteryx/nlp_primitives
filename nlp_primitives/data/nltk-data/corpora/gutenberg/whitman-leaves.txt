@@ -479,13 +479,13 @@ Starting from fish-shape Paumanok where I was born,
 Well-begotten, and rais'd by a perfect mother,
 After roaming many lands, lover of populous pavements,
 Dweller in Mannahatta my city, or on southern savannas,
-Or a soldier camp'd or carrying my knapsack and gun, or a miner 
+Or a soldier camp'd or carrying my knapsack and gun, or a miner
     in California,
-Or rude in my home in Dakota's woods, my diet meat, my drink from 
+Or rude in my home in Dakota's woods, my diet meat, my drink from
     the spring,
 Or withdrawn to muse and meditate in some deep recess,
 Far from the clank of crowds intervals passing rapt and happy,
-Aware of the fresh free giver the flowing Missouri, aware of 
+Aware of the fresh free giver the flowing Missouri, aware of
     mighty Niagara,
 Aware of the buffalo herds grazing the plains, the hirsute and
     strong-breasted bull,
@@ -8725,7 +8725,7 @@ Of what was once lacking on earth, and in due time has become
     supplied--and of what will yet be supplied,
 Because all I see and know I believe to have its main purport in
     what will yet be supplied.
-    
+
 
 }  When I Heard the Learn'd Astronomer
 
@@ -15328,7 +15328,7 @@ Were all so justified.
 
 
 
-}  Spirit That Form'd This Scene 
+}  Spirit That Form'd This Scene
 [Written in Platte Canyon, Colorado]
 
 Spirit that form'd this scene,
@@ -17432,4 +17432,3 @@ May-be it is yourself now really ushering me to the true songs, (who
     knows?)
 May-be it is you the mortal knob really undoing, turning--so now finally,
 Good-bye--and hail! my Fancy.
-

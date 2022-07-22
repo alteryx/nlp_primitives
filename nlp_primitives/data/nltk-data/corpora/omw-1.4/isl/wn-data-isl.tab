@@ -1,4 +1,4 @@
-# IceWordNet	isl	http://www.malfong.is/index.php?lang=en&pg=icewordnet	CC BY 3.0 
+# IceWordNet	isl	http://www.malfong.is/index.php?lang=en&pg=icewordnet	CC BY 3.0
 00001740-v	isl:lemma	anda
 00001740-v	isl:lemma	draga andann
 00002684-n	isl:lemma	gripur
@@ -417,7 +417,7 @@
 00120574-a	isl:lemma	ónefndur
 00122626-a	isl:lemma	eftirfarandi
 00122626-a	isl:lemma	síðari
-00122661-n	isl:lemma	skot 
+00122661-n	isl:lemma	skot
 00123170-v	isl:lemma	breyta
 00123170-v	isl:lemma	umbreyta
 00123170-v	isl:lemma	umhverfa
@@ -594,7 +594,7 @@
 00210848-a	isl:lemma	með skalla
 00210848-a	isl:lemma	sköllóttur
 00212205-n	isl:lemma	starfslok
-00212414-v	isl:lemma	halda  
+00212414-v	isl:lemma	halda
 00212414-v	isl:lemma	varðveita
 00212414-v	isl:lemma	vernda
 00213694-n	isl:lemma	lausn
@@ -733,7 +733,7 @@
 00264034-v	isl:lemma	blása upp
 00264034-v	isl:lemma	blása út
 00265673-v	isl:lemma	betra
-00265673-v	isl:lemma	bæta  
+00265673-v	isl:lemma	bæta
 00267522-n	isl:lemma	eftirlit
 00267522-n	isl:lemma	gætur
 00267522-n	isl:lemma	tilsjá
@@ -1174,7 +1174,7 @@
 00451648-v	isl:lemma	þurrka upp
 00452293-n	isl:lemma	dráp
 00452293-n	isl:lemma	skotveiði
-00452293-n	isl:lemma	veiði 
+00452293-n	isl:lemma	veiði
 00452293-n	isl:lemma	veiðifang
 00452293-n	isl:lemma	veiðifengur
 00452512-v	isl:lemma	fullhlaða
@@ -1433,7 +1433,7 @@
 00588888-v	isl:lemma	átta sig á
 00588888-v	isl:lemma	öðlast skilning á
 00591115-v	isl:lemma	finna
-00591115-v	isl:lemma	sjá  
+00591115-v	isl:lemma	sjá
 00591115-v	isl:lemma	skilja
 00591115-v	isl:lemma	uppgötva
 00591115-v	isl:lemma	verða áskynja
@@ -1739,7 +1739,7 @@
 00671351-n	isl:lemma	aðgerð
 00671351-n	isl:lemma	skurðaðgerð
 00671351-n	isl:lemma	uppskurður
-00674607-v	isl:lemma	taka 
+00674607-v	isl:lemma	taka
 00674607-v	isl:lemma	velja
 00676450-v	isl:lemma	velja
 00676864-v	isl:lemma	kjósa
@@ -2368,7 +2368,7 @@
 00842538-v	isl:lemma	saka um
 00842772-v	isl:lemma	álasa
 00842772-v	isl:lemma	ásaka
-00843959-v	isl:lemma	ákæra 
+00843959-v	isl:lemma	ákæra
 00843959-v	isl:lemma	ásaka
 00844847-n	isl:lemma	sköpun
 00844847-n	isl:lemma	tilurð
@@ -2451,7 +2451,7 @@
 00859758-v	isl:lemma	gleðja
 00859758-v	isl:lemma	hafa ofan fyrir
 00859758-v	isl:lemma	skemmta
-00861929-v	isl:lemma	klappa 
+00861929-v	isl:lemma	klappa
 00863049-a	isl:lemma	concerned with concrete problems or data
 00863049-a	isl:lemma	hagnýtur
 00864693-a	isl:lemma	atvinnulaus
@@ -2723,7 +2723,7 @@
 00923444-n	isl:lemma	iðnaður
 00923793-v	isl:lemma	benda
 00923793-v	isl:lemma	sýna
-00924825-n	isl:lemma	framleiðsla 
+00924825-n	isl:lemma	framleiðsla
 00924825-n	isl:lemma	framleiðsluvara
 00925110-v	isl:lemma	velta fyrir sér
 00925110-v	isl:lemma	íhuga
@@ -2870,7 +2870,7 @@
 00962129-n	isl:lemma	byltingartilraun
 00962129-n	isl:lemma	upphlaup
 00962129-n	isl:lemma	uppnám
-00962129-n	isl:lemma	uppreisn 
+00962129-n	isl:lemma	uppreisn
 00962129-n	isl:lemma	uppreist
 00962129-n	isl:lemma	uppsteytur
 00962722-n	isl:lemma	bylting
@@ -3063,7 +3063,7 @@
 00993014-v	isl:lemma	krota
 00993014-v	isl:lemma	rissa
 00993014-v	isl:lemma	rita
-00993014-v	isl:lemma	skrifa  
+00993014-v	isl:lemma	skrifa
 00993885-a	isl:lemma	banvænn
 00993885-a	isl:lemma	lífshættulegur
 00993885-a	isl:lemma	mannhættur
@@ -3087,7 +3087,7 @@
 01007354-a	isl:lemma	endalaus
 01007354-a	isl:lemma	óendanlegur
 01009240-v	isl:lemma	halda fram
-01009240-v	isl:lemma	segja  
+01009240-v	isl:lemma	segja
 01010271-a	isl:lemma	aftastur
 01010271-a	isl:lemma	hinstur
 01010271-a	isl:lemma	seinastur
@@ -3462,7 +3462,7 @@
 01117164-n	isl:lemma	hættuspil
 01117164-n	isl:lemma	vogun
 01117164-n	isl:lemma	áhætta
-01117541-n	isl:lemma	sala 
+01117541-n	isl:lemma	sala
 01117541-n	isl:lemma	vörusala
 01117609-v	isl:lemma	viðurkenna
 01117609-v	isl:lemma	viðurkenna ósigur
@@ -3767,7 +3767,7 @@
 01206474-a	isl:lemma	lágur
 01207609-n	isl:lemma	aðstoð
 01207609-n	isl:lemma	fulltingi
-01207609-n	isl:lemma	hjálp 
+01207609-n	isl:lemma	hjálp
 01208460-n	isl:lemma	hjálparhönd
 01209576-n	isl:lemma	afgreiðsla
 01209576-n	isl:lemma	framleiðsla
@@ -4030,7 +4030,7 @@
 01277974-v	isl:lemma	leggja saman
 01278818-a	isl:lemma	frábær
 01278818-a	isl:lemma	mikilfenglegur
-01280014-v	isl:lemma	beygja  
+01280014-v	isl:lemma	beygja
 01280014-v	isl:lemma	gera beygju á
 01280014-v	isl:lemma	sveigja
 01280488-v	isl:lemma	beygja
@@ -4298,7 +4298,7 @@
 01432176-v	isl:lemma	kara
 01432176-v	isl:lemma	lepja
 01432176-v	isl:lemma	sleikja
-01432601-v	isl:lemma	bera  
+01432601-v	isl:lemma	bera
 01432601-v	isl:lemma	halda á
 01433493-a	isl:lemma	hár
 01433493-a	isl:lemma	langur
@@ -4378,7 +4378,7 @@
 01452593-a	isl:lemma	hávær
 01452593-a	isl:lemma	raddsterkur
 01452593-a	isl:lemma	skellibjöllulegur
-01453433-v	isl:lemma	draga  
+01453433-v	isl:lemma	draga
 01453433-v	isl:lemma	hala
 01453433-v	isl:lemma	toga
 01454636-a	isl:lemma	hljóðlegur
@@ -4424,7 +4424,7 @@
 01480149-v	isl:lemma	grípa
 01480149-v	isl:lemma	harka út
 01480149-v	isl:lemma	krækja í
-01480149-v	isl:lemma	ná 
+01480149-v	isl:lemma	ná
 01480149-v	isl:lemma	sölsa til sín
 01481360-v	isl:lemma	hengja
 01481360-v	isl:lemma	láta hanga
@@ -4720,7 +4720,7 @@
 01629000-v	isl:lemma	inna af hendi
 01629000-v	isl:lemma	leggja fram
 01629000-v	isl:lemma	láta í té
-01632537-a	isl:lemma	opinber 
+01632537-a	isl:lemma	opinber
 01634424-v	isl:lemma	búa til
 01634424-v	isl:lemma	spinna upp
 01635146-a	isl:lemma	fast
@@ -4871,7 +4871,7 @@
 01711965-v	isl:lemma	filma
 01711965-v	isl:lemma	kvikmynda
 01711965-v	isl:lemma	mynda
-01714208-v	isl:lemma	flytja  
+01714208-v	isl:lemma	flytja
 01714208-v	isl:lemma	leika
 01714208-v	isl:lemma	sýna
 01717628-v	isl:lemma	koma fram í fyrsta sinn
@@ -4985,7 +4985,7 @@
 01770501-v	isl:lemma	trufla
 01771390-v	isl:lemma	hreyfa við
 01771535-v	isl:lemma	heilsast
-01771535-v	isl:lemma	líða 
+01771535-v	isl:lemma	líða
 01771535-v	isl:lemma	mega
 01771535-v	isl:lemma	vegna
 01772222-n	isl:lemma	kónguló
@@ -5202,7 +5202,7 @@
 01834304-a	isl:lemma	sparsamur
 01834304-a	isl:lemma	séður
 01834304-a	isl:lemma	útsjónarsamur
-01835496-v	isl:lemma	fara 
+01835496-v	isl:lemma	fara
 01835496-v	isl:lemma	fara leiðar sinnar
 01835496-v	isl:lemma	ferðast
 01835496-v	isl:lemma	feta
@@ -5270,7 +5270,7 @@
 01853461-a	isl:lemma	öruggur
 01854129-a	isl:lemma	auka-
 01854129-a	isl:lemma	viðbótar-
-01855606-v	isl:lemma	flytja  
+01855606-v	isl:lemma	flytja
 01855606-v	isl:lemma	færa sig um set
 01855764-a	isl:lemma	grundvallar-
 01855764-a	isl:lemma	undirstöðu-
@@ -5551,7 +5551,7 @@
 01941026-a	isl:lemma	myndrænn
 01943338-v	isl:lemma	hækka sig
 01943338-v	isl:lemma	rísa
-01943338-v	isl:lemma	stíga upp 
+01943338-v	isl:lemma	stíga upp
 01943406-a	isl:lemma	hæfilegur
 01943406-a	isl:lemma	skikkanlegur
 01944252-v	isl:lemma	svífa
@@ -5656,7 +5656,7 @@
 01987646-a	isl:lemma	fálátur
 01987646-a	isl:lemma	fáskiptinn
 01989053-v	isl:lemma	falla
-01989053-v	isl:lemma	gefa eftir 
+01989053-v	isl:lemma	gefa eftir
 01989053-v	isl:lemma	hrynja
 01989720-v	isl:lemma	hokra
 01989720-v	isl:lemma	standa/sitja hokinn
@@ -5693,7 +5693,7 @@
 01998432-v	isl:lemma	vera í humátt á eftir
 01999423-v	isl:lemma	leiða
 01999423-v	isl:lemma	stýra
-02001858-v	isl:lemma	elta 
+02001858-v	isl:lemma	elta
 02001858-v	isl:lemma	eltast við
 02002227-a	isl:lemma	afmarkaður
 02002227-a	isl:lemma	einskorðaður
@@ -6180,7 +6180,7 @@
 02200198-n	isl:lemma	moskító
 02200198-n	isl:lemma	moskítófluga
 02200686-v	isl:lemma	færa að gjöf
-02200686-v	isl:lemma	gefa 
+02200686-v	isl:lemma	gefa
 02200686-v	isl:lemma	hygla
 02200686-v	isl:lemma	hýrga
 02200686-v	isl:lemma	láta í té
@@ -6220,7 +6220,7 @@
 02215977-a	isl:lemma	margfaldur
 02219486-n	isl:lemma	maur
 02224945-v	isl:lemma	hætta með
-02224945-v	isl:lemma	losa sig við 
+02224945-v	isl:lemma	losa sig við
 02225204-v	isl:lemma	henda
 02225204-v	isl:lemma	losa sig við
 02225510-a	isl:lemma	fær
@@ -6445,7 +6445,7 @@
 02305586-v	isl:lemma	sanka saman
 02305586-v	isl:lemma	tína saman
 02305586-v	isl:lemma	viða að sér
-02306281-v	isl:lemma	safna 
+02306281-v	isl:lemma	safna
 02306281-v	isl:lemma	safna saman
 02311387-v	isl:lemma	draga til baka
 02311387-v	isl:lemma	taka út
@@ -6515,7 +6515,7 @@
 02336449-a	isl:lemma	ófullnægjandi
 02336449-a	isl:lemma	ónógur
 02336449-a	isl:lemma	óviðunandi
-02339413-v	isl:lemma	búa 
+02339413-v	isl:lemma	búa
 02339413-v	isl:lemma	útbúa
 02341266-a	isl:lemma	efri
 02341266-a	isl:lemma	fremri
@@ -6647,7 +6647,7 @@
 02405326-a	isl:lemma	trekktur
 02406585-v	isl:lemma	fylgja
 02406585-v	isl:lemma	koma á eftir
-02409412-v	isl:lemma	ráða 
+02409412-v	isl:lemma	ráða
 02409412-v	isl:lemma	vista
 02410393-a	isl:lemma	digur
 02410393-a	isl:lemma	þykkur
@@ -7072,7 +7072,7 @@
 02549691-a	isl:lemma	mollulegur
 02551144-v	isl:lemma	aðstoða
 02551144-v	isl:lemma	bjarga
-02551144-v	isl:lemma	bjarga  
+02551144-v	isl:lemma	bjarga
 02551144-v	isl:lemma	endurleysa
 02551144-v	isl:lemma	frelsa
 02551144-v	isl:lemma	hjálpa
@@ -7264,7 +7264,7 @@
 02657219-v	isl:lemma	eiga saman
 02657219-v	isl:lemma	passa saman
 02657219-v	isl:lemma	passa við
-02664234-v	isl:lemma	ráðast af 
+02664234-v	isl:lemma	ráðast af
 02664234-v	isl:lemma	vera undir e-u kominn
 02665282-v	isl:lemma	bera keim af
 02665282-v	isl:lemma	kippa í kynið
@@ -7296,7 +7296,7 @@
 02679415-n	isl:lemma	ábætir
 02679415-n	isl:lemma	ábót
 02679530-v	isl:lemma	halda gangandi
-02679530-v	isl:lemma	halda uppi 
+02679530-v	isl:lemma	halda uppi
 02679530-v	isl:lemma	styðja
 02680814-v	isl:lemma	afnema
 02680814-v	isl:lemma	fella niður
@@ -7371,7 +7371,7 @@
 02727825-n	isl:lemma	áhald
 02728440-n	isl:lemma	föt
 02728440-n	isl:lemma	klæðnaður
-02729965-n	isl:lemma	tæki 
+02729965-n	isl:lemma	tæki
 02729965-n	isl:lemma	útbúnaður
 02731024-v	isl:lemma	haldast
 02731024-v	isl:lemma	vera eftir
@@ -8336,10 +8336,10 @@
 03666591-n	isl:lemma	kveikjari
 03666591-n	isl:lemma	rofi
 03671272-n	isl:lemma	járnbrautarleið
-03671272-n	isl:lemma	leið 
+03671272-n	isl:lemma	leið
 03672352-n	isl:lemma	hör
 03672352-n	isl:lemma	léreft
-03672352-n	isl:lemma	lín 
+03672352-n	isl:lemma	lín
 03673971-n	isl:lemma	hlekkur
 03673971-n	isl:lemma	tenging
 03679986-n	isl:lemma	hlass
@@ -8376,7 +8376,7 @@
 03733281-n	isl:lemma	villustigur
 03733281-n	isl:lemma	völundarhús
 03733547-n	isl:lemma	aðferð
-03733547-n	isl:lemma	leið 
+03733547-n	isl:lemma	leið
 03735637-n	isl:lemma	mál
 03735637-n	isl:lemma	mælikerfi
 03738472-n	isl:lemma	tæknibúnaður
@@ -8438,7 +8438,7 @@
 03816394-n	isl:lemma	vísir
 03820154-n	isl:lemma	netið
 03820154-n	isl:lemma	nót
-03820474-n	isl:lemma	net 
+03820474-n	isl:lemma	net
 03832673-n	isl:lemma	fartölva
 03832673-n	isl:lemma	ferðatölva
 03834040-n	isl:lemma	kjarnakljúfur
@@ -8627,7 +8627,7 @@
 04071102-n	isl:lemma	hæli
 04071102-n	isl:lemma	náðir
 04071102-n	isl:lemma	skjól
-04074482-n	isl:lemma	ráð  
+04074482-n	isl:lemma	ráð
 04074482-n	isl:lemma	úrræði
 04076533-n	isl:lemma	eftirmyndun
 04076533-n	isl:lemma	endursköpun
@@ -9447,7 +9447,7 @@
 05069199-n	isl:lemma	höllun
 05069199-n	isl:lemma	sneiðing
 05075602-n	isl:lemma	niðurskipan
-05075602-n	isl:lemma	uppsetning 
+05075602-n	isl:lemma	uppsetning
 05075602-n	isl:lemma	uppstilling
 05076827-n	isl:lemma	jafnvægi
 05084201-n	isl:lemma	fjarlægð
@@ -9686,7 +9686,7 @@
 05261566-n	isl:lemma	mumpur
 05261566-n	isl:lemma	skegg
 05266879-n	isl:lemma	prufa
-05266879-n	isl:lemma	sýni 
+05266879-n	isl:lemma	sýni
 05266879-n	isl:lemma	sýnishorn
 05267345-n	isl:lemma	líkamsvefur
 05267345-n	isl:lemma	vefur
@@ -9711,7 +9711,7 @@
 05302499-n	isl:lemma	munnop
 05302499-n	isl:lemma	munnur
 05305806-n	isl:lemma	granir
-05305806-n	isl:lemma	vör 
+05305806-n	isl:lemma	vör
 05311054-n	isl:lemma	auga
 05311054-n	isl:lemma	glyrna
 05313535-n	isl:lemma	augabrún
@@ -9761,7 +9761,7 @@
 05535869-n	isl:lemma	ristill
 05537576-n	isl:lemma	botnlangi
 05538625-n	isl:lemma	haus
-05538625-n	isl:lemma	höfuð 
+05538625-n	isl:lemma	höfuð
 05540121-n	isl:lemma	hauskúpa
 05540121-n	isl:lemma	höfuðkúpa
 05546040-n	isl:lemma	kjammi
@@ -10114,7 +10114,7 @@
 05728678-n	isl:lemma	skipulagning
 05728678-n	isl:lemma	áform
 05728678-n	isl:lemma	áætlun
-05733583-n	isl:lemma	mat 
+05733583-n	isl:lemma	mat
 05733583-n	isl:lemma	virðing
 05737153-n	isl:lemma	einkunn
 05737153-n	isl:lemma	gráða
@@ -10209,7 +10209,7 @@
 05800611-n	isl:lemma	rannsókn
 05800611-n	isl:lemma	stóderingar
 05800611-n	isl:lemma	stúdía
-05800998-n	isl:lemma	skoðanakönnun 
+05800998-n	isl:lemma	skoðanakönnun
 05802185-n	isl:lemma	reikningur
 05802185-n	isl:lemma	útreikningur
 05803379-n	isl:lemma	mat
@@ -10529,7 +10529,7 @@
 06123363-n	isl:lemma	húsagerðarlist
 06125041-n	isl:lemma	tækni
 06128570-n	isl:lemma	tölvufræði
-06136258-n	isl:lemma	sálfræði 
+06136258-n	isl:lemma	sálfræði
 06149484-n	isl:lemma	auðfræði
 06149484-n	isl:lemma	hagfræði
 06149484-n	isl:lemma	hagspeki
@@ -10537,9 +10537,9 @@
 06151693-n	isl:lemma	félagsfræði
 06151693-n	isl:lemma	þjóðfélagsfræði
 06155567-n	isl:lemma	saga
-06155567-n	isl:lemma	sagnfræði 
+06155567-n	isl:lemma	sagnfræði
 06158346-n	isl:lemma	fílósófía
-06158346-n	isl:lemma	heimspeki 
+06158346-n	isl:lemma	heimspeki
 06159473-n	isl:lemma	siðfræði
 06170498-n	isl:lemma	málsnilld
 06170498-n	isl:lemma	mælskulist
@@ -10554,7 +10554,7 @@
 06194409-n	isl:lemma	menning
 06195839-n	isl:lemma	horfur
 06195839-n	isl:lemma	útlit
-06196284-n	isl:lemma	staða 
+06196284-n	isl:lemma	staða
 06196284-n	isl:lemma	stelling
 06196584-n	isl:lemma	eðlishneigð
 06196584-n	isl:lemma	hneiging
@@ -10892,7 +10892,7 @@
 06523132-n	isl:lemma	leiga
 06523641-n	isl:lemma	regla
 06523641-n	isl:lemma	stefna
-06526291-n	isl:lemma	félag 
+06526291-n	isl:lemma	félag
 06526291-n	isl:lemma	félagsskapr
 06528783-n	isl:lemma	gilding
 06528783-n	isl:lemma	mat
@@ -11055,7 +11055,7 @@
 06646243-n	isl:lemma	auðkenni
 06646243-n	isl:lemma	einkenni
 06646243-n	isl:lemma	jarteikn
-06646243-n	isl:lemma	merki 
+06646243-n	isl:lemma	merki
 06646243-n	isl:lemma	teikn
 06646243-n	isl:lemma	tákn
 06647036-n	isl:lemma	fótspor
@@ -11221,7 +11221,7 @@
 06756111-n	isl:lemma	gangur
 06756111-n	isl:lemma	viðburðarás
 06756267-n	isl:lemma	verðuppgjöf
-06756831-n	isl:lemma	lygi 
+06756831-n	isl:lemma	lygi
 06756831-n	isl:lemma	lygimál
 06756831-n	isl:lemma	lygð
 06756831-n	isl:lemma	skreytni
@@ -11395,7 +11395,7 @@
 07009808-n	isl:lemma	atriði
 07009808-n	isl:lemma	sena
 07010541-n	isl:lemma	einræða
-07010541-n	isl:lemma	línur 
+07010541-n	isl:lemma	línur
 07012534-n	isl:lemma	lína
 07015510-n	isl:lemma	gamanleikur
 07015510-n	isl:lemma	gleðileikur
@@ -11629,7 +11629,7 @@
 07226545-n	isl:lemma	fyrirheit
 07226545-n	isl:lemma	heit
 07226545-n	isl:lemma	heitorð
-07226545-n	isl:lemma	loforð 
+07226545-n	isl:lemma	loforð
 07226545-n	isl:lemma	áheit
 07227301-n	isl:lemma	heit
 07227301-n	isl:lemma	loforð
@@ -11697,7 +11697,7 @@
 07258332-n	isl:lemma	heimfærlsa
 07258332-n	isl:lemma	hliðsjón
 07258332-n	isl:lemma	viðmiðun
-07258664-n	isl:lemma	heimild 
+07258664-n	isl:lemma	heimild
 07260623-n	isl:lemma	kvarði
 07260623-n	isl:lemma	standard
 07260623-n	isl:lemma	staðall
@@ -11884,7 +11884,7 @@
 07376257-n	isl:lemma	smellur
 07376257-n	isl:lemma	sprenging
 07387509-n	isl:lemma	hljómur
-07387509-n	isl:lemma	hljóð 
+07387509-n	isl:lemma	hljóð
 07388816-n	isl:lemma	slag
 07388816-n	isl:lemma	slátta
 07388816-n	isl:lemma	sláttur
@@ -12787,7 +12787,7 @@
 08439955-n	isl:lemma	starfsmenn
 08439955-n	isl:lemma	verkafólk
 08439955-n	isl:lemma	vinnuafl
-08441203-n	isl:lemma	lög 
+08441203-n	isl:lemma	lög
 08459252-n	isl:lemma	romsa
 08459252-n	isl:lemma	runa
 08459252-n	isl:lemma	röð
@@ -12870,7 +12870,7 @@
 08558963-n	isl:lemma	heimkynni
 08558963-n	isl:lemma	hýbýli
 08562620-n	isl:lemma	austrið
-08562620-n	isl:lemma	austur 
+08562620-n	isl:lemma	austur
 08562620-n	isl:lemma	austurlönd fjær
 08565506-n	isl:lemma	himinn
 08565506-n	isl:lemma	himnar
@@ -13181,7 +13181,7 @@
 09328904-n	isl:lemma	vatn
 09334396-n	isl:lemma	jörð
 09334396-n	isl:lemma	land
-09347445-n	isl:lemma	Mars 
+09347445-n	isl:lemma	Mars
 09347779-n	isl:lemma	fen
 09347779-n	isl:lemma	mýri
 09348055-n	isl:lemma	magn
@@ -13220,7 +13220,7 @@
 09411430-n	isl:lemma	elfa
 09411430-n	isl:lemma	elfur
 09411430-n	isl:lemma	fljót
-09411430-n	isl:lemma	á 
+09411430-n	isl:lemma	á
 09416076-n	isl:lemma	bergmoli
 09416076-n	isl:lemma	grjót
 09416076-n	isl:lemma	hallur
@@ -13600,7 +13600,7 @@
 10067968-n	isl:lemma	gæslumaður
 10077593-n	isl:lemma	aðdáandi
 10077593-n	isl:lemma	unnandi
-10078806-n	isl:lemma	bóndi 
+10078806-n	isl:lemma	bóndi
 10078806-n	isl:lemma	búandi
 10078806-n	isl:lemma	búandkarl
 10078806-n	isl:lemma	búandmaður
@@ -13699,7 +13699,7 @@
 10151570-n	isl:lemma	fylgdarmaður
 10151570-n	isl:lemma	leiðsögumaður
 10162991-n	isl:lemma	aðalmanneskjan
-10162991-n	isl:lemma	höfuð 
+10162991-n	isl:lemma	höfuð
 10168584-n	isl:lemma	arfi
 10168584-n	isl:lemma	arftaki
 10168584-n	isl:lemma	arftökumaður
@@ -14414,7 +14414,7 @@
 13112664-n	isl:lemma	kjarr
 13112664-n	isl:lemma	runni
 13112664-n	isl:lemma	runnur
-13125117-n	isl:lemma	rót 
+13125117-n	isl:lemma	rót
 13129165-n	isl:lemma	stilkur
 13129165-n	isl:lemma	stofn
 13129165-n	isl:lemma	stöngull
@@ -14423,7 +14423,7 @@
 13134059-n	isl:lemma	blómlaukur
 13134947-n	isl:lemma	aldin
 13134947-n	isl:lemma	ávöxtur
-13135832-n	isl:lemma	fræ 
+13135832-n	isl:lemma	fræ
 13135832-n	isl:lemma	frækorn
 13136556-n	isl:lemma	hneta
 13136556-n	isl:lemma	hnot
@@ -14447,7 +14447,7 @@
 13250542-n	isl:lemma	aurar
 13250542-n	isl:lemma	auður
 13250542-n	isl:lemma	fjármunir
-13250542-n	isl:lemma	fé 
+13250542-n	isl:lemma	fé
 13250542-n	isl:lemma	sjóður
 13250542-n	isl:lemma	skildingar
 13250930-n	isl:lemma	dánarbú
@@ -14540,7 +14540,7 @@
 13318584-n	isl:lemma	vextir
 13320168-n	isl:lemma	afráð
 13320168-n	isl:lemma	borgun
-13320168-n	isl:lemma	gjald 
+13320168-n	isl:lemma	gjald
 13320168-n	isl:lemma	þóknun
 13320860-n	isl:lemma	prósenta
 13320860-n	isl:lemma	sölulaun
@@ -14704,7 +14704,7 @@
 13504173-n	isl:lemma	upptugga
 13504173-n	isl:lemma	ítrekun
 13504173-n	isl:lemma	þauli
-13525549-n	isl:lemma	athöfn 
+13525549-n	isl:lemma	athöfn
 13525549-n	isl:lemma	verknaður
 13545184-n	isl:lemma	geislavirkni
 13545184-n	isl:lemma	geislun
@@ -14713,7 +14713,7 @@
 13581067-n	isl:lemma	meginhluti
 13581067-n	isl:lemma	meirihluti
 13594585-n	isl:lemma	stigafjöldi
-13596986-n	isl:lemma	skrá 
+13596986-n	isl:lemma	skrá
 13608788-n	isl:lemma	vigt
 13608788-n	isl:lemma	vægi
 13608788-n	isl:lemma	þungi
@@ -14750,7 +14750,7 @@
 13758296-n	isl:lemma	skil
 13758296-n	isl:lemma	skilmörk
 13758296-n	isl:lemma	skorður
-13758296-n	isl:lemma	takmörk 
+13758296-n	isl:lemma	takmörk
 13758296-n	isl:lemma	útmörk
 13758745-n	isl:lemma	afurð
 13758745-n	isl:lemma	framleiðsluvara
@@ -14825,7 +14825,7 @@
 13828075-n	isl:lemma	staða
 13831176-n	isl:lemma	norður
 13831176-n	isl:lemma	norðurátt
-13832355-n	isl:lemma	austur 
+13832355-n	isl:lemma	austur
 13832355-n	isl:lemma	austurátt
 13833375-n	isl:lemma	suður
 13833375-n	isl:lemma	suðurátt
@@ -14834,7 +14834,7 @@
 13840719-n	isl:lemma	landsmál
 13840719-n	isl:lemma	pólitík
 13840719-n	isl:lemma	ríkismálefni
-13840719-n	isl:lemma	stjórnmál 
+13840719-n	isl:lemma	stjórnmál
 13840719-n	isl:lemma	þingmál
 13840719-n	isl:lemma	þjóðarmál
 13840719-n	isl:lemma	þjóðmál
@@ -14944,7 +14944,7 @@
 13907415-n	isl:lemma	felling
 13910116-n	isl:lemma	lofttóm
 13910116-n	isl:lemma	loftæmi
-13910116-n	isl:lemma	tóm 
+13910116-n	isl:lemma	tóm
 13910116-n	isl:lemma	tómarúm
 13910384-n	isl:lemma	bil
 13910384-n	isl:lemma	pláss
@@ -15056,7 +15056,7 @@
 13963970-n	isl:lemma	hjónaband
 13963970-n	isl:lemma	hjúskapur
 13963970-n	isl:lemma	staðfesta
-13968092-n	isl:lemma	atvinna 
+13968092-n	isl:lemma	atvinna
 13968092-n	isl:lemma	djobb
 13968092-n	isl:lemma	iðn
 13968092-n	isl:lemma	lífsviðurværi
@@ -15328,7 +15328,7 @@
 14424517-n	isl:lemma	viðreisn
 14424517-n	isl:lemma	viðréttingu
 14428160-n	isl:lemma	gráða
-14428160-n	isl:lemma	stig 
+14428160-n	isl:lemma	stig
 14428160-n	isl:lemma	þrep
 14429608-n	isl:lemma	gráða
 14429608-n	isl:lemma	stig
@@ -15383,7 +15383,7 @@
 14442530-n	isl:lemma	völd
 14442530-n	isl:lemma	yfirdrottnun
 14442530-n	isl:lemma	yfirráð
-14442933-n	isl:lemma	stjórn 
+14442933-n	isl:lemma	stjórn
 14442933-n	isl:lemma	vald
 14442933-n	isl:lemma	yfirráð
 14444114-n	isl:lemma	einkaleyfi
@@ -15633,7 +15633,7 @@
 14648100-n	isl:lemma	ildi
 14648100-n	isl:lemma	súrefni
 14654954-n	isl:lemma	góðmálmur
-14654954-n	isl:lemma	silfur 
+14654954-n	isl:lemma	silfur
 14655371-n	isl:lemma	natrín
 14655371-n	isl:lemma	natríum
 14655371-n	isl:lemma	sódi
@@ -15644,7 +15644,7 @@
 14662574-n	isl:lemma	steintegund
 14682133-n	isl:lemma	mólekúl
 14682133-n	isl:lemma	sameind
-14686913-n	isl:lemma	bensín 
+14686913-n	isl:lemma	bensín
 14698884-n	isl:lemma	grjótmulningur
 14698884-n	isl:lemma	mylsna
 14698884-n	isl:lemma	möl

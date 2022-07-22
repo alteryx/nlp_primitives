@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..count_string import CountString
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.count_string import CountString
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestCountString(PrimitiveT):
@@ -28,7 +32,7 @@ class TestCountString(PrimitiveT):
             #   does not count as hello being its own word
             "helloHellohello 9Hello 9hello9 *hello/ test'hel..lo' 'hE.l.lO' \
          hello",
-        ]
+        ],
     )
 
     def test_non_regex_with_no_other_parameters(self):
@@ -192,7 +196,7 @@ class TestCountString(PrimitiveT):
             match_whole_words_only=False,
         )
         test_cases = pd.Series(
-            [np.nan, None, pd.NA, "The fox jumped over the cat", "The there then"]
+            [np.nan, None, pd.NA, "The fox jumped over the cat", "The there then"],
         )
         answers = [np.nan, np.nan, np.nan, 2, 3]
         self.compare(primitive, test_cases, answers)

@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..tensorflow.elmo import Elmo
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.tensorflow.elmo import Elmo
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestElmo(PrimitiveT):
@@ -17,7 +21,7 @@ class TestElmo(PrimitiveT):
                 "The roller coaster was built in 1885.",
                 "When will humans go to mars?",
                 "Mitochondria is the powerhouse of the cell",
-            ]
+            ],
         )
         new_results = primitive(words)
         assert round(sum(new_results[:, 0]), 3) == 8.744

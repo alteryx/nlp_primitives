@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..num_unique_separators import NumUniqueSeparators
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.num_unique_separators import NumUniqueSeparators
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestNumUniqueSeparators(PrimitiveT):
@@ -16,7 +20,7 @@ class TestNumUniqueSeparators(PrimitiveT):
                 "third/line $1,000;",
                 "and--subsequen't lines...",
                 "*and, more..",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([1, 3, 3, 2, 3])
@@ -34,7 +38,7 @@ class TestNumUniqueSeparators(PrimitiveT):
                 "This is a test file",
                 "This is second line\nthird line $1000;\nand subsequent lines",
                 "and more!",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([1, 3, 2])

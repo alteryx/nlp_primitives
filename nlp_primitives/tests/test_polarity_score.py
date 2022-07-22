@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..polarity_score import PolarityScore
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.polarity_score import PolarityScore
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestPolarityScore(PrimitiveT):
@@ -10,7 +14,7 @@ class TestPolarityScore(PrimitiveT):
 
     def test_primitive_func_1(self):
         array = pd.Series(
-            ["He hates cars!", "She loves everything", "This is neutral", "!12323"]
+            ["He hates cars!", "She loves everything", "This is neutral", "!12323"],
         )
         primitive_instance = self.primitive()
         primitive_func = primitive_instance.get_function()

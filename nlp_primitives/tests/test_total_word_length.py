@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..total_word_length import TotalWordLength
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
+from nlp_primitives.total_word_length import TotalWordLength
 
 
 class TestTotalWordLength(PrimitiveT):
@@ -10,7 +14,7 @@ class TestTotalWordLength(PrimitiveT):
 
     def test_delimiter_override(self):
         x = pd.Series(
-            ["This is a test file.", "This,is,second,line?", "and;subsequent;lines..."]
+            ["This is a test file.", "This,is,second,line?", "and;subsequent;lines..."],
         )
 
         expected = pd.Series([16, 17, 21])
@@ -22,7 +26,7 @@ class TestTotalWordLength(PrimitiveT):
             [
                 "This is a test file.",
                 "This is second line\nthird line $1000;\nand subsequent lines",
-            ]
+            ],
         )
 
         expected = pd.Series([15, 48])

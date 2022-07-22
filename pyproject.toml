@@ -15,10 +15,14 @@ filterwarnings = [
     "ignore::PendingDeprecationWarning"
 ]
 
+[tool.black]
+target-version = ['py10']
+
 [tool.isort]
 profile = "black"
 forced_separate = "nlp_primitives"
 known_first_party = "nlp_primitives"
+known_third_party = "featuretools,woodwork,evalml"
 skip = "__init__.py"
 multi_line_output = 3
 

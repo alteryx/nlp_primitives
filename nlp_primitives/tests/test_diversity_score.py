@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..diversity_score import DiversityScore
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.diversity_score import DiversityScore
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestDiversityScore(PrimitiveT):
@@ -15,7 +19,7 @@ class TestDiversityScore(PrimitiveT):
                 "Not diverse not diverse not",
                 "this is a semi diverse diverse example",
                 "a a",
-            ]
+            ],
         )
         primitive_instance = self.primitive()
         primitive_func = primitive_instance.get_function()

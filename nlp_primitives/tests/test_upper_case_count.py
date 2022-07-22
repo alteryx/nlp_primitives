@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..upper_case_count import UpperCaseCount
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
+from nlp_primitives.upper_case_count import UpperCaseCount
 
 
 class TestUpperCaseCount(PrimitiveT):
@@ -10,7 +14,7 @@ class TestUpperCaseCount(PrimitiveT):
 
     def test_strings(self):
         x = pd.Series(
-            ["This IS a STRING.", "Testing AaA", "Testing AAA-BBB", "testing aaa"]
+            ["This IS a STRING.", "Testing AaA", "Testing AAA-BBB", "testing aaa"],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([9.0, 3.0, 7.0, 0.0])

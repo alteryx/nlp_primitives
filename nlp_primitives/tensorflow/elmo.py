@@ -54,7 +54,7 @@ class Elmo(TransformPrimitive):
                     [
                         tf.compat.v1.global_variables_initializer(),
                         tf.compat.v1.tables_initializer(),
-                    ]
+                    ],
                 )
                 embeddings = session.run(self.embed(col.tolist()))
             return embeddings.transpose()

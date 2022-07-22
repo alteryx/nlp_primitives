@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..whitespace_count import WhitespaceCount
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
+from nlp_primitives.whitespace_count import WhitespaceCount
 
 
 class TestWhitespaceCount(PrimitiveT):
@@ -15,7 +19,7 @@ class TestWhitespaceCount(PrimitiveT):
 
     def test_strings(self):
         x = pd.Series(
-            ["", "hi im ethan!", "consecutive.    spaces.", " spaces-on-ends "]
+            ["", "hi im ethan!", "consecutive.    spaces.", " spaces-on-ends "],
         )
         answers = [0, 2, 4, 2]
         self.compare(self.primitive(), x, answers)

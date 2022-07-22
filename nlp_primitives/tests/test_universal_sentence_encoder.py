@@ -7,8 +7,10 @@ import pytest
 from featuretools.primitives.utils import PrimitivesDeserializer, serialize_primitive
 from woodwork.logical_types import NaturalLanguage
 
-from ..tensorflow.universal_sentence_encoder import UniversalSentenceEncoder
-from .test_utils import PRIMITIVES
+from nlp_primitives.tensorflow.universal_sentence_encoder import (
+    UniversalSentenceEncoder,
+)
+from nlp_primitives.tests.test_utils import PRIMITIVES
 
 
 def test_regular(universal_sentence_encoder):
@@ -19,7 +21,7 @@ def test_regular(universal_sentence_encoder):
             "The roller coaster was built in 1885.",
             "When will humans go to mars?",
             "Mitochondria is the powerhouse of the cell",
-        ]
+        ],
     )
     a = pd.DataFrame(universal_sentence_encoder(sentences))
     a = a.mean().round(7).to_numpy()
@@ -55,7 +57,7 @@ def test_primitive_serialization(universal_sentence_encoder):
             "The roller coaster was built in 1885.",
             "When will humans go to mars?",
             "Mitochondria is the powerhouse of the cell",
-        ]
+        ],
     )
     serialized_primitive = serialize_primitive(universal_sentence_encoder)
     deserializer = PrimitivesDeserializer()
@@ -75,7 +77,7 @@ def test_feature_serialization(universal_sentence_encoder, tmpdir):
             "The roller coaster was built in 1885.",
             "When will humans go to mars?",
             "Mitochondria is the powerhouse of the cell",
-        ]
+        ],
     )
 
     es = ft.EntitySet("es")

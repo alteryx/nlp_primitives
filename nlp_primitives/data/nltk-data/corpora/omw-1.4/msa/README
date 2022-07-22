@@ -10,9 +10,9 @@ File format:
 synset\tlang\tgoodness\tlemma
 
 synset is the offset-pos from Princeton wordnet 3.0
-lang 
-     B (Bahasa = msa); 
-     I (Indonesian = ind); 
+lang
+     B (Bahasa = msa);
+     I (Indonesian = ind);
      M (Malay = zsm)
 goodness is:
      Y = hand checked and good
@@ -44,4 +44,3 @@ Def:
 
 06822958-n	DEF	tanda koma di bawah konsonan c tanda bunyi 's'
 06823760-n	DEF	dua titik di atas huruf vokal
-

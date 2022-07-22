@@ -6,7 +6,7 @@ from nltk.tokenize.treebank import TreebankWordDetokenizer
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import Double, NaturalLanguage
 
-from .utilities import clean_tokens
+from nlp_primitives.utilities import clean_tokens
 
 
 class PolarityScore(TransformPrimitive):
