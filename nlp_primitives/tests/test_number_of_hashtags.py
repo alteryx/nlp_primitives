@@ -12,13 +12,13 @@ class TestNumberOfHashtags(PrimitiveT):
         x = pd.Series(
             [
                 "#hello#hi#hello",
-                "#############and",
-                "andorandorandorandor",
+                "#############andandandandand###",
+                "andorandorand",
             ]
         )
-        expected = pd.Series([3.0, 1.0, 0.0])
+        expected = [3.0, 1.0, 0.0]
         actual = self.primitive().get_function()(x)
-        pd.testing.assert_series_equal(actual, expected, check_names=False)
+        np.testing.assert_array_equal(actual, expected)
 
     def test_multiline(self):
         x = pd.Series(
@@ -28,30 +28,30 @@ class TestNumberOfHashtags(PrimitiveT):
             ]
         )
 
-        expected = pd.Series([0.0, 2.0])
+        expected = [0.0, 2.0]
         actual = self.primitive().get_function()(x)
-        pd.testing.assert_series_equal(actual, expected, check_names=False)
+        np.testing.assert_array_equal(actual, expected)
 
     def test_null(self):
         x = pd.Series([np.nan, pd.NA, None, "#test"])
 
         actual = self.primitive().get_function()(x)
-        expected = pd.Series([np.nan, np.nan, np.nan, 1.0])
-        pd.testing.assert_series_equal(actual, expected, check_names=False)
+        expected = [np.nan, np.nan, np.nan, 1.0]
+        np.testing.assert_array_equal(actual, expected)
 
     def test_alphanumeric_and_special(self):
         x = pd.Series(["#1or0", "#12", "#??!>@?@#>"])
 
         actual = self.primitive().get_function()(x)
-        expected = pd.Series([1.0, 1.0, 0.0])
-        pd.testing.assert_series_equal(actual, expected, check_names=False)
+        expected = [1.0, 1.0, 0.0]
+        np.testing.assert_array_equal(actual, expected)
 
     def test_underscore(self):
         x = pd.Series(["#no", "#__yes", "#??!>@?@#>"])
 
         actual = self.primitive().get_function()(x)
-        expected = pd.Series([1.0, 1.0, 0.0])
-        pd.testing.assert_series_equal(actual, expected, check_names=False)
+        expected = [1.0, 1.0, 0.0]
+        np.testing.assert_array_equal(actual, expected)
 
     def test_with_featuretools(self, es):
         transform, aggregation = find_applicable_primitives(self.primitive)
