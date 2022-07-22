@@ -13,6 +13,7 @@ from .mean_characters_per_word import MeanCharactersPerWord
 from .median_word_length import MedianWordLength
 from .num_unique_separators import NumUniqueSeparators
 from .number_of_common_words import NumberOfCommonWords
+from .number_of_hashtags import NumberOfHashtags
 from .part_of_speech_count import PartOfSpeechCount
 from .polarity_score import PolarityScore
 from .punctuation_count import PunctuationCount
