@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-import numpy as np
 from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import Double, NaturalLanguage
+from .count_string import CountString 
 
-
-class TitleWordCount(TransformPrimitive):
+class TitleWordCount(CountString):
     """Determines the number of title words in a string.
 
     Description:
@@ -24,18 +23,9 @@ class TitleWordCount(TransformPrimitive):
     """
 
     name = "title_word_count"
-    input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
-    def get_function(self):
+    def __init__(self):
         pattern = r"([A-Z][^\s]*)"
+        super().__init__(string=pattern, is_regex=True, ignore_case=False) 
 
-        def title_word_count(x):
-            x = x.reset_index(drop=True)
-            counts = x.str.extractall(pattern).groupby(level=0).count()[0]
-            counts = counts.reindex_like(x).fillna(0)
-            counts[x.isnull()] = np.nan
-            return counts.astype(float)
-
-        return title_word_count
