@@ -17,7 +17,7 @@ class NumberOfHashtags(TransformPrimitive):
         If a string is missing, return `NaN`.
 
     Examples:
-        >>> x = ['#amazing#great', 'this is a string', '##yes#yes#no']
+        >>> x = ['#regular#expression', 'this is a string', '###__regular#1and_0#expression']
         >>> number_of_hashtags = NumberOfHashtags()
         >>> number_of_hashtags(x).tolist()
         [2.0, 0.0, 3.0]
