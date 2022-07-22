@@ -5,7 +5,7 @@ Changelog
 Future Release
 ==============
     * Enhancements
-        * Add NumberOfHashtags primitive (:pr:`180`)
+        * Add NumberOfHashtags and NumberOfMentions primitives (:pr:`180`)
     * Fixes
         * Update README.md with Alteryx info (:pr:`167`)
     * Changes
