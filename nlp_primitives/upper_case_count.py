@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from .count_string import CountString
-from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import Double, NaturalLanguage
+
+from .count_string import CountString
 
 
 class UpperCaseCount(CountString):

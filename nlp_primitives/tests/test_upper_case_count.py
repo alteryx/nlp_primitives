@@ -4,6 +4,7 @@ import pandas as pd
 from ..upper_case_count import UpperCaseCount
 from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
+
 class TestUpperCaseCount(PrimitiveT):
     primitive = UpperCaseCount
 
