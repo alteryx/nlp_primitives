@@ -4,7 +4,7 @@ import re
 import string
 
 from woodwork.column_schema import ColumnSchema
-from woodwork.logical_types import Double, NaturalLanguage
+from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
 from .count_string import CountString
 
