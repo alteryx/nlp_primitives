@@ -24,7 +24,7 @@ class UpperCaseCount(CountString):
 
     name = "upper_case_count"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
+    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
     default_value = 0
 
     def __init__(self):
