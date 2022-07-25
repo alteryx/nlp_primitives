@@ -5,13 +5,13 @@ Changelog
 Future Release
 ==============
     * Enhancements
-        * Change `TitleWordCount`, `PunctuationCount`, `UpperCaseCount` to use `CountString` (:pr:`183`)
     * Fixes
         * Update README.md with Alteryx info (:pr:`167`)
     * Changes
         * Add Woodwork as core dependency (:pr:`170`)
         * Add support for Python 3.10 (:pr:`175`)
         * Drop support for Python 3.7 (:pr:`176`)
+        * Change `TitleWordCount`, `PunctuationCount`, `UpperCaseCount` to use `CountString` (:pr:`183`)
     * Documentation Changes
     * Testing Changes
 
