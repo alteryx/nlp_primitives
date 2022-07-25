@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-import numpy as np
-from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
-from woodwork.logical_types import Double, NaturalLanguage
+from woodwork.logical_types import IntegerNullable, NaturalLanguage
+
+from .count_string import CountString
 
 
-class UpperCaseCount(TransformPrimitive):
+class UpperCaseCount(CountString):
     """Calculates the number of upper case letters in text.
 
     Description:
@@ -24,17 +24,9 @@ class UpperCaseCount(TransformPrimitive):
 
     name = "upper_case_count"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
+    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
     default_value = 0
 
-    def get_function(self):
+    def __init__(self):
         pattern = r"([A-Z])"
-
-        def upper_case_count(x):
-            x = x.reset_index(drop=True)
-            counts = x.str.extractall(pattern).groupby(level=0).count()[0]
-            counts = counts.reindex_like(x).fillna(0)
-            counts[x.isnull()] = np.nan
-            return counts.astype(float)
-
-        return upper_case_count
+        super().__init__(string=pattern, is_regex=True, ignore_case=False)

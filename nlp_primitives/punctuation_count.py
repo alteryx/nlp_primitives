@@ -3,13 +3,13 @@
 import re
 import string
 
-import numpy as np
-from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
-from woodwork.logical_types import Double, NaturalLanguage
+from woodwork.logical_types import IntegerNullable, NaturalLanguage
+
+from .count_string import CountString
 
 
-class PunctuationCount(TransformPrimitive):
+class PunctuationCount(CountString):
     """Determines number of punctuation characters in a string.
 
     Description:
@@ -29,17 +29,9 @@ class PunctuationCount(TransformPrimitive):
 
     name = "punctuation_count"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
+    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
     default_value = 0
 
-    def get_function(self):
+    def __init__(self):
         pattern = "(%s)" % "|".join([re.escape(x) for x in string.punctuation])
-
-        def punctuation_count(x):
-            x = x.reset_index(drop=True)
-            counts = x.str.extractall(pattern).groupby(level=0).count()[0]
-            counts = counts.reindex_like(x).fillna(0)
-            counts[x.isnull()] = np.nan
-            return counts.astype(float)
-
-        return punctuation_count
+        super().__init__(string=pattern, is_regex=True, ignore_case=False)
