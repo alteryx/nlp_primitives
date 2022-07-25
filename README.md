@@ -1,6 +1,9 @@
 # NLP Primitives
 
 <p align="center">
+    <a href="https://codecov.io/gh/alteryx/nlp_primitives">
+        <img src="https://codecov.io/gh/alteryx/nlp_primitives/branch/main/graph/badge.svg"/>
+    </a>
     <a href="https://github.com/alteryx/nlp_primitives/actions?query=branch%3Amain+workflow%3ATests" target="_blank">
         <img src="https://github.com/alteryx/nlp_primitives/workflows/Tests/badge.svg?branch=main" alt="Tests" />
     </a>
