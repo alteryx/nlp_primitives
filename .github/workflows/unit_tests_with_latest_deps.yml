@@ -48,7 +48,7 @@ jobs:
       - if: ${{ matrix.python_version == 3.8 && matrix.featuretools_version == 'main' }}
         name: Run unit tests with code coverage
         run: |
-          pytest nlp_primitives/ --cov=nlp_primitives/ --cov-config=pyproject.toml --cov-report=xml:coverage.xml
+          pytest nlp_primitives/ -n=2 --cov=nlp_primitives/ --cov-config=pyproject.toml --cov-report=xml:coverage.xml
       - if: ${{ matrix.python_version == 3.8 && matrix.featuretools_version == 'main' }}
         name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
