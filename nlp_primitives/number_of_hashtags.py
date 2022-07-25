@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from woodwork.column_schema import ColumnSchema
-from woodwork.logical_types import Double, NaturalLanguage
+from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
 from .count_string import CountString
 
@@ -25,7 +25,7 @@ class NumberOfHashtags(CountString):
 
     name = "number_of_hashtags"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
-    return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
+    return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
     default_value = 0
 
     def __init__(self):
