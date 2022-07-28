@@ -16,7 +16,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
         python_version: ["3.8", "3.9", "3.10"]
-        featuretools_version: ["Release", "Main"]
+        featuretools_version: ["release", "main"]
     steps:
       - name: Set up python ${{ matrix.python_version }}
         uses: actions/setup-python@v2
@@ -30,13 +30,13 @@ jobs:
       - name: Install requirements
         run: |
           pip config --site set global.progress_bar off
-      - if: ${{ matrix.featuretools_version == 'Main' }}
+      - if: ${{ matrix.featuretools_version == 'main' }}
         name: Install latest version of Featuretools from main branch
         run: |
           make installdeps-complete
           make installdeps-test
           pip install git+https://github.com/alteryx/featuretools.git@main#egg=featuretools --force-reinstall
-      - if: ${{ matrix.featuretools_version == 'Release' }}
+      - if: ${{ matrix.featuretools_version == 'release' }}
         name: Install latest version of Featuretools from PyPI
         run: |
           make installdeps-complete
@@ -48,10 +48,11 @@ jobs:
       - if: ${{ matrix.python_version == 3.8 && matrix.featuretools_version == 'main' }}
         name: Run unit tests with code coverage
         run: |
-          make testcoverage
+          pytest nlp_primitives/ --cov=nlp_primitives/ --cov-config=pyproject.toml --cov-report=xml:coverage.xml
       - if: ${{ matrix.python_version == 3.8 && matrix.featuretools_version == 'main' }}
         name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: true
-          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ github.workspace }}/coverage.xml
+          verbose: true
