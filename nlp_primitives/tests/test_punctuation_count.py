@@ -19,8 +19,8 @@ class TestPunctuationCount(PrimitiveT):
             ]
         )
         primitive_func = self.primitive().get_function()
-        answers = pd.Series([1.0, 2.0, 4.0, 6.0, 4.0])
-        pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
+        answers = [1.0, 2.0, 4.0, 6.0, 4.0]
+        np.testing.assert_array_equal(primitive_func(x), answers)
 
     def test_multiline(self):
         x = pd.Series(
@@ -30,14 +30,14 @@ class TestPunctuationCount(PrimitiveT):
             ]
         )
         primitive_func = self.primitive().get_function()
-        answers = pd.Series([1.0, 2.0])
-        pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
+        answers = [1.0, 2.0]
+        np.testing.assert_array_equal(primitive_func(x), answers)
 
     def test_nan(self):
         x = pd.Series([np.nan, "", "This is a test file."])
         primitive_func = self.primitive().get_function()
-        answers = pd.Series([np.nan, 0.0, 1.0])
-        pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
+        answers = [np.nan, 0.0, 1.0]
+        np.testing.assert_array_equal(primitive_func(x), answers)
 
     def test_with_featuretools(self, es):
         transform, aggregation = find_applicable_primitives(self.primitive)

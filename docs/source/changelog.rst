@@ -12,8 +12,10 @@ Future Release
         * Add Woodwork as core dependency (:pr:`170`)
         * Add support for Python 3.10 (:pr:`175`)
         * Drop support for Python 3.7 (:pr:`176`)
+        * Change `TitleWordCount`, `PunctuationCount`, `UpperCaseCount` to use `CountString` (:pr:`183`)
     * Documentation Changes
     * Testing Changes
+        * Change codecov v3 for GitHub workflow (:pr:`184`)
 
     Thanks to the following people for contributing to this release:
     :user:`gsheni`, :user:`sbadithe`
