@@ -34,7 +34,7 @@ class NumberOfHashtags(CountString):
     def get_function(self):
         pattern = r"#(\w*([^\W\d])+\w*)(?![#\w])"
 
-        def count_hashtags(x):
+        def number_of_hashtags(x):
             p = re.compile(pattern)
             x = x.reset_index(drop=True)
             counts = x.str.extractall(p).groupby(level=0).count()[0]
@@ -42,4 +42,4 @@ class NumberOfHashtags(CountString):
             counts[x.isnull()] = np.nan
             return counts.astype(float)
 
-        return count_hashtags
+        return number_of_hashtags
