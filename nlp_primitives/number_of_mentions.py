@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
+import re
+
+import numpy as np
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
 from .count_string import CountString
-import re
-import numpy as np
+
 
 class NumberOfMentions(CountString):
     """Determines the number of mentions in a string.
