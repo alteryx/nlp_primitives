@@ -11,15 +11,27 @@ class TestNumberOfMentions(PrimitiveT):
     def test_regular_input(self):
         x = pd.Series(
             [
-                "@hello@hi@hello",
-                "@@@@andandandandand@@@",
+                "@hello @hi @hello",
+                "@and@",
                 "andorandorand",
             ]
         )
-        expected = [3.0, 1.0, 0.0]
+        expected = [3.0, 0.0, 0.0]
         actual = self.primitive().get_function()(x)
         np.testing.assert_array_equal(actual, expected)
-
+    
+    def test_unicode_input(self):
+        x = pd.Series(
+            [
+                "@Ángel @Æ @ĘÁÊÚ",
+                "@@@@Āndandandandand@",
+                "andorandorand @32309",
+            ]
+        )
+        expected = [3.0, 0.0, 1.0]
+        actual = self.primitive().get_function()(x)
+        np.testing.assert_array_equal(actual, expected)
+    
     def test_multiline(self):
         x = pd.Series(
             [
