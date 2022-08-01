@@ -11,12 +11,24 @@ class TestNumberOfHashtags(PrimitiveT):
     def test_regular_input(self):
         x = pd.Series(
             [
-                "#hello#hi#hello",
+                "#hello #hi #hello",
                 "#############andandandandand###",
-                "andorandorand",
+                "andorandorand #32309",
             ]
         )
-        expected = [3.0, 1.0, 0.0]
+        expected = [3.0, 0.0, 0.0]
+        actual = self.primitive().get_function()(x)
+        np.testing.assert_array_equal(actual, expected)
+
+    def test_unicode_input(self):
+        x = pd.Series(
+            [
+                "#Ángel #Æ #ĘÁÊÚ",
+                "#############Āndandandandand###",
+                "andorandorand #32309",
+            ]
+        )
+        expected = [3.0, 0.0, 0.0]
         actual = self.primitive().get_function()(x)
         np.testing.assert_array_equal(actual, expected)
 
@@ -43,7 +55,7 @@ class TestNumberOfHashtags(PrimitiveT):
         x = pd.Series(["#1or0", "#12", "#??!>@?@#>"])
 
         actual = self.primitive().get_function()(x)
-        expected = [1.0, 1.0, 0.0]
+        expected = [1.0, 0.0, 0.0]
         np.testing.assert_array_equal(actual, expected)
 
     def test_underscore(self):
