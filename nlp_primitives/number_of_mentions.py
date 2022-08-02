@@ -12,19 +12,19 @@ class NumberOfMentions(CountString):
     """Determines the number of mentions in a string.
 
     Description:
-        Given list of strings, determine the number of mentions
+        Given a list of strings, determine the number of mentions
         in each string.
 
         A mention is defined as a string that meets the following criteria:
             - Present at the start of a string or after whitespace
             - Contains a sequence of word characters
-            - Terminated by a punctuation character other than '@', a whitespace, or the end of the string
+            - Terminated by a whitespace, the end of the string, or a punctuation character other than '@'
                 - e.g. The string '@yes-no' contains a valid mention ('@yes')
                 - e.g. The string '@yes@' does not contain a valid mention
 
         This implementation handles Unicode characters.
 
-        This implementation does not implement any character limit on mentions.
+        This implementation does not impose any character limit on mentions.
 
         If a string is missing, return `NaN`.
 
