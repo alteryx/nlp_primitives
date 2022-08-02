@@ -38,7 +38,7 @@ class TestNumberOfMentions(PrimitiveT):
         x = pd.Series(
             [
                 "@\n\t\n",
-                "@mention\n @hashtag2\n@\n\n",
+                "@mention\n @mention2\n@\n\n",
             ]
         )
 
