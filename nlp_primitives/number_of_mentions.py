@@ -24,8 +24,7 @@ class NumberOfMentions(CountString):
 
         This implementation handles Unicode characters.
 
-        This implementation does not implement any sort of character length limit
-        on mentions.
+        This implementation does not implement any character limit on mentions.
 
         If a string is missing, return `NaN`.
 
