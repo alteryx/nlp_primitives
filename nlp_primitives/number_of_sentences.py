@@ -20,7 +20,7 @@ class NumberOfSentences(TransformPrimitive):
         >>> x = ['This is a test string.', 'This is second string! This is a second string', 'third string']
         >>> number_of_sentences = NumberOfSentences()
         >>> number_of_sentences(x).tolist()
-        [1.0, 2.0, 0.0]
+        [1, 2, 0]
     """
 
     name = "number_of_sentences"
