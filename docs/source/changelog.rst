@@ -5,6 +5,7 @@ Changelog
 Future Release
 ==============
     * Enhancements
+        * Add `NumberOfUniqueWords` primitive 
     * Fixes
         * Update README.md with Alteryx info (:pr:`167`)
     * Changes
