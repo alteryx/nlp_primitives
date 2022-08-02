@@ -1,4 +1,4 @@
-import string
+from string import punctuation
 
 import nltk
 import pandas as pd
@@ -51,9 +51,9 @@ class NumberOfUniqueWords(TransformPrimitive):
                     unique_words = set()
                     for word in words:
                         if self.case_insensitive:
-                            word = word.lower().strip(string.punctuation)
+                            word = word.lower().strip(punctuation)
                         else:
-                            word = word.strip(string.punctuation)
+                            word = word.strip(punctuation)
                         if len(word) > 0:
                             unique_words.add(word)
                     unique_word_cts.append(len(unique_words))
