@@ -6,6 +6,7 @@ Future Release
 ==============
     * Enhancements
         * Add NumberOfHashtags and NumberOfMentions primitives (:pr:`180`)
+        * Add `NumberOfSentences` and `MeanSentenceLength` primitives (:pr:`188`)
     * Fixes
         * Update README.md with Alteryx info (:pr:`167`)
     * Changes
