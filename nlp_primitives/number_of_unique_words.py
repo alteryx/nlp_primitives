@@ -1,5 +1,4 @@
 import re
-from string import punctuation
 
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive

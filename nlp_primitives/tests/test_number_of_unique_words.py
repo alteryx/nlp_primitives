@@ -21,6 +21,17 @@ class TestNumberOfUniqueWords(PrimitiveT):
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
+    def test_contractions(self):
+        x = pd.Series(
+            [
+                "can't won't don't can't aren't won't don't they'd there's",
+            ]
+        )
+
+        expected = pd.Series([6])
+        actual = self.primitive().get_function()(x)
+        pd.testing.assert_series_equal(actual, expected, check_names=False)
+
     def test_multiline(self):
         x = pd.Series(
             [
