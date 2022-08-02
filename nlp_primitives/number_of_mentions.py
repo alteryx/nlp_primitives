@@ -2,7 +2,6 @@
 import re
 import string
 
-import numpy as np
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
