@@ -32,7 +32,7 @@ class NumberOfHashtags(CountString):
         >>> x = ['#regular #expression', 'this is a string', '###__regular#1and_0#expression']
         >>> number_of_hashtags = NumberOfHashtags()
         >>> number_of_hashtags(x).tolist()
-        [2, 0, 0]
+        [2.0, 0.0, 0.0]
     """
 
     name = "number_of_hashtags"
