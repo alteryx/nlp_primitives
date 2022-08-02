@@ -1,6 +1,6 @@
+import re
 from string import punctuation
 
-import nltk
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
@@ -47,16 +47,12 @@ class NumberOfUniqueWords(TransformPrimitive):
                 if pd.isnull(text):
                     unique_word_cts.append(pd.NA)
                 else:
-                    words = nltk.tokenize.word_tokenize(text)
-                    unique_words = set()
-                    for word in words:
-                        if self.case_insensitive:
-                            word = word.lower().strip(punctuation)
-                        else:
-                            word = word.strip(punctuation)
-                        if len(word) > 0:
-                            unique_words.add(word)
-                    unique_word_cts.append(len(unique_words))
+                    words = re.findall(r"((\w+)('\w+)?)", text)
+                    if self.case_insensitive:
+                        words = len(set(word[0].lower() for word in words))
+                    else:
+                        words = len(set(words))
+                    unique_word_cts.append(words)
             return pd.Series(unique_word_cts)
 
         return num_unique_words
