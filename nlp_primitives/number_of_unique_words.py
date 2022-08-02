@@ -48,13 +48,13 @@ class NumberOfUniqueWords(TransformPrimitive):
                     unique_word_cts.append(pd.NA)
                 else:
                     words = nltk.tokenize.word_tokenize(text)
-                    unique_words = set() 
-                    for word in words: 
-                        if self.case_insensitive: 
-                            word = word.lower().strip(string.punctuation) 
-                        else: 
-                            word = word.strip(string.punctuation) 
-                        unique_words.add(word) 
+                    unique_words = set()
+                    for word in words:
+                        if self.case_insensitive:
+                            word = word.lower().strip(string.punctuation)
+                        else:
+                            word = word.strip(string.punctuation)
+                        unique_words.add(word)
                     unique_word_cts.append(len(unique_words))
             return pd.Series(unique_word_cts)
 
