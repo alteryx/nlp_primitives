@@ -1,9 +1,11 @@
-import pandas as pd
+import string
+
 import nltk
+import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
-import string 
+
 
 class NumberOfUniqueWords(TransformPrimitive):
     """Determines the number of unique words in a string.
@@ -14,8 +16,8 @@ class NumberOfUniqueWords(TransformPrimitive):
 
     Args:
         case_insensitive (bool): Specify case_insensitivity when searching for unique words.
-        For example, setting this to True would mean "WORD word" would be treated as having 
-        one unique word. 
+        For example, setting this to True would mean "WORD word" would be treated as having
+        one unique word.
 
     Examples:
         >>> x = ['Word word Word', 'bacon, cheesburger, AND, fries', 'green red green']
@@ -39,27 +41,27 @@ class NumberOfUniqueWords(TransformPrimitive):
         self.case_insensitive = case_insensitive
 
     def get_function(self):
-        def num_unique_words(array): 
+        def num_unique_words(array):
             unique_word_cts = []
-            for text in array: 
-                if pd.isnull(text): 
-                    unique_word_cts.append(pd.NA) 
-                else: 
+            for text in array:
+                if pd.isnull(text):
+                    unique_word_cts.append(pd.NA)
+                else:
                     words = nltk.tokenize.word_tokenize(text)
-                    if self.case_insensitive: 
+                    if self.case_insensitive:
                         unique_words = set()
-                        for word in words: 
-                            word = word.lower().strip(string.punctuation) 
-                            if len(word) > 0: 
-                                unique_words.add(word) 
-                        unique_word_cts.append(len(unique_words)) 
-                    else: 
-                        unique_words = set() 
-                        for word in words: 
-                            word = word.strip(string.punctuation) 
-                            if len(word) > 0: 
-                                unique_words.add(word) 
-                        unique_word_cts.append(len(unique_words)) 
-            return pd.Series(unique_word_cts) 
+                        for word in words:
+                            word = word.lower().strip(string.punctuation)
+                            if len(word) > 0:
+                                unique_words.add(word)
+                        unique_word_cts.append(len(unique_words))
+                    else:
+                        unique_words = set()
+                        for word in words:
+                            word = word.strip(string.punctuation)
+                            if len(word) > 0:
+                                unique_words.add(word)
+                        unique_word_cts.append(len(unique_words))
+            return pd.Series(unique_word_cts)
 
         return num_unique_words
