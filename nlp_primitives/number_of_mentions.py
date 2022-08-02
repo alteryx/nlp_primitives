@@ -34,7 +34,7 @@ class NumberOfMentions(CountString):
          >>> x = ['@portland @123oregon456', 'this is a string', '@@@__user1@1and_0@expression']
         >>> number_of_mentions = NumberOfMentions()
         >>> number_of_mentions(x).tolist()
-        [2, 0, 0]
+        [2.0, 0.0, 0.0]
     """
 
     name = "number_of_mentions"
