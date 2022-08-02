@@ -9,7 +9,7 @@ class NumberOfHashtags(CountString):
     """Determines the number of hashtags in a string.
 
     Description:
-        Given list of strings, determine the number of hashtags
+        Given a list of strings, determine the number of hashtags
         in each string.
 
         A hashtag is defined as a string that meets the following criteria:
