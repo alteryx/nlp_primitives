@@ -15,13 +15,13 @@ class NumberOfHashtags(CountString):
         A hashtag is defined as a string that meets the following criteria:
             - Present at the start of a string or after whitespace
             - Contains a sequence of alphanumeric characters with at least one alphabetic character
-            - Terminated by a punctuation character other than '#', a whitespace, or the end of the string
+            - Terminated by the end of the string, a whitespace, or a punctuation character other than '#'
                 - e.g. The string '#yes-no' contains a valid hashtag ('#yes')
                 - e.g. The string '#yes#' does not contain a valid hashtag
 
         This implementation handles Unicode characters.
 
-        This implementation does not impose any character length limit on hashtags.
+        This implementation does not impose any character limit on hashtags.
 
         If a string is missing, return `NaN`.
 

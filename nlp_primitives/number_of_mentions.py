@@ -18,7 +18,7 @@ class NumberOfMentions(CountString):
         A mention is defined as a string that meets the following criteria:
             - Present at the start of a string or after whitespace
             - Contains a sequence of word characters
-            - Terminated by a whitespace, the end of the string, or a punctuation character other than '@'
+            - Terminated by the end of the string, a whitespace, or a punctuation character other than '@'
                 - e.g. The string '@yes-no' contains a valid mention ('@yes')
                 - e.g. The string '@yes@' does not contain a valid mention
 
@@ -29,7 +29,7 @@ class NumberOfMentions(CountString):
         If a string is missing, return `NaN`.
 
     Examples:
-         >>> x = ['@portland @oregon', 'this is a string', '@@@__user1@1and_0@expression']
+         >>> x = ['@user1 @user2', 'this is a string', '@@@__user1@1and_0@expression']
         >>> number_of_mentions = NumberOfMentions()
         >>> number_of_mentions(x).tolist()
         [2.0, 0.0, 0.0]
