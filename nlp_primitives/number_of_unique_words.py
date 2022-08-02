@@ -54,7 +54,7 @@ class NumberOfUniqueWords(TransformPrimitive):
                             word = word.lower().strip(string.punctuation)
                         else:
                             word = word.strip(string.punctuation)
-                        if len(word) > 0: 
+                        if len(word) > 0:
                             unique_words.add(word)
                     unique_word_cts.append(len(unique_words))
             return pd.Series(unique_word_cts)
