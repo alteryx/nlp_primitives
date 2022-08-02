@@ -21,6 +21,17 @@ class TestNumberOfUniqueWords(PrimitiveT):
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
+    def test_unicode_input(self):
+        x = pd.Series(
+            [
+                "Ángel Angel Ángel ángel",
+            ]
+        )
+
+        expected = pd.Series([3])
+        actual = self.primitive().get_function()(x)
+        pd.testing.assert_series_equal(actual, expected, check_names=False)
+
     def test_contractions(self):
         x = pd.Series(
             [
