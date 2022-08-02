@@ -20,10 +20,10 @@ class NumberOfMentions(CountString):
         If a string is missing, return `NaN`.
 
     Examples:
-         >>> x = ['@portland@oregon', 'this is a string', '@@@__user1@1and_0#expression']
+         >>> x = ['@portland@oregon', 'this is a string', '@@@__user1@1and_0@expression']
         >>> number_of_mentions = NumberOfMentions()
         >>> number_of_mentions(x).tolist()
-        [2.0, 0.0, 2.0]
+        [2.0, 0.0, 0.0]
     """
 
     name = "number_of_mentions"
@@ -32,7 +32,7 @@ class NumberOfMentions(CountString):
     default_value = 0
 
     def get_function(self):
-        pattern = r"@(\w+)(?![@\w])"
+        pattern = r"((^@)|(\s*@))(\w+)(?![@\w])"
 
         def number_of_mentions(x):
             p = re.compile(pattern)
