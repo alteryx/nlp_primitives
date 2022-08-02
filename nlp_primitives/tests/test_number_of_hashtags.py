@@ -12,7 +12,7 @@ class TestNumberOfHashtags(PrimitiveT):
         x = pd.Series(
             [
                 "#hello #hi #hello",
-                "#############andandandandand###",
+                "#regular#expression#0or1#yes",
                 "andorandorand #32309",
             ]
         )
@@ -36,7 +36,7 @@ class TestNumberOfHashtags(PrimitiveT):
         x = pd.Series(
             [
                 "#\n\t\n",
-                "#hashtag\n1#hashtag2\n#\n\n",
+                "#hashtag\n#hashtag2\n#\n\n",
             ]
         )
 

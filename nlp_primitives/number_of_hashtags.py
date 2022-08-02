@@ -32,7 +32,7 @@ class NumberOfHashtags(CountString):
     default_value = 0
 
     def get_function(self):
-        pattern = r"#(\w*([^\W\d])+\w*)(?![#\w])"
+        pattern = r"((^#)|([^\w]+#)|\s#)(\w*([^\W\d])+\w*)(?![#\w])"
 
         def number_of_hashtags(x):
             p = re.compile(pattern)
