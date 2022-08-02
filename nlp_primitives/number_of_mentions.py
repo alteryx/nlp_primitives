@@ -32,17 +32,8 @@ class NumberOfMentions(CountString):
     return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
     default_value = 0
 
-    def get_function(self):
+    def __init__(self): 
         SPECIALS_MINUS_AT = "".join(list(set(string.punctuation) - {"@"}))
         SPECIALS_MINUS_AT = re.escape(SPECIALS_MINUS_AT)
         pattern = rf"((^@)|(\s+@))(\w+)(?=\s|$|[{SPECIALS_MINUS_AT}])"
-
-        def number_of_mentions(x):
-            p = re.compile(pattern)
-            x = x.reset_index(drop=True)
-            counts = x.str.extractall(p).groupby(level=0).count()[0]
-            counts = counts.reindex_like(x).fillna(0)
-            counts[x.isnull()] = np.nan
-            return counts.astype(float)
-
-        return number_of_mentions
+        super().__init__(string=pattern, is_regex=True, ignore_case=False)

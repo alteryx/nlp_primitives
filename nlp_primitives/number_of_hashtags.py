@@ -31,15 +31,6 @@ class NumberOfHashtags(CountString):
     return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
     default_value = 0
 
-    def get_function(self):
+    def __init__(self):
         pattern = r"((^#)|([^\w]+#)|\s#)(\w*([^\W\d])+\w*)(?![#\w])"
-
-        def number_of_hashtags(x):
-            p = re.compile(pattern)
-            x = x.reset_index(drop=True)
-            counts = x.str.extractall(p).groupby(level=0).count()[0]
-            counts = counts.reindex_like(x).fillna(0)
-            counts[x.isnull()] = np.nan
-            return counts.astype(float)
-
-        return number_of_hashtags
+        super().__init__(string=pattern, is_regex=True, ignore_case=False)
