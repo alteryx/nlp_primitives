@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import re
+import string
 
 import numpy as np
 from woodwork.column_schema import ColumnSchema
@@ -20,7 +21,7 @@ class NumberOfMentions(CountString):
         If a string is missing, return `NaN`.
 
     Examples:
-         >>> x = ['@portland@oregon', 'this is a string', '@@@__user1@1and_0@expression']
+         >>> x = ['@portland @oregon', 'this is a string', '@@@__user1@1and_0@expression']
         >>> number_of_mentions = NumberOfMentions()
         >>> number_of_mentions(x).tolist()
         [2.0, 0.0, 0.0]
@@ -32,7 +33,9 @@ class NumberOfMentions(CountString):
     default_value = 0
 
     def get_function(self):
-        pattern = r"((^@)|(\s*@))(\w+)(?![@\w])"
+        SPECIALS_MINUS_AT = "".join(list(set(string.punctuation) - {"@"}))
+        SPECIALS_MINUS_AT = re.escape(SPECIALS_MINUS_AT)
+        pattern = rf"((^@)|(\s+@))(\w+)(?=\s|$|[{SPECIALS_MINUS_AT}])"
 
         def number_of_mentions(x):
             p = re.compile(pattern)

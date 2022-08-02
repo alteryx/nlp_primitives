@@ -26,9 +26,11 @@ class TestNumberOfMentions(PrimitiveT):
                 "@Ángel @Æ @ĘÁÊÚ",
                 "@@@@Āndandandandand@",
                 "andorandorand @32309",
+                "example@gmail.com",
+                "@example-20329",
             ]
         )
-        expected = [3.0, 0.0, 1.0]
+        expected = [3.0, 0.0, 1.0, 0.0, 1.0]
         actual = self.primitive().get_function()(x)
         np.testing.assert_array_equal(actual, expected)
 
@@ -36,7 +38,7 @@ class TestNumberOfMentions(PrimitiveT):
         x = pd.Series(
             [
                 "@\n\t\n",
-                "@mention\n1@hashtag2\n@\n\n",
+                "@mention\n @hashtag2\n@\n\n",
             ]
         )
 
