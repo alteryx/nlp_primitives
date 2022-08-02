@@ -21,6 +21,12 @@ class TestMeanSentenceLength(PrimitiveT):
         answers = pd.Series([3.0, 4.0, 4.0])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
+    def test_unicode_input(self):
+        x = pd.Series(["Ángel."])
+        expected = [6.0]
+        actual = self.primitive().get_function()(x)
+        np.testing.assert_array_equal(actual, expected)
+
     def test_multiline(self):
         x = pd.Series(
             [
