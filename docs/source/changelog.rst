@@ -5,7 +5,8 @@ Changelog
 Future Release
 ==============
     * Enhancements
-        * Add `NumberOfHashtags`, `NumberOfUniqueWords` and `NumberOfMentions`` primitives (:pr:`180`) (:pr:`187`)
+        * Add `NumberOfUniqueWords` primitive (:pr:`187`)
+        * Add `NumberOfHashtags` and `NumberOfMentions`` primitives (:pr:`180`)
     * Fixes
         * Update README.md with Alteryx info (:pr:`167`)
     * Changes

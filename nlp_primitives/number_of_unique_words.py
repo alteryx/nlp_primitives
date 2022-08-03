@@ -1,6 +1,5 @@
-import re
-
 import pandas as pd
+from typing import Iterable 
 from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
@@ -14,9 +13,9 @@ class NumberOfUniqueWords(TransformPrimitive):
         case-insensitive behavior.
 
     Args:
-        case_insensitive (bool): Specify case_insensitivity when searching for unique words.
+        case_insensitive (bool, optional): Specify case_insensitivity when searching for unique words.
         For example, setting this to True would mean "WORD word" would be treated as having
-        one unique word.
+        one unique word. Defaults to False.
 
     Examples:
         >>> x = ['Word word Word', 'bacon, cheesburger, AND, fries', 'green red green']
@@ -40,18 +39,15 @@ class NumberOfUniqueWords(TransformPrimitive):
         self.case_insensitive = case_insensitive
 
     def get_function(self):
+        def _unique_word_helper(text): 
+            if not isinstance(text, Iterable): 
+                return pd.NA 
+            return len(set(text)) 
+        
         def num_unique_words(array):
-            unique_word_cts = []
-            for text in array:
-                if pd.isnull(text):
-                    unique_word_cts.append(pd.NA)
-                else:
-                    words = re.findall(r"((\w+)('\w+)?)", text)
-                    if self.case_insensitive:
-                        words = len(set(word[0].lower() for word in words))
-                    else:
-                        words = len(set(words))
-                    unique_word_cts.append(words)
-            return pd.Series(unique_word_cts)
+            if self.case_insensitive: 
+                array = array.str.lower()
+            array = array.str.split(r"[- \[\].,!\?;\n\t]")
+            return array.apply(_unique_word_helper) 
 
         return num_unique_words
