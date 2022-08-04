@@ -5,7 +5,7 @@ from featuretools.primitives.base import TransformPrimitive
 from nltk.tokenize import sent_tokenize
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
-
+from typing import Iterable 
 
 class NumberOfSentences(TransformPrimitive):
     """Determines number of sentences in a string.
@@ -29,14 +29,15 @@ class NumberOfSentences(TransformPrimitive):
     default_value = 0
 
     def get_function(self):
-        def number_of_sentences(text):
-            ans = []
-            for t in text:
-                if pd.isna(t):
-                    ans.append(np.nan)
-                else:
-                    sentences = sent_tokenize(t)
-                    ans.append(len(sentences))
-            return pd.Series(ans)
+        def helper(text): 
+            if not isinstance(text, Iterable): 
+                return np.nan
+            if len(text) == 0: 
+                return 0 
+            sentences = sent_tokenize(text)
+            return len(sentences) 
+
+        def number_of_sentences(array):
+            return array.apply(helper)
 
         return number_of_sentences

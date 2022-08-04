@@ -5,7 +5,7 @@ from featuretools.primitives.base import TransformPrimitive
 from nltk.tokenize import sent_tokenize
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import Double, NaturalLanguage
-
+from typing import Iterable 
 
 class MeanSentenceLength(TransformPrimitive):
     """Determines mean length of all sentences in a string.
@@ -29,18 +29,16 @@ class MeanSentenceLength(TransformPrimitive):
     default_value = 0
 
     def get_function(self):
-        def mean_length_of_sentences(text):
-            ans = []
-            for t in text:
-                if pd.isna(t):
-                    ans.append(np.nan)
-                else:
-                    if len(t) == 0:
-                        ans.append(0)
-                    else:
-                        sentences = sent_tokenize(t)
-                        mean = np.mean([len(s) for s in sentences])
-                        ans.append(mean)
-            return pd.Series(ans)
+        def helper(text):
+            if not isinstance(text, Iterable): 
+                return np.nan
+            if len(text) == 0:
+                return 0
+            sentences = sent_tokenize(text)
+            mean = np.mean([len(s) for s in sentences])
+            return mean 
+
+        def mean_length_of_sentences(array):
+            return array.apply(helper) 
 
         return mean_length_of_sentences
