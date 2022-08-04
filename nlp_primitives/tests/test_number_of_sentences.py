@@ -38,10 +38,10 @@ class TestNumberOfSentences(PrimitiveT):
         np.testing.assert_array_equal(actual, expected)
 
     def test_null(self):
-        x = pd.Series([np.nan, pd.NA, None, "test"])
+        x = pd.Series([np.nan, pd.NA, None, ""])
 
         actual = self.primitive().get_function()(x)
-        expected = [np.nan, np.nan, np.nan, 1.0]
+        expected = [np.nan, np.nan, np.nan, 0.0]
         np.testing.assert_array_equal(actual, expected)
 
     def test_with_featuretools(self, es):
