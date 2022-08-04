@@ -2,7 +2,6 @@
 from typing import Iterable
 
 import numpy as np
-import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from nltk.tokenize import sent_tokenize
 from woodwork.column_schema import ColumnSchema
