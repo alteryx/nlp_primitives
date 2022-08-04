@@ -30,10 +30,10 @@ class TestMedianWordLength(PrimitiveT):
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
     def test_null(self):
-        x = pd.Series([np.nan, pd.NA, None, ""])
+        x = pd.Series([np.nan, pd.NA, None, "This is a test file."])
 
         actual = self.primitive().get_function()(x)
-        expected = pd.Series([np.nan, np.nan, np.nan, 0.0])
+        expected = pd.Series([np.nan, np.nan, np.nan, 4.0])
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
     def test_with_featuretools(self, es):
