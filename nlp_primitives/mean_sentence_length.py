@@ -17,10 +17,10 @@ class MeanSentenceLength(TransformPrimitive):
         If a string is missing, return `NaN`.
 
     Examples:
-        >>> x = ['This is a test string.', 'This is second string! This is a second string', 'third string']
+        >>> x = ['This.', 'Yay! Yay!', 'String']
         >>> mean_sentence_length = MeanSentenceLength()
         >>> mean_sentence_length(x).tolist()
-        [1.0, 2.0, 0.0]
+        [5.0, 4.0, 6.0]
     """
 
     name = "mean_length_of_sentences"
