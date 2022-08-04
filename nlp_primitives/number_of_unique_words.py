@@ -1,5 +1,8 @@
+import re
+from string import punctuation
+from typing import Iterable
+
 import pandas as pd
-from typing import Iterable 
 from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
@@ -39,15 +42,21 @@ class NumberOfUniqueWords(TransformPrimitive):
         self.case_insensitive = case_insensitive
 
     def get_function(self):
-        def _unique_word_helper(text): 
-            if not isinstance(text, Iterable): 
-                return pd.NA 
-            return len(set(text)) 
-        
+        def _unique_word_helper(text):
+            if not isinstance(text, Iterable):
+                return pd.NA
+            unique = set()
+            for t in text:
+                punct_less = t.strip(punctuation)
+                if len(punct_less) > 0:
+                    unique.add(punct_less)
+            return len(unique)
+
         def num_unique_words(array):
-            if self.case_insensitive: 
+            if self.case_insensitive:
                 array = array.str.lower()
-            array = array.str.split(r"[- \[\].,!\?;\n\t]")
-            return array.apply(_unique_word_helper) 
+            delims = re.escape("- \[\],!\?;\n\t")
+            array = array.str.split(f"[{delims}]")
+            return array.apply(_unique_word_helper)
 
         return num_unique_words

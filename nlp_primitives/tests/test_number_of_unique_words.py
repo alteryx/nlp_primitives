@@ -8,16 +8,17 @@ from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
 class TestNumberOfUniqueWords(PrimitiveT):
     primitive = NumberOfUniqueWords
 
-    def test_delimiter_override(self):
+    def test_general(self):
         x = pd.Series(
             [
-                "test test* test ^test*",
+                "test test test test",
                 "test TEST test TEST",
                 "and;subsequent;lines...",
+                "$0.99 alteryx@alteryx.com",
             ]
         )
 
-        expected = pd.Series([1, 2, 3])
+        expected = pd.Series([1, 2, 3, 2])
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
