@@ -18,8 +18,8 @@ class MeanSentenceLength(TransformPrimitive):
 
     Examples:
         >>> x = ['This is a test string.', 'This is second string! This is a second string', 'third string']
-        >>> number_of_sentences = NumberOfSentences()
-        >>> number_of_sentences(x).tolist()
+        >>> mean_sentence_length = MeanSentenceLength()
+        >>> mean_sentence_length(x).tolist()
         [1.0, 2.0, 0.0]
     """
 
