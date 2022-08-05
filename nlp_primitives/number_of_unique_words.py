@@ -1,8 +1,8 @@
+import pandas as pd
 import re
 from string import punctuation
 from typing import Iterable
 
-import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
