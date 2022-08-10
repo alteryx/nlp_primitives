@@ -13,6 +13,7 @@ Future Release
         * Add support for Python 3.10 (:pr:`175`)
         * Drop support for Python 3.7 (:pr:`176`)
         * Change `TitleWordCount`, `PunctuationCount`, `UpperCaseCount` to use `CountString` (:pr:`183`)
+        * Remove readthedocs and docs requirements (:pr:`193`)
     * Documentation Changes
     * Testing Changes
         * Change codecov v3 for GitHub workflow (:pr:`184`)
