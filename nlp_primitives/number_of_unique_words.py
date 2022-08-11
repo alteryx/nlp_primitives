@@ -21,7 +21,7 @@ class NumberOfUniqueWords(TransformPrimitive):
         one unique word. Defaults to False.
 
     Examples:
-        >>> x = ['Word word Word', 'bacon, cheesburger, AND, fries', 'green red green']
+        >>> x = ['Word word Word', 'This is a SENTENCE.', 'green red green']
         >>> number_of_unique_words = NumberOfUniqueWords()
         >>> number_of_unique_words(x).tolist()
         [2, 4, 2]
