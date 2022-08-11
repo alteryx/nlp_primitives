@@ -8,29 +8,29 @@ from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import Double, NaturalLanguage
 
 
-class MeanSentenceLength(TransformPrimitive):
-    """Determines mean length of all sentences in a string.
+class MeanCharactersPerSentence(TransformPrimitive):
+    """Determines mean length in characters of all sentences in a string.
 
     Description:
-        Given list of strings, determine the mean length of all sentences
+        Given list of strings, determine the mean characters per sentence
         in a string.
 
         If a string is missing, return `NaN`.
 
     Examples:
-        >>> x = ['This.', 'Yay! Yay!', 'String']
+        >>> x = ['This.', 'Yay! Yay!', 'Dog Cat.']
         >>> mean_sentence_length = MeanSentenceLength()
         >>> mean_sentence_length(x).tolist()
-        [5.0, 4.0, 6.0]
+        [5.0, 4.0, 8.0]
     """
 
-    name = "mean_length_of_sentences"
+    name = "mean_characters_per_sentence"
     input_types = [ColumnSchema(logical_type=NaturalLanguage)]
     return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
     default_value = 0
 
     def get_function(self):
-        def helper(text):
+        def _mean_characters_per_sentence(text):
             if not isinstance(text, Iterable):
                 return np.nan
             if len(text) == 0:
@@ -39,7 +39,7 @@ class MeanSentenceLength(TransformPrimitive):
             mean = np.mean([len(s) for s in sentences])
             return mean
 
-        def mean_length_of_sentences(array):
-            return array.apply(helper)
+        def mean_characters_per_sentence(array):
+            return array.apply(_mean_characters_per_sentence)
 
-        return mean_length_of_sentences
+        return mean_characters_per_sentence

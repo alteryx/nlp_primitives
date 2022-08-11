@@ -30,7 +30,7 @@ class NumberOfSentences(TransformPrimitive):
     default_value = 0
 
     def get_function(self):
-        def helper(text):
+        def _number_of_sentences(text):
             if not isinstance(text, Iterable):
                 return np.nan
             if len(text) == 0:
@@ -39,6 +39,6 @@ class NumberOfSentences(TransformPrimitive):
             return len(sentences)
 
         def number_of_sentences(array):
-            return array.apply(helper)
+            return array.apply(_number_of_sentences)
 
         return number_of_sentences
