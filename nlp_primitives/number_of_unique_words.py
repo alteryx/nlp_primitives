@@ -1,5 +1,6 @@
 import re
 from string import punctuation
+from typing import Iterable
 
 import pandas as pd
 from featuretools.primitives.base import TransformPrimitive
@@ -41,8 +42,8 @@ class NumberOfUniqueWords(TransformPrimitive):
         self.case_insensitive = case_insensitive
 
     def get_function(self):
-        def _unique_word_counter(text):
-            if not isinstance(text, str):
+        def _unique_word_helper(text):
+            if not isinstance(text, Iterable):
                 return pd.NA
             unique = set()
             for t in text:
@@ -56,6 +57,6 @@ class NumberOfUniqueWords(TransformPrimitive):
                 array = array.str.lower()
             delims = re.escape(" [],!?;\n\t")
             array = array.str.split(f"[{delims}]")
-            return array.apply(_unique_word_counter)
+            return array.apply(_unique_word_helper)
 
         return num_unique_words
