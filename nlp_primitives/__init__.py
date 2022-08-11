@@ -10,7 +10,7 @@ from .count_string import CountString
 from .diversity_score import DiversityScore
 from .lsa import LSA
 from .mean_characters_per_word import MeanCharactersPerWord
-from .mean_sentence_length import MeanSentenceLength
+from .mean_characters_per_sentence import MeanCharactersPerSentence
 from .median_word_length import MedianWordLength
 from .num_unique_separators import NumUniqueSeparators
 from .number_of_common_words import NumberOfCommonWords

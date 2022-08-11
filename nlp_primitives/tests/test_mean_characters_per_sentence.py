@@ -2,12 +2,12 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from ..mean_sentence_length import MeanSentenceLength
+from ..mean_characters_per_sentence import MeanCharactersPerSentence
 from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
 
 
-class TestMeanSentenceLength(PrimitiveT):
-    primitive = MeanSentenceLength
+class TestMeanCharactersPerSentence(PrimitiveT):
+    primitive = MeanCharactersPerSentence
 
     def test_sentences(self):
         x = pd.Series(
