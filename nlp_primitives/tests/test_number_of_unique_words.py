@@ -21,6 +21,18 @@ class TestNumberOfUniqueWords(PrimitiveT):
         expected = pd.Series([1, 2, 3, 2])
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
+        
+    def test_special_characters(self):
+        x = pd.Series(
+            [
+                "50% 50 50%", 
+                "no* no test"
+            ]
+        )
+
+        expected = pd.Series([1, 2])
+        actual = self.primitive().get_function()(x)
+        pd.testing.assert_series_equal(actual, expected, check_names=False)
 
     def test_unicode_input(self):
         x = pd.Series(
