@@ -36,7 +36,7 @@ class MeanCharactersPerSentence(TransformPrimitive):
             if len(text) == 0:
                 return 0
             sentences = sent_tokenize(text)
-            total = 0
+            total = 0.0
             for s in sentences:
                 total += len(s)
             return total / len(sentences)
