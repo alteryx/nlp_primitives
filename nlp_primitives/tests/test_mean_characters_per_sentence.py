@@ -21,18 +21,6 @@ class TestMeanCharactersPerSentence(PrimitiveT):
         answers = pd.Series([3.0, 4.0, 4.0])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
-    def test_multiline(self):
-        x = pd.Series(
-            [
-                "This is.",
-                "This is. This is. Not. Not.",
-                "and more",
-            ]
-        )
-        primitive_func = self.primitive().get_function()
-        answers = pd.Series([8.0, 6.0, 8.0])
-        pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
-
     @pytest.mark.parametrize(
         "na_value",
         [None, np.nan, pd.NA],
