@@ -33,15 +33,15 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
         actual = self.primitive("single").get_function()(x)
         np.testing.assert_array_equal(actual, expected)
 
-    # def test_captures_both_single_and_double_quotes(self):
-    #     x = pd.Series(
-    #         [
-    #             "'Hello this is a test' and was replied to \"I understand!\"",
-    #         ]
-    #     )
-    #     expected = [6.0]
-    #     actual = self.primitive().get_function()(x)
-    #     np.testing.assert_array_equal(actual, expected)
+    def test_captures_both_single_and_double_quotes(self):
+        x = pd.Series(
+            [
+                "'Hello this is a test' and was replied to \"I understand!\"",
+            ]
+        )
+        expected = [7.0]
+        actual = self.primitive().get_function()(x)
+        np.testing.assert_array_equal(actual, expected)
 
     # def test_unicode_input(self):
     #     x = pd.Series(
