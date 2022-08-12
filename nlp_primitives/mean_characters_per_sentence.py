@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from typing import Iterable
-
 import numpy as np
 from featuretools.primitives.base import TransformPrimitive
 from nltk.tokenize import sent_tokenize
@@ -31,7 +29,7 @@ class MeanCharactersPerSentence(TransformPrimitive):
 
     def get_function(self):
         def _mean_characters_per_sentence(text):
-            if not isinstance(text, Iterable):
+            if not isinstance(text, str):
                 return np.nan
             if len(text) == 0:
                 return 0

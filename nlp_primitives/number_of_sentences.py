@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from typing import Iterable
-
 import numpy as np
 from featuretools.primitives.base import TransformPrimitive
 from nltk.tokenize import sent_tokenize
@@ -31,7 +29,7 @@ class NumberOfSentences(TransformPrimitive):
 
     def get_function(self):
         def _number_of_sentences(text):
-            if not isinstance(text, Iterable):
+            if not isinstance(text, str): 
                 return np.nan
             if len(text) == 0:
                 return 0
