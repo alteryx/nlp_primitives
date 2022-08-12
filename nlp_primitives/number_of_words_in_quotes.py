@@ -44,7 +44,11 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             if not isinstance(text, Iterable):
                 return pd.NA
             tokens = word_tokenize(text)
-            return len([words for words in tokens if len(words.strip(punctuation)) > 0])
+            ct = 0  
+            for word in tokens: 
+                if len(word.strip(punctuation)) > 0: 
+                    ct += 1
+            return ct 
 
         def num_words_in_quotes(array):
             IN_DOUBLE_QUOTES = r'("([^"]+)")'
