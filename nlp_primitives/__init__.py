@@ -18,6 +18,7 @@ from .number_of_unique_words import NumberOfUniqueWords
 from .number_of_hashtags import NumberOfHashtags
 from .number_of_mentions import NumberOfMentions
 from .number_of_sentences import NumberOfSentences
+from .number_of_words_in_quotes import NumberOfWordsInQuotes
 from .part_of_speech_count import PartOfSpeechCount
 from .polarity_score import PolarityScore
 from .punctuation_count import PunctuationCount

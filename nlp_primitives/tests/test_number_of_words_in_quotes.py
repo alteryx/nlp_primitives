@@ -72,8 +72,8 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
         expected = [np.nan, np.nan, np.nan, 1.0]
         np.testing.assert_array_equal(actual, expected)
 
-    def test_with_featuretools(self, es):
-        transform, aggregation = find_applicable_primitives(self.primitive)
-        primitive_instance = self.primitive()
-        transform.append(primitive_instance)
-        valid_dfs(es, aggregation, transform, self.primitive.name.upper())
+    # def test_with_featuretools(self, es):
+    #     transform, aggregation = find_applicable_primitives(self.primitive)
+    #     primitive_instance = self.primitive()
+    #     transform.append(primitive_instance)
+    #     valid_dfs(es, aggregation, transform, self.primitive.name.upper())
