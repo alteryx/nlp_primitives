@@ -55,9 +55,10 @@ class NumberOfUniqueWords(TransformPrimitive):
         def num_unique_words(array):
             if self.case_insensitive:
                 array = array.str.lower()
-            delims = "".join(list(set(punctuation) - {".", "-", "'"}))
-            delims = re.escape(delims)
-            array = array.str.split(f"[{delims}]")
+            DELIMITERS = set(punctuation) - {".", "'", "-", "@"}
+            DELIMITERS = "".join(list(DELIMITERS))
+            DELIMITERS = re.escape(f" {DELIMITERS}\n\t")
+            array = array.str.split(f"[{DELIMITERS}]")
             return array.apply(_unique_word_helper)
 
         return num_unique_words
