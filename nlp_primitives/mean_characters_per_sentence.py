@@ -9,16 +9,16 @@ from woodwork.logical_types import Double, NaturalLanguage
 
 
 class MeanCharactersPerSentence(TransformPrimitive):
-    """Determines mean length in characters of all sentences in a string.
+    """Determines the mean count of characters per sentence in a given string.
 
     Description:
-        Given list of strings, determine the mean characters per sentence
+        Given list of strings, determine the mean count of characters per sentence
         in a string.
 
         If a string is missing, return `NaN`.
 
     Examples:
-        >>> x = ['This.', 'Yay! Yay!', 'Dog Cat.']
+        >>> x = ['This.', 'Yay! Yay!', 'Dog cat.']
         >>> mean_characters_per_sentence = MeanCharactersPerSentence()
         >>> mean_characters_per_sentence(x).tolist()
         [5.0, 4.0, 8.0]
