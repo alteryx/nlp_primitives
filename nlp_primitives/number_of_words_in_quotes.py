@@ -2,6 +2,7 @@
 from string import punctuation
 from typing import Iterable
 
+import numpy as np
 import pandas as pd
 from featuretools.primitives import TransformPrimitive
 from nltk import word_tokenize
@@ -41,14 +42,14 @@ class NumberOfWordsInQuotes(TransformPrimitive):
 
     def get_function(self):
         def _word_tokenize(text):
-            if not isinstance(text, Iterable):
+            if not isinstance(text, str):
                 return pd.NA
             tokens = word_tokenize(text)
-            ct = 0  
-            for word in tokens: 
-                if len(word.strip(punctuation)) > 0: 
+            ct = 0
+            for word in tokens:
+                if len(word.strip(punctuation)) > 0:
                     ct += 1
-            return ct 
+            return ct
 
         def num_words_in_quotes(array):
             IN_DOUBLE_QUOTES = r'("([^"]+)")'
@@ -61,8 +62,10 @@ class NumberOfWordsInQuotes(TransformPrimitive):
                 regex = f"({IN_SINGLE_QUOTES}|{IN_DOUBLE_QUOTES})"
                 text = array.str.extractall(f"{regex}")
             num_words = text[0].apply(_word_tokenize)
-            grouped_sum = num_words.groupby(level=0).sum()
-            assert 0
+            grouped_sum = (
+                num_words.groupby(level=0).sum().reindex(array.index, fill_value=0)
+            )
+            grouped_sum[array.isna()] = pd.NA
             return grouped_sum
 
         return num_words_in_quotes

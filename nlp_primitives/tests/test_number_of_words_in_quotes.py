@@ -17,7 +17,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 '"Yep, I agree" was said amiably "well I donnot"',
             ]
         )
-        expected = [5.0, 3.0, 6.0]
+        expected = [0.0, 5.0, 3.0, 6.0]
         actual = self.primitive("double").get_function()(x)
         np.testing.assert_array_equal(actual, expected)
 
@@ -65,12 +65,12 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
     #     actual = self.primitive().get_function()(x)
     #     np.testing.assert_array_equal(actual, expected)
 
-    # def test_null(self):
-    #     x = pd.Series([np.nan, pd.NA, None, '"test"'])
+    def test_null(self):
+        x = pd.Series([np.nan, pd.NA, None, '"test"'])
 
-    #     actual = self.primitive().get_function()(x)
-    #     expected = [np.nan, np.nan, np.nan, 1.0]
-    #     np.testing.assert_array_equal(actual, expected)
+        actual = self.primitive().get_function()(x)
+        expected = [np.nan, np.nan, np.nan, 1.0]
+        np.testing.assert_array_equal(actual, expected)
 
     def test_with_featuretools(self, es):
         transform, aggregation = find_applicable_primitives(self.primitive)
