@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from string import punctuation
-from typing import Iterable
 
-import numpy as np
 import pandas as pd
 from featuretools.primitives import TransformPrimitive
 from nltk import word_tokenize
@@ -25,7 +23,7 @@ class NumberOfWordsInQuotes(TransformPrimitive):
          >>> x = ['"yes" I said', '"this is a string"', '"yep" "nope"']
         >>> number_of_words_in_quotes = NumberOfWordsInQuotes()
         >>> number_of_words_in_quotes(x).tolist()
-        [1.0, 4.0, 2.0]
+        [1, 4, 2]
     """
 
     name = "number_of_words_in_quotes"
