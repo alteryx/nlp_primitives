@@ -43,27 +43,26 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
         actual = self.primitive().get_function()(x)
         np.testing.assert_array_equal(actual, expected)
 
-    # def test_unicode_input(self):
-    #     x = pd.Series(
-    #         [
-    #             '"Ángel"',
-    #             '"Ángel" word word',
-    #         ]
-    #     )
-    #     expected = [1.0, 2.0]
-    #     actual = self.primitive().get_function()(x)
-    #     np.testing.assert_array_equal(actual, expected)
+    def test_unicode_input(self):
+        x = pd.Series(
+            [
+                '"Ángel"',
+                '"Ángel" word word',
+            ]
+        )
+        expected = [1.0, 2.0]
+        actual = self.primitive().get_function()(x)
+        np.testing.assert_array_equal(actual, expected)
 
-    # def test_multiline(self):
-    #     x = pd.Series(
-    #         [
-    #             "#\n\t\n",
-    #             "#hashtag\n#hashtag2\n#\n\n",
-    #         ]
-    #     )
-    #     expected = [0.0, 2.0]
-    #     actual = self.primitive().get_function()(x)
-    #     np.testing.assert_array_equal(actual, expected)
+    def test_multiline(self):
+        x = pd.Series(
+            [
+                "'Yes\n, this is me'",
+            ]
+        )
+        expected = [4.0]
+        actual = self.primitive().get_function()(x)
+        np.testing.assert_array_equal(actual, expected)
 
     def test_null(self):
         x = pd.Series([np.nan, pd.NA, None, '"test"'])
@@ -72,8 +71,8 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
         expected = [np.nan, np.nan, np.nan, 1.0]
         np.testing.assert_array_equal(actual, expected)
 
-    # def test_with_featuretools(self, es):
-    #     transform, aggregation = find_applicable_primitives(self.primitive)
-    #     primitive_instance = self.primitive()
-    #     transform.append(primitive_instance)
-    #     valid_dfs(es, aggregation, transform, self.primitive.name.upper())
+    def test_with_featuretools(self, es):
+        transform, aggregation = find_applicable_primitives(self.primitive)
+        primitive_instance = self.primitive()
+        transform.append(primitive_instance)
+        valid_dfs(es, aggregation, transform, self.primitive.name.upper())
