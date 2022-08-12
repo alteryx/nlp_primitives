@@ -19,8 +19,8 @@ class MeanCharactersPerSentence(TransformPrimitive):
 
     Examples:
         >>> x = ['This.', 'Yay! Yay!', 'Dog Cat.']
-        >>> mean_sentence_length = MeanSentenceLength()
-        >>> mean_sentence_length(x).tolist()
+        >>> mean_characters_per_sentence = MeanCharactersPerSentence()
+        >>> mean_characters_per_sentence(x).tolist()
         [5.0, 4.0, 8.0]
     """
 
