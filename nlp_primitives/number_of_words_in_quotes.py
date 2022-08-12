@@ -61,8 +61,10 @@ class NumberOfWordsInQuotes(TransformPrimitive):
                 text = array.str.extractall(f"{regex}")
             num_words = text[0].apply(_word_tokenize)
             grouped_sum = (
-                num_words.groupby(level=0).sum().reindex(array.index, fill_value=0)
+                num_words.groupby(level=0).sum()
             )
+            grouped_sum = grouped_sum.reindex(array.index, fill_value=pd.NA)
+            grouped_sum[grouped_sum.isna()] = 0
             grouped_sum[array.isna()] = pd.NA
             return grouped_sum
 
