@@ -10,12 +10,14 @@ from .count_string import CountString
 from .diversity_score import DiversityScore
 from .lsa import LSA
 from .mean_characters_per_word import MeanCharactersPerWord
+from .mean_characters_per_sentence import MeanCharactersPerSentence
 from .median_word_length import MedianWordLength
 from .num_unique_separators import NumUniqueSeparators
 from .number_of_common_words import NumberOfCommonWords
 from .number_of_unique_words import NumberOfUniqueWords
 from .number_of_hashtags import NumberOfHashtags
 from .number_of_mentions import NumberOfMentions
+from .number_of_sentences import NumberOfSentences
 from .part_of_speech_count import PartOfSpeechCount
 from .polarity_score import PolarityScore
 from .punctuation_count import PunctuationCount
