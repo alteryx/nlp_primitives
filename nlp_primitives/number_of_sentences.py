@@ -29,7 +29,7 @@ class NumberOfSentences(TransformPrimitive):
 
     def get_function(self):
         def _number_of_sentences(text):
-            if not isinstance(text, str): 
+            if not isinstance(text, str):
                 return np.nan
             if len(text) == 0:
                 return 0
