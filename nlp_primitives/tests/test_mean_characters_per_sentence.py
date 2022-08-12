@@ -22,11 +22,7 @@ class TestMeanCharactersPerSentence(PrimitiveT):
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
     def test_multiline(self):
-        x = pd.Series(
-            [
-                "Ab\n."
-            ]
-        )
+        x = pd.Series(["Ab\n."])
         primitive_func = self.primitive().get_function()
         answers = pd.Series([4.0])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
