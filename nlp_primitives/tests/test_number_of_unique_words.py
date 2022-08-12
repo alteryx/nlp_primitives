@@ -8,37 +8,37 @@ from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
 class TestNumberOfUniqueWords(PrimitiveT):
     primitive = NumberOfUniqueWords
 
-    # def test_general(self):
-    #     x = pd.Series(
-    #         [
-    #             "test test test test",
-    #             "test TEST test TEST",
-    #             "and;subsequent;lines...",
-    #             "$0.99 alteryx@alteryx.com",
-    #         ]
-    #     )
+    def test_general(self):
+        x = pd.Series(
+            [
+                "test test test test",
+                "test TEST test TEST",
+                "and;subsequent;lines...",
+                "$0.99 alteryx@alteryx.com",
+            ]
+        )
 
-    #     expected = pd.Series([1, 2, 3, 2])
-    #     actual = self.primitive().get_function()(x)
-    #     pd.testing.assert_series_equal(actual, expected, check_names=False)
+        expected = pd.Series([1, 2, 3, 2])
+        actual = self.primitive().get_function()(x)
+        pd.testing.assert_series_equal(actual, expected, check_names=False)
 
-    # def test_special_characters(self):
-    #     x = pd.Series(["50% 50 50%", "a test* test"])
+    def test_special_characters(self):
+        x = pd.Series(["50% 50 50%", "a test* test"])
 
-    #     expected = pd.Series([1, 2])
-    #     actual = self.primitive().get_function()(x)
-    #     pd.testing.assert_series_equal(actual, expected, check_names=False)
+        expected = pd.Series([1, 2])
+        actual = self.primitive().get_function()(x)
+        pd.testing.assert_series_equal(actual, expected, check_names=False)
 
-    # def test_unicode_input(self):
-    #     x = pd.Series(
-    #         [
-    #             "Ángel Angel Ángel ángel",
-    #         ]
-    #     )
+    def test_unicode_input(self):
+        x = pd.Series(
+            [
+                "Ángel Angel Ángel ángel",
+            ]
+        )
 
-    #     expected = pd.Series([3])
-    #     actual = self.primitive().get_function()(x)
-    #     pd.testing.assert_series_equal(actual, expected, check_names=False)
+        expected = pd.Series([3])
+        actual = self.primitive().get_function()(x)
+        pd.testing.assert_series_equal(actual, expected, check_names=False)
 
     def test_contractions(self):
         x = pd.Series(
