@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import pytest
 
 from ..number_of_words_in_quotes import NumberOfWordsInQuotes
 from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
@@ -65,6 +66,10 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
         expected = pd.Series([4.0]).astype("Int64")
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
+
+    def test_raises_error_invalid_args(self):
+        with pytest.raises(ValueError):
+            actual = self.primitive(capture="NULL")
 
     def test_null(self):
         x = pd.Series([np.nan, pd.NA, None, '"test"'])
