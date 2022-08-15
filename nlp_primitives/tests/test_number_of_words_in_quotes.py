@@ -43,12 +43,6 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
         actual = self.primitive().get_function()(x)
         np.testing.assert_array_equal(actual, expected)
 
-    def test_captures_contractions(self):
-        x = pd.Series(["can't don't there's where's"])
-        expected = [0]
-        actual = self.primitive("double").get_function()(x)
-        np.testing.assert_array_equal(actual, expected)
-
     def test_unicode_input(self):
         x = pd.Series(
             [
