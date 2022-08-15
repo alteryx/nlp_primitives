@@ -20,7 +20,7 @@ class NumberOfWordsInQuotes(TransformPrimitive):
         If a string is missing, return `NaN`.
 
     Args:
-        case_insensitive (str, optional): Specify what kind of quotes to match.
+        capture (str, optional): Specify what kind of quotes to match.
         Single matches on only single quotes (' '). Double matches words between
         double quotes (" "). Both matches words between either kind of quotes.
 
