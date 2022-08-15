@@ -50,8 +50,8 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             return ct
 
         def num_words_in_quotes(array):
-            IN_DOUBLE_QUOTES = r'("([^"]+)")'
-            IN_SINGLE_QUOTES = r"('([^']+)')"
+            IN_DOUBLE_QUOTES = r'"([^"]+)"'
+            IN_SINGLE_QUOTES = r"'([^']+)'"
             if self.capture == "single":
                 text = array.str.extractall(IN_SINGLE_QUOTES)
             elif self.capture == "double":
@@ -65,6 +65,8 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             )
             grouped_sum[grouped_sum.isna()] = 0
             grouped_sum[array.isna()] = pd.NA
-            return grouped_sum
+
+            # was defaulting to str type if there are no matches
+            return grouped_sum.astype("float64")
 
         return num_words_in_quotes

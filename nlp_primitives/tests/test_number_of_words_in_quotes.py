@@ -11,7 +11,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
     def test_regular_double_quotes_input(self):
         x = pd.Series(
             [
-                "Yes",
+                'Yes "    "',
                 '"Hello this is a test"',
                 '"Yep, I agree"',
                 '"Yep, I agree" was said amiably "well I donnot"',
@@ -43,6 +43,12 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
         actual = self.primitive().get_function()(x)
         np.testing.assert_array_equal(actual, expected)
 
+    def test_captures_contractions(self):
+        x = pd.Series(["can't don't there's where's"])
+        expected = [0]
+        actual = self.primitive("double").get_function()(x)
+        np.testing.assert_array_equal(actual, expected)
+
     def test_unicode_input(self):
         x = pd.Series(
             [
@@ -50,7 +56,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 '"Ángel" word word',
             ]
         )
-        expected = [1.0, 2.0]
+        expected = [1.0, 1.0]
         actual = self.primitive().get_function()(x)
         np.testing.assert_array_equal(actual, expected)
 
