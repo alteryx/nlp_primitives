@@ -64,7 +64,8 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             grouped_sum[grouped_sum.isna()] = 0
             grouped_sum[array.isna()] = pd.NA
 
+            print(f"Grouped sum: {grouped_sum}")
             # was defaulting to str type if there are no matches
-            return grouped_sum.astype("float64")
+            return grouped_sum.astype("Int64")
 
         return num_words_in_quotes
