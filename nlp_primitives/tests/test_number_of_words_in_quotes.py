@@ -70,7 +70,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
     def test_raises_error_invalid_args(self):
         with pytest.raises(
             ValueError,
-            match=f"NULL is not a valid quote_type. Specify 'both', 'single', or 'double'",
+            match="NULL is not a valid quote_type. Specify 'both', 'single', or 'double'",
         ):
             self.primitive(capture="NULL")
 
