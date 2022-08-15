@@ -19,6 +19,11 @@ class NumberOfWordsInQuotes(TransformPrimitive):
 
         If a string is missing, return `NaN`.
 
+    Args:
+        case_insensitive (str, optional): Specify what kind of quotes to match.
+        Single matches on only single quotes (' '). Double matches words between
+        double quotes (" "). Both matches words between either kind of quotes.
+
     Examples:
          >>> x = ['"python" java prolog', '"this is a string"', '"binary" "ternary"']
         >>> number_of_words_in_quotes = NumberOfWordsInQuotes()
@@ -31,12 +36,12 @@ class NumberOfWordsInQuotes(TransformPrimitive):
     return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
     default_value = 0
 
-    def __init__(self, capture=None):
-        self.capture = "both"
-        if capture == "single":
-            self.capture = "single"
-        elif capture == "double":
-            self.capture = "double"
+    def __init__(self, capture="both"):
+        if capture not in ["both", "single", "double"]:
+            raise ValueError(
+                f"{capture} is not a valid argument. Specify 'both', 'single', or 'double'"
+            )
+        self.capture = capture
 
     def get_function(self):
         def _word_tokenize(text):
