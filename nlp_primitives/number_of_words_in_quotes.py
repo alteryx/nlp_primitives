@@ -20,7 +20,7 @@ class NumberOfWordsInQuotes(TransformPrimitive):
         If a string is missing, return `NaN`.
 
     Args:
-        capture (str, optional): Specify what kind of quotes to match.
+        quote_type (str, optional): Specify what kind of quotes to match.
         Argument "single" matches on only single quotes (' ').
         Argument "double" matches words between double quotes (" ").
         Argument "both" matches words between either kind of quotes.
@@ -38,12 +38,12 @@ class NumberOfWordsInQuotes(TransformPrimitive):
     return_type = ColumnSchema(logical_type=IntegerNullable, semantic_tags={"numeric"})
     default_value = 0
 
-    def __init__(self, capture="both"):
-        if capture not in ["both", "single", "double"]:
+    def __init__(self, quote_type="both"):
+        if quote_type not in ["both", "single", "double"]:
             raise ValueError(
-                f"{capture} is not a valid argument. Specify 'both', 'single', or 'double'"
+                f"{quote_type} is not a valid argument. Specify 'both', 'single', or 'double'"
             )
-        self.capture = capture
+        self.quote_type = quote_type
 
     def get_function(self):
         def _word_tokenize(text):
@@ -57,13 +57,14 @@ class NumberOfWordsInQuotes(TransformPrimitive):
         def num_words_in_quotes(array):
             IN_DOUBLE_QUOTES = r'"([^"]+)"'
             IN_SINGLE_QUOTES = r"'([^']+)'"
-            if self.capture == "single":
-                text = array.str.extractall(IN_SINGLE_QUOTES)
-            elif self.capture == "double":
-                text = array.str.extractall(IN_DOUBLE_QUOTES)
+            regex = None
+            if self.quote_type == "single":
+                regex = IN_SINGLE_QUOTES
+            elif self.quote_type == "double":
+                regex = IN_DOUBLE_QUOTES
             else:
                 regex = f"({IN_SINGLE_QUOTES}|{IN_DOUBLE_QUOTES})"
-                text = array.str.extractall(f"{regex}")
+            text = array.str.extractall(f"{regex}")
             num_words = text[0].apply(_word_tokenize)
             grouped_sum = (
                 num_words.groupby(level=0).sum().reindex(array.index, fill_value=pd.NA)
