@@ -75,7 +75,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
             ValueError,
             match=error_msg,
         ):
-            self.primitive(capture="NULL")
+            self.primitive(quote_type="NULL")
 
     def test_null(self):
         x = pd.Series([np.nan, pd.NA, None, '"test"'])
