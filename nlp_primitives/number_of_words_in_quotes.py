@@ -21,8 +21,10 @@ class NumberOfWordsInQuotes(TransformPrimitive):
 
     Args:
         capture (str, optional): Specify what kind of quotes to match.
-        Single matches on only single quotes (' '). Double matches words between
-        double quotes (" "). Both matches words between either kind of quotes.
+        Argument "single" matches on only single quotes (' ').
+        Argument "double" matches words between double quotes (" ").
+        Argument "both" matches words between either kind of quotes.
+        Defaults to "both".
 
     Examples:
          >>> x = ['"python" java prolog', '"this is a string"', '"binary" "ternary"']
