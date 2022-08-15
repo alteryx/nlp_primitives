@@ -20,7 +20,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 '"Python, java prolog" three words here "binary search algorithm"',
             ]
         )
-        expected = pd.Series([0, 5, 1, 0, 3, 6],dtype="Int64")
+        expected = pd.Series([0, 5, 1, 0, 3, 6], dtype="Int64")
         actual = self.primitive("double").get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
@@ -32,7 +32,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 "'Python, Java Prolog' three words here 'three words here'",
             ]
         )
-        expected = pd.Series([5.0, 3.0, 6.0],dtype="Int64")
+        expected = pd.Series([5.0, 3.0, 6.0], dtype="Int64")
         actual = self.primitive("single").get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
@@ -42,7 +42,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 "'test test test test' three words here \"test test test!\"",
             ]
         )
-        expected = pd.Series([7.0],dtype="Int64")
+        expected = pd.Series([7.0], dtype="Int64")
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
@@ -53,7 +53,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 '"Ángel" word word',
             ]
         )
-        expected = pd.Series([1.0, 1.0],dtype="Int64")
+        expected = pd.Series([1.0, 1.0], dtype="Int64")
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
@@ -63,18 +63,21 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 "'Yes\n, this is me'",
             ]
         )
-        expected = pd.Series([4.0],dtype="Int64")
+        expected = pd.Series([4.0], dtype="Int64")
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
     def test_raises_error_invalid_args(self):
-        with pytest.raises(ValueError, match=f"NULL is not a valid quote_type. Specify 'both', 'single', or 'double'"):
+        with pytest.raises(
+            ValueError,
+            match=f"NULL is not a valid quote_type. Specify 'both', 'single', or 'double'",
+        ):
             self.primitive(capture="NULL")
 
     def test_null(self):
         x = pd.Series([np.nan, pd.NA, None, '"test"'])
         actual = self.primitive().get_function()(x)
-        expected = pd.Series([pd.NA, pd.NA, pd.NA, 1.0],dtype="Int64")
+        expected = pd.Series([pd.NA, pd.NA, pd.NA, 1.0], dtype="Int64")
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
     def test_with_featuretools(self, es):
