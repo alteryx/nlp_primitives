@@ -40,8 +40,6 @@ class NumberOfWordsInQuotes(TransformPrimitive):
 
     def get_function(self):
         def _word_tokenize(text):
-            if not isinstance(text, str):
-                return pd.NA
             tokens = word_tokenize(text)
             ct = 0
             for word in tokens:

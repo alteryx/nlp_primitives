@@ -66,7 +66,6 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
 
     def test_null(self):
         x = pd.Series([np.nan, pd.NA, None, '"test"'])
-
         actual = self.primitive().get_function()(x)
         expected = [np.nan, np.nan, np.nan, 1.0]
         np.testing.assert_array_equal(actual, expected)
