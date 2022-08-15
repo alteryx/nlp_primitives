@@ -23,7 +23,7 @@ class NumberOfWordsInQuotes(TransformPrimitive):
          >>> x = ['"python" java prolog', '"this is a string"', '"binary" "ternary"']
         >>> number_of_words_in_quotes = NumberOfWordsInQuotes()
         >>> number_of_words_in_quotes(x).tolist()
-        [1.0, 4.0, 2.0]
+        [1, 4, 2]
     """
 
     name = "number_of_words_in_quotes"
