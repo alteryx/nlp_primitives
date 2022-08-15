@@ -41,7 +41,7 @@ class NumberOfWordsInQuotes(TransformPrimitive):
     def __init__(self, quote_type="both"):
         if quote_type not in ["both", "single", "double"]:
             raise ValueError(
-                f"{quote_type} is not a valid argument. Specify 'both', 'single', or 'double'"
+                f"{quote_type} is not a valid quote_type. Specify 'both', 'single', or 'double'"
             )
         self.quote_type = quote_type
 
