@@ -20,10 +20,10 @@ class NumberOfWordsInQuotes(TransformPrimitive):
         If a string is missing, return `NaN`.
 
     Examples:
-         >>> x = ['"yes" I said', '"this is a string"', '"yep" "nope"']
+         >>> x = ['"python" java prolog', '"this is a string"', '"binary" "ternary"']
         >>> number_of_words_in_quotes = NumberOfWordsInQuotes()
         >>> number_of_words_in_quotes(x).tolist()
-        [1, 4, 2]
+        [1.0, 4.0, 2.0]
     """
 
     name = "number_of_words_in_quotes"

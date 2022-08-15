@@ -13,8 +13,8 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
             [
                 'Yes "    "',
                 '"Hello this is a test"',
-                '"Yep, I agree"',
-                '"Yep, I agree" was said amiably "well I donnot"',
+                '"Python, java prolog"',
+                '"Python, java prolog" three words here "binary search algorithm"',
             ]
         )
         expected = [0.0, 5.0, 3.0, 6.0]
@@ -25,8 +25,8 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
         x = pd.Series(
             [
                 "'Hello this is a test'",
-                "'Yep, I agree'",
-                "'Yep, I agree' was said amiably 'no i dont'",
+                "'Python, Java Prolog'",
+                "'Python, Java Prolog' three words here 'three words here'",
             ]
         )
         expected = [5.0, 3.0, 6.0]
@@ -36,7 +36,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
     def test_captures_both_single_and_double_quotes(self):
         x = pd.Series(
             [
-                "'Hello this is a test' and was replied to \"I understand!\"",
+                "'test test test test' three words here \"test test test!\"",
             ]
         )
         expected = [7.0]
