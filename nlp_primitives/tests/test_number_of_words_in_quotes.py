@@ -69,7 +69,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
 
     def test_raises_error_invalid_args(self):
         with pytest.raises(ValueError):
-            actual = self.primitive(capture="NULL")
+            self.primitive(capture="NULL")
 
     def test_null(self):
         x = pd.Series([np.nan, pd.NA, None, '"test"'])
