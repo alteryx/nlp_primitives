@@ -52,6 +52,9 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             self.regex = IN_SINGLE_QUOTES
         else:
             self.regex = f"({IN_SINGLE_QUOTES}|{IN_DOUBLE_QUOTES})"
+        self.DELIMITERS = set(punctuation) - {'"', ".", "'", "-", "@"}
+        self.DELIMITERS = "".join(list(self.DELIMITERS))
+        self.DELIMITERS = re.escape(f" {self.DELIMITERS}\n\t")
 
     def get_function(self):
         def count_words_in_quotes(text):
@@ -60,7 +63,7 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             matches = re.findall(self.regex, text)
             ct = 0
             for match in matches:
-                words = match.split(" ")
+                words = re.split(f"[{self.DELIMITERS}]", match)
                 for word in words:
                     if len(word.strip(punctuation + " ")):
                         ct += 1
