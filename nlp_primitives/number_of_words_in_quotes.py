@@ -4,7 +4,6 @@ from string import punctuation
 
 import pandas as pd
 from featuretools.primitives import TransformPrimitive
-from nltk import word_tokenize
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
