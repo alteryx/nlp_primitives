@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import re
-import string
 from string import punctuation
 
 import pandas as pd
@@ -64,7 +63,7 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             for match in matches:
                 words = match.split(" ")
                 for word in words:
-                    if len(word.strip(string.punctuation + " ")):
+                    if len(word.strip(punctuation + " ")):
                         ct += 1
             return ct
 
