@@ -68,9 +68,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
     def test_raises_error_invalid_args(self):
-        error_msg = (
-            "NULL is not a valid quote_type. Specify 'both', 'single', or 'double'"
-        )
+        error_msg = "Regex pattern NULL is not a valid quote_type. Specify 'both', 'single', or 'double'"
         with pytest.raises(
             ValueError,
             match=error_msg,

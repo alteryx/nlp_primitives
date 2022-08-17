@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import re
+import string
 from string import punctuation
 
 import pandas as pd
@@ -41,37 +43,32 @@ class NumberOfWordsInQuotes(TransformPrimitive):
     def __init__(self, quote_type="both"):
         if quote_type not in ["both", "single", "double"]:
             raise ValueError(
-                f"{quote_type} is not a valid quote_type. Specify 'both', 'single', or 'double'"
+                f"Regex pattern {quote_type} is not a valid quote_type. Specify 'both', 'single', or 'double'"
             )
         self.quote_type = quote_type
+        IN_DOUBLE_QUOTES = r'"[^"]+"'
+        IN_SINGLE_QUOTES = r"'[^']+'"
+        if quote_type == "double":
+            self.regex = IN_DOUBLE_QUOTES
+        elif quote_type == "single":
+            self.regex = IN_SINGLE_QUOTES
+        else:
+            self.regex = f"({IN_SINGLE_QUOTES}|{IN_DOUBLE_QUOTES})"
 
     def get_function(self):
-        def _word_tokenize(text):
-            tokens = word_tokenize(text)
+        def count_words_in_quotes(text):
+            if pd.isnull(text):
+                return pd.NA
+            matches = re.findall(self.regex, text)
             ct = 0
-            for word in tokens:
-                if len(word.strip(punctuation).strip()) > 0:
-                    ct += 1
+            for match in matches:
+                words = match.split(" ")
+                for word in words:
+                    if len(word.strip(string.punctuation + " ")):
+                        ct += 1
             return ct
 
         def num_words_in_quotes(array):
-            IN_DOUBLE_QUOTES = r'"([^"]+)"'
-            IN_SINGLE_QUOTES = r"'([^']+)'"
-            regex = None
-            if self.quote_type == "single":
-                regex = IN_SINGLE_QUOTES
-            elif self.quote_type == "double":
-                regex = IN_DOUBLE_QUOTES
-            else:
-                regex = f"({IN_SINGLE_QUOTES}|{IN_DOUBLE_QUOTES})"
-            text = array.str.extractall(f"{regex}")
-            num_words = text[0].apply(_word_tokenize)
-            grouped_sum = (
-                num_words.groupby(level=0).sum().reindex(array.index, fill_value=pd.NA)
-            )
-            grouped_sum[grouped_sum.isna()] = 0
-            grouped_sum[array.isna()] = pd.NA
-            # was defaulting to str type if there are no matches
-            return grouped_sum.astype("Int64")
+            return array.apply(count_words_in_quotes).astype("Int64")
 
         return num_words_in_quotes
