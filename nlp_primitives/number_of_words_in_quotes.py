@@ -30,7 +30,7 @@ class NumberOfWordsInQuotes(TransformPrimitive):
          >>> x = ['"python" java prolog "Diffie-Hellman"', "Reach me at 'user@email.com'", "'Here's an interesting example!'"]
         >>> number_of_words_in_quotes = NumberOfWordsInQuotes()
         >>> number_of_words_in_quotes(x).tolist()
-        [2, 1, 3, 4]
+        [2, 1, 4]
     """
 
     name = "number_of_words_in_quotes"
