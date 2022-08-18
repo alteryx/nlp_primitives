@@ -27,10 +27,10 @@ class NumberOfWordsInQuotes(TransformPrimitive):
         Defaults to "both".
 
     Examples:
-         >>> x = ['"python" java prolog "Diffie-Hellman"', '"this is a string user@email"', '"binary" "ternary" "wikipedia.org"']
+         >>> x = ['"python" java prolog "Diffie-Hellman"', '"here's my email: user@email"', "'Here's an interesting example!'"]
         >>> number_of_words_in_quotes = NumberOfWordsInQuotes()
         >>> number_of_words_in_quotes(x).tolist()
-        [2, 5, 3]
+        [2, 4, 3, 4]
     """
 
     name = "number_of_words_in_quotes"
