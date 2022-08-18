@@ -27,10 +27,10 @@ class NumberOfWordsInQuotes(TransformPrimitive):
         Defaults to "both".
 
     Examples:
-         >>> x = ['"python" java prolog', '"this is a string"', '"binary" "ternary"']
+         >>> x = ['"python" java prolog "Diffie-Hellman"', '"this is a string user@email"', '"binary" "ternary" "wikipedia.org"']
         >>> number_of_words_in_quotes = NumberOfWordsInQuotes()
         >>> number_of_words_in_quotes(x).tolist()
-        [1, 4, 2]
+        [2, 5, 3]
     """
 
     name = "number_of_words_in_quotes"
@@ -52,7 +52,7 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             self.regex = IN_SINGLE_QUOTES
         else:
             self.regex = f"({IN_SINGLE_QUOTES}|{IN_DOUBLE_QUOTES})"
-        self.DELIMITERS = set(punctuation) - {'"', ".", "'", "-", "@"}
+        self.DELIMITERS = set(punctuation) - {'"', ".", "'", "-", ":", "@", "/", "\\"}
         self.DELIMITERS = "".join(list(self.DELIMITERS))
         self.DELIMITERS = re.escape(f" {self.DELIMITERS}\n\t")
 
@@ -65,6 +65,7 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             for match in matches:
                 words = re.split(f"[{self.DELIMITERS}]", match)
                 for word in words:
+                    print(f"Word: {word}")
                     if len(word.strip(punctuation + " ")):
                         ct += 1
             return ct

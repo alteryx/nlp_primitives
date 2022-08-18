@@ -18,9 +18,12 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 "",
                 '"Python, java prolog"',
                 '"Python, java prolog" three words here "binary search algorithm"',
+                '"Diffie-Hellman key exchange"',
+                '"user@email.com"',
+                '"https://alteryx.com"',
             ]
         )
-        expected = pd.Series([0, 5, 1, 0, 3, 6], dtype="Int64")
+        expected = pd.Series([0, 5, 1, 0, 3, 6, 3, 1, 1], dtype="Int64")
         actual = self.primitive("double").get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
@@ -30,9 +33,12 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 "'Hello this is a test'",
                 "'Python, Java Prolog'",
                 "'Python, Java Prolog' three words here 'three words here'",
+                "'Diffie-Hellman key exchange'",
+                "'user@email.com'",
+                "'https://alteryx.com'",
             ]
         )
-        expected = pd.Series([5.0, 3.0, 6.0], dtype="Int64")
+        expected = pd.Series([5, 3, 6, 3, 1, 1], dtype="Int64")
         actual = self.primitive("single").get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
@@ -42,7 +48,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 "'test test test test' three words here \"test test test!\"",
             ]
         )
-        expected = pd.Series([7.0], dtype="Int64")
+        expected = pd.Series([7], dtype="Int64")
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
@@ -53,7 +59,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 '"Ángel" word word',
             ]
         )
-        expected = pd.Series([1.0, 1.0], dtype="Int64")
+        expected = pd.Series([1, 1], dtype="Int64")
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
@@ -63,7 +69,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 "'Yes\n, this is me'",
             ]
         )
-        expected = pd.Series([4.0], dtype="Int64")
+        expected = pd.Series([4], dtype="Int64")
         actual = self.primitive().get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
