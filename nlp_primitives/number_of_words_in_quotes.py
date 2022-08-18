@@ -44,8 +44,8 @@ class NumberOfWordsInQuotes(TransformPrimitive):
                 f"{quote_type} is not a valid quote_type. Specify 'both', 'single', or 'double'"
             )
         self.quote_type = quote_type
-        IN_DOUBLE_QUOTES = r'"[^"]+"'
-        IN_SINGLE_QUOTES = r"'[^']+'"
+        IN_DOUBLE_QUOTES = r'((^|\W)"(.|\s)*?"(?!\w))'
+        IN_SINGLE_QUOTES = r"((^|\W)'(.|\s)*?'(?!\w))"
         if quote_type == "double":
             self.regex = IN_DOUBLE_QUOTES
         elif quote_type == "single":
@@ -63,9 +63,10 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             matches = re.findall(self.regex, text)
             ct = 0
             for match in matches:
+                match = match[0]
+                print(f"Match: {match}")
                 words = re.split(f"[{self.DELIMITERS}]", match)
                 for word in words:
-                    print(f"Word: {word}")
                     if len(word.strip(punctuation + " ")):
                         ct += 1
             return ct
