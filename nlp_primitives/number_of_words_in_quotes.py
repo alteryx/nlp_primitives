@@ -64,7 +64,6 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             ct = 0
             for match in matches:
                 match = match[0]
-                print(f"Match: {match}")
                 words = re.split(f"[{self.DELIMITERS}]", match)
                 for word in words:
                     if len(word.strip(punctuation + " ")):
