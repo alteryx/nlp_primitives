@@ -20,10 +20,10 @@ class NumberOfWordsInQuotes(TransformPrimitive):
         If a string is missing, return `NaN`.
 
     Args:
-        quote_type (str, optional): Specify what kind of quotes to match.
+        quote_type (str, optional): Specifies what type of quotation marks to match.
         Argument "single" matches on only single quotes (' ').
         Argument "double" matches words between double quotes (" ").
-        Argument "both" matches words between either kind of quotes.
+        Argument "both" matches words between either type of quotes.
         Defaults to "both".
 
     Examples:
@@ -71,14 +71,14 @@ class NumberOfWordsInQuotes(TransformPrimitive):
             if pd.isnull(text):
                 return pd.NA
             matches = re.findall(self.regex, text)
-            ct = 0
+            count = 0
             for match in matches:
-                match = match[0]
-                words = re.split(f"[{self.DELIMITERS}]", match)
+                matched_phrase = match[0]
+                words = re.split(f"[{self.DELIMITERS}]", matched_phrase)
                 for word in words:
                     if len(word.strip(punctuation + " ")):
-                        ct += 1
-            return ct
+                        count += 1
+            return count
 
         def num_words_in_quotes(array):
             return array.apply(count_words_in_quotes).astype("Int64")
