@@ -41,7 +41,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 "'100,000'",
             ]
         )
-        expected = pd.Series([5, 3, 6, 3, 1, 1, 4], dtype="Int64")
+        expected = pd.Series([5, 3, 6, 3, 1, 1, 4, 1], dtype="Int64")
         actual = self.primitive("single").get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
