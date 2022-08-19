@@ -21,9 +21,10 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 '"Diffie-Hellman key exchange"',
                 '"user@email.com"',
                 '"https://alteryx.com"',
+                '"100,000"',
             ]
         )
-        expected = pd.Series([0, 5, 1, 0, 3, 6, 3, 1, 1], dtype="Int64")
+        expected = pd.Series([0, 5, 1, 0, 3, 6, 3, 1, 1, 1], dtype="Int64")
         actual = self.primitive("double").get_function()(x)
         pd.testing.assert_series_equal(actual, expected, check_names=False)
 
@@ -37,6 +38,7 @@ class TestNumberOfWordsInQuotes(PrimitiveT):
                 "'user@email.com'",
                 "'https://alteryx.com'",
                 "'there's where's here's' word 'word'",
+                "'100,000'",
             ]
         )
         expected = pd.Series([5, 3, 6, 3, 1, 1, 4], dtype="Int64")
