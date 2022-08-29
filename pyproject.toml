@@ -88,6 +88,9 @@ namespaces = true
 ]
 "nlp_primitives.data.nltk_data" = [
     "*.txt",
+    "*.pickle",
+    "*.tab",
+    "*.txt",
 ]
 
 [tool.setuptools.exclude-package-data]

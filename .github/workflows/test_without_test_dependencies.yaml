@@ -24,7 +24,7 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Build nlp_primitives and install
         run: |
-          make package_nlp_primitives
+          make package
           python -m pip install unpacked_sdist/
       - name: Run simple nlp_primitives usage
         run: |
