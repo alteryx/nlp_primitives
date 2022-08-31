@@ -89,11 +89,11 @@ namespaces = true
     "*.txt",
     "README.md",
 ]
-"nlp_primitives.data.nltk-data" = [
-    "*.txt",
+"nlp_primitives.data.nltk_data" = [
     "*.pickle",
     "*.tab",
-    "*.txt",
+    "*.bib",
+    "*.adv",
 ]
 
 [tool.setuptools.exclude-package-data]
