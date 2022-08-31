@@ -7,8 +7,10 @@ import pytest
 from featuretools.primitives.utils import PrimitivesDeserializer, serialize_primitive
 from woodwork.logical_types import NaturalLanguage
 
-from ..tensorflow.universal_sentence_encoder import UniversalSentenceEncoder
-from .test_utils import PRIMITIVES
+from nlp_primitives.tensorflow.universal_sentence_encoder import (
+    UniversalSentenceEncoder,
+)
+from nlp_primitives.tests.test_utils import PRIMITIVES
 
 
 def test_regular(universal_sentence_encoder):

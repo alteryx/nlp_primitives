@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..num_unique_separators import NumUniqueSeparators
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.num_unique_separators import NumUniqueSeparators
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestNumUniqueSeparators(PrimitiveT):

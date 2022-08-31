@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from .count_string import CountString
+from nlp_primitives.count_string import CountString
 
 
 class WhitespaceCount(CountString):

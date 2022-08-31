@@ -1,3 +1,5 @@
 # flake8: noqa
-from .elmo import Elmo
-from .universal_sentence_encoder import UniversalSentenceEncoder
+from nlp_primitives.tensorflow.elmo import Elmo
+from nlp_primitives.tensorflow.universal_sentence_encoder import (
+    UniversalSentenceEncoder,
+)

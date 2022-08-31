@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..median_word_length import MedianWordLength
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.median_word_length import MedianWordLength
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestMedianWordLength(PrimitiveT):

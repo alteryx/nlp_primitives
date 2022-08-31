@@ -3,8 +3,12 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from ..lsa import LSA
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.lsa import LSA
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestLSA(PrimitiveT):

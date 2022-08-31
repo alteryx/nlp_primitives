@@ -5,7 +5,7 @@ from featuretools.primitives.base import TransformPrimitive
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
-from .constants import common_words_1000
+from nlp_primitives.constants import common_words_1000
 
 
 class NumberOfCommonWords(TransformPrimitive):
