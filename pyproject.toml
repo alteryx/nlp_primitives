@@ -70,9 +70,8 @@ complete = [
     "tensorflow_hub >= 0.4.0",
 ]
 
-[project.scripts]
-featuretools_plugin = "nlp_primitives:__init__.py"
-featuretools_primitives = "nlp_primitives:__init__.py"
+[project.entry-points."featuretools_primitives"]
+nlp_primitives = "nlp_primitives"
 
 [tool.setuptools]
 include-package-data = true

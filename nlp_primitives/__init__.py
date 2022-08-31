@@ -5,6 +5,9 @@ from importlib.util import find_spec
 
 import nltk.data
 import pkg_resources
+from featuretools.primitives import AggregationPrimitive, TransformPrimitive
+import inspect
+
 
 from .count_string import CountString
 from .diversity_score import DiversityScore
@@ -31,6 +34,16 @@ from .whitespace_count import WhitespaceCount
 if find_spec("tensorflow") and find_spec("tensorflow_hub"):
     from .tensorflow import Elmo, UniversalSentenceEncoder
 
+NLP_PRIMITIVES = [
+    obj
+    for obj in globals().values()
+    if (
+        inspect.isclass(obj)
+        and obj is not AggregationPrimitive
+        and obj is not TransformPrimitive
+        and issubclass(obj, (AggregationPrimitive, TransformPrimitive))
+    )
+]
 
 nltk_data_path = pkg_resources.resource_filename("nlp_primitives", "data/nltk_data/")
 nltk.data.path.insert(0, nltk_data_path)
