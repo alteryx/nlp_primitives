@@ -17,6 +17,7 @@ Future Release
         * Drop support for Python 3.7 (:pr:`176`)
         * Change `TitleWordCount`, `PunctuationCount`, `UpperCaseCount` to use `CountString` (:pr:`183`)
         * Remove readthedocs and docs requirements (:pr:`193`)
+        * Use pyproject.toml only (move away from setup.cfg) (:pr:`201`)
     * Documentation Changes
     * Testing Changes
         * Change codecov v3 for GitHub workflow (:pr:`184`)
