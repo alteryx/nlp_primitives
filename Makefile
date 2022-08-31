@@ -38,6 +38,7 @@ testcoverage:
 .PHONY: installdeps
 installdeps: upgradepip
 	pip install -e ".[dev]"
+	pre-commit run
 
 .PHONY: installdeps-test
 installdeps-test: upgradepip
