@@ -1,6 +1,5 @@
 default_stages: [commit]
 exclude: ^LICENSE/|\.(html|csv|svg|md|txt|json|tab|bib|adv)$
-types: [python]
 repos:
   - repo: https://github.com/MarcoGorelli/absolufy-imports
     rev: v0.3.1
