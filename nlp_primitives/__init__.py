@@ -44,5 +44,5 @@ NLP_PRIMITIVES = [
     )
 ]
 
-nltk_data_path = pkg_resources.resource_filename("nlp_primitives", "data/nltk_data/")
-nltk.data.path.insert(0, nltk_data_path)
+nltk-data_path = pkg_resources.resource_filename("nlp_primitives", "data/nltk-data/")
+nltk.data.path.insert(0, nltk-data_path)
