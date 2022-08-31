@@ -8,7 +8,7 @@ repos:
       - id: absolufy-imports
         files: ^nlp_primitives/
   - repo: https://github.com/PyCQA/isort
-    rev: 5.10.1
+    rev: 5.0.4
     hooks:
       - id: isort
         args: [--settings-path=pyproject.toml]

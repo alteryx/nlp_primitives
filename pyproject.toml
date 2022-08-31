@@ -58,7 +58,7 @@ test = [
     "pytest-cov >= 3.0.0",
 ]
 dev = [
-    "flake8 == 5.10.1",
+    "flake8 == 5.0.4",
     "isort == 5.9.3",
     "black == 22.6.0",
     "pre-commit == 2.20.0",
