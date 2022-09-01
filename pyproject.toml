@@ -89,8 +89,8 @@ namespaces = true
     "*.txt",
     "README.md",
 ]
-"nlp_primitives.data" =[
-    "/nltk-data/**/*"
+"nlp_primitives" = [
+    "data/nltk-data/**/*",
 ]
 
 [tool.setuptools.exclude-package-data]
