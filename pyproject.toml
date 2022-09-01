@@ -89,6 +89,12 @@ namespaces = true
     "*.txt",
     "README.md",
 ]
+"nlp_primitives.data" =[
+    "/nltk-data/**/*",
+    "/nltk-data/**/*.tab",
+    "/nltk-data/**/*.bib",
+    "/nltk-data/**/*.adv",
+]
 "nlp_primitives.data.nltk_data" = [
     "*.pickle",
     "*.tab",

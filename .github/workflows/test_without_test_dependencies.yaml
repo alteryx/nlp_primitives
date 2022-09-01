@@ -1,11 +1,11 @@
+name: Test nlp_primitives without Test Dependencies
 on:
   pull_request:
     types: [opened, synchronize]
   push:
     branches:
       - main
-
-name: Test nlp_primitives without Test Dependencies
+  workflow_dispatch:
 jobs:
   use_nlp_primitives_without_test_dependencies:
     name: Test nlp_primitives without Test Dependencies
