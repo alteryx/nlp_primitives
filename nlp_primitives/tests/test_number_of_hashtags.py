@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..number_of_hashtags import NumberOfHashtags
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.number_of_hashtags import NumberOfHashtags
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestNumberOfHashtags(PrimitiveT):

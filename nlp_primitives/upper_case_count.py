@@ -2,7 +2,7 @@
 from woodwork.column_schema import ColumnSchema
 from woodwork.logical_types import IntegerNullable, NaturalLanguage
 
-from .count_string import CountString
+from nlp_primitives.count_string import CountString
 
 
 class UpperCaseCount(CountString):

@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..count_string import CountString
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.count_string import CountString
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestCountString(PrimitiveT):

@@ -38,6 +38,7 @@ testcoverage:
 .PHONY: installdeps
 installdeps: upgradepip
 	pip install -e ".[dev]"
+	pre-commit run
 
 .PHONY: installdeps-test
 installdeps-test: upgradepip
@@ -65,8 +66,12 @@ upgradepip:
 upgradebuild:
 	python -m pip install --upgrade build
 
-.PHONY: package_nlp_primitives
-package_nlp_primitives: upgradepip upgradebuild
+.PHONY: upgradesetuptools
+upgradesetuptools:
+	python -m pip install --upgrade setuptools
+
+.PHONY: package
+package: upgradepip upgradebuild upgradesetuptools
 	python -m build
 	$(eval PACKAGE=$(shell python -c "from pep517.meta import load; metadata = load('.'); print(metadata.version)"))
 	tar -zxvf "dist/nlp_primitives-${PACKAGE}.tar.gz"

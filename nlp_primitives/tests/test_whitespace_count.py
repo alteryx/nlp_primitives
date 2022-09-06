@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..whitespace_count import WhitespaceCount
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
+from nlp_primitives.whitespace_count import WhitespaceCount
 
 
 class TestWhitespaceCount(PrimitiveT):

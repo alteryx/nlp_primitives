@@ -1,11 +1,11 @@
+name: Test nlp_primitives without Test Dependencies
 on:
   pull_request:
     types: [opened, synchronize]
   push:
     branches:
       - main
-
-name: Test nlp_primitives without Test Dependencies
+  workflow_dispatch:
 jobs:
   use_nlp_primitives_without_test_dependencies:
     name: Test nlp_primitives without Test Dependencies
@@ -24,7 +24,7 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Build nlp_primitives and install
         run: |
-          make package_nlp_primitives
+          make package
           python -m pip install unpacked_sdist/
       - name: Run simple nlp_primitives usage
         run: |

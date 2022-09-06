@@ -1,0 +1,19 @@
+default_stages: [commit]
+exclude: ^LICENSE/|\.(html|csv|svg|md|txt|json|tab|bib|adv)$
+repos:
+  - repo: https://github.com/MarcoGorelli/absolufy-imports
+    rev: v0.3.1
+    hooks:
+      - id: absolufy-imports
+        files: ^nlp_primitives/
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.0.4
+    hooks:
+      - id: isort
+        args: [--settings-path=pyproject.toml]
+  - repo: https://github.com/python/black
+    rev: 22.8.0
+    hooks:
+      - id: black
+        args: [--target-version=py310]
+        types_or: [python]

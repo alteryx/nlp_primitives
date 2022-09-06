@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..number_of_mentions import NumberOfMentions
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.number_of_mentions import NumberOfMentions
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
 
 
 class TestNumberOfMentions(PrimitiveT):

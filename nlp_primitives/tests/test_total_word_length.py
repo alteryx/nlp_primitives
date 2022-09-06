@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from ..total_word_length import TotalWordLength
-from .test_utils import PrimitiveT, find_applicable_primitives, valid_dfs
+from nlp_primitives.tests.test_utils import (
+    PrimitiveT,
+    find_applicable_primitives,
+    valid_dfs,
+)
+from nlp_primitives.total_word_length import TotalWordLength
 
 
 class TestTotalWordLength(PrimitiveT):

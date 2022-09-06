@@ -29,7 +29,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Create source distribution
-        run: make package_nlp_primitives
+        run: make package
       - name: Install nlp_primtivies from sdist
         run: |
           python -m pip install unpacked_sdist/
