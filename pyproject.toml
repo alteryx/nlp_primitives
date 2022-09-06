@@ -60,7 +60,7 @@ test = [
 dev = [
     "flake8 == 5.0.4",
     "isort == 5.9.3",
-    "black == 22.6.0",
+    "black == 22.8.0",
     "pre-commit == 2.20.0",
     "nlp_primitives[test]"
 ]
@@ -97,6 +97,8 @@ namespaces = true
 "*" = [
     "* __pycache__",
     "*.py[co]",
+    "unpacked_sdist",
+    "dist",
 ]
 
 [tool.setuptools.dynamic]
