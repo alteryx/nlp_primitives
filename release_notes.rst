@@ -2,8 +2,19 @@
 Changelog
 =========
 
-Future Release
-==============
+.. Future Release
+  ==============
+    * Enhancements
+    * Fixes
+    * Changes
+    * Documentation Changes
+    * Testing Changes
+
+.. Thanks to the following people for contributing to this release:
+
+
+v2.8.0 Sep 14, 2022
+===================
     * Enhancements
         * Add `NumberOfHashtags` and `NumberOfMentions`` primitives (:pr:`180`)
         * Add `NumberOfUniqueWords` primitive (:pr:`187`)
@@ -18,12 +29,11 @@ Future Release
         * Change `TitleWordCount`, `PunctuationCount`, `UpperCaseCount` to use `CountString` (:pr:`183`)
         * Remove readthedocs and docs requirements (:pr:`193`)
         * Use pyproject.toml only (move away from setup.cfg) (:pr:`201`)
-    * Documentation Changes
     * Testing Changes
         * Change codecov v3 for GitHub workflow (:pr:`184`)
 
     Thanks to the following people for contributing to this release:
-    :user:`gsheni`, :user:`sbadithe`
+    :user:`gsheni`, :user:`sbadithe`, :user:`thehomebrewnerd`
 
 v2.7.1 Jun 29, 2022
 ===================
