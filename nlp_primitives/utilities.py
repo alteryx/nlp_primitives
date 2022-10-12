@@ -1,4 +1,5 @@
 import string
+
 import nltk
 
 
@@ -7,8 +8,10 @@ def clean_tokens(textstr):
     textstr = [ch.lower() for ch in textstr.split(" ") if len(ch) > 0]
 
     # Remove stopwords and punctuation
-    stopwords_and_punctuation = set(nltk.corpus.stopwords.words("english")).union(set(string.punctuation))
-    textstr = [ch for ch in textstr if ch not in stopwords]
+    stopwords_and_punctuation = set(nltk.corpus.stopwords.words("english")).union(
+        set(string.punctuation)
+    )
+    textstr = [ch for ch in textstr if ch not in stopwords_and_punctuation]
 
     # Lemmatize tokens
     wn = nltk.WordNetLemmatizer()
