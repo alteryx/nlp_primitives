@@ -23,7 +23,7 @@ class TestDiversityScore(PrimitiveT):
         )
         primitive_instance = self.primitive()
         primitive_func = primitive_instance.get_function()
-        answer = pd.Series([1.0, 0.6666666666666666, 0.75, 0.0])
+        answer = pd.Series([1.0, 0.5, 0.75, 0.0])
         pd.testing.assert_series_equal(primitive_func(array), answer, check_names=False)
 
     def test_nan(self):
