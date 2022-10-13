@@ -21,7 +21,7 @@ class PolarityScore(TransformPrimitive):
         >>> x = ['He loves dogs', 'She hates cats', 'There is a dog', '']
         >>> polarity_score = PolarityScore()
         >>> polarity_score(x).tolist()
-        [0.677, -0.649, 0.0, 0.0]
+        [0.677, -0.787, 0.0, 0.0]
     """
 
     name = "polarity_score"
