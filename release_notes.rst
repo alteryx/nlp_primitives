@@ -2,16 +2,17 @@
 Changelog
 =========
 
-.. Future Release
-  ==============
+Future Release
+==============
     * Enhancements
     * Fixes
+        * Fixes erroneous case-sensitive stopword checking in `clean_tokens` (:pr:`211`)
     * Changes
     * Documentation Changes
     * Testing Changes
 
-.. Thanks to the following people for contributing to this release:
-
+    Thanks to the following people for contributing to this release:
+    :user:`sbadithe`
 
 v2.8.0 Sep 14, 2022
 ===================

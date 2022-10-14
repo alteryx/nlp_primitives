@@ -18,7 +18,7 @@ class TestPolarityScore(PrimitiveT):
         )
         primitive_instance = self.primitive()
         primitive_func = primitive_instance.get_function()
-        answer = pd.Series([-0.649, 0.677, 0.0, 0.0])
+        answer = pd.Series([-0.787, 0.808, 0.0, 0.0])
         pd.testing.assert_series_equal(primitive_func(array), answer, check_names=False)
 
     def test_nan(self):
