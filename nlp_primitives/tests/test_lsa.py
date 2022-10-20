@@ -27,18 +27,8 @@ class TestLSA(PrimitiveT):
 
         answers = pd.Series(
             [
-                [
-                    0.06130623793383833,
-                    0.01745556451033845,
-                    0.0057337659660533094,
-                    0.0002763538434776728,
-                ],
-                [
-                    -0.04393122671005984,
-                    0.04819242528049181,
-                    0.01643423390395579,
-                    0.0011141016579207792,
-                ],
+                [2.41e-03, 6.29e-04, 7.26e-03, -1.85e-19],
+                [1.28e-03, 5.51e-04, 5.37e-03, -1.20e-15],
             ]
         )
         results = primitive_func(x)
@@ -65,11 +55,11 @@ class TestLSA(PrimitiveT):
 
         answers = pd.Series(
             [
-                [0.03858566832087156, 0.04979961879358504, 0.013042488281432613, 0.0],
+                [0.685e-04, 4.80e-04, 1.30e-02, 0.0],
                 [
-                    -0.0010495388842080527,
-                    -0.0011128696986250912,
-                    0.001556757056617563,
+                    -1.85e-05,
+                    -2.24e-05,
+                    1.56e-03,
                     0.0,
                 ],
             ]
@@ -85,7 +75,7 @@ class TestLSA(PrimitiveT):
         x = pd.Series([np.nan, "#;.<", "This IS a STRING."])
         primitive_func = self.primitive().get_function()
 
-        answers = pd.Series([[np.nan, 0, 0.06], [np.nan, 0, 0.06]])
+        answers = pd.Series([[np.nan, 0, 0.0], [np.nan, 0, 0.0]])
         results = primitive_func(x)
         np.testing.assert_array_almost_equal(
             np.concatenate(([np.array(answers[0])], [np.array(answers[1])]), axis=0),
