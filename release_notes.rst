@@ -8,11 +8,19 @@ Future Release
     * Fixes
         * Fixes erroneous case-sensitive stopword checking in `clean_tokens` (:pr:`211`)
     * Changes
+        * Remove primitives that were transferred to Featuretools (:pr:`214`)
     * Documentation Changes
     * Testing Changes
 
     Thanks to the following people for contributing to this release:
-    :user:`sbadithe`
+    :user:`sbadithe`, :user:`thehomebrewnerd`
+
+Breaking Changes
+++++++++++++++++
+* Multiple primitives were removed from nlp_primitives and transferred to Featuretools as standad primitives. See :pr:`214` for a
+complete list of primitives that were moved. These primitives can now be imported directly from Featuretools. For example, 
+use ``from featuretools.primitives import CountString`` instead of the previous import of ``from nlp_primitives import CountString``.
+
 
 v2.8.0 Sep 14, 2022
 ===================
