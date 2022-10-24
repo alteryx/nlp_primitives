@@ -8,6 +8,7 @@ Future Release
         * Add conda create feedstock pull request workflow (:pr:`220`)
     * Fixes
     * Changes
+        * Update workflow_dispatch to release workflow (:pr:`221`)
     * Documentation Changes
     * Testing Changes
 
