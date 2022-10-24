@@ -2,8 +2,8 @@
 Changelog
 =========
 
-.. Future Release
-  ==============
+Future Release
+==============
     * Enhancements
     * Fixes
     * Changes
@@ -11,8 +11,8 @@ Changelog
     * Testing Changes
         * Add pytest-xdist as test requirement and use auto option to use all cores when running unit tests (:pr:`218`)
 
-.. Thanks to the following people for contributing to this release:
-
+    Thanks to the following people for contributing to this release:
+    :user:`gsheni`
 v2.9.0 Oct 24, 2022
 ===================
     * Fixes
@@ -21,7 +21,7 @@ v2.9.0 Oct 24, 2022
         * Remove primitives that were transferred to Featuretools (:pr:`214`)
 
     Thanks to the following people for contributing to this release:
-    :user:`gsheni`, :user:`sbadithe`, :user:`thehomebrewnerd`
+    :user:`sbadithe`, :user:`thehomebrewnerd`
 
 Breaking Changes
 ++++++++++++++++
