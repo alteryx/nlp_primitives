@@ -11,9 +11,10 @@ Future Release
         * Remove primitives that were transferred to Featuretools (:pr:`214`)
     * Documentation Changes
     * Testing Changes
+        * Add pytest-xdist as test requirement and use auto option to use all cores when running unit tests (:pr:`218`)
 
     Thanks to the following people for contributing to this release:
-    :user:`sbadithe`, :user:`thehomebrewnerd`
+    :user:`gsheni`, :user:`sbadithe`, :user:`thehomebrewnerd`
 
 Breaking Changes
 ++++++++++++++++
