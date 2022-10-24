@@ -56,6 +56,7 @@ dependencies = [
 test = [
     "pytest >= 7.1.2",
     "pytest-cov >= 3.0.0",
+    "pytest-xdist >= 2.5.0",
 ]
 dev = [
     "flake8 == 5.0.4",
