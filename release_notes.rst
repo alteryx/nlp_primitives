@@ -2,16 +2,18 @@
 Changelog
 =========
 
-.. Future Release
-  ==============
+Future Release
+==============
     * Enhancements
+        * Add conda create feedstock pull request workflow (:pr:`220`)
     * Fixes
     * Changes
     * Documentation Changes
     * Testing Changes
 
-.. Thanks to the following people for contributing to this release:
-
+    Thanks to the following people for contributing to this release:
+    :user:`gsheni`
+    
 v2.9.0 Oct 24, 2022
 ===================
     * Fixes
