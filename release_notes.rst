@@ -13,6 +13,7 @@ Future Release
 
     Thanks to the following people for contributing to this release:
     :user:`gsheni`
+
 v2.9.0 Oct 24, 2022
 ===================
     * Fixes
