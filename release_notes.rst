@@ -15,7 +15,7 @@ Changelog
 v2.9.0 Oct 24, 2022
 ===================
     * Fixes
-        * Fixes erroneous case-sensitive stopword checking in `clean_tokens` (:pr:`211`)
+        * Fixes erroneous case-sensitive stopword checking in ``clean_tokens`` (:pr:`211`)
     * Changes
         * Remove primitives that were transferred to Featuretools (:pr:`214`)
 
