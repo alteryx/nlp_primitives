@@ -5,15 +5,17 @@ Changelog
 Future Release
 ==============
     * Enhancements
+        * Add conda create feedstock pull request workflow (:pr:`220`)
     * Fixes
     * Changes
+        * Update workflow_dispatch to release workflow (:pr:`221`)
     * Documentation Changes
     * Testing Changes
         * Adds Windows install test (:pr:`219`)  
 
     Thanks to the following people for contributing to this release:
-    :user:`sbadithe`
-
+    :user:`gsheni`, :user:`sbadithe`
+    
 v2.9.0 Oct 24, 2022
 ===================
     * Fixes
