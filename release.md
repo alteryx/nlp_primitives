@@ -30,6 +30,27 @@ After the release pull request has been merged into the main branch, it is time 
 * Publishing the release will automatically upload the package to PyPI
 
 ## Release on conda-forge
-1. A bot should automatically create a new PR in conda-forge/nlp_primitives-feedstock
-2. Update requirements changes in `recipe/meta.yaml` (bot should have handled version and source links on its own). Non-maintainers will need a maintainer to merge their changes into the bot's pull request.
+
+In order to release on conda-forge, you can either wait for a bot to create a pull request, or use a GitHub Actions workflow
+
+### Option a: Use a GitHub Action workflow
+
+1. After the package has been uploaded on PyPI, the **Create Feedstock Pull Request** workflow should automatically kickoff a job. 
+    * If it does not, go [here](https://github.com/alteryx/nlp_primitives/actions/workflows/create_feedstock_pr.yaml)
+    * Click **Run workflow** and input the letter `v` followed by the release version (e.g. `v0.13.3`)
+    * Kickoff the GitHub Action, and monitor the Job Summary.
+2. Once the job has been completed, you will see summary output, with a URL. 
+    * Visit that URL and create a pull request.
+    * Alternatively, create the pull request by clicking the branch name (e.g. - `v0.13.3`): 
+      - https://github.com/alteryx/nlp_primitives-feedstock/branches
+3. Verify that the PR has the following: 
+    * The `build['number']` is 0 (in __recipe/meta.yml__).
+    * The `requirements['run']` (in __recipe/meta.yml__) matches the `[project]['dependencies']` in __nlp_primitives/pyproject.toml__.
+    * The `test['requires']` (in __recipe/meta.yml__) matches the `[project.optional-dependencies]['test']` in __nlp_primitives/pyproject.toml__
+4. Satisfy the conditions in pull request description and **merge it if the CI passes**. 
+
+### Option b: Waiting for bot to create new PR
+
+1. A bot should automatically create a new PR in [conda-forge/nlp_primitives-feedstock](https://github.com/conda-forge/nlp_primitives-feedstock/pulls) - note, the PR may take up to a few hours to be created
+2. Update requirements changes in `recipe/meta.yaml` (bot should have handled version and source links on its own)
 3. After tests pass, a maintainer will merge the PR in

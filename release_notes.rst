@@ -5,8 +5,10 @@ Changelog
 Future Release
 ==============
     * Enhancements
+        * Add conda create feedstock pull request workflow (:pr:`220`)
     * Fixes
     * Changes
+        * Update workflow_dispatch to release workflow (:pr:`221`)
     * Documentation Changes
     * Testing Changes
         * Add pytest-xdist as test requirement and use auto option to use all cores when running unit tests (:pr:`218`)
