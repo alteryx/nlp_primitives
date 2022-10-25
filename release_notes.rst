@@ -11,9 +11,10 @@ Future Release
         * Update workflow_dispatch to release workflow (:pr:`221`)
     * Documentation Changes
     * Testing Changes
+        * Adds Windows install test (:pr:`219`)  
 
     Thanks to the following people for contributing to this release:
-    :user:`gsheni`
+    :user:`gsheni`, :user:`sbadithe`
     
 v2.9.0 Oct 24, 2022
 ===================
