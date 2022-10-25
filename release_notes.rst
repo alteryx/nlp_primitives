@@ -11,6 +11,7 @@ Future Release
         * Update workflow_dispatch to release workflow (:pr:`221`)
     * Documentation Changes
     * Testing Changes
+        * Add pytest-xdist as test requirement and use auto option to use all cores when running unit tests (:pr:`218`)
         * Adds Windows install test (:pr:`219`)  
 
     Thanks to the following people for contributing to this release:
