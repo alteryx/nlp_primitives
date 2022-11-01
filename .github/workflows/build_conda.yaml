@@ -19,8 +19,10 @@ jobs:
           python-version: "3.10"
       - name: Install requirements
         run: |
-          gh repo clone conda-forge/nlp_primitives-feedstock
+          gh repo clone gsheni/nlp_primitives-feedstock
           cd nlp_primitives-feedstock
+          git checkout add_tests
+          export FEATURETOOLS_LOG_LEVEL=debug 
           python build-locally.py linux_python3.10
         env:
           GITHUB_TOKEN: ${{ secrets.AUTO_APPROVE_TOKEN }}
