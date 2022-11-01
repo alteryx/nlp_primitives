@@ -24,3 +24,4 @@ jobs:
           python build-locally.py linux_python3.10
         env:
           GITHUB_TOKEN: ${{ secrets.AUTO_APPROVE_TOKEN }}
+          FEATURETOOLS_LOG_LEVEL: debug
