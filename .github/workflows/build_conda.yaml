@@ -9,10 +9,7 @@ on:
 jobs:
   unit_tests:
     name: build conda distribution
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-python@v3
         with:
