@@ -19,7 +19,7 @@ jobs:
           python-version: "3.10"
       - name: Install requirements
         run: |
-          gh repo clone conda-forge/nlp_primitives-feedstock.git
+          gh repo clone conda-forge/nlp_primitives-feedstock
           python build-locally.py linux_python3.10
         env:
           GITHUB_TOKEN: ${{ secrets.AUTO_APPROVE_TOKEN }}
