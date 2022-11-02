@@ -10,10 +10,13 @@ jobs:
   unit_tests:
     name: build conda distribution
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: ["3.10"]
     steps:
       - uses: actions/setup-python@v3
         with:
-          python-version: "3.10"
+          python-version: ${{ matrix.python_version }}
       - name: Setup conda
         uses: s-weigand/setup-conda@v1
         with:
@@ -32,4 +35,4 @@ jobs:
         run: |
           cd nlp_primitives-feedstock
           git checkout add_tests
-          python build-locally.py linux_python3.10
+          python build-locally.py linux_python${{ matrix.python_version }}
