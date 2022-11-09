@@ -12,9 +12,12 @@ class PartOfSpeechCount(TransformPrimitive):
     """Calculates the occurences of each different part of speech.
 
     Description:
-        Given a list of strings, categorize each word in the string as
-        a different part of speech, and return the total count for each
-        of 15 different categories of speech.
+        Given a list of strings, tags each word in the string with its part of speech. 
+        This method calculates the total count for each of the 15 different categories of speech.
+        
+        Given a list of N strings, this method will return a 15xN matrix. Each row will correspond
+        to the appropriate part of speech. 
+        
 
         If a string is missing, return `NaN`.
 
@@ -53,16 +56,16 @@ class PartOfSpeechCount(TransformPrimitive):
             "W",
         ]
 
-        def part_of_speech_count(x):
-            li = []
-            for el in x:
-                if pd.isnull(el):
-                    li.append([np.nan] * 15)
+        def part_of_speech_count(series):
+            result = []
+            for element in series:
+                if pd.isnull(element):
+                    result.append([np.nan] * 15)
                 else:
-                    tags = nltk.pos_tag(clean_tokens(el))
-                    fd = nltk.FreqDist([b[0] for (a, b) in tags])
-                    li.append([float(fd[i]) for i in types])
-            li = (np.array(li).T).tolist()
-            return pd.Series(li)
+                    tags = nltk.pos_tag(clean_tokens(element))
+                    fd = nltk.FreqDist(b[0] for (a, b) in tags)
+                    result.append(float(fd[i]) for _ in types)
+            result = (np.array(result).T).tolist()
+            return pd.Series(result)
 
         return part_of_speech_count
