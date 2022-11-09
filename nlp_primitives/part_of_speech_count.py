@@ -12,12 +12,12 @@ class PartOfSpeechCount(TransformPrimitive):
     """Calculates the occurences of each different part of speech.
 
     Description:
-        Given a list of strings, tags each word in the string with its part of speech. 
+        Given a list of strings, tags each word in the string with its part of speech.
         This method calculates the total count for each of the 15 different categories of speech.
-        
+
         Given a list of N strings, this method will return a 15xN matrix. Each row will correspond
-        to the appropriate part of speech. 
-        
+        to the appropriate part of speech.
+
 
         If a string is missing, return `NaN`.
 
@@ -38,24 +38,24 @@ class PartOfSpeechCount(TransformPrimitive):
         self.n = 15
 
     def get_function(self):
-        
+
         # For more info about the different parts of speech, see here: https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
         types = [
-            "C", # cardinal digits
-            "D", # determiner
-            "E", # existential there 
-            "F", # foreign word 
-            "I", # preposition/subordinating conjunction
-            "J", # adjective 
-            "L", # list marker 
-            "M", # modal 
-            "N", # noun 
-            "P", # pronoun
-            "R", # adverb
-            "T", # to 
-            "U", # interjection
-            "V", # verb
-            "W", # "wh"-pronoun
+            "C",  # cardinal digits
+            "D",  # determiner
+            "E",  # existential there
+            "F",  # foreign word
+            "I",  # preposition/subordinating conjunction
+            "J",  # adjective
+            "L",  # list marker
+            "M",  # modal
+            "N",  # noun
+            "P",  # pronoun
+            "R",  # adverb
+            "T",  # to
+            "U",  # interjection
+            "V",  # verb
+            "W",  # "wh"-pronoun
         ]
 
         def part_of_speech_count(series):
