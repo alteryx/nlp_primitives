@@ -63,8 +63,8 @@ class PartOfSpeechCount(TransformPrimitive):
                     result.append([np.nan] * 15)
                 else:
                     tags = nltk.pos_tag(clean_tokens(element))
-                    fd = nltk.FreqDist(b[0] for (a, b) in tags)
-                    result.append([float(fd[i]) for _ in types])
+                    freq_dist = nltk.FreqDist(freq[0] for _, freq in tags)
+                    result.append([float(freq_dist[i]) for _ in types])
             result = (np.array(result).T).tolist()
             return pd.Series(result)
 
