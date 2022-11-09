@@ -39,21 +39,21 @@ class PartOfSpeechCount(TransformPrimitive):
 
     def get_function(self):
         types = [
-            "C",
-            "D",
-            "E",
-            "F",
-            "I",
-            "J",
-            "L",
-            "M",
-            "N",
-            "P",
-            "R",
-            "T",
-            "U",
-            "V",
-            "W",
+            "C", # cardinal digits
+            "D", # determiner
+            "E", # existential there 
+            "F", # foreign word 
+            "I", # preposition/subordinating conjunction
+            "J", # adjective 
+            "L", # list marker 
+            "M", # modal 
+            "N", # noun 
+            "P", # pronoun
+            "R", # adverb
+            "T", # to 
+            "U", # interjection
+            "V", # verb
+            "W", # "wh"-pronoun
         ]
 
         def part_of_speech_count(series):
