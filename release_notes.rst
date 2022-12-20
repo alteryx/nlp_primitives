@@ -8,6 +8,7 @@ Future Release
         * Add conda create feedstock pull request workflow (:pr:`220`)
         * Improve ``PartOfSpeech`` docstring (:pr:`224`)
     * Fixes
+        * Fix handling of all-whitepace strings in ``MeanCharactersPerSentence`` (:pr:`234`)
     * Changes
         * Update workflow_dispatch to release workflow (:pr:`221`)
     * Documentation Changes
