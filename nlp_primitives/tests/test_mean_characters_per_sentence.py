@@ -35,7 +35,7 @@ class TestMeanCharactersPerSentence(PrimitiveT):
         "na_value",
         [None, np.nan, pd.NA],
     )
-    def test_nans(self, na_value):
+    def test_nans_and_empty(self, na_value):
         x = pd.Series([na_value, "", "         ", "third line"])
         primitive_func = self.primitive().get_function()
         answers = pd.Series([np.nan, 0, 0, 10.0])
