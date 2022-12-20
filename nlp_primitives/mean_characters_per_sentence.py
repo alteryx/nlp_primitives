@@ -33,9 +33,7 @@ class MeanCharactersPerSentence(TransformPrimitive):
                 return np.nan
             if not len(sentences := sent_tokenize(text)):
                 return 0.0
-            total = 0.0
-            for s in sentences:
-                total += len(s)
+            total = sum(len(s) for s in sentences)
             return total / len(sentences)
 
         def mean_characters_per_sentence(array):
