@@ -36,9 +36,9 @@ class TestMeanCharactersPerSentence(PrimitiveT):
         [None, np.nan, pd.NA],
     )
     def test_nans(self, na_value):
-        x = pd.Series([na_value, "", "third line"])
+        x = pd.Series([na_value, "", "         ", "third line"])
         primitive_func = self.primitive().get_function()
-        answers = pd.Series([np.nan, 0, 10.0])
+        answers = pd.Series([np.nan, 0, 0, 10.0])
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
     @pytest.mark.parametrize(
