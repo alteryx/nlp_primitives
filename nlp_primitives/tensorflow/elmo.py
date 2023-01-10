@@ -36,8 +36,9 @@ class Elmo(TransformPrimitive):
         self.n = 1024
 
     def install(self):
-        import tensorflow as tf
         import tensorflow_hub as hub
+
+        import tensorflow as tf
 
         with tf.compat.v1.Session():
             tf.compat.v1.global_variables_initializer().run()
