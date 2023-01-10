@@ -19,7 +19,7 @@ class TestMeanCharactersPerSentence(PrimitiveT):
                 "Ab. Bb. Db.",
                 "And? Why! Box. Car? Rat.",
                 "Yep.",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([3.0, 4.0, 4.0])

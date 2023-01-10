@@ -18,7 +18,7 @@ class TestNumberOfSentences(PrimitiveT):
                 "Hello. Hello! Hello? Hello.",
                 "and?",
                 "yes no",
-            ]
+            ],
         )
         expected = [4.0, 1.0, 1.0]
         actual = self.primitive().get_function()(x)
@@ -34,7 +34,7 @@ class TestNumberOfSentences(PrimitiveT):
         x = pd.Series(
             [
                 "Yes\n, this is true!",
-            ]
+            ],
         )
 
         expected = [1.0]

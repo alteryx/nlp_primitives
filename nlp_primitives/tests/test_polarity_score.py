@@ -14,7 +14,7 @@ class TestPolarityScore(PrimitiveT):
 
     def test_primitive_func_1(self):
         array = pd.Series(
-            ["He hates cars!", "She loves everything", "This is neutral", "!12323"]
+            ["He hates cars!", "She loves everything", "This is neutral", "!12323"],
         )
         primitive_instance = self.primitive()
         primitive_func = primitive_instance.get_function()
