@@ -2,8 +2,18 @@
 Changelog
 =========
 
-Future Release
-==============
+.. Future Release
+  ==============
+    * Enhancements
+    * Fixes
+    * Changes
+    * Documentation Changes
+    * Testing Changes
+
+.. Thanks to the following people for contributing to this release:
+
+v2.10.0 Jan 10, 2023
+===================
     * Enhancements
         * Add conda create feedstock pull request workflow (:pr:`220`)
         * Improve ``PartOfSpeech`` docstring (:pr:`224`)
@@ -12,7 +22,6 @@ Future Release
     * Changes
         * Update workflow_dispatch to release workflow (:pr:`221`)
         * Add ruff, remove isort, and add more pre-commits (:pr:`237`)
-    * Documentation Changes
     * Testing Changes
         * Add pytest-xdist as test requirement and use auto option to use all cores when running unit tests (:pr:`218`)
         * Adds Windows install test (:pr:`219`)
