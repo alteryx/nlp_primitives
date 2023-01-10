@@ -13,7 +13,7 @@ Changelog
 .. Thanks to the following people for contributing to this release:
 
 v2.10.0 Jan 10, 2023
-===================
+====================
     * Enhancements
         * Add conda create feedstock pull request workflow (:pr:`220`)
         * Improve ``PartOfSpeech`` docstring (:pr:`224`)
