@@ -11,6 +11,7 @@ Future Release
         * Fix handling of all-whitepace strings in ``MeanCharactersPerSentence`` (:pr:`234`)
     * Changes
         * Update workflow_dispatch to release workflow (:pr:`221`)
+        * Add ruff, remove isort, and add more pre-commits (:pr:`237`)
     * Documentation Changes
     * Testing Changes
         * Add pytest-xdist as test requirement and use auto option to use all cores when running unit tests (:pr:`218`)
