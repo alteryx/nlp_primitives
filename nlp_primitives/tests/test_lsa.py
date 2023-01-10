@@ -21,7 +21,7 @@ class TestLSA(PrimitiveT):
                 "She ate a pineapple",
                 "Consume Electrolytes, he told me.",
                 "Hello",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
 
@@ -29,7 +29,7 @@ class TestLSA(PrimitiveT):
             [
                 [2.41e-03, 6.29e-04, 7.26e-03, -1.85e-19],
                 [1.28e-03, 5.51e-04, 5.37e-03, -1.20e-15],
-            ]
+            ],
         )
         results = primitive_func(x)
         np.testing.assert_array_almost_equal(
@@ -45,7 +45,7 @@ class TestLSA(PrimitiveT):
                 "She ate a pineapple",
                 "Consume Electrolytes, he told me.",
                 "Hello",
-            ]
+            ],
         )
         # Create a new corpus using only the first 10000 elements from Gutenberg
         gutenberg = nltk.corpus.gutenberg.sents()
@@ -62,7 +62,7 @@ class TestLSA(PrimitiveT):
                     1.56e-03,
                     0.0,
                 ],
-            ]
+            ],
         )
         results = primitive_func(x)
         np.testing.assert_array_almost_equal(
@@ -96,7 +96,11 @@ class TestLSA(PrimitiveT):
         primitive_instance = self.primitive()
         transform.append(primitive_instance)
         valid_dfs(
-            es, aggregation, transform, self.primitive.name.upper(), multi_output=True
+            es,
+            aggregation,
+            transform,
+            self.primitive.name.upper(),
+            multi_output=True,
         )
 
     def test_bad_algorithm_input_value(self):
@@ -120,6 +124,8 @@ class TestLSA(PrimitiveT):
 
         # Test all args
         args_string = self.primitive(
-            random_seed=100, corpus=custom_corpus, algorithm="arpack"
+            random_seed=100,
+            corpus=custom_corpus,
+            algorithm="arpack",
         ).get_args_string()
         assert args_string == ", random_seed=100, corpus=user_defined, algorithm=arpack"

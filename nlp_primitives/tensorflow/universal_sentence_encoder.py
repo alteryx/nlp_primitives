@@ -29,7 +29,10 @@ class UniversalSentenceEncoder(TransformPrimitive):
     return_type = ColumnSchema(logical_type=Double, semantic_tags={"numeric"})
 
     def __init__(self):
-        message = "In order to use the UniversalSentenceEncoder primitive install 'nlp_primitives[complete]'"
+        message = (
+            "In order to use the UniversalSentenceEncoder primitive install"
+            " 'nlp_primitives[complete]'"
+        )
         self.tf = import_or_raise("tensorflow", message)
         hub = import_or_raise("tensorflow_hub", message)
         self.tf.compat.v1.disable_eager_execution()
@@ -45,7 +48,7 @@ class UniversalSentenceEncoder(TransformPrimitive):
                     [
                         self.tf.compat.v1.global_variables_initializer(),
                         self.tf.compat.v1.tables_initializer(),
-                    ]
+                    ],
                 )
                 embeddings = session.run(self.embed(col.tolist()))
             return embeddings.transpose()

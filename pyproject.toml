@@ -59,9 +59,8 @@ test = [
     "pytest-xdist >= 2.5.0",
 ]
 dev = [
-    "flake8 == 5.0.4",
-    "isort == 5.9.3",
-    "black == 22.8.0",
+    "ruff == 0.0.216",
+    "black[jupyter] == 22.12.0",
     "pre-commit == 2.20.0",
     "nlp_primitives[test]"
 ]
@@ -115,12 +114,21 @@ filterwarnings = [
     "ignore::PendingDeprecationWarning"
 ]
 
-[tool.isort]
-profile = "black"
-forced_separate = "nlp_primitives"
-known_first_party = "nlp_primitives"
-skip = "__init__.py"
-multi_line_output = 3
+[tool.ruff]
+ignore = ["E501"]
+select = [
+    # Pyflakes
+    "F",
+    # Pycodestyle
+    "E",
+    "W",
+    # isort
+    "I001"
+]
+src = ["composeml"]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["E402", "F401", "I001", "E501"]
 
 [tool.coverage.run]
 source = ["nlp_primitives"]

@@ -14,11 +14,11 @@ Future Release
     * Documentation Changes
     * Testing Changes
         * Add pytest-xdist as test requirement and use auto option to use all cores when running unit tests (:pr:`218`)
-        * Adds Windows install test (:pr:`219`)  
+        * Adds Windows install test (:pr:`219`)
 
     Thanks to the following people for contributing to this release:
     :user:`gsheni`, :user:`sbadithe`
-    
+
 v2.9.0 Oct 24, 2022
 ===================
     * Fixes
@@ -32,7 +32,7 @@ v2.9.0 Oct 24, 2022
 Breaking Changes
 ++++++++++++++++
 * Multiple primitives were removed from nlp_primitives and transferred to Featuretools as standad primitives. See :pr:`214` for a
-complete list of primitives that were moved. These primitives can now be imported directly from Featuretools. For example, 
+complete list of primitives that were moved. These primitives can now be imported directly from Featuretools. For example,
 use ``from featuretools.primitives import CountString`` instead of the previous import of ``from nlp_primitives import CountString``.
 
 
@@ -141,10 +141,10 @@ v2.2.0 Feb 17, 2022
     * Testing Changes
         * Update scheduler workflow to use correct name and file (:pr:`87`, :pr:`86`)
         * Add workflow to auto-merge dependency PRs (:pr:`93`)
-        
+
     Thanks to the following people for contributing to this release:
     :user:`dvreed77`, :user:`gsheni`, :user:`jeff-hernandez`, :user:`tuethan1999`
-    
+
 v2.1.0 Dec 21, 2021
 ===================
     * Enhancements

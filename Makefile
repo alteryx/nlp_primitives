@@ -18,14 +18,13 @@ clean:
 
 .PHONY: lint
 lint:
-	isort --check-only nlp_primitives
-	black nlp_primitives -t py310 --check
-	flake8 nlp_primitives
+	black . --check --preview
+	ruff .
 
 .PHONY: lint-fix
 lint-fix:
-	black -t py310 nlp_primitives
-	isort nlp_primitives
+	black . --preview
+	ruff . --fix
 
 .PHONY: test
 test:

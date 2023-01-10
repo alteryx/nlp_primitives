@@ -107,10 +107,12 @@ def find_applicable_primitives(primitive):
     all_transform_primitives = list(get_transform_primitives().values())
     all_aggregation_primitives = list(get_aggregation_primitives().values())
     applicable_transforms = find_stackable_primitives(
-        all_transform_primitives, primitive
+        all_transform_primitives,
+        primitive,
     )
     applicable_aggregations = find_stackable_primitives(
-        all_aggregation_primitives, primitive
+        all_aggregation_primitives,
+        primitive,
     )
     return applicable_transforms, applicable_aggregations
 
@@ -153,13 +155,14 @@ def valid_dfs(
                 applicable_features.append(feat)
     if len(applicable_features) == 0:
         raise ValueError(
-            "No feature names with %s, verify the name attribute \
-                          is defined and/or generate_name() is defined to \
-                          return %s "
-            % (feature_substrings, feature_substrings)
+            "No feature names with %s, verify the name attribute                       "
+            "    is defined and/or generate_name() is defined to                       "
+            "    return %s " % (feature_substrings, feature_substrings),
         )
     df = ft.calculate_feature_matrix(
-        entityset=es, features=applicable_features, instance_ids=instance_ids
+        entityset=es,
+        features=applicable_features,
+        instance_ids=instance_ids,
     )
 
     ft.encode_features(df, applicable_features)

@@ -19,7 +19,7 @@ class TestStopwordCount(PrimitiveT):
                 "This is second string",
                 "third string",
                 "This IS the fourth string.",
-            ]
+            ],
         )
         primitive_func = self.primitive().get_function()
         answers = pd.Series([3, 2, 0, 3])

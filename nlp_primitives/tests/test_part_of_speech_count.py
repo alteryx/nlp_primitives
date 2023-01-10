@@ -14,7 +14,7 @@ class TestPartOfSpeechCount(PrimitiveT):
 
     def test_strings(self):
         x = pd.Series(
-            ["This IS a STRING.", "Testing AAA", "Testing AAA-BBB", "Testing AA3"]
+            ["This IS a STRING.", "Testing AAA", "Testing AAA-BBB", "Testing AA3"],
         )
         primitive_func = self.primitive().get_function()
 
@@ -35,7 +35,7 @@ class TestPartOfSpeechCount(PrimitiveT):
                 [0.0, 0.0, 0.0, 0.0],
                 [0.0, 1.0, 1.0, 1.0],
                 [0.0, 0.0, 0.0, 0.0],
-            ]
+            ],
         )
 
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
@@ -61,7 +61,7 @@ class TestPartOfSpeechCount(PrimitiveT):
                 [np.nan, 0.0, 0.0],
                 [np.nan, 0.0, 0.0],
                 [np.nan, 0.0, 0.0],
-            ]
+            ],
         )
         pd.testing.assert_series_equal(primitive_func(x), answers, check_names=False)
 
@@ -70,5 +70,9 @@ class TestPartOfSpeechCount(PrimitiveT):
         primitive_instance = self.primitive()
         transform.append(primitive_instance)
         valid_dfs(
-            es, aggregation, transform, self.primitive.name.upper(), multi_output=True
+            es,
+            aggregation,
+            transform,
+            self.primitive.name.upper(),
+            multi_output=True,
         )

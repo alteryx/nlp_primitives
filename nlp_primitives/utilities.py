@@ -10,7 +10,7 @@ def clean_tokens(text: str) -> List[str]:
 
     # Remove stopwords and punctuation
     stopwords_and_punctuation = set(nltk.corpus.stopwords.words("english")).union(
-        set(string.punctuation)
+        set(string.punctuation),
     )
     text = [word for word in text if word not in stopwords_and_punctuation]
 

@@ -38,7 +38,6 @@ class PartOfSpeechCount(TransformPrimitive):
         self.n = 15
 
     def get_function(self):
-
         # For more info about the different parts of speech, see here: https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
         types = [
             "C",  # cardinal digits

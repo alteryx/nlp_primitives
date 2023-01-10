@@ -21,7 +21,7 @@ class TestElmo(PrimitiveT):
                 "The roller coaster was built in 1885.",
                 "When will humans go to mars?",
                 "Mitochondria is the powerhouse of the cell",
-            ]
+            ],
         )
         new_results = primitive(words)
         assert round(sum(new_results[:, 0]), 3) == 8.744

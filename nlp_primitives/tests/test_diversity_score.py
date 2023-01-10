@@ -19,7 +19,7 @@ class TestDiversityScore(PrimitiveT):
                 "Not diverse not diverse not",
                 "this is a semi diverse diverse example",
                 "a a",
-            ]
+            ],
         )
         primitive_instance = self.primitive()
         primitive_func = primitive_instance.get_function()
