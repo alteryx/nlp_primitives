@@ -6,6 +6,7 @@ Future Release
 ==============
     * Enhancements
     * Fixes
+        * Fix Makefile ``package`` command (:pr:`241`)
     * Changes
        * Fix ruff argument in pyproject.toml (:pr:`239`)
     * Documentation Changes
