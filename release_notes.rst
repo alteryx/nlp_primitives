@@ -9,11 +9,12 @@ Future Release
         * Fix Makefile ``package`` command (:pr:`241`)
     * Changes
        * Fix ruff argument in pyproject.toml (:pr:`239`)
+       * Remove `constants.py` (:pr:`243`)
     * Documentation Changes
     * Testing Changes
 
     Thanks to the following people for contributing to this release:
-    :user:`gsheni`
+    :user:`gsheni`, :user:`sbadithe`
 
 v2.10.0 Jan 10, 2023
 ====================
