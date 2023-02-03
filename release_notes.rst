@@ -12,6 +12,7 @@ Future Release
        * Remove `constants.py` (:pr:`243`)
     * Documentation Changes
     * Testing Changes
+       * Add pull request check for linked issues to CI workflow (:pr:`245`)
 
     Thanks to the following people for contributing to this release:
     :user:`gsheni`, :user:`sbadithe`
