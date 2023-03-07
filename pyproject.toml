@@ -64,11 +64,21 @@ dev = [
     "pre-commit == 2.20.0",
     "nlp_primitives[test]"
 ]
-complete = [
+
+tensorflow = [
     "tensorflow >= 1.14.0; sys_platform!='darwin' or platform_machine!='arm64'",
     "tensorflow-metal >= 0.4.0; sys_platform=='darwin' and platform_machine=='arm64'",
     "tensorflow-macos >= 2.8.0; sys_platform=='darwin' and platform_machine=='arm64'",
     "tensorflow_hub >= 0.4.0",
+]
+
+openai = [
+    "openai[embeddings] >= 0.26.5",
+    "tiktoken >= 0.3.0",
+]
+
+complete = [
+    "nlp_primitives[tensorflow,openai]",
 ]
 
 [project.entry-points."featuretools_plugin"]
