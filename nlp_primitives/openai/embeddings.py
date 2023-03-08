@@ -1,6 +1,8 @@
+import asyncio
 import itertools
 from typing import List, Optional
 
+import nest_asyncio
 import numpy as np
 import pandas as pd
 import tiktoken
@@ -18,7 +20,6 @@ from nlp_primitives.openai.request import (
     StaticOpenAIEmbeddingRequest,
 )
 from nlp_primitives.openai.response import OpenAIEmbeddingResponse
-from nlp_primitives.utils import CurrentEventLoop
 
 DEFAULT_MODEL = OpenAIEmbeddingModel(
     name="text-embedding-ada-002",
@@ -179,12 +180,7 @@ class OpenAIEmbeddings(TransformPrimitive):
 
     def get_function(self):
         def get_embeddings(series):
-            current_loop = CurrentEventLoop()
-            try:
-                return current_loop.loop.run_until_complete(
-                    self.async_get_embeddings(series)
-                )
-            finally:
-                current_loop.close()
+            nest_asyncio.apply()
+            return asyncio.run(self.async_get_embeddings(series))
 
         return get_embeddings

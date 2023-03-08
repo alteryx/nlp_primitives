@@ -73,8 +73,9 @@ tensorflow = [
 ]
 
 openai = [
-    "openai[embeddings] >= 0.26.5",
+    "openai[embeddings] >= 0.27.0",
     "tiktoken >= 0.3.0",
+    "nest_asyncio >= 1.5.6"
 ]
 
 complete = [
