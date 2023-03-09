@@ -5,6 +5,7 @@ Changelog
 Future Release
 ==============
     * Enhancements
+        * Add OpenAI Embeddings Primitive (:pr:`251`)
     * Fixes
         * Fix Makefile ``package`` command (:pr:`241`)
     * Changes
@@ -15,7 +16,7 @@ Future Release
        * Add pull request check for linked issues to CI workflow (:pr:`245`)
 
     Thanks to the following people for contributing to this release:
-    :user:`gsheni`, :user:`sbadithe`
+    :user:`gsheni`, :user:`jlouns`, :user:`sbadithe`
 
 v2.10.0 Jan 10, 2023
 ====================
