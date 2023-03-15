@@ -112,7 +112,8 @@ class OpenAIEmbeddings(TransformPrimitive):
         tokens_in_batch = 0
 
         def add_batched_request() -> int:
-            """Create a batched request from the currently staged elements and add it to the request list. Return the resulting total of tokens that will be sent in the next request. 
+            """Create a batched request from the currently staged elements and add it to the request list.
+            Return the resulting total of tokens that will be sent in the next request.
             """
             if elements_in_batch:
                 requests.append(
@@ -147,7 +148,7 @@ class OpenAIEmbeddings(TransformPrimitive):
                 next_tokens = len(encoding.encode(element))
 
                 # can this element fit in the batch?
-                if can_fit_in_batch(next_tokens):
+                if not can_fit_in_batch(next_tokens):
                     # can't fit -- construct a request with existing elements
                     tokens_in_batch = add_batched_request()
 
