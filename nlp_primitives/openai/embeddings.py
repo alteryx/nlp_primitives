@@ -112,18 +112,17 @@ class OpenAIEmbeddings(TransformPrimitive):
         tokens_in_batch = 0
 
         def add_batched_request() -> int:
-            """Create a batched request from the currently staged elements and add it to the request list
+            """Create a batched request from the currently staged elements and add it to the request list. Return the resulting total of tokens that will be sent in the next request. 
             """
             if elements_in_batch:
-                elements_copy = list(elements_in_batch)
-                elements_in_batch.clear()
                 requests.append(
                     OpenAIEmbeddingRequest(
-                        list_of_text=elements_copy,
+                        list_of_text=elements_in_batch.copy(),
                         model=self.model,
                         token_consumption=tokens_in_batch,
                     )
                 )
+                elements_in_batch.clear()
                 return 0
             else:
                 return tokens_in_batch
