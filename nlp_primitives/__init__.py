@@ -3,6 +3,7 @@ from nlp_primitives.version import __version__  # isort:skip
 
 import inspect
 from importlib.util import find_spec
+import os
 
 import nltk.data
 import pkg_resources
@@ -18,6 +19,9 @@ from nlp_primitives.stopword_count import StopwordCount
 
 if find_spec("tensorflow") and find_spec("tensorflow_hub"):
     from nlp_primitives.tensorflow import Elmo, UniversalSentenceEncoder
+
+if find_spec("openai") and "OPENAI_API_KEY" in os.environ:
+    from nlp_primitives.openai import OpenAIEmbeddings
 
 NLP_PRIMITIVES = [
     obj
