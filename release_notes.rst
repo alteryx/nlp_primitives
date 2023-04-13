@@ -10,6 +10,7 @@ Future Release
     * Changes
        * Fix ruff argument in pyproject.toml (:pr:`239`)
        * Remove `constants.py` (:pr:`243`)
+       * Remove Woodwork as a core requirement (:pr:`258`)
     * Documentation Changes
     * Testing Changes
        * Add pull request check for linked issues to CI workflow (:pr:`245`)
