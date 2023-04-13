@@ -2,16 +2,14 @@
 Changelog
 =========
 
-Future Release
-==============
-    * Enhancements
+v2.11.0 Apr 13, 2023
+====================
     * Fixes
         * Fix Makefile ``package`` command (:pr:`241`)
     * Changes
        * Fix ruff argument in pyproject.toml (:pr:`239`)
        * Remove `constants.py` (:pr:`243`)
        * Remove Woodwork as a core requirement (:pr:`258`)
-    * Documentation Changes
     * Testing Changes
        * Add pull request check for linked issues to CI workflow (:pr:`245`)
 
