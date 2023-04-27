@@ -1,4 +1,4 @@
-featuretools==1.25.0
+featuretools==1.26.0
 nltk==3.8.1
 tensorflow==2.12.0
 tensorflow-estimator==2.12.0
