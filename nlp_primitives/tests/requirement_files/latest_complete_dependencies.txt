@@ -3,4 +3,4 @@ nltk==3.8.1
 tensorflow==2.13.0
 tensorflow-estimator==2.13.0
 tensorflow-hub==0.14.0
-tensorflow-io-gcs-filesystem==0.32.0
+tensorflow-io-gcs-filesystem==0.33.0
