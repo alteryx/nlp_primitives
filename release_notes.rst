@@ -4,8 +4,12 @@ Changelog
 
 Future Release
 ==============
+    .. warning::
+        This release of nlp-primitives will not support Python 3.8
+
     * Fixes
     * Changes
+        * Remove support for Python 3.8 and add support for 3.11 (:pr:`269`)
     * Testing Changes
        * Update ``release.yaml`` to use trusted publisher for PyPI releases (:pr:`269`)
 
