@@ -1,6 +1,6 @@
-featuretools==1.27.0
+featuretools==1.28.0
 nltk==3.8.1
 tensorflow==2.13.1
 tensorflow-estimator==2.13.0
-tensorflow-hub==0.14.0
+tensorflow-hub==0.16.1
 tensorflow-io-gcs-filesystem==0.34.0
