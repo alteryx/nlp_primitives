@@ -2,6 +2,16 @@
 Changelog
 =========
 
+Future Release
+==============
+    * Fixes
+    * Changes
+    * Testing Changes
+       * Update ``release.yaml`` to use trusted publisher for PyPI releases (:pr:`269`)
+
+    Thanks to the following people for contributing to this release:
+    :user:`thehomebrewnerd`
+
 v2.11.0 Apr 13, 2023
 ====================
     * Fixes
