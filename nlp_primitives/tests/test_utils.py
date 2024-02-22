@@ -1,4 +1,5 @@
 from inspect import signature
+
 import featuretools as ft
 import pytest
 from featuretools import (
