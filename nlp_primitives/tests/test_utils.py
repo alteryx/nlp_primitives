@@ -1,10 +1,4 @@
-# -*- coding: utf-8 -*-
-try:
-    # python 3
-    from inspect import signature
-except ImportError:
-    # python 2
-    from funcsigs import signature
+from inspect import signature
 
 import featuretools as ft
 import pytest
@@ -51,12 +45,7 @@ class PrimitiveT:
         assert PRIMITIVES.name.eq(self.primitive.name).any()
 
     def test_arg_init(self):
-        try:
-            primitive_ = self.primitive()
-        except TypeError:
-            # primitive requires an argument
-            # ex. CountString needs an input string to search
-            return
+        primitive_ = self.primitive()
         # determine the optional arguments in the __init__
         init_params = signature(self.primitive.__init__)
         for name, parameter in init_params.parameters.items():

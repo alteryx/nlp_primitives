@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
-        python_version: ["3.8", "3.9", "3.10"]
+        python_version: ["3.9", "3.10", "3.11"]
         featuretools_version: ["release", "main"]
     steps:
       - name: Set up python ${{ matrix.python_version }}
@@ -40,15 +40,15 @@ jobs:
         run: |
           make installdeps-complete
           make installdeps-test
-      - if: ${{ matrix.python_version != 3.8 || matrix.featuretools_version != 'main' }}
+      - if: ${{ matrix.python_version != 3.9 || matrix.featuretools_version != 'main' }}
         name: Run unit tests with no code coverage
         run: |
           make test
-      - if: ${{ matrix.python_version == 3.8 && matrix.featuretools_version == 'main' }}
+      - if: ${{ matrix.python_version == 3.9 && matrix.featuretools_version == 'main' }}
         name: Run unit tests with code coverage
         run: |
           pytest nlp_primitives/ --cov=nlp_primitives/ --cov-config=pyproject.toml --cov-report=xml:coverage.xml
-      - if: ${{ matrix.python_version == 3.8 && matrix.featuretools_version == 'main' }}
+      - if: ${{ matrix.python_version == 3.9 && matrix.featuretools_version == 'main' }}
         name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
