@@ -2,12 +2,21 @@
 Changelog
 =========
 
-Future Release
-==============
+.. Future Release
+  ==============
+    * Enhancements
+    * Fixes
+    * Changes
+    * Documentation Changes
+    * Testing Changes
+
+.. Thanks to the following people for contributing to this release:
+
+v2.12.0 Feb 26, 2024
+====================
     .. warning::
         This release of nlp-primitives will not support Python 3.8
 
-    * Fixes
     * Changes
         * Remove support for Python 3.8 and add support for 3.11 (:pr:`269`)
     * Testing Changes
