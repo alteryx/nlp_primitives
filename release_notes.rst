@@ -8,6 +8,7 @@ Future Release
     * Fixes
     * Changes
         * Temporarily restrict tensorflow version for complete install (:pr:`277`)
+        * Remove Mac specific tensorflow requirements (:pr:`281`)
     * Documentation Changes
     * Testing Changes
 
