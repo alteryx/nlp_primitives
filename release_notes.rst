@@ -12,6 +12,7 @@ Future Release
         * Remove Mac specific tensorflow requirements (:pr:`281`)
     * Documentation Changes
     * Testing Changes
+        * Update release notes updated check CI action (:pr:`284`)
 
     Thanks to the following people for contributing to this release:
     :user:`thehomebrewnerd`
