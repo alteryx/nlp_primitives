@@ -5,6 +5,7 @@ Changelog
 Future Release
 ==============
     * Enhancements
+        * Add support for Python 3.12 (:pr:`285`)
     * Fixes
     * Changes
         * Temporarily restrict tensorflow version for complete install (:pr:`277`)
