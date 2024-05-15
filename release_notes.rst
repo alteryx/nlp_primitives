@@ -2,14 +2,11 @@
 Changelog
 =========
 
-Future Release
-==============
-    * Enhancements
-    * Fixes
+v2.13.0 May 15, 2024
+====================
     * Changes
         * Temporarily restrict tensorflow version for complete install (:pr:`277`)
         * Remove Mac specific tensorflow requirements (:pr:`281`)
-    * Documentation Changes
     * Testing Changes
         * Update release notes updated check CI action (:pr:`284`)
 
